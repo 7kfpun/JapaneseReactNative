@@ -1,0 +1,55 @@
+行ます;いきます;ikimasu;go
+来ます;きます;kimasu;come
+帰ります;かえります;kaerimasu;go home, return
+学校;がっこう;gakkou;school
+スーパー;スーパー;sûpâ;supermarket
+駅;えき;eki;station
+飛行機;ひこうき;hikouki;airplane
+船;ふね;fune;ship
+電車;でんしゃ;densha;electric train
+地下鉄;ちかてつ;chikatetsu;subway, underground
+新幹線;しんかんせん;shinkasen;the Shinkansen, the bullet train
+バス;バス;basu;bus
+タクシー;タクシー;takushî;taxi
+自転車;じてんしゃ;jitensha;bicycle
+歩いて;あるいて;aruite;on foot
+人;ひと;hito;person, people
+友達;ともだち;tomodachi;friend
+彼;かれ;kare;he, boyfriend, lover 
+彼女;かのじょ;kanojo;she, girlfriend, lover 
+家族;かぞく;kazoku;family
+一人で;ひとりで;hitoride;alone, by oneself 
+先週;せんしゅう;senshuu;last week 
+今週;こんしゅう;konshuu;this week 
+来週;らいしゅう;raishuu;next week 
+先月;せんげつ;sengatsu;last month
+今月;こんげつ;kongastu;this month
+来月;らいげつ;raigatsu;next month
+去年;きょねん;kyonen;last year 
+ことし;ことし;kotoshi;this year 
+来年;らいねん;rainen;next year 
+～月;～がつ;~gatsu;~th month of the year 
+何月;なんがつ;nangatsu;what month
+一日つ;いたち;itachi;first day of the month
+二日;ふつか;futsuka;second, two days
+三日;みっか;mikka;third, three days
+四日;よっか;yokka;fourth, four days
+五日;いつか;itsuka;fifth, five days
+六日;むいか;muika;sixth, six days
+七日;なのか;nanoka;seventh, seven days
+八日;ようか;youka;eigth, eight days
+九日;ここのか;kokonoka;ninth, nine days
+十日;とおか;tooka;tenth, ten days
+十四日;じゅうよっか;juuyokka;fourteenth, fourteen days
+二十日;はつか;hatsuka;twentieth, twenty days
+二十四日;にじゅうよっか;nijuuyokka;twenty fourth, twenty four days
+～日;～にち;~nichi;~th day of the month, ~days
+何日;なんにち;nannichi;which day of the month, how many days
+いつ;いつ;itsu;when
+誕生日;たんじょうび;tanjoubi;birthday
+普通;ふつう;futsuu;local (train)
+急行;きゅうこう;kyuukou;rapid
+特急;とっきゅう;tokkyu;express
+次の;つぎの;tsugino;next
+どういたしまして。;どういたしまして。;doitashimashite;You're welcome./Don't mention it.
+～番線;～ばんせん;~bansen;platform ~, ~th platform

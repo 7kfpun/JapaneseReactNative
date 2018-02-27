@@ -1,0 +1,41 @@
+ここ;ここ;koko;here, this place
+そこ;そこ;soko;there, that place near you
+あそこ;あそこ;asoko;that place over there
+どこ;どこ;doko;where, what place?
+こちら;こちら;kochira;this way, this place (polite ここ)
+そちら;そちら;sochira;that way, that place near you(polite そこ)
+あちら;あちら;achira;that way, that place over there(polite あそこ)
+どちら;どちら;dochira;which way, where (polite どこ)
+教室;きょうしつ;kyoushitsu;classroom
+食堂;しょくどう;shokutou;dining hall, canteen
+事務所;じむしょ;jimusho;office
+会議室;かいぎしつ;kaigishitsu;conference room, assembly rooms
+受付;うけつけ;uketsuke;reception desk 
+ロビー;ロビー;robî;lobby
+部屋;へや;heya;room
+お手洗い;トイレ （おてあらい）;otearai;toilet
+階段;かいだん;kaidan;staircase
+エレベーター;エレベーター;erebêtâ;elevator, lift
+エスカレーター;エスカレーター;esukarêtâ;escalator 
+［お］国;［お］くに;[o]kuni;country
+会社;かいしゃ;kaisha;company, corporation
+うち;うち;uchi;house, home
+電話;でんわ;denwa;telephone, telephone call
+靴;くつ;kutsu;shoes
+ネクタイ;ネクタイ;nekutai;neck tie
+ワイン;ワイン;wain;wine
+たばこ;たばこ;tabako;tobacco, cigarette
+売り場;うりば;uriba;department, counter (in adepartment store)
+地下;ちか;chika;basement
+～階;～かい （～がい）;~kai (~dai);~th floor 
+何階;なんがい;nangai;what floor 
+～円;～えん;~en;~yen
+いくら;いくら;ikura;how much
+百;ひゃく;hyaku;hundred
+千;せん;sen;thousand
+万;まん;man;ten thousand
+すみません。;すみません。;sumimasen;Excuse me.
+～でございます。;～でございます。;degozaimasu;(polite です)
+［～を］みせてください。;［～を］みせてください。;[~o]misete kudasai;Please show me [~].
+じゃ;じゃ;ja;well, then, in that case
+［～を］ください。;［～を］ください。;[~o]kudasai;Give me [~], please.

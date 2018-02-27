@@ -1,0 +1,46 @@
+乗ります;のります［でんしゃに～］;norimasu [denshani~];ride, get on [a train] (I)
+降ります;おります［でんしゃを～］;arimasu [denshani~];get off [a train] (II)
+乗り換えます;のりかえます;norikaemasu;change (trains, etc.) (II)
+浴びます;あびます［シャワーを～］;abimasu [shawâ o ~];take [a shower] (II)*
+入れます;いれます;iremasu;put in, insert (II)
+出します;だします;dashimasu;take out, withdraw (I)
+入ります;はいります［だいがくに～］;hairimasu;enter [university] (I)
+出ますでま;す［だいがくを～］;su [daigaku wo~];graduate from [university](II)
+やめます［かいしゃを～］;やめます［かいしゃを～］;yamemasu [kaisha wo ~];quit or retire from [acompany], stop, give up (II)
+押します;おします;oshimasu; press, push (I)
+若い;わかい;wakai;young
+長い;ながい;nagai;long
+短い;みじかい;mijikai;short
+明るい;あかるい;akarui;bright, light
+暗い;くらい;kurai;dark (depressed)
+背が高;いせがたかい;isegatakai;tall (referring to person)
+頭がいい;あたまがいい;atamagaii;clever, smart
+体;からだ;karada;body
+頭;あたま;atama;head
+髪;かみ;kami;hair 
+顔;かお;kao;face
+目;め;me;eye
+耳;みみ;mimi;ear 
+口;くち;kuchi;mouth
+歯;は;ha;tooth
+おなか;おなか;onaka;stomach
+足;あし;ashi;leg,foot
+サービス;サービス;sêbisu;service
+ジョギング;ジョギング;jogingu;jogging (～をします:jog)
+シャワー;シャワー;shawâ;shower 
+緑;みどり;midori;green, greenery
+［お］寺;［お］てら;[o]tera;Buddhist temple
+神社;じんじゃ;jinja;Shinto shrine
+留学生;りゅうがくせい;ryuugakusei;foreign student
+～番;～ばん;~ban;number ~
+どうやって;どうやって;douyatte;in what way, how
+どの～;どの～;dono~;which ~ (used for three or more)
+［いいえ、］まだまだです。;［いいえ、］まだまだです。;[iie,] mada mada desu.;[No,] I still have a long wayto go.
+お引き出しですか。;おひきだしですか。;ohikidashi desu ka;Are you making a withdrawl?
+まず;まず;mazu;first of all
+キャッシュカード;キャッシュカード;kyasshukâdo;cash dispensing card
+暗証番号;あんしょうばんごう;anshoubangou;personal identification number, PIN
+次に;つぎに;tsugini;next, as a next step
+金額;きんがく;kingaku;amount of money
+確認;かくにん;kakunin;confirmation (～します:confirm)
+ボタン;ボタン;botan;button

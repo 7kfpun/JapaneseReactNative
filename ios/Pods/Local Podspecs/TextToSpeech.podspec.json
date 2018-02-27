@@ -1,0 +1,20 @@
+{
+  "name": "TextToSpeech",
+  "version": "1.4.1",
+  "summary": "React Native Text-To-Speech library for Android and iOS",
+  "homepage": "https://github.com/ak1394/react-native-tts",
+  "license": "MIT",
+  "authors": "Anton Krasovsky",
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/ak1394/react-native-tts.git"
+  },
+  "source_files": "ios/TextToSpeech/*.{h,m}",
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}

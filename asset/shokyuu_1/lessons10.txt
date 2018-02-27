@@ -1,0 +1,47 @@
+います［が］;います［が］;imasu[ga];exist, be (referring to animate things)
+ありま［が］;ありま［が］;arimasu[ga];exist, be (referring to inanimate things)
+いろいろ［な］;いろいろ［な］;iroiro[na];various
+男の人;おとこのひと;otokonohito;man
+女の人;おんなのひと;onnanohito;woman
+男の子;おとこのこ;otokonoko;boy
+女の子;おんなのこ;onnanoko;girl
+犬;いぬ;inu;dog
+猫;ねこ;neko;cat
+木;き;ki;tree
+物;もの;mono;thing
+フィルム;フィルム;firumu;film
+電池;でんち;denchi;battery
+箱;はこ;hako;box
+スイッチ;スイッチ;suicchi;switch
+冷蔵庫;れいぞうこ;reizouko;refrigerator 
+テーブル;テーブル;têburu;table
+ベッド;ベッド;betto;bed
+棚;たな;tana;shelf 
+ドア;ドア;doa;door 
+窓;まど;mado;window
+ポスト;ポスト;posuto;mailbox, postbox
+ビル;ビル;biru;building
+公園;こうえん;kouen;park 
+喫茶店;きっさてん;kissaten;coffee shop
+本屋;ほんや;honya;bookstore
+～屋;～や;~ya;~store
+乗り場;のりば;noriba;a fixed place to catch taxis, trains, etc.
+県;けん;ken;prefecture
+上;うえ;ue;on, above, over 
+下;した;shita;under, below, beneath
+前;まえ;mae;front, before
+うしろ;うしろ;ushiru;back, behind
+右;みぎ;migi;right [side]
+左;ひだり;hidari;left [side]
+中;なか;naka;in, inside
+外;そと;soto;outside
+隣;となり;tonari;next, next door 
+近く;ちかく;chikaku;near, vicinity
+間;あいだ;aida;between, among
+～や～［など］;～や～［など］;~ya~[nada];~, ~, and so on
+いちばん～;いちばん～;ichiban~;the most ~ (いちばんうえ: the top)
+～段目;～だんめ;danme;the ~th shelf (だん is the counter for shelves)
+［どうも］すみません。;［どうも］すみません。;[doumo]sumimasen;Thank you.
+チリソース;チリソース;chirisôsu;chilli sauce
+奥;おく;oku;the back 
+スパイスコーナー;スパイスコーナー;supaisukoonaa;spice corner

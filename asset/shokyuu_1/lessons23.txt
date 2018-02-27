@@ -1,0 +1,29 @@
+聞きます;ききます［せんせいに～］;kikimasu [sensei ni~];ask [the teacher] (I)
+回します;まわします;mawashimasu;turn (I)
+引きます;ひきます;hikimasu;pull (I)
+変えます;かえます;kaemasu;change (II)
+触ります;さわります［ドアに～］;sawarimasu [doa ni~];touch [a door] (I)
+出ます;でます［おつりが～］;demasu [otsuri ga~];[change] come out (II)
+動きます;うごきます［とけいが～］;ugokimasu [tokei ga~];[a watch] move, work (I)
+歩きます;あるきます［みちを～］;arukimasu [michi o ~];walk [along a road] (I)
+渡ります;わたります［はしを～］;watarimasu [hashi o~];cross [a bridge] (I)
+気をつけます;きをつけます［くるまに～］;kiwotsukemasu [kuruma ni~];pay attention [to cars], take care(II)
+引っ越しします;ひっこしします;hikkoshishimasu;move (house) (III)
+電気屋;でんきや;denkiya;electrician
+～屋;～や;~ya;person of ~ shop
+サイズ;サイズ;saizu;size
+音;おと;oto;sound
+機械;きかい;kikai;machine
+つまみ;つまみ;tsumami;knob
+故障;こしょう;koshou;breakdown (～します: breakdown)
+道;みち;michi;road, way
+交差点;こうさてん;kousaten;crossroad
+信号;しんごう;shinkou;traffic light
+角;かど;kado;corner 
+橋;はし;hashi;bridge
+駐車場;ちゅうしゃじょう;chuushajou;parking lot, car park
+ー目;ーめ;-me;the -th (indicating order)
+［お］正月;［お］しょうがつ;[o]shougatsu;New Year's Day
+ごちそうさま［でした］。;ごちそうさま［でした］。;gochisousama [deshita];That was delicious. (Said after eating or drinking)
+建物;たてもの;tatemono;building
+外国人登録証;がいこくじんとうろくしょう;gaikokujintourokushou;alien registration card

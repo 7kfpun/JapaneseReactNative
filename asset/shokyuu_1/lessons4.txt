@@ -1,0 +1,55 @@
+起きます;おきます;akimasu;get up,wake up
+寝ます;ねます;nemasu;sleep, go to bed
+働きます;はたらきます;hatarakimasu;work 
+休みます;やすみます;yasumimasu;take a rest,take a holiday
+勉強します;べんきょうします;benkyoushiumasu;study
+終わります;おわります;owarimasu;finish
+デパート;デパート;depâto;department store
+銀行;ぎんこう;ginkou;bank 
+郵便局;ゆうびんきょく;yuubinkyoku;post office
+図書館;としょかん;toshokan;library
+美術館;びじゅつかん;bijutsukan;art museum
+今;いま;ima;now
+～時;～じ;~ji;~o'clock 
+～分;～ふん;~fun;~minute
+半;はん;han;half 
+何時;なんじ;nanji;what time
+何分;なんぷん;nanpun;what minute
+午前;ごぜん;gozen;a.m.,morning
+午後;ごご;gogo;p.m.,afternoon
+朝;あさ;asa;morning
+昼;ひる;hiru;daytime,noon
+晩（夜）;ばん（よる）;ban(yoru);night,evening
+おととい;おととい;ototoi;the day before yesterday
+きのう;きのう;kinou;yesterday
+きょう;きょう;kyou;today
+あした;あした;ashita;tomorrow
+あさって;あさって;asatte;the day after tomorrow
+けさ;けさ;kesa;this morning
+今晩;こんばん;konban;this evening,tonight
+休み;やすみ;yasumi;rest, a holiday, a day off 
+昼休み;ひるやすみ;hirugohan;lunchtime
+毎朝;まいあさ;maiasa;every morning
+毎晩;まいばん;maiban;every evening
+毎日;まいにち;mainichi;every day
+月曜日;げつようび;getsuyoubi;Monday
+火曜日;かようび;kayoubi;Tuesday
+水曜日;すいようび;suiyoubi;Wednesday
+木曜日;もくようび;mokuyoubi;Thursday
+金曜日;きんようび;kinyoubi;Friday
+土曜日;どようび;doyoubi;Saturday
+日曜日;にちようび;nichiyoubi;Sunday
+何曜日;なんようび;nanyoubi;what day of the week
+番号;ばんごう;bangou;number 
+何番;なんばん;nanban;what number 
+～から;～から;kara~;from ~
+～まで;～まで;~made;up to ~,until ~
+～と～;～と～;~to~;and (used to connect nouns)
+そちら;そちら;sochira;your place
+大変ですね。;たいへんですね。;taihen desu ne;That's tough, isn't it? (used when expressing sympathy)
+えーと;えーと;êto;well, let me see
+104;information;-;directory assistance
+お願いします。;おねがいします。;onegai shimasu;Please. (lit.ask for a favor)
+かしこまりました。;かしこまりました。;kashikomarimasu;Certainly(sir,madam).
+お問い合わせの番号お;といあわせのばんごう;toiawase no bangou;the number  being inquired about
+［どうも］ありがとうごさいました。;［どうも］ありがとうごさいました;[doumo]arigatou gozaimashita;Thank you very much.

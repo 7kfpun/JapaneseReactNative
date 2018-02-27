@@ -1,0 +1,40 @@
+つけます;つけます;tsukemasu;turn on (II)
+消します;けします;keshimasu;turn off (I)
+開けます;あけます;akemasu;open (II)
+閉めます;しめます;shimemasu;close, shut (II)
+急ぎます;いそぎます;isogimasu;hurry (I)
+待ちます;まちます;machimasu;wait (I)
+止めます;とめます;tomemasu;stop, park (II)
+曲がります;まがります［みぎへ～］;magarimasu;turn [to the right](I)
+持ちます;もちます;mochimasu;hold (I)
+取ります;とります;torimasu;take, pass (I)
+手伝います;てつだいます;tetsudaimasu;help (with a task)(I)
+呼びます;よびます;yobimasu;call (I)
+話します;はなします;hanashimasu;speak, talk (I)
+見せます;みせます;misemasu;show (II)
+教えます;おしえます［じゅうしょを～］;oshiemasu;tell [an address](II)
+始めます;はじめます;hajimemasu;start, begin (II)
+降ります;ふります［あめが～］;furimasu;rain (I)
+コピーします;コピーします;kopî shimasu;copy (III)
+エアコン;エアコン;eakon;air conditioner 
+パスポート;パスポート;pasupôto;passport
+名前;なまえ;namae;name
+住所;じゅうしょ;juusho;address
+地図 ;ちず;sazu;map
+塩;しお;shio;salt
+砂糖;さとう;satou;sugar 
+読み方;よみかた;yomikata;how to read, wayof reading
+～方;～かた;~kata;how to ~, way of ~ing
+ゆっくり;ゆっくり;yukkuri;slowly, leisurely
+すぐ;すぐ;sugu;immediately
+また;また;mata;again
+あとで;あとで;oatode;later 
+もう少;しもうすこし;shimousugoshi;a little more
+もう～;もう～;mou~;~ more, another ~
+いいですよ。;いいですよ。;ii desu yo;Sure. / Certainly
+さあ;さあ;chia;right (used when encouraging some course of action)
+あれ？;あれ？;are;Oh!(in surpriseor in wonder)
+信号を右へ曲がってください。;しんごうをみぎへまがってください。;shingou o migi he magatte kudasai;Turn right at thesignal.
+まっすぐ;まっすぐ;massugu;straight
+これでお寝がいします。;これでおねがいします。;kore de onegai shimasu;I'd like to paywith this.
+お釣り;おつり;atsuri;change

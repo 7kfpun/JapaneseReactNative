@@ -1,0 +1,60 @@
+います［こどもが～］;います［こどもが～］;imasu[kodomo ga~];have [a child]
+います［にほんに～］;います［にほんに～］;imasu[nihon ni~];stay, be [in Japan]
+かかります;かかります;kakarimasu;take (referring to time or money)
+休みます;やすみます［かいしゃを～］;yasumimasu[kaisha o~];take a day off [work]
+一つ;ひとつ;hitotsu;one (used when counting things)
+二つ;ふたつ;futatsu;two (used when counting things)
+三つ;みっつ;mittsu;three (used when counting things)
+四つ;よっつ;yottsu;four (used when counting things)
+五つ;いつつ;itsutsu;five (used when counting things)
+六つ;むっつ;muttsu;six (used when counting things)
+七つ;ななつ;nanatsu;seven (used when counting things)
+八つ;やっつ;yattsu;eight (used when counting things)
+九つ;ここのつ;kokonotsu;nine (used when counting things)
+十;とお;too;ten (used when counting things)
+いくつ;いくつ;ikutsu;how many
+一人;ひとり;hitori;one person
+二人;ふたり;futari;two people
+～人;～にん;~nin;~people
+～台;～だい;~dai;counter for machines, cars, etc.
+～枚;～まい;~mai;counter for paper, stamps, etc.
+～回;～かい;~kai;~times
+りんご;りんご;ringo;apple
+みかん;みかん;mikan;mandarin orange
+サンドイッチ;サンドイッチ;sandoicchi;sandwich
+カレー［ライス］;カレー［ライス］;karê[raisu];curry [and rice]
+アイスクリーム;アイスクリーム;aisukurîmu;ice cream
+切手;きって;kitte;postage stamp
+はがき;はがき;hagaki;post card
+封筒;ふうとう;fuutou;envelope
+速達;そくたつ;sokutatsu;special delivery
+書留;かきとめ;kakitome;registered mail
+（航空便）;エアメール （こうくうびん）;eamêru (koukuubin);airmail
+船便;ふなびん;funabin;sea mail
+両親;りょうしん;ryoushin;parents
+兄弟;きょうだい;kyoudai;brothers and sisters
+兄;あに;ani;(my) elder brother 
+お兄さん;おにいさん;oniisan;(someone else's) elder brother 
+姉;あね;ane;(my) elder sister 
+お姉さん;おねえさん;oneesan;(someone else's) elder sister 
+弟;おとうと;otouto;(my) younger brother 
+弟さん;おとうとさん;otoutosan;(someone else's) younger brother 
+妹;いもうと;imouto;(my) younger sister 
+妹さん;いもうとさん;imoutosan;(someone else's) younger sister 
+外国;がいこく;gaikoku;foreign country
+～時間;～じかん;~jikan;~hours
+～週間;～しゅうかん;~shuukan;~weeks
+～か月;～かげつ;~kagetsu;~months
+～年;～ねん;~nen;~years
+～ぐらい;～ぐらい;~gurai;about~
+どのくらい;どのくらい;donokurai;how long
+全部で;ぜんぶで;zenbude;in total
+みんな;みんな;minna;all, everything
+～だけ;～だけ;~dake;only~
+いらっしゃいませ。;いらっしゃいませ。;irarasshaimase;Welcome./May I help you? (agreeting to a customer or a guest entering a shop, etc.)
+いい［お］天気ですね。;いい［お］てんきですね。;ii[o]tenki desu ne; Nice weather, isn't it?
+お出かけですか。;おでかけですか。;odekake desu ka;Are you going out?
+ちょっと～まで。;ちょっと～まで。;chotto~mate;I'm just going to ~.
+行っていらっしゃい。;いっていらっしゃい;itteirasshai;So long. (lit. Go and come back.)
+行ってまいります。;いってまいります;ittemairimasu;So long. (lit. I'm going and coming back.)
+それから;それから;sore kara;and, furthermore

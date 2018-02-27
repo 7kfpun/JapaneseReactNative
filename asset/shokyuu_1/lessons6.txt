@@ -1,0 +1,52 @@
+食べます;たべます;tabemasu;eat
+飲みます;のみます;nomimasu;drink 
+吸います;すいます［たばこを～］;suimasu[tabako o~];smoke [a cigarette]
+見ます;みます;mimasu;see, look at, watch
+聞きます;ききます;kikimasu;hear, listen
+読みます;よみます;yomimasu;read
+書きます;かきます;kakimasu;write, draw, paint
+買います;かいます;kaimasu;buy
+撮ります;とります［しゃしんを～］;torimasu[shashin o~];take [a photograph]
+します;します;shimasu;do
+会います;あいます［ともだちに～］;aimasu[tomodachi ni~];meet [a friend]
+ごはん;ごはん;gohan;a meal, cooked rice
+朝ごはん;あさごはん;asa gohan;breakfast
+昼ごはん;ひるごはん;hiru gohan;lunch
+晩ごはん;ばんごはん;ban gohan;supper 
+パン;パン;pan;bread
+卵;たまご;tamago;egg
+肉;にく;niku;meat
+魚;さかな;sakana;fish
+野菜;yasai;やさい;vegetable
+果物;くだもの;kudamono;fruit
+水;みず;mizu;water 
+お茶;おちゃ;ocha;tea, green tea
+紅茶;こうちゃ;koucha;black tea
+牛乳;ぎゅうにゅう（ミルク）;gyuunyuu;milk 
+ジュース;ジュース;jûsu;juice
+ビール;ビール;bîru;beer 
+［お］酒;［お］さけ;[o]sake;alcohol, Japanese rice wine
+ビデオ;ビデオ;bideo;video
+映画;えいが;eiga;movie
+ＣＤ;ＣＤ;cd;CD, compact disk 
+手紙;てがみ;tegami;letter 
+レポート;レポート;repôto;report
+写真;しゃしん;shashin;photograph
+店;みせ;mise;store, shop
+レストラン;レストラン;resutoran;restaurant
+庭;にわ;niwa;garden
+宿題;しゅくだい;shukudai;homework (～をします: dohomework)
+テニス;テニス;tenisu;tennis
+サッカー;サッカー;sakkâ;soccer, football (～をします: playsoccer)
+［お］花見;［お］はなみ;[o]hanami;cherry-blossom viewing (～をします:go cherry-blossom viewing)
+何;なに;nani;what
+いっしょに;いっしょに;isshoni;together 
+ちょっと;ちょっと;chotto;a little while, a little bit
+いつも;いつも;itsumo;always, usually
+時々;ときどき;tokidoki;sometimes
+それから;それから;sorekara;after that, and then
+ええ;ええ;ee;yes
+いいですね。;いいですね。;ii desu ne;That's good.
+わかりました。;わかりました。;wakarimashita;I see.
+何ですか。;なんですか;nan desu ka;Yes?
+じゃ、また［あした］。;じゃ、また［あした］。;ja,mata[ashita];See you [tomorrow].

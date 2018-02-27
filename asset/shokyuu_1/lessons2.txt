@@ -1,0 +1,48 @@
+これ;これ;kore;this (thing here)
+それ;それ;sore;that (thing over there)
+あれ;あれ;are;that (thing over there)
+この～;この～;kono~;this ~, this ~ here
+その～;その～;sono~;that ~, that ~ near you
+あの～;あの～;ano~;that ~, that ~ over there
+本;ほん;hon;book 
+辞書;じしょ;jisho;dictionary
+雑誌;ざっし;zasshi;magazine
+新聞;しんぶん;shinbun;newspaper 
+ノート;ノート;nôto;notebook 
+手帳;てちょう;techou;pocket notebook 
+名刺;めいし;meishi;business card
+カード;カード;kâdo;card
+テレホンカード;テレホンカード;terehonkâdo;telephone card
+鉛筆;えんぴつ;enpitsu;pencil
+ボールペン;ボールペン;bôrupen;ballpoint pen
+シャープペンシル;シャープペンシル;shâpupenshiru;mechanical pencil, propelling pencil
+かぎ;かぎ;kagi;key
+時計;とけい;tokei;watch, clock 
+傘;かさ;kasa;umbrella
+かばん;かばん;kaban;bag, briefcase
+カセットテープ;カセットテープ;kasettotêpu;cassette tape
+テープレコーダー;テープレコーダー;têpurekôdaa;tape recorder 
+テレビ;テレビ;terebi;television
+ラジオ;ラジオ;rajio;radio
+カメラ;カメラ;kamera;camera
+コンピューター;コンピューター;konpyûtâ;computer 
+自動車;じどうしゃ;jidousha;car 
+机;つくえ;tsukue;desk 
+いす;いす;isu;chair 
+チョコレート;チョコレート;chokorêto;chocolate
+コーヒー;コーヒー;kôhî;coffee
+英語;えいご;eigo;the English language
+日本語;にほんご;nihongo;the Japanese language
+～語;～ご;~go;~language
+何;なん;nanai;what
+そう;そう;sou;so
+ちがいます;ちがいます;chigaimasu;No, it isn't. You are wrong.
+そうですか;そうですか;sou desu ka;I see./Is that so?
+あのう;あのう;anou;well...(used to show hesitation)
+ほんのきもちです;ほんのきもちです;honnokimochidesu;It's nothing./It's a token of my gratitude.
+どうぞ;どうぞ;douzo;Please./Here you are. (used when offering someone something)
+どうも;どうも;doumo;Well, thanks.
+どうもありがとう;どうもありがとう;doumoarigatou;Thank you
+ございます;ございます;gozaimasu;very much
+これからおせわになります;これからおせわになります;kore kara osewaninarimasu;I hope for your kind assistance hereafter.
+こちらこそよろしく。;こちらこそよろしく。;kochira koso yoroshiku;I am pleased to meet you.(response to どうぞよろしく)

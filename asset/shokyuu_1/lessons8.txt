@@ -1,0 +1,49 @@
+ハンサム［な］;ハンサム［な］;hansamu[na];handsome
+きれい［な］;きれい［な］;kirei[na];beautiful, clean
+静か［な］;しずか［な］;shizuka[na];quiet
+にぎやか［な］;にぎやか［な］;nigiyaka[na];lively
+有名［な］;ゆうめい［な］;yumei[na];famous
+親切［な］;しんせつ［な］;shinsetsu[na];kind
+元気［な］;げんき［な］;genki[na];healthy, sound, cheerful
+暇［な］;ひま［な］;hima[na];free (time)
+便利［な］;べんり［な］;benri[na];convenient
+すてき［な］;すてき［な］;suteki[na];fine, nice, wonderful
+大きい;おおきい;ookii[na];big, large
+小さい;ちいさい;chisai;small, little
+新しい;あたらしい;atarashii;new
+古い;ふるい;furui;old (not of age)
+いい（よい）;いい（よい）;ii(yoi);good
+悪い;わるい;warui;bad
+暑い、熱い;あつい;atsui;hot
+寒い;さむい;samui;cold (referring to temperature)
+冷たい;つめたい;tsumetai;cold (referring to touch, as a drink)
+難しい;むずかしい;muzukashii;difficult
+易しい;やさしい;yasashii;easy
+高い;たかい;takai;expensive, tall, high
+安い;やすい;yasui;inexpensive
+低い;ひくい;hikui;low
+おもしろい;おもしろい;omoshiroi;interesting
+おいしい;おいしい;oishii;delicious, tasty
+忙しい;いそがしい;isogashii;busy
+楽しい;たのしい;tanoshii;enjoyable
+白い;しろい;shiroi;white
+黒い;くろい;kuroi;black 
+赤い;あかい;akai;red
+青い;あおい;aoi;blue
+桜;さくら;sakura;cherry (blossom)
+山;やま;yama;mountain
+町;まち;machi;town, city
+食べ物;たべもの;tabemono;food
+車;くるま;kuruma;car, vehicle
+所;ところ;tokoro;place
+寮;りょう;ryou;dormitory
+勉強;べんきょう;benkyou;study
+生活;せいかつ;seikatsu;life
+［お］仕事;［お］しごと;[o]shigoto;work, business (仕事をします:do one's job, work)
+どう;どう;dou;how
+どんな～;どんな～;donna~;what kind of ~
+どれ;どれ;dore;which one (of three or more)
+とても;とても;totemo;very
+あまり;あまり;amari;not so (used with negatives)
+そして;そして;soshite;and (used to connect sentences)
+～が、～;～が、～;~ga,~;~, but ~

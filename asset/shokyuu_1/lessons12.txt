@@ -1,0 +1,45 @@
+簡単［な］;かんたん［な］;kantan[na];easy, simple
+近い;ちかい;chikai;near 
+遠い;とおい;tooi;far 
+速い、早い;はやい;hayai;fast, early
+遅い;おそい;osoi;slow, late
+多い［人が～］;おおい［ひとが～］;ooi[hito ga~];many [people], much
+少ない［人が～］;すくない［ひとが～］;sukunai[hito ga~];few [people], a little
+暖かい、温かい;あたたかい;atatakai;warm
+涼しい;すずしい;suzushii;cool
+甘い;あまい;amai;sweet
+辛い;からい;karai;hot (taste), spicy
+重い;おもい;omoi;heavy
+軽い;かるい;karui;light (of weight)
+いい［コーヒーが～］;いい［コーヒーが～］;ii[kôhîga~];prefer[coffee]
+季節;きせつ;kisetsu;season
+春;はる;haru;spring
+夏;なつ;natsu;summer 
+秋;あき;aki;autumn, fall
+冬;ふゆ;fuyu;winter 
+天気;てんき;tenki;weather 
+雨;あめ;ame;rain, rainy
+雪;ゆき;yuki;snow, snowy
+曇り;くもり;kumori;cloudy
+ホテル;ホテル;hoteru;hotel
+空港;くうこう;kuukou;airport
+海;うみ;umi;sea, ocean
+世界;せかい;sekai;world
+パーティー;パーティー;pâteî;party
+［お］祭り;［お］まつり;[o]matsuri;festival
+試験;しけん;shiken;examination
+すき焼;きすきやき;sukiyaki;sukiyaki (beef and vegetables hot pot)
+刺身;さしみ;sashimi;sashimi (sliced raw fish)
+［お］すし;［お］すし;[o]sushi;sushi (vinagered rice topped with raw fish)
+てんぷら;てんぷら;tenpura;tempura (seafood and vegetables deep fried in batter)
+生け花;いけばな;ikebana;flower arrangement (～をします: practice flower arrangement)
+紅葉;もみじ;momiji;maple, red leaves of autumn
+どちら;どちら;dochira;which one (between two things)
+どちらも;どちらも;dochiramo;both
+ずっと;ずっと;zutto;by far 
+はじめて;はじめて;hajimete;for the first time
+ただいま。;ただいま。;tadaima;I'm home.
+おかえりなさい。;おかえりなさい。;okaerinasai;Welcome home.
+すごいですね。;すごいですね。;sugoidesune;That's amazing.
+でも;でも;demo;but
+つかれました;つかれました;tsukaremashita;(I'm) tired.

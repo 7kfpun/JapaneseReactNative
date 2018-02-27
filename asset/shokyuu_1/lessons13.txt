@@ -1,0 +1,35 @@
+図書館;としょかん;toshokan;library
+遊びます;あそびます;asobimasu;enjoy onself, play
+泳ぎます;およぎます;oyogimasu;swim
+迎えます;むかえます;mukaemasu;go to meet, welcome
+疲れます;つかれます;tsukaremasu;get tired
+出します「手紙を];だします「てがみを];dashimasu;send [a letter]
+入ります;はいります;hairimasu;enter [a coffee shop]
+出ます;でます;demasu;go out [of a coffee shop]
+結婚します;けっこんします;kekkonshimasu;marry, get married
+買い物します;かいものします;kaimonoshimasu;do shopping
+食事します;しょくじします;shokujishimasu;have a meal, dine
+散歩します;さんぽします;sanposhimasu;take a walk [in a park]
+たいへん「な」;大変「な」;taihen;hard, tough, severe, awful
+欲しい;ほしい;hoshii;want (something)
+寂しい;さびしい;sabishii;lonely
+広い;ひろい;hiroi;wide, spacious
+狭い;せまい;semai;narrow, small (room, etc.)
+市役所;しやくしょ;shiyakusho;municipal office, city hall
+プール;プール;pûru;swimming pool
+川;かわ;kawa;river
+経済;けいざい;keizai;economy
+美術;びじゅつ;bijutsu;fine arts
+釣り;つり;tsuri;fishing
+スキー;スキー;sukî;skiing
+会議;かいぎ;kaigi;meeting, conference
+登録;とうろく;touroku;registration
+週末;しゅうまつ;shuumastu;weekend
+～ごろ;～ごろ;～goro;about (time)
+何か;なにか;nanika;something
+とどか;とどか;dokoka;somewhere, some place
+おなかがすきました。;おなかがすきました。;onaka ga sukimasu;(I'm) hungry
+おなかがいっぱいです。;おなかがいっぱいです。;onaka ga ippai desu;(I'm) full
+のどがかわきました。;のどがかわきました。;nodo ga kawakimashita;(I'm) thirsty
+そうですね。;そうですね。;sou desu ne;I agree with you
+そうしましょう。;そうしましょう。;sou shimashou;Let's do that. (used when agreeing with someone's suggestion)

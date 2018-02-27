@@ -1,0 +1,38 @@
+覚えます;おぼえます;oboemasu;memorise (II)
+忘れます;わすれます;wasuremasu;forget (II)
+なくします;なくします;nakushimasu;lose (I)
+出します;だします［レポートを～］;dashimasu[repôto o~];hand in [ a report] (I)
+払います;はらいます;haraimasu;pay (I)
+返します;かえします;kaeshimasu;give back, return (I)
+出かけます;でかけます;dekakemasu;go out (II)
+脱ぎます;ぬぎます;megimasu;take off (clothes, shoes, etc.) (I)
+持って行ま;すもっていきます;sumotteikimasu;take (something) (lit. grab and go) (I)
+持って木ます;もってきます;mottkimasu;bring (something) (lit. grab and come)(III)
+心配します;しんぱいします;shinpoimasu;worry (III)
+残業します;ざんぎょうします;zangyoushimasu;work overtime (III)
+出張します;しゅっちょうします;shucchoushimasu;go on a business trip (III)
+飲みます;のみます［くすりを～］;nomimasu [kusuri o~];take [medicine] (I)
+入ります;はいります［おふろに～］;hairimasu [ofuro ni~];take [a bath] (I)
+大切［な］;たいせつ［な］;taisetsu[na];important, precious
+大丈夫［な］;だいじょうぶ［な］;daiijoubu[na];all right
+危ない;あぶない;abunai;dangerous
+問題;もんだい;mondai;question, problem, trouble
+答え;こたえ;kotae;answer 
+禁煙;きんえん;kinen;no smoking
+［健康］保険証;［けんこう］ほけんしょう;[kenkou]hokenshou;[health] insurance card
+かぜ;かぜ;kaza;cold
+熱;ねつ;netsu;fever 
+病気;びょうき;byouki;illness, disease
+薬;くすり;kusuri;medicine
+［お］ふろ;［お］ふろ;[o]furo;bath
+上着;うわぎ;uwagi;jacket, outerwear 
+下着;したぎ;shitagi;underwear 
+先生;せんせい;sensei;doctor (used when addressing a medical doctor)
+２、３日;２、３にち;2-3 nichi;a few days
+２、３～;２、３～;2-3 ~;a few ~ (~ is a counter suffix)
+～までに;～までに;~made ni;before ~, by ~ (indicating time limit)
+ですから;ですから;desu kara;therefore, so
+どうしましたか。;どうしましたか。;doushimashitaka;What's the matter?
+［～が］痛いです。;［～が］いたいです。;[~ga]itaiesu;(I) have a pain [in my ~}.
+のど;のど;nodo;throat
+お大事に。;おだいじに。;adaijini;Take care of yourself. (said to people who are ill)

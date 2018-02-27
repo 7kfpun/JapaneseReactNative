@@ -1,0 +1,28 @@
+立ちます;たちます;tachimasu;stand up (I)
+座ります;すわります;suwarimasu;sit down (I)
+使います;つかいます;tsukaimasu;use (I)
+置きます;おきます;okimasu;put (I)
+作ります、造ります;つくります;tsukurimasu;make, produce (I)
+売ります;うります;urimasu;sell (I)
+知ります;しります;shirimasu;get to know (I)
+住ます;すみます;sumimasu;be going to live (I)
+研究します;けんきゅうします;kenkyuushimasu;do research (III)
+知っています;しっています;sitteimasu;know
+しりません;しりません;shirimasu;don\’t know
+すんでいます［おおさかに～］;すんでいます［おおさかに～］;sundeimasu;live [in Osaka]
+資料;しりょう;shiryou;materials, data
+カタログ;カタログ;katarogu;catalog
+時刻表;じこくひょう;jikokuhyou;timetable
+服;ふく;fuku;clothes
+製品;せいひん;seihin;products
+ソフト;ソフト;sofuto;software
+専門;せんもん;senmon;speciality, field of study
+歯医者;はいしゃ;haisha;dentist, dentist\’s
+床屋;とこや;tokoya;barber, barber\’s
+プレイガイド;プレイガイド;pureigaido;(theatre) ticket agency
+独身;どくしん;dokujin;single, unmarried
+特に;とくに;tokuni;especially
+思い出します;おもいだします;omoidashimasu;remember, recollect (I)
+ご家族;ごかぞく;gokazoku;your family
+いらっしゃいます;いらっしゃいます;irasshaimasu;be (honorific equivalent of います） (I)
+高校;こうこう;koukou;senior high school

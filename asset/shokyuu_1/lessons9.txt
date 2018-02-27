@@ -1,0 +1,45 @@
+わかります［が］;わかります［が］;wakarimasu[ga];understand
+あります［が］;あります［が］;arimasu[ga];have
+好き［な］;すき［な］;suki[na];like
+嫌い［な］;きらい［な］;kirei[na];dislike
+上手［な］;じょうず［な］;jouzu[na];good at
+下手［な］;へた［な］;heta[na];poor at
+料理;りょうり;ryouri;dish (cooked food), cooking
+飲み物;のみもの;nomimono;drinks
+スポーツ;スポーツ;supôtsu;sport (～をします:play sports)
+野球;やきゅう;yakyuu;baseball (～をします:play baseball)
+ダンス;ダンス;dansu;dance (～をします:dance)
+音楽;おんがく;ongaku;music
+歌;うた;uta;song
+クラシック;クラシック;kurashikku;classical music
+ジャズ;ジャズ;jazu;jazz
+コンサート;コンサート;konsêto;concert
+カラオケ;カラオケ;karaoke;karaoke
+歌舞伎;かぶき;kabuki;Kabuki (traditional Japanese musical drama)
+絵;え;e;picture, drawing
+字;じ;ji;letter, character 
+漢字;かんじ;kanji;Chinese characters
+ひらがな;ひらがな;hiragana;Hiragana script
+かたかな;かたかな;katakana;Katakana script
+ローマ字;ローマじ;rômanji;the Roman alpahabet
+細かいお金;こまかいおかね;komakaiokane;small change
+チケット;チケット;chiketto;ticket
+時間;じかん;jikan;time
+用事;ようじ;youji;something to do, errand
+約束;やくそく;yakusoku;appointment, promise
+ご主人;ごしゅじん;goshujin;(someone else's) husband
+夫／主人;おっと／しゅじん;otto/jujin;(my) husband
+奥さん;おくさん;okusan;(someone else's) wife
+妻／家内;つま／かない;tsuma/kanai;(my) wife
+子ども;こども;kodomo;child
+よく;よく;yoku;well, much
+だいたい;だいたい;daitai;mostly, roughly
+たくさん;たくさん;takusan;many, much
+少し;すこし;sukoshi;a little, a few
+全然;ぜんぜん;zenzen;not at all (used with negatives)
+早く、速く;はやく;hayaku;early, quickly, fast
+～から;～から;~kara;because~
+どうして;どうして;doushite;why
+ざんねんです［ね］。;ざんねんです［ね］。;zannendesu[ne];I'm sorry (to hear that)./That's a pity.
+すみません。;すみません。;sumimasen;I am sorry.
+もしもし;もしもし;moshimoshi;hello (used on phone)

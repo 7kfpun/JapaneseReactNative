@@ -1,0 +1,37 @@
+切ります;きります;kirimasu;cut, slice
+送ります;おくります;okurimasu;send
+あげます;あげます;agemasu;give
+もらいます;もらいます;moraimasu;receive
+貨します;かします;kashimasu;lend
+借ります;かります;karimasu;borrow
+教えます;おしえます;oshiemasu;teach
+習います;ならいます;naraimasu;learn
+かけます［でんわを～］;かけます［でんわを～］;kakemasu [denwa o~];make [a telephone call]
+手;て;te;hand, arm
+はし;はし;hashi;chopsticks
+スプーン;スプーン;supôn;spoon
+ナイフ;ナイフ;naifu;knife
+フォーク;フォーク;fôku;fork 
+はさみ;はさみ;hasami;scissors
+ファクス;ファクス;fakusu;fax
+ワープロ;ワープロ;wâporo;word processor 
+パソコン;パソコン;pasokon;personal computer 
+パンチ;パンチ;panchi;punch
+ホッチキス;ホッチキス;hocchikisu;stapler 
+セロテープ;セロテープ;serotêpu;Scotch tape, clear adhesive tape
+消しゴム;けしゴム;hashigomu;eraser 
+紙;かみ;kami;paper 
+花;はな;hana;flower, blossom
+シャツ;シャツ;shatsu;shirt
+プレゼント;プレゼント;purezento;present, gift
+荷物;にもつ;nomotsu;baggage, parcel
+お金;おかね;okane;money
+切符;きっぷ;kippu;ticket
+クリスマス;クリスマス;kurisumasu;Christmas
+父;ちち;chichi;(my) father 
+母;はは;haha;(my) mother 
+お父さん;おとうさん;otousan;(someone else's) father 
+お母さん;おかあさん;okaasan;(someone else's) mother 
+もう;もう;mou;already
+まだ;まだ;mada;not yet
+これから;これから;korekara;from now on, soon
