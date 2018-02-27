@@ -10,12 +10,14 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import { SafeAreaView } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { items as vocabs } from '../utils/items';
 import { hiragana, katakana } from '../utils/kana';
+import tracker from '../utils/tracker';
 
 import AdMob from '../elements/admob';
 
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 28,
     fontWeight: '900',
-    lineHeight: 45,
+    lineHeight: 55,
   },
   translationBlock: {
     flex: 2,
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   translationText: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '300',
   },
   assessmentBlock: {
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
   },
   answerText: {
     textAlign: 'center',
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '500',
     padding: 2,
     textDecorationLine: 'underline',
@@ -272,40 +274,49 @@ export default class Main extends Component<Props> {
     const en = vocab.split(';')[3];
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.selectors}>
-          <View style={styles.selectorIcon}>
-            <Button
-              color={this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray}
-              title="日"
-              onPress={() => this.setState({
-                isJapaneseShown: !this.state.isJapaneseShown,
-              }, () => store.save('isJapaneseShown', this.state.isJapaneseShown))}
-            />
-          </View>
-          <View style={styles.selectorIcon}>
-            <Button
-              color={this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray}
-              title="漢"
-              onPress={() => this.setState({
-                isKanjiShown: !this.state.isKanjiShown,
-              }, () => store.save('isKanjiShown', this.state.isKanjiShown))}
-            />
-          </View>
-          <View style={styles.selectorIcon}>
-            <Button
-              color={this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray}
-              title="ENG"
-              onPress={() => this.setState({
-                isTranslationShown: !this.state.isTranslationShown,
-              }, () => store.save('isTranslationShown', this.state.isTranslationShown))}
-            />
-          </View>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
+              isJapaneseShown: !this.state.isJapaneseShown,
+            }, () => {
+              store.save('isJapaneseShown', this.state.isJapaneseShown);
+              tracker.logEvent('isJapaneseShown', { value: this.state.isJapaneseShown });
+            })}
+          >
+            <Text style={{ fontSize: 18, color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }}>日</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
+              isKanjiShown: !this.state.isKanjiShown,
+            }, () => {
+              store.save('isKanjiShown', this.state.isKanjiShown);
+              tracker.logEvent('isKanjiShown', { value: this.state.isKanjiShown });
+            })}
+          >
+            <Text style={{ fontSize: 18, color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }}>漢</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
+              isTranslationShown: !this.state.isTranslationShown,
+            }, () => {
+              store.save('isTranslationShown', this.state.isTranslationShown);
+              tracker.logEvent('isKanjiShown', { value: this.state.isKanjiShown });
+            })}
+          >
+            <Text style={{ fontSize: 18, color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }}>ENG</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
             onPress={() => this.setState({
               isSoundOn: !this.state.isSoundOn,
-            }, () => store.save('isSoundOn', this.state.isSoundOn))}
+            }, () => {
+              store.save('isSoundOn', this.state.isSoundOn);
+              tracker.logEvent('isKanjiShown', { value: this.state.isKanjiShown });
+            })}
           >
             <Icon name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
           </TouchableOpacity>
@@ -313,7 +324,10 @@ export default class Main extends Component<Props> {
             style={styles.selectorIcon}
             onPress={() => this.setState({
               isOrdered: !this.state.isOrdered,
-            }, () => store.save('isOrdered', this.state.isOrdered))}
+            }, () => {
+              store.save('isOrdered', this.state.isOrdered);
+              tracker.logEvent('isKanjiShown', { value: this.state.isKanjiShown });
+            })}
           >
             <Icon name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
           </TouchableOpacity>
@@ -424,7 +438,7 @@ export default class Main extends Component<Props> {
           />
         </View>
         <AdMob unitId={config.admob[Platform.OS].banner} />
-      </View>
+      </SafeAreaView>
     );
   }
 }

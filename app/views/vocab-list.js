@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import { SafeAreaView } from 'react-navigation';
 
 import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
 
 import { items as vocabs } from '../utils/items';
+import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
@@ -34,7 +36,10 @@ export default class VocabList extends Component<Props> {
       headerTitle: `Lesson ${params.item}`,
       headerRight: (
         <Button
-          onPress={() => navigation.navigate('Assessment', { item: params.item })}
+          onPress={() => {
+            navigation.navigate('Assessment', { item: params.item });
+            tracker.logEvent('Assessment', { item: params.item });
+          }}
           title="Learn"
           color={iOSColors.white}
         />
@@ -53,21 +58,23 @@ export default class VocabList extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ScrollView>
           <FlatList
             style={styles.list}
             data={this.state.vocabs}
             keyExtractor={(item, index) => `${index}-${item}`}
-            renderItem={({ item, index }) => <VocabItem
-              index={index}
-              navigation={this.props.navigation}
-              item={item}
-            />}
+            renderItem={({ item, index }) => (
+              <VocabItem
+                index={index}
+                navigation={this.props.navigation}
+                item={item}
+              />
+            )}
           />
         </ScrollView>
         <AdMob unitId={config.admob[Platform.OS].banner} />
-      </View>
+      </SafeAreaView>
     );
   }
 }

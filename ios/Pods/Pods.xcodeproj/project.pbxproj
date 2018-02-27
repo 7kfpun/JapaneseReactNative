@@ -188,7 +188,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 		1876563BD3FF225A9C2FA6B662AB689C /* PBXContainerItemProxy */ = {
@@ -209,7 +209,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 		2C655C4430DBA4A169BCDF30B12CC1F9 /* PBXContainerItemProxy */ = {
@@ -237,14 +237,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 		743B26EB9AE987642BF595F87ABB8573 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 		7E8045D84B93F61C5A5AE87D368EAB9C /* PBXContainerItemProxy */ = {
@@ -286,14 +286,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 		FAF6632172047D28502E2E2C2C160081 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DA5A008D60CB9FB83AD8F8C;
+			remoteGlobalIDString = 69EF18782854D7F2D08FFBB9;
 			remoteInfo = React;
 		};
 /* End PBXContainerItemProxy section */
@@ -542,6 +542,7 @@
 		5FF5AACA42DC02CBA737C7B14BFF2F08 /* RCTEventAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTEventAnimation.h; sourceTree = "<group>"; };
 		605AC98C8902424283AFB8D95F6F73A1 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		60868C7C5DA340130AF74C0F05E17359 /* RCTDevSettings.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTDevSettings.mm; sourceTree = "<group>"; };
+		60BC17DCEFD193754CCB090BB8A8B6EF /* FacebookAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookAdapter.framework; path = "FacebookAdapter-4.27.2.0/FacebookAdapter.framework"; sourceTree = "<group>"; };
 		61808BAE92658CFDFE7C42377B7B960F /* RCTShadowView+Internal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCTShadowView+Internal.m"; sourceTree = "<group>"; };
 		61A570785842E6B8E8FE7FB652ACD518 /* Timestamp.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Timestamp.pbobjc.m; path = objectivec/google/protobuf/Timestamp.pbobjc.m; sourceTree = "<group>"; };
 		61F0BEB6872F3E9C6456271F9FE36246 /* RCTNavItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTNavItem.h; sourceTree = "<group>"; };
@@ -940,7 +941,6 @@
 		F4E254780EF5845D6258823360FDA2E4 /* RCTExceptionsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTExceptionsManager.h; sourceTree = "<group>"; };
 		F4F4EE4BE1E4594736093ACEE7D154B4 /* RCTImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTImageView.h; sourceTree = "<group>"; };
 		F50BA843449B8CDE8F6FE4D9C99A3CDE /* RNFirebase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNFirebase-prefix.pch"; sourceTree = "<group>"; };
-		F62A566F2DCC4C1851DF3C8EA219F6B1 /* FacebookAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookAdapter.framework; path = "FacebookAdapter-4.27.1.0/FacebookAdapter.framework"; sourceTree = "<group>"; };
 		F65693B0FA95FC92904832B2E0DADA6E /* RCTJavaScriptLoader.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTJavaScriptLoader.mm; sourceTree = "<group>"; };
 		F7735326D1A09631B1A3ED55751C8450 /* RCTAccessibilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTAccessibilityManager.m; sourceTree = "<group>"; };
 		F7A85D68F0E91AFA9D4CFB6EF766FD83 /* FBNativeAdsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBNativeAdsManager.h; path = FBAudienceNetwork.framework/Headers/FBNativeAdsManager.h; sourceTree = "<group>"; };
@@ -1413,14 +1413,6 @@
 			);
 			name = perf;
 			path = perf;
-			sourceTree = "<group>";
-		};
-		2B8782788D6B74398BFECABA508991B2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F62A566F2DCC4C1851DF3C8EA219F6B1 /* FacebookAdapter.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2CA76AEDC8AF19E182E0139B51B5556A /* RCTBlob */ = {
@@ -1901,6 +1893,14 @@
 			path = "../../node_modules/react-native-fabric";
 			sourceTree = "<group>";
 		};
+		5EA37009DE452CF41A310229EDFDD797 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60BC17DCEFD193754CCB090BB8A8B6EF /* FacebookAdapter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607EC7B42F7872AEC2A1D520524B9DCD /* RCTWebSocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -1912,7 +1912,7 @@
 		60CEEC16B939C52618A0D089E0D50328 /* GoogleMobileAdsMediationFacebook */ = {
 			isa = PBXGroup;
 			children = (
-				2B8782788D6B74398BFECABA508991B2 /* Frameworks */,
+				5EA37009DE452CF41A310229EDFDD797 /* Frameworks */,
 			);
 			name = GoogleMobileAdsMediationFacebook;
 			path = GoogleMobileAdsMediationFacebook;

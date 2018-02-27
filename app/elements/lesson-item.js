@@ -9,6 +9,8 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 
+import tracker from '../utils/tracker';
+
 const styles = StyleSheet.create({
   container: {
     padding: 15,
@@ -28,6 +30,7 @@ export default class LessonItem extends Component {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('VocabList', { item });
+          tracker.logEvent('VocabList', { item });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>

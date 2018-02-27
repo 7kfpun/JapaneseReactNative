@@ -10,6 +10,8 @@ import {
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
+import tracker from '../utils/tracker';
+
 Tts.setDefaultRate(0.3);
 Tts.setDefaultLanguage('ja');
 Tts.setDucking(true);
@@ -55,6 +57,7 @@ export default class VocabItem extends Component {
         onPress={() => {
           // Tts.stop();
           Tts.speak(japanese.replace('～', ''));
+          tracker.logEvent('Speak', { item });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
