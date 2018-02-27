@@ -31,11 +31,11 @@ export default class VocabList extends Component<Props> {
 
     return {
       headerBackTitle: null,
-      headerTitle: `第 ${params.item} 課`,
+      headerTitle: `Lesson ${params.item}`,
       headerRight: (
         <Button
           onPress={() => navigation.navigate('Assessment', { item: params.item })}
-          title="練習"
+          title="Learn"
           color={iOSColors.white}
         />
       ),

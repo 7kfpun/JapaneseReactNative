@@ -43,7 +43,7 @@ type Props = {};
 export default class Main extends Component<Props> {
   static navigationOptions = {
     headerBackTitle: null,
-    title: '大家的日本語',
+    title: 'みんなの日本語',
   };
 
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />

@@ -11,6 +11,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { items as vocabs } from '../utils/items';
@@ -40,11 +41,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  headerRight: {
+    paddingRight: 10,
+    color: 'white',
+  },
   selectors: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     borderBottomColor: iOSColors.blue,
     borderBottomWidth: 0.3,
+  },
+  selectorIcon: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   selectorText: {
     fontSize: 16,
@@ -58,8 +68,8 @@ const styles = StyleSheet.create({
   },
   originalText: {
     textAlign: 'center',
-    fontSize: 26,
-    fontWeight: '500',
+    fontSize: 28,
+    fontWeight: '900',
     lineHeight: 45,
   },
   translationBlock: {
@@ -123,11 +133,13 @@ type Props = {};
 // LessonList
 export default class Main extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || {};
+
     const count = navigation.state && navigation.state.params && navigation.state.params.count;
     const total = navigation.state && navigation.state.params && navigation.state.params.total;
     return {
-      title: '練習',
-      headerRight: total && <Text style={{ paddingRight: 10 }}>{`${count + 1} / ${total}`}</Text>,
+      headerTitle: `Lesson ${params.item}`,
+      headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
     };
   };
 
@@ -143,6 +155,28 @@ export default class Main extends Component<Props> {
   }
 
   componentDidMount() {
+    const that = this;
+    store.get('notFirstStart').then((notFirstStart) => {
+      if (!notFirstStart) {
+        store.save('isJapaneseShown', true);
+        store.save('isKanjiShown', true);
+        store.save('isTranslationShown', true);
+        store.save('isSoundOn', true);
+        store.save('isOrdered', true);
+        store.save('notFirstStart', true);
+        that.setState({ isJapaneseShown: true });
+        that.setState({ isKanjiShown: true });
+        that.setState({ isTranslationShown: true });
+        that.setState({ isSoundOn: true });
+        that.setState({ isOrdered: true });
+      }
+    });
+    store.get('isJapaneseShown').then(isJapaneseShown => that.setState({ isJapaneseShown }));
+    store.get('isKanjiShown').then(isKanjiShown => that.setState({ isKanjiShown }));
+    store.get('isTranslationShown').then(isTranslationShown => that.setState({ isTranslationShown }));
+    store.get('isSoundOn').then(isSoundOn => that.setState({ isSoundOn }));
+    store.get('isOrdered').then(isOrdered => that.setState({ isOrdered }));
+
     const { item } = this.props.navigation.state.params;
     const total = vocabs[`lesson${item}`].text.length;
     this.setState({
@@ -240,7 +274,51 @@ export default class Main extends Component<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.selectors}>
-          <Button
+          <View style={styles.selectorIcon}>
+            <Button
+              color={this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray}
+              title="日"
+              onPress={() => this.setState({
+                isJapaneseShown: !this.state.isJapaneseShown,
+              }, () => store.save('isJapaneseShown', this.state.isJapaneseShown))}
+            />
+          </View>
+          <View style={styles.selectorIcon}>
+            <Button
+              color={this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray}
+              title="漢"
+              onPress={() => this.setState({
+                isKanjiShown: !this.state.isKanjiShown,
+              }, () => store.save('isKanjiShown', this.state.isKanjiShown))}
+            />
+          </View>
+          <View style={styles.selectorIcon}>
+            <Button
+              color={this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray}
+              title="ENG"
+              onPress={() => this.setState({
+                isTranslationShown: !this.state.isTranslationShown,
+              }, () => store.save('isTranslationShown', this.state.isTranslationShown))}
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
+              isSoundOn: !this.state.isSoundOn,
+            }, () => store.save('isSoundOn', this.state.isSoundOn))}
+          >
+            <Icon name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
+              isOrdered: !this.state.isOrdered,
+            }, () => store.save('isOrdered', this.state.isOrdered))}
+          >
+            <Icon name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
+          </TouchableOpacity>
+
+          {/* <Button
             color={this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray}
             title="日文"
             onPress={() => this.setState({ isJapaneseShown: !this.state.isJapaneseShown })}
@@ -262,9 +340,9 @@ export default class Main extends Component<Props> {
           />
           <Button
             color={this.state.isOrdered ? iOSColors.black : iOSColors.lightGray}
-            title="順序"
+            title={this.state.isOrdered ? '順序' : '隨機'}
             onPress={() => this.setState({ isOrdered: !this.state.isOrdered })}
-          />
+          /> */}
         </View>
 
         <View style={{ flex: 1 }}>
@@ -322,26 +400,26 @@ export default class Main extends Component<Props> {
         <View style={styles.selectors}>
           {this.state.isOrdered && <Button
             color={this.state.count > 0 ? iOSColors.black : iOSColors.lightGray}
-            title="上一個"
+            title="Previous"
             disabled={this.state.count <= 0}
             onPress={() => this.setCount(this.state.count - 1)}
           />}
           {this.state.isOrdered && <Button
             color={this.state.count < this.state.total ? iOSColors.black : iOSColors.lightGray}
-            title="下一個"
+            title="Next"
             disabled={this.state.count >= this.state.total - 1}
             onPress={() => this.setCount(this.state.count + 1)}
           />}
           {!this.state.isOrdered && <Button
             color={iOSColors.black}
-            title="隨機"
+            title="Random"
             disabled={false}
             onPress={() => this.getNext()}
           />}
 
           <Button
             color={iOSColors.black}
-            title="閱讀"
+            title="Read"
             onPress={() => this.read()}
           />
         </View>

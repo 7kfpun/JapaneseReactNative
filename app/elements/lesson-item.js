@@ -31,7 +31,7 @@ export default class LessonItem extends Component {
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
-          <Text style={styles.text}>第 {item} 課</Text>
+          <Text style={styles.text}>Lesson {item}</Text>
         </View>
       </TouchableOpacity>
     );
