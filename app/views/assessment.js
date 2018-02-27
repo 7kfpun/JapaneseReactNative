@@ -437,7 +437,7 @@ export default class Main extends Component<Props> {
             onPress={() => this.read()}
           />
         </View>
-        <AdMob unitId={config.admob[Platform.OS].banner} />
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]} />
       </SafeAreaView>
     );
   }

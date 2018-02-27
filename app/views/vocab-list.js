@@ -73,7 +73,7 @@ export default class VocabList extends Component<Props> {
             )}
           />
         </ScrollView>
-        <AdMob unitId={config.admob[Platform.OS].banner} />
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-vocablist-banner`]} />
       </SafeAreaView>
     );
   }

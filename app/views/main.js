@@ -2,18 +2,30 @@ import React, { Component } from 'react';
 import {
   FlatList,
   Platform,
-  StyleSheet,
   ScrollView,
-  View,
+  StyleSheet,
 } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { SafeAreaView } from 'react-navigation';
+import firebase from 'react-native-firebase';
 
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
 import { config } from '../config';
+
+const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
+
+const { AdRequest } = firebase.admob;
+const request = new AdRequest();
+request.addKeyword('learning').addKeyword('japanese');
+
+advert.loadAd(request.build());
+
+advert.on('onAdLoaded', () => {
+  console.log('Advert ready to show.');
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +63,16 @@ export default class Main extends Component<Props> {
     title: 'みんなの日本語',
   };
 
+  componentDidMount() {
+    setTimeout(() => {
+      if (advert.isLoaded()) {
+        advert.show();
+      } else {
+        console.log('asdasdasd');
+      }
+    }, 1000);
+  }
+
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
 
   render() {
@@ -72,7 +94,7 @@ export default class Main extends Component<Props> {
           ))}
 
         </IndicatorViewPager>
-        <AdMob unitId={config.admob[Platform.OS].banner} />
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-main-banner`]} />
       </SafeAreaView>
     );
   }
