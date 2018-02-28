@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   FlatList,
   Platform,
@@ -12,6 +14,8 @@ import firebase from 'react-native-firebase';
 
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
+
+import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
@@ -58,6 +62,10 @@ const lessonGroup = [{
 type Props = {};
 // LessonList
 export default class Main extends Component<Props> {
+  static propTypes = {
+    navigation: PropTypes.shape({}).isRequired,
+  }
+
   static navigationOptions = {
     headerBackTitle: null,
     title: 'みんなの日本語',
@@ -67,8 +75,6 @@ export default class Main extends Component<Props> {
     setTimeout(() => {
       if (advert.isLoaded()) {
         advert.show();
-      } else {
-        console.log('asdasdasd');
       }
     }, 1000);
   }
@@ -76,6 +82,7 @@ export default class Main extends Component<Props> {
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
 
   render() {
+    tracker.view('main');
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager

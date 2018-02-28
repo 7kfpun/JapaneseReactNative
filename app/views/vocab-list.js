@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Button,
   FlatList,
   Platform,
   ScrollView,
   StyleSheet,
-  View,
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
@@ -28,6 +29,16 @@ const styles = StyleSheet.create({
 type Props = {};
 // LessonList
 export default class VocabList extends Component<Props> {
+  static propTypes = {
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          item: PropTypes.number.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }
+
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
@@ -38,7 +49,7 @@ export default class VocabList extends Component<Props> {
         <Button
           onPress={() => {
             navigation.navigate('Assessment', { item: params.item });
-            tracker.logEvent('Assessment', { item: params.item });
+            tracker.logEvent('user-action-goto-assessment', { item: params.item });
           }}
           title="Learn"
           color={iOSColors.white}
@@ -57,6 +68,7 @@ export default class VocabList extends Component<Props> {
   }
 
   render() {
+    tracker.view('vocab-list');
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>

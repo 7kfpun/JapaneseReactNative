@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import {
   StyleSheet,
   Text,
@@ -40,6 +41,11 @@ const styles = StyleSheet.create({
 });
 
 export default class VocabItem extends Component {
+  static propTypes = {
+    index: PropTypes.number.isRequired,
+    item: PropTypes.string.isRequired,
+  }
+
   componentWillUnmount() {
     Tts.stop();
   }
@@ -57,7 +63,7 @@ export default class VocabItem extends Component {
         onPress={() => {
           // Tts.stop();
           Tts.speak(japanese.replace('～', ''));
-          tracker.logEvent('Speak', { item });
+          tracker.logEvent('user-action-press-speak', { item });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
@@ -74,6 +80,3 @@ export default class VocabItem extends Component {
     );
   }
 }
-
-VocabItem.propTypes = {
-};

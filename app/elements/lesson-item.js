@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import {
   StyleSheet,
   Text,
@@ -23,6 +24,15 @@ const styles = StyleSheet.create({
 });
 
 export default class LessonItem extends Component {
+  static propTypes = {
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
+    index: PropTypes.number.isRequired,
+    item: PropTypes.number.isRequired,
+  }
+
+
   render() {
     const { item, index } = this.props;
     const { navigation } = this.props;
@@ -30,7 +40,7 @@ export default class LessonItem extends Component {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('VocabList', { item });
-          tracker.logEvent('VocabList', { item });
+          tracker.logEvent('user-action-goto-vocab-list', { item });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
@@ -40,6 +50,3 @@ export default class LessonItem extends Component {
     );
   }
 }
-
-LessonItem.propTypes = {
-};
