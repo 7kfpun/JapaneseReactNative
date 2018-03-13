@@ -10,6 +10,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 
+import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 const styles = StyleSheet.create({
@@ -36,15 +37,16 @@ export default class LessonItem extends Component {
   render() {
     const { item, index } = this.props;
     const { navigation } = this.props;
+
     return (
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('VocabList', { item });
-          tracker.logEvent('user-action-goto-vocab-list', { item });
+          tracker.logEvent('user-action-goto-vocab-list', { lesson: `${item}` });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
-          <Text style={styles.text}>Lesson {item}</Text>
+          <Text style={styles.text}>{I18n.t('app.common.lesson_no', { lesson_no: item })}</Text>
         </View>
       </TouchableOpacity>
     );

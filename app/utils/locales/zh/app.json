@@ -1,0 +1,23 @@
+{
+  "main": {
+    "beginning_one": "初级 I",
+    "beginning_two": "初级 II",
+    "advanced_one": "进阶 I",
+    "advanced_two": "进阶 II",
+  },
+  "vocab-list": {
+    "learn": "学习",
+  },
+  "assessment": {
+    "kana": "日",
+    "kanji": "汉",
+    "translation": "翻译",
+    "previous": "上一个",
+    "next": "下一个",
+    "read": "阅读",
+    "random": "随机",
+  },
+  "common": {
+    "lesson_no": "第 {{lesson_no}} 课",
+  }
+}

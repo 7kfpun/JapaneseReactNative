@@ -4,14 +4,14 @@ import {
 } from 'react-native';
 
 import { Answers } from 'react-native-fabric';
-// import Analytics from 'analytics-react-native';
+import Analytics from 'analytics-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
-// import { config } from '../config';
+import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
-// const analytics = new Analytics(config.segment);
+const analytics = new Analytics(config.segment);
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 
 const userId = DeviceInfo.getUniqueID();
@@ -85,7 +85,7 @@ const tracker = {
         console.log('IP address', ip);
         context.ip = ip;
       }
-      // analytics.identify({ userId, context });
+      analytics.identify({ userId, context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
     }
@@ -99,7 +99,7 @@ const tracker = {
         context,
       };
       console.log(message);
-      // analytics.track(message);
+      analytics.track(message);
       firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
     }
@@ -113,7 +113,7 @@ const tracker = {
         context,
       };
       console.log(message);
-      // analytics.screen(message);
+      analytics.screen(message);
       firebase.analytics().setCurrentScreen(screen, screen);
       Answers.logContentView(screen, '', '', properties);
     }

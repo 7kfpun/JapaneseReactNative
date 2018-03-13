@@ -1,0 +1,23 @@
+{
+  "main": {
+    "beginning_one": "Beg. I",
+    "beginning_two": "Beg. II",
+    "advanced_one": "Adv. I",
+    "advanced_two": "Adv. II"
+  },
+  "vocab-list": {
+    "learn": "Learn"
+  },
+  "assessment": {
+    "kana": "Kana",
+    "kanji": "Kanji",
+    "translation": "Eng",
+    "previous": "Previous",
+    "next": "Next",
+    "read": "Read",
+    "random": "Random"
+  },
+  "common": {
+    "lesson_no": "Lesson {{lesson_no}}",
+  }
+}

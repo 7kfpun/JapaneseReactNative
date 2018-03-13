@@ -19,6 +19,7 @@ import Tts from 'react-native-tts';
 
 import { items as vocabs } from '../utils/items';
 import { hiragana, katakana } from '../utils/kana';
+import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import AdMob from '../elements/admob';
@@ -299,7 +300,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isJapaneseShown', { value: this.state.isJapaneseShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }}>日</Text>
+            <Text style={{ fontSize: 18, color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.kana')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -310,7 +311,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }}>漢</Text>
+            <Text style={{ fontSize: 18, color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.kanji')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -321,7 +322,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }}>ENG</Text>
+            <Text style={{ fontSize: 18, color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.translation')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -410,7 +411,7 @@ export default class Assessment extends Component<Props> {
                   onPress={() => {
                     if (this.state.answers.length < getTestVocab(japanese).length) {
                       this.setState({ answers: [...this.state.answers, tile] });
-                      tracker.logEvent('user-action-press-answer');
+                      tracker.logEvent('user-action-press-answer', { tile });
                     }
                   }}
                 >
@@ -426,7 +427,7 @@ export default class Assessment extends Component<Props> {
         <View style={styles.selectors}>
           {this.state.isOrdered && <Button
             color={this.state.count > 0 ? iOSColors.black : iOSColors.lightGray}
-            title="Previous"
+            title={I18n.t('app.assessment.previous')}
             disabled={this.state.count <= 0}
             onPress={() => {
               this.setCount(this.state.count - 1);
@@ -435,16 +436,16 @@ export default class Assessment extends Component<Props> {
           />}
           {this.state.isOrdered && <Button
             color={this.state.count < this.state.total ? iOSColors.black : iOSColors.lightGray}
-            title="Next"
+            title={I18n.t('app.assessment.next')}
             disabled={this.state.count >= this.state.total - 1}
             onPress={() => {
               this.setCount(this.state.count + 1);
-              tracker.logEvent('user-action-press-next');
+              tracker.logEvent('user-action-press-next', { lesson: `${item}` });
             }}
           />}
           {!this.state.isOrdered && <Button
             color={iOSColors.black}
-            title="Random"
+            title={I18n.t('app.assessment.random')}
             disabled={false}
             onPress={() => {
               this.getNext();
@@ -454,7 +455,7 @@ export default class Assessment extends Component<Props> {
 
           <Button
             color={iOSColors.black}
-            title="Read"
+            title={I18n.t('app.assessment.read')}
             onPress={() => {
               this.read();
               tracker.logEvent('user-action-press-read');

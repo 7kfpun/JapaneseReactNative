@@ -15,6 +15,7 @@ import firebase from 'react-native-firebase';
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
+import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import { config } from '../config';
@@ -42,20 +43,16 @@ const styles = StyleSheet.create({
 });
 
 const lessonGroup = [{
-  text: 'Beg. I',
-  name: '初級 I',
+  text: I18n.t('app.main.beginning_one'),
   list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 }, {
-  text: 'Beg. II',
-  name: '初級 II',
+  text: I18n.t('app.main.beginning_two'),
   list: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
 }, {
-  text: 'Adv. I',
-  name: '進級 I',
+  text: I18n.t('app.main.advanced_one'),
   list: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38],
 }, {
-  text: 'Adv. II',
-  name: '進級 II',
+  text: I18n.t('app.main.advanced_two'),
   list: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
 }];
 

@@ -16,6 +16,7 @@ import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
 
 import { items as vocabs } from '../utils/items';
+import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import { config } from '../config';
@@ -44,14 +45,14 @@ export default class VocabList extends Component<Props> {
 
     return {
       headerBackTitle: null,
-      headerTitle: `Lesson ${params.item}`,
+      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerRight: (
         <Button
           onPress={() => {
             navigation.navigate('Assessment', { item: params.item });
-            tracker.logEvent('user-action-goto-assessment', { item: params.item });
+            tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
           }}
-          title="Learn"
+          title={I18n.t('app.vocab-list.learn')}
           color={iOSColors.white}
         />
       ),
