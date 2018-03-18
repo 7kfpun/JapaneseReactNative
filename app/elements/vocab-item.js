@@ -11,6 +11,7 @@ import {
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
+import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 Tts.setDefaultRate(0.3);
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
 
 export default class VocabItem extends Component {
   static propTypes = {
+    lessonNo: PropTypes.number.isRequired,
     index: PropTypes.number.isRequired,
     item: PropTypes.string.isRequired,
   }
@@ -51,12 +53,12 @@ export default class VocabItem extends Component {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item, index, lessonNo } = this.props;
 
     const kanji = item.split(';')[0];
     const japanese = item.split(';')[1];
-    // const sound = item.split(';')[2];
-    const en = item.split(';')[3];
+    const sound = item.split(';')[2];
+    // const en = item.split(';')[3];
 
     return (
       <TouchableOpacity
@@ -72,7 +74,7 @@ export default class VocabItem extends Component {
             <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== japanese ? kanji : ''}</Text>
           </View>
           <View style={styles.bodyRight}>
-            <Text style={styles.text}>{en}</Text>
+            <Text style={styles.text}>{I18n.t(`minna.lesson${lessonNo}.${sound}`)}</Text>
             <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>
           </View>
         </View>

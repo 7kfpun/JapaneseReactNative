@@ -156,7 +156,7 @@ export default class Assessment extends Component<Props> {
     const count = navigation.state && navigation.state.params && navigation.state.params.count;
     const total = navigation.state && navigation.state.params && navigation.state.params.total;
     return {
-      headerTitle: `Lesson ${params.item}`,
+      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
     };
   };
@@ -282,11 +282,13 @@ export default class Assessment extends Component<Props> {
   render() {
     tracker.view('assessment');
     const { item } = this.props.navigation.state.params;
+    const lessonNo = item;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];
 
     const kanji = vocab.split(';')[0];
     const japanese = vocab.split(';')[1];
-    const en = vocab.split(';')[3];
+    const sound = vocab.split(';')[2];
+    // const en = vocab.split(';')[3];
 
     return (
       <SafeAreaView style={styles.container}>
@@ -380,7 +382,7 @@ export default class Assessment extends Component<Props> {
             {this.state.isJapaneseShown && <Text style={styles.originalText}>{japanese}</Text>}
           </View>
           <View style={styles.translationBlock}>
-            {this.state.isTranslationShown && <Text style={styles.translationText}>{en}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.lesson${lessonNo}.${sound}`)}</Text>}
           </View>
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
@@ -410,8 +412,17 @@ export default class Assessment extends Component<Props> {
                   key={Math.random()}
                   onPress={() => {
                     if (this.state.answers.length < getTestVocab(japanese).length) {
-                      this.setState({ answers: [...this.state.answers, tile] });
-                      tracker.logEvent('user-action-press-answer', { tile });
+                      this.setState({ answers: [...this.state.answers, tile] }, () => {
+                        tracker.logEvent('user-action-press-answer', { tile });
+
+                        if (this.state.answers.join('') === getTestVocab(japanese)) {
+                          tracker.logEvent('user-action-result-correct', { vocab });
+                        }
+
+                        if (!getTestVocab(japanese).startsWith(this.state.answers.join(''))) {
+                          tracker.logEvent('user-action-result-incorrect', { vocab });
+                        }
+                      });
                     }
                   }}
                 >

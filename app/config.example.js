@@ -1,26 +1,9 @@
 exports.config = {
   admob: {
-    ios: {
-      banner: '',
-      interstital: '',
-    },
-    android: {
-      banner: '',
-      interstital: '',
-    },
+    'japanese-ios-popup': '',
+    'japanese-ios-main-banner': '',
+    'japanese-ios-vocablist-banner': '',
+    'japanese-ios-assessment-banner': '',
   },
-  fbads: {
-    ios: {
-      native: '',
-      interstitial: '',
-    },
-    android: {
-      native: '',
-      interstitial: '',
-    },
-  },
-  googleAnalytics: {
-    ios: '',
-    android: '',
-  },
+  segment: '',
 };

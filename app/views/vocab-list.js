@@ -65,7 +65,7 @@ export default class VocabList extends Component<Props> {
 
   componentDidMount() {
     const { item } = this.props.navigation.state.params;
-    this.setState({ vocabs: vocabs[`lesson${item}`].text });
+    this.setState({ vocabs: vocabs[`lesson${item}`].text, lessonNo: item });
   }
 
   render() {
@@ -81,6 +81,7 @@ export default class VocabList extends Component<Props> {
               <VocabItem
                 index={index}
                 navigation={this.props.navigation}
+                lessonNo={this.state.lessonNo}
                 item={item}
               />
             )}
