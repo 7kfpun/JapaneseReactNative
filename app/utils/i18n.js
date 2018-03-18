@@ -1,4 +1,8 @@
-import I18n from 'react-native-i18n';
+import I18n, { getLanguages } from 'react-native-i18n';
+
+getLanguages().then((languages) => {
+  console.log('All languages', languages);
+});
 
 I18n.fallbacks = true;
 
@@ -115,15 +119,11 @@ I18n.translations = {
   },
 };
 
-I18n.translations['zh-Hans-US'] = I18n.translations.zh;
-I18n.translations['zh-Hans-HK'] = I18n.translations.zh;
-I18n.translations['zh-Hans-MN'] = I18n.translations.zh;
-I18n.translations['zh-Hant-US'] = I18n.translations.zh;
-I18n.translations['zh-Hant-HK'] = I18n.translations.zh;
-I18n.translations['zh-Hant-MN'] = I18n.translations.zh;
-
 console.log('I18n.locale', I18n.locale);
 
 I18n.isZh = I18n.locale.startsWith('zh');
+if (I18n.isZh) {
+  I18n.translations[I18n.locale] = I18n.translations.zh;
+}
 
 export default I18n;
