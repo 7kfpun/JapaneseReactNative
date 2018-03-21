@@ -2,7 +2,7 @@ import {
   Platform,
 } from 'react-native';
 
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 
 

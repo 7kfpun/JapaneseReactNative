@@ -98,6 +98,7 @@ export default class Main extends Component<Props> {
           ))}
 
         </IndicatorViewPager>
+
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-main-banner`]} />
       </SafeAreaView>
     );

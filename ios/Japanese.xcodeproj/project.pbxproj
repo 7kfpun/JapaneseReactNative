@@ -47,6 +47,7 @@
 		A410503F0B8C4999A80B011D /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F752F74B0EC24772A5B174A2 /* MaterialCommunityIcons.ttf */; };
 		A80AD7738F0948C9A5D18EB9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62C269B75094469F88A40EB8 /* Zocial.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		B708FC48CD7844318CC15D73 /* libRNStoreReview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B37B3D0793A4CB8B79033EB /* libRNStoreReview.a */; };
 		BFEAAB27F77545FEA2ACFA6D /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 132FADAC3BE741F99AF99EA0 /* Ionicons.ttf */; };
 		C9230DC81D46467AABEE6CAB /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A47EF9ED949A4436A651B6EC /* MaterialIcons.ttf */; };
 		CA4643E387B54515AACA6A13 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A68C70E0768C49CF9990669F /* EvilIcons.ttf */; };
@@ -278,6 +279,20 @@
 			remoteGlobalIDString = 6463C84C1EBA12A60095B8CD;
 			remoteInfo = "SMXCrashlytics-tvOS";
 		};
+		9E950DC02062B1C4002D3FEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNStoreReview;
+		};
+		9E950E092062B21B002D3FEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0A81879918C4B62B6E3E47C /* RNStoreReview.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNStoreReview;
+		};
 		9EAE853D20428CD000CFF07D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -372,7 +387,9 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Japanese/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1F35E85AF76149358F8D20AC /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNStoreReview.xcodeproj; path = "../node_modules/react-native-store-review/ios/RNStoreReview.xcodeproj"; sourceTree = "<group>"; };
 		23CDD96A96DFCF0B20E85018 /* Pods-Japanese.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Japanese.release.xcconfig"; path = "Pods/Target Support Files/Pods-Japanese/Pods-Japanese.release.xcconfig"; sourceTree = "<group>"; };
+		2B37B3D0793A4CB8B79033EB /* libRNStoreReview.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNStoreReview.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Japanese-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Japanese-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Japanese-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Japanese-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -397,6 +414,7 @@
 		B009298FD4763A623E5B57FD /* libPods-Japanese.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Japanese.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C2F1622A7E4C1B8436CC87 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		E2B93BA01B6746688CD75D3F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		F0A81879918C4B62B6E3E47C /* RNStoreReview.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNStoreReview.xcodeproj; path = "../node_modules/react-native-store-review/ios/RNStoreReview.xcodeproj"; sourceTree = "<group>"; };
 		F752F74B0EC24772A5B174A2 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		FED696D21D1C45DBA6EB3014 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -429,6 +447,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				078C04E455B7EA8E718F7519 /* libPods-Japanese.a in Frameworks */,
 				8342D9A538B049C8827A007D /* libRNFirebase.a in Frameworks */,
+				B708FC48CD7844318CC15D73 /* libRNStoreReview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +639,8 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				36F692A45830427EB919B7DA /* RNFirebase.xcodeproj */,
+				1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */,
+				F0A81879918C4B62B6E3E47C /* RNStoreReview.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -670,10 +691,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9E950DBD2062B1C4002D3FEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E950DC12062B1C4002D3FEB /* libRNStoreReview.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E950DE02062B21B002D3FEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E950E0A2062B21B002D3FEB /* libRNStoreReview.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9EAE855A20429E0500CFF07D /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				985194A7569A4462AD105F11 /* libRNFirebase.a */,
+				2B37B3D0793A4CB8B79033EB /* libRNStoreReview.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -900,6 +938,14 @@
 					ProjectRef = 36F692A45830427EB919B7DA /* RNFirebase.xcodeproj */;
 				},
 				{
+					ProductGroup = 9E950DE02062B21B002D3FEB /* Products */;
+					ProjectRef = F0A81879918C4B62B6E3E47C /* RNStoreReview.xcodeproj */;
+				},
+				{
+					ProductGroup = 9E950DBD2062B1C4002D3FEB /* Products */;
+					ProjectRef = 1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */;
+				},
+				{
 					ProductGroup = 9E099C3F2045ADAC00FA69BC /* Products */;
 					ProjectRef = 9E099C3E2045ADAC00FA69BC /* SMXCrashlytics.xcodeproj */;
 				},
@@ -1123,6 +1169,20 @@
 			fileType = archive.ar;
 			path = libSMXCrashlytics.a;
 			remoteRef = 9E099C452045ADAC00FA69BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9E950DC12062B1C4002D3FEB /* libRNStoreReview.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNStoreReview.a;
+			remoteRef = 9E950DC02062B1C4002D3FEB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9E950E0A2062B21B002D3FEB /* libRNStoreReview.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNStoreReview.a;
+			remoteRef = 9E950E092062B21B002D3FEB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9EAE853E20428CD000CFF07D /* libjsinspector.a */ = {
@@ -1396,12 +1456,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = JapaneseTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1422,12 +1485,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = JapaneseTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1451,6 +1517,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = Japanese/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1477,6 +1545,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = Japanese/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1508,11 +1578,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = "Japanese-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1543,11 +1616,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
+					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 				);
 				INFOPLIST_FILE = "Japanese-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1579,6 +1655,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Japanese-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1604,6 +1681,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Japanese-tvOSTests";

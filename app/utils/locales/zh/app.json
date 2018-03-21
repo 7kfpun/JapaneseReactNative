@@ -19,5 +19,11 @@
   },
   "common": {
     "lesson_no": "第 {{lesson_no}} 课",
+  },
+  "rating": {
+    "title": "喜欢我们 APP 吗？",
+    "title_description": "给我们 5 颗星以鼓励我们吧",
+    "feedback_description": "对哪里不满意？給我们點意見吧。",
+    "feedback_url": "https://airtable.com/shrsfl03pU6HnE5Ar",
   }
 }

@@ -23,6 +23,7 @@ import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import AdMob from '../elements/admob';
+import Rating from '../elements/rating';
 
 import { config } from '../config';
 
@@ -473,6 +474,8 @@ export default class Assessment extends Component<Props> {
             }}
           />
         </View>
+
+        {this.state.answers.length > 2 && <Rating />}
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]} />
       </SafeAreaView>
     );

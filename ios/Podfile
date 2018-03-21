@@ -49,6 +49,8 @@ target 'Japanese' do
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
+  pod 'RNStoreReview', :path => '../node_modules/react-native-store-review/ios'
+
 end
 
 post_install do |installer|
