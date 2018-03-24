@@ -117,12 +117,69 @@ I18n.translations = {
       lesson50: require('./minna-locales/zh/lesson50'),
     },
   },
+  'zh-Hant': {
+    app: require('./locales/zh-Hant/app'),
+    minna: {
+      lesson1: require('./minna-locales/zh-Hant/lesson1'),
+      lesson2: require('./minna-locales/zh-Hant/lesson2'),
+      lesson3: require('./minna-locales/zh-Hant/lesson3'),
+      lesson4: require('./minna-locales/zh-Hant/lesson4'),
+      lesson5: require('./minna-locales/zh-Hant/lesson5'),
+      lesson6: require('./minna-locales/zh-Hant/lesson6'),
+      lesson7: require('./minna-locales/zh-Hant/lesson7'),
+      lesson8: require('./minna-locales/zh-Hant/lesson8'),
+      lesson9: require('./minna-locales/zh-Hant/lesson9'),
+      lesson10: require('./minna-locales/zh-Hant/lesson10'),
+      lesson11: require('./minna-locales/zh-Hant/lesson11'),
+      lesson12: require('./minna-locales/zh-Hant/lesson12'),
+      lesson13: require('./minna-locales/zh-Hant/lesson13'),
+      lesson14: require('./minna-locales/zh-Hant/lesson14'),
+      lesson15: require('./minna-locales/zh-Hant/lesson15'),
+      lesson16: require('./minna-locales/zh-Hant/lesson16'),
+      lesson17: require('./minna-locales/zh-Hant/lesson17'),
+      lesson18: require('./minna-locales/zh-Hant/lesson18'),
+      lesson19: require('./minna-locales/zh-Hant/lesson19'),
+      lesson20: require('./minna-locales/zh-Hant/lesson20'),
+      lesson21: require('./minna-locales/zh-Hant/lesson21'),
+      lesson22: require('./minna-locales/zh-Hant/lesson22'),
+      lesson23: require('./minna-locales/zh-Hant/lesson23'),
+      lesson24: require('./minna-locales/zh-Hant/lesson24'),
+      lesson25: require('./minna-locales/zh-Hant/lesson25'),
+      lesson26: require('./minna-locales/zh-Hant/lesson26'),
+      lesson27: require('./minna-locales/zh-Hant/lesson27'),
+      lesson28: require('./minna-locales/zh-Hant/lesson28'),
+      lesson29: require('./minna-locales/zh-Hant/lesson29'),
+      lesson30: require('./minna-locales/zh-Hant/lesson30'),
+      lesson31: require('./minna-locales/zh-Hant/lesson31'),
+      lesson32: require('./minna-locales/zh-Hant/lesson32'),
+      lesson33: require('./minna-locales/zh-Hant/lesson33'),
+      lesson34: require('./minna-locales/zh-Hant/lesson34'),
+      lesson35: require('./minna-locales/zh-Hant/lesson35'),
+      lesson36: require('./minna-locales/zh-Hant/lesson36'),
+      lesson37: require('./minna-locales/zh-Hant/lesson37'),
+      lesson38: require('./minna-locales/zh-Hant/lesson38'),
+      lesson39: require('./minna-locales/zh-Hant/lesson39'),
+      lesson40: require('./minna-locales/zh-Hant/lesson40'),
+      lesson41: require('./minna-locales/zh-Hant/lesson41'),
+      lesson42: require('./minna-locales/zh-Hant/lesson42'),
+      lesson43: require('./minna-locales/zh-Hant/lesson43'),
+      lesson44: require('./minna-locales/zh-Hant/lesson44'),
+      lesson45: require('./minna-locales/zh-Hant/lesson45'),
+      lesson46: require('./minna-locales/zh-Hant/lesson46'),
+      lesson47: require('./minna-locales/zh-Hant/lesson47'),
+      lesson48: require('./minna-locales/zh-Hant/lesson48'),
+      lesson49: require('./minna-locales/zh-Hant/lesson49'),
+      lesson50: require('./minna-locales/zh-Hant/lesson50'),
+    },
+  },
 };
 
 console.log('I18n.locale', I18n.locale);
 
 I18n.isZh = I18n.locale.startsWith('zh');
-if (I18n.isZh) {
+if (I18n.locale.startsWith('zh-Hant')) {
+  I18n.translations[I18n.locale] = I18n.translations['zh-Hant'];
+} else if (I18n.isZh) {
   I18n.translations[I18n.locale] = I18n.translations.zh;
 }
 

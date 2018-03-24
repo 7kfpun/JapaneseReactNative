@@ -11,6 +11,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
+import * as Animatable from 'react-native-animatable';
 
 import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
@@ -47,14 +48,16 @@ export default class VocabList extends Component<Props> {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerRight: (
-        <Button
-          onPress={() => {
-            navigation.navigate('Assessment', { item: params.item });
-            tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
-          }}
-          title={I18n.t('app.vocab-list.learn')}
-          color={iOSColors.white}
-        />
+        <Animatable.View animation="tada" iterationCount={10} >
+          <Button
+            onPress={() => {
+              navigation.navigate('Assessment', { item: params.item });
+              tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
+            }}
+            title={I18n.t('app.vocab-list.learn')}
+            color={iOSColors.white}
+          />
+        </Animatable.View>
       ),
     };
   };

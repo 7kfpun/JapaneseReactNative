@@ -1,0 +1,29 @@
+{
+  "main": {
+    "beginning_one": "初級 I",
+    "beginning_two": "初級 II",
+    "advanced_one": "進階 I",
+    "advanced_two": "進階 II",
+  },
+  "vocab-list": {
+    "learn": "學習",
+  },
+  "assessment": {
+    "kana": "日",
+    "kanji": "漢",
+    "translation": "翻譯",
+    "previous": "上一個",
+    "next": "下一個",
+    "read": "閱讀",
+    "random": "隨機",
+  },
+  "common": {
+    "lesson_no": "第 {{lesson_no}} 課",
+  },
+  "rating": {
+    "title": "喜歡我們 APP 嗎？",
+    "title_description": "給我們 5 顆星以鼓勵我們吧",
+    "feedback_description": "對哪裡不滿意？給我們點意見吧。",
+    "feedback_url": "https://airtable.com/shrsfl03pU6HnE5Ar",
+  }
+}
