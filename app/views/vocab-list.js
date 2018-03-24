@@ -51,7 +51,7 @@ export default class VocabList extends Component<Props> {
         <Animatable.View animation="tada" iterationCount={10} >
           <Button
             onPress={() => {
-              navigation.navigate('Assessment', { item: params.item });
+              navigation.navigate('assessment', { item: params.item });
               tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
             }}
             title={I18n.t('app.vocab-list.learn')}
@@ -72,7 +72,6 @@ export default class VocabList extends Component<Props> {
   }
 
   render() {
-    tracker.view('vocab-list');
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>

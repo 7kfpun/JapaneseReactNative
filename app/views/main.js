@@ -16,7 +16,6 @@ import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
 import I18n from '../utils/i18n';
-import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
@@ -79,7 +78,6 @@ export default class Main extends Component<Props> {
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
 
   render() {
-    tracker.view('main');
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager

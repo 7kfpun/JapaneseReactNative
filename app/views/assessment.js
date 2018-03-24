@@ -281,7 +281,6 @@ export default class Assessment extends Component<Props> {
   }
 
   render() {
-    tracker.view('assessment');
     const { item } = this.props.navigation.state.params;
     const lessonNo = item;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];

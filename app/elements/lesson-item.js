@@ -41,7 +41,7 @@ export default class LessonItem extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('VocabList', { item });
+          navigation.navigate('vocab-list', { item });
           tracker.logEvent('user-action-goto-vocab-list', { lesson: `${item}` });
         }}
       >

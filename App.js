@@ -1,23 +1,22 @@
-import {
-  Platform,
-} from 'react-native';
+import React from 'react';
 
 import { StackNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 
-
 import Main from './app/views/main';
 import VocabList from './app/views/vocab-list';
 import Assessment from './app/views/assessment';
+
+import tracker from './app/utils/tracker';
 
 if (!__DEV__) {
   console.log = () => {};
 }
 
 const App = StackNavigator({
-  LessonList: { screen: Main },
-  VocabList: { screen: VocabList },
-  Assessment: { screen: Assessment },
+  main: { screen: Main },
+  'vocab-list': { screen: VocabList },
+  assessment: { screen: Assessment },
 }, {
   swipeEnabled: false,
   animationEnabled: true,
@@ -53,4 +52,29 @@ console.ignoredYellowBox = [
   'Sending `tts-cancel` with no listeners registered.',
 ];
 
-module.exports = App;
+// gets the current screen from navigation state
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+  return route.routeName;
+}
+
+export default () => (
+  <App
+    onNavigationStateChange={(prevState, currentState) => {
+      const currentScreen = getCurrentRouteName(currentState);
+      const prevScreen = getCurrentRouteName(prevState);
+
+      if (prevScreen !== currentScreen) {
+        console.log(currentScreen);
+        tracker.view(currentScreen);
+      }
+    }}
+  />
+);
