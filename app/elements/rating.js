@@ -70,7 +70,6 @@ export default class Rating extends Component {
 
   componentDidMount() {
     const that = this;
-    store.delete('isRatingGiven');
     store.get('isRatingGiven').then((isRatingGiven) => {
       if (isRatingGiven) {
         that.setState({ isRatingClose: true });
