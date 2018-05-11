@@ -4115,6 +4115,14 @@ react-native-fabric@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/react-native-fabric/-/react-native-fabric-0.5.1.tgz#e5eb65c56196355b41f230c14adcc9c4bcf60dda"
 
+react-native-firebase@7kfpun/react-native-firebase:
+  version "4.0.7"
+  resolved "https://codeload.github.com/7kfpun/react-native-firebase/tar.gz/bc14c2d8708cea467f78215e0411f24638486b05"
+  dependencies:
+    opencollective "^1.0.3"
+    postinstall-build "^5.0.1"
+    prop-types "^15.6.1"
+
 react-native-firebase@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-3.3.1.tgz#b93cbb9b11f4f8a23a0d608567573b43a8c2de70"

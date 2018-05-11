@@ -6,6 +6,7 @@ import { iOSColors } from 'react-native-typography';
 import Main from './app/views/main';
 import VocabList from './app/views/vocab-list';
 import Assessment from './app/views/assessment';
+import Feedback from './app/views/feedback';
 
 import tracker from './app/utils/tracker';
 
@@ -17,6 +18,7 @@ const App = StackNavigator({
   main: { screen: Main },
   'vocab-list': { screen: VocabList },
   assessment: { screen: Assessment },
+  feedback: { screen: Feedback },
 }, {
   swipeEnabled: false,
   animationEnabled: true,
