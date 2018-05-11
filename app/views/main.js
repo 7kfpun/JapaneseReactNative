@@ -23,7 +23,7 @@ const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.O
 
 const { AdRequest } = firebase.admob;
 const request = new AdRequest();
-request.addKeyword('learning').addKeyword('japanese');
+request.addKeyword('study').addKeyword('japanese').addKeyword('travel');
 
 advert.loadAd(request.build());
 
@@ -72,7 +72,7 @@ export default class Main extends Component<Props> {
       if (advert.isLoaded()) {
         advert.show();
       }
-    }, 1000);
+    }, 3000);
   }
 
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />

@@ -99,7 +99,7 @@ export default class Rating extends Component {
       }, 2000);
     }
 
-    tracker.logEvent('user-action-rating', { starCount, method });
+    tracker.logEvent('user-action-rating', { method, starCount: `${starCount}` });
     store.save('isRatingGiven', true);
   }
 

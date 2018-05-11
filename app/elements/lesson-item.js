@@ -33,7 +33,6 @@ export default class LessonItem extends Component {
     item: PropTypes.number.isRequired,
   }
 
-
   render() {
     const { item, index } = this.props;
     const { navigation } = this.props;
