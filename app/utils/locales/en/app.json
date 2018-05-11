@@ -3,7 +3,8 @@
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",
     "advanced_one": "Adv. I",
-    "advanced_two": "Adv. II"
+    "advanced_two": "Adv. II",
+    "feedback": "Feedback",
   },
   "vocab-list": {
     "learn": "Learn"
@@ -16,6 +17,10 @@
     "next": "Next",
     "read": "Read",
     "random": "Random"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "url": "https://airtable.com/shr7xvYAyInUbJNif",
   },
   "common": {
     "lesson_no": "Lesson {{lesson_no}}",

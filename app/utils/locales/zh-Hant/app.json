@@ -4,6 +4,7 @@
     "beginning_two": "初級 II",
     "advanced_one": "進階 I",
     "advanced_two": "進階 II",
+    "feedback": "反饋",
   },
   "vocab-list": {
     "learn": "學習",
@@ -16,6 +17,10 @@
     "next": "下一個",
     "read": "閱讀",
     "random": "隨機",
+  },
+  "feedback": {
+    "title": "反饋/建議",
+    "url": "https://airtable.com/shrsfl03pU6HnE5Ar",
   },
   "common": {
     "lesson_no": "第 {{lesson_no}} 課",

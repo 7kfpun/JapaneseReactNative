@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
+  Button,
   FlatList,
   Platform,
   ScrollView,
@@ -9,6 +10,7 @@ import {
 } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
+import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import firebase from 'react-native-firebase';
 
@@ -16,6 +18,7 @@ import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
 import I18n from '../utils/i18n';
+import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
@@ -62,10 +65,21 @@ export default class Main extends Component<Props> {
     navigation: PropTypes.shape({}).isRequired,
   }
 
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ({
     headerBackTitle: null,
     title: 'みんなの日本語',
-  };
+    headerRight: (
+      <Button
+        onPress={() => {
+          navigation.navigate('feedback');
+          tracker.logEvent('user-action-feedback');
+        }}
+        title={I18n.t('app.main.feedback')}
+        color={iOSColors.white}
+      />
+    ),
+  });
+
 
   componentDidMount() {
     setTimeout(() => {
