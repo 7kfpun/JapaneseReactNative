@@ -12,6 +12,7 @@ import {
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
+import firebase from 'react-native-firebase';
 
 import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
@@ -22,6 +23,18 @@ import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
+const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
+
+const { AdRequest } = firebase.admob;
+const request = new AdRequest();
+request.addKeyword('study').addKeyword('japanese').addKeyword('travel');
+
+advert.loadAd(request.build());
+
+advert.on('onAdLoaded', () => {
+  console.log('Advert ready to show.');
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -29,7 +42,6 @@ const styles = StyleSheet.create({
 });
 
 type Props = {};
-// LessonList
 export default class VocabList extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({
@@ -69,6 +81,12 @@ export default class VocabList extends Component<Props> {
   componentDidMount() {
     const { item } = this.props.navigation.state.params;
     this.setState({ vocabs: vocabs[`lesson${item}`].text, lessonNo: item });
+
+    setTimeout(() => {
+      if (advert.isLoaded() && Math.random() < 0.1) {
+        advert.show();
+      }
+    }, 3000);
   }
 
   render() {

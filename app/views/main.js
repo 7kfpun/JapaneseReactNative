@@ -12,7 +12,6 @@ import {
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
-import firebase from 'react-native-firebase';
 
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
@@ -21,18 +20,6 @@ import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import { config } from '../config';
-
-const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
-
-const { AdRequest } = firebase.admob;
-const request = new AdRequest();
-request.addKeyword('study').addKeyword('japanese').addKeyword('travel');
-
-advert.loadAd(request.build());
-
-advert.on('onAdLoaded', () => {
-  console.log('Advert ready to show.');
-});
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +46,6 @@ const lessonGroup = [{
 }];
 
 type Props = {};
-// LessonList
 export default class Main extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
@@ -79,15 +65,6 @@ export default class Main extends Component<Props> {
       />
     ),
   });
-
-
-  componentDidMount() {
-    setTimeout(() => {
-      if (advert.isLoaded()) {
-        advert.show();
-      }
-    }, 3000);
-  }
 
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
 
