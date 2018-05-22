@@ -5,5 +5,6 @@ exports.config = {
     'japanese-ios-vocablist-banner': '',
     'japanese-ios-assessment-banner': '',
   },
+  onesignal: '',
   segment: '',
 };

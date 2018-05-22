@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "post-install": "rm -f ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Japanese/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
     "test": "jest"
   },
   "dependencies": {
@@ -13,16 +14,16 @@
     "react": "16.2.0",
     "react-native": "0.53.3",
     "react-native-animatable": "^1.2.4",
-    "react-native-device-info": "^0.21.2",
+    "react-native-device-info": "^0.21.5",
     "react-native-fabric": "^0.5.1",
     "react-native-firebase": "7kfpun/react-native-firebase",
     "react-native-i18n": "^2.0.12",
+    "react-native-onesignal": "^3.2.4",
     "react-native-simple-store": "^1.3.0",
     "react-native-store-review": "^0.1.5",
-    "react-native-timer": "^1.3.1",
     "react-native-tts": "^1.5.0",
     "react-native-typography": "^1.3.0",
-    "react-native-vector-icons": "^4.5.0",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.8",
     "rn-viewpager": "^1.2.9"
   },

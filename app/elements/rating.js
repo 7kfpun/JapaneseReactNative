@@ -13,7 +13,6 @@ import * as Animatable from 'react-native-animatable';
 import * as StoreReview from 'react-native-store-review';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import store from 'react-native-simple-store';
-import timer from 'react-native-timer';
 import tracker from '../utils/tracker';
 
 import I18n from '../utils/i18n';
@@ -77,6 +76,11 @@ export default class Rating extends Component {
     });
   }
 
+  componentWillUnmount() {
+    if (this.isRatingCloseTimeout) clearTimeout(this.isRatingCloseTimeout);
+    if (this.openFeedbackUrlTimeout) clearTimeout(this.openFeedbackUrlTimeout);
+  }
+
   onStarRatingPress(starCount) {
     this.setState({ starCount });
 
@@ -94,7 +98,7 @@ export default class Rating extends Component {
       }
 
       const that = this;
-      timer.setTimeout(that, 'isRatingClose', () => {
+      that.isRatingCloseTimeout = setTimeout(() => {
         this.setState({ isRatingClose: true });
       }, 2000);
     }
@@ -106,7 +110,7 @@ export default class Rating extends Component {
   openFeedbackUrl = () => {
     Linking.openURL(I18n.t('app.rating.feedback_url'));
     const that = this;
-    timer.setTimeout(that, 'openFeedbackUrl', () => {
+    that.openFeedbackUrlTimeout = setTimeout(() => {
       this.setState({ isRatingClose: true });
     }, 2000);
   }

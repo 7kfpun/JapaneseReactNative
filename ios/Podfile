@@ -51,6 +51,9 @@ target 'Japanese' do
 
   pod 'RNStoreReview', :path => '../node_modules/react-native-store-review/ios'
 
+  pod 'OneSignal', '>= 2.8.5', '< 3.0'
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
 end
 
 post_install do |installer|

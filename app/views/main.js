@@ -12,6 +12,7 @@ import {
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
+import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
@@ -65,6 +66,10 @@ export default class Main extends Component<Props> {
       />
     ),
   });
+
+  componentWillMount() {
+    OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
+  }
 
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
 
