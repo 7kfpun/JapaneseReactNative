@@ -12,6 +12,7 @@
   "assessment": {
     "kana": "Kana",
     "kanji": "Kanji",
+    "romaji": "Romaji",
     "translation": "Eng",
     "previous": "Previous",
     "next": "Next",
@@ -30,4 +31,5 @@
     "title_description": "Please give us 5 stars to cheer we up if you like this app.",
     "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
     "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif",
-  }}
+  }
+}

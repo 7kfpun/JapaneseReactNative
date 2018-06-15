@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 28,
     fontWeight: '900',
-    lineHeight: 55,
+    lineHeight: 45,
   },
   translationBlock: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -179,6 +179,7 @@ export default class Assessment extends Component<Props> {
       if (notFirstStart) {
         store.get('isJapaneseShown').then(isJapaneseShown => that.setState({ isJapaneseShown }));
         store.get('isKanjiShown').then(isKanjiShown => that.setState({ isKanjiShown }));
+        store.get('isRomajiShown').then(isRomajiShown => that.setState({ isRomajiShown }));
         store.get('isTranslationShown').then(isTranslationShown => that.setState({ isTranslationShown }));
         store.get('isSoundOn').then(isSoundOn => that.setState({ isSoundOn }));
         store.get('isOrdered').then(isOrdered => that.setState({ isOrdered }));
@@ -318,10 +319,21 @@ export default class Assessment extends Component<Props> {
           <TouchableOpacity
             style={styles.selectorIcon}
             onPress={() => this.setState({
+              isRomajiShown: !this.state.isRomajiShown,
+            }, () => {
+              store.save('isRomajiShown', this.state.isRomajiShown);
+              tracker.logEvent('user-action-set-isRomajiShown', { value: this.state.isRomajiShown });
+            })}
+          >
+            <Text style={{ fontSize: 18, color: this.state.isRomajiShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.romaji')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.selectorIcon}
+            onPress={() => this.setState({
               isTranslationShown: !this.state.isTranslationShown,
             }, () => {
               store.save('isTranslationShown', this.state.isTranslationShown);
-              tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
+              tracker.logEvent('user-action-set-isTranslationShown', { value: this.state.isTranslationShown });
             })}
           >
             <Text style={{ fontSize: 18, color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.translation')}</Text>
@@ -332,7 +344,7 @@ export default class Assessment extends Component<Props> {
               isSoundOn: !this.state.isSoundOn,
             }, () => {
               store.save('isSoundOn', this.state.isSoundOn);
-              tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
+              tracker.logEvent('user-action-set-isSoundOn', { value: this.state.isSoundOn });
             })}
           >
             <Icon name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
@@ -343,43 +355,18 @@ export default class Assessment extends Component<Props> {
               isOrdered: !this.state.isOrdered,
             }, () => {
               store.save('isOrdered', this.state.isOrdered);
-              tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
+              tracker.logEvent('user-action-set-isOrdered', { value: this.state.isOrdered });
             })}
           >
             <Icon name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
           </TouchableOpacity>
-
-          {/* <Button
-            color={this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray}
-            title="日文"
-            onPress={() => this.setState({ isJapaneseShown: !this.state.isJapaneseShown })}
-          />
-          <Button
-            color={this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray}
-            title="漢字"
-            onPress={() => this.setState({ isKanjiShown: !this.state.isKanjiShown })}
-          />
-          <Button
-            color={this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray}
-            title="翻譯"
-            onPress={() => this.setState({ isTranslationShown: !this.state.isTranslationShown })}
-          />
-          <Button
-            color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray}
-            title="聽力"
-            onPress={() => this.setState({ isSoundOn: !this.state.isSoundOn })}
-          />
-          <Button
-            color={this.state.isOrdered ? iOSColors.black : iOSColors.lightGray}
-            title={this.state.isOrdered ? '順序' : '隨機'}
-            onPress={() => this.setState({ isOrdered: !this.state.isOrdered })}
-          /> */}
         </View>
 
         <View style={{ flex: 1 }}>
           <View style={styles.originalBlock}>
             {this.state.isKanjiShown && kanji !== japanese && <Text style={styles.originalText}>{kanji}</Text>}
             {this.state.isJapaneseShown && <Text style={styles.originalText}>{japanese}</Text>}
+            {this.state.isRomajiShown && <Text style={styles.translationText}>{sound}</Text>}
           </View>
           <View style={styles.translationBlock}>
             {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.lesson${lessonNo}.${sound}`)}</Text>}

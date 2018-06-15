@@ -93,7 +93,7 @@ export default class Rating extends Component {
         Linking.openURL('itms-apps://itunes.apple.com/app/id1352780398');
         method = 'apple-store';
       } else if (Platform.OS === 'android') {
-        Linking.openURL('market://details?id=com.kfpun.bitcoin');
+        Linking.openURL('market://details?id=com.kfpun.japanese');
         method = 'google-play';
       }
 
