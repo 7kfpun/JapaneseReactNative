@@ -13,7 +13,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
   },
   originalText: {
     textAlign: 'center',
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '900',
-    lineHeight: 45,
+    lineHeight: 40,
   },
   translationBlock: {
     flex: 1,
@@ -159,6 +159,8 @@ export default class Assessment extends Component<Props> {
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
+      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
     };
   };
 
@@ -352,7 +354,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isSoundOn', { value: this.state.isSoundOn });
             })}
           >
-            <Icon name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
+            <Ionicons name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -363,7 +365,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isOrdered', { value: this.state.isOrdered });
             })}
           >
-            <Icon name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
+            <Ionicons name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
           </TouchableOpacity>
         </View>
 
@@ -379,8 +381,8 @@ export default class Assessment extends Component<Props> {
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
               <View style={styles.answerResult}>
-                {this.state.answers.join('') === getTestVocab(japanese) && <Icon name="md-checkmark" size={28} color="green" />}
-                {!getTestVocab(japanese).startsWith(this.state.answers.join('')) && <Icon name="md-close" size={28} color="red" />}
+                {this.state.answers.join('') === getTestVocab(japanese) && <Ionicons name="md-checkmark" size={28} color="green" />}
+                {!getTestVocab(japanese).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
               </View>
               <View style={styles.answerItems}>
                 {this.state.answers.map(answer => <Text key={Math.random()} style={styles.answerText}>{answer}</Text>)}
@@ -394,7 +396,7 @@ export default class Assessment extends Component<Props> {
                   tracker.logEvent('user-action-press-backspace');
                 }}
               >
-                {this.state.answers.length > 0 && <Icon name="ios-backspace-outline" size={28} color="black" />}
+                {this.state.answers.length > 0 && <Ionicons name="ios-backspace-outline" size={28} color="black" />}
               </TouchableOpacity>
 
             </View>

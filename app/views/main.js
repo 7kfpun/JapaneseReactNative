@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Button,
   FlatList,
   Platform,
   ScrollView,
@@ -10,15 +9,14 @@ import {
 } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
-import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
 import I18n from '../utils/i18n';
-import tracker from '../utils/tracker';
 
 import { config } from '../config';
 
@@ -52,20 +50,11 @@ export default class Main extends Component<Props> {
     navigation: PropTypes.shape({}).isRequired,
   }
 
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = {
     headerBackTitle: null,
     title: 'みんなの日本語',
-    headerRight: (
-      <Button
-        onPress={() => {
-          navigation.navigate('feedback');
-          tracker.logEvent('user-action-feedback');
-        }}
-        title={I18n.t('app.main.feedback')}
-        color={iOSColors.white}
-      />
-    ),
-  });
+    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
+  };
 
   componentWillMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });

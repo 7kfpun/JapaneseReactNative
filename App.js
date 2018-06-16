@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 
 import Main from './app/views/main';
 import VocabList from './app/views/vocab-list';
 import Assessment from './app/views/assessment';
 import Feedback from './app/views/feedback';
+import About from './app/views/about';
 
 import tracker from './app/utils/tracker';
 
@@ -14,14 +15,64 @@ if (!__DEV__) {
   console.log = () => {};
 }
 
-const App = StackNavigator({
-  main: { screen: Main },
-  'vocab-list': { screen: VocabList },
-  assessment: { screen: Assessment },
-  feedback: { screen: Feedback },
+const AppTab = TabNavigator({
+  home: {
+    screen: StackNavigator({
+      main: { screen: Main },
+      'vocab-list': { screen: VocabList },
+      assessment: { screen: Assessment },
+    }, {
+      swipeEnabled: false,
+      animationEnabled: true,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: iOSColors.tealBlue,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      },
+    }),
+  },
+  about: {
+    screen: StackNavigator({
+      about: { screen: About },
+      feedback: { screen: Feedback },
+    }, {
+      swipeEnabled: false,
+      animationEnabled: true,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: iOSColors.tealBlue,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      },
+    }),
+  },
 }, {
-  swipeEnabled: false,
-  animationEnabled: true,
+  tabBarOptions: {
+    activeTintColor: iOSColors.tealBlue,
+    inactiveTintColor: iOSColors.black,
+    // showIcon and pressColor are for Android
+    showIcon: true,
+    pressColor: '#E0E0E0',
+    labelStyle: {
+      fontSize: 10,
+      paddingBottom: 2,
+    },
+    indicatorStyle: {
+      backgroundColor: iOSColors.tealBlue,
+    },
+    style: {
+      backgroundColor: 'white',
+    },
+  },
+  tabBarPosition: 'bottom',
+
   navigationOptions: {
     headerStyle: {
       backgroundColor: iOSColors.tealBlue,
@@ -31,17 +82,6 @@ const App = StackNavigator({
       fontWeight: 'bold',
     },
   },
-  // tabBarOptions: {
-  //   showIcon: true,
-  //   pressColor: '#E0E0E0',
-  //   labelStyle: {
-  //     fontSize: 12,
-  //     paddingBottom: 4,
-  //   },
-  //   style: {
-  //     backgroundColor: iOSColors.tealBlue,
-  //   },
-  // },
 });
 
 console.ignoredYellowBox = [
@@ -68,7 +108,7 @@ function getCurrentRouteName(navigationState) {
 }
 
 export default () => (
-  <App
+  <AppTab
     onNavigationStateChange={(prevState, currentState) => {
       const currentScreen = getCurrentRouteName(currentState);
       const prevScreen = getCurrentRouteName(prevState);

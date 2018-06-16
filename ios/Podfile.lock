@@ -110,6 +110,8 @@ PODS:
     - React
   - RNI18n (2.0.12):
     - React
+  - RNIap (1.2.1):
+    - React
   - RNStoreReview (0.1.5):
     - React
   - RNVectorIcons (4.6.0):
@@ -145,6 +147,7 @@ DEPENDENCIES:
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - RNI18n (from `../node_modules/react-native-i18n`)
+  - RNIap (from `../node_modules/react-native-iap`)
   - RNStoreReview (from `../node_modules/react-native-store-review/ios`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - TextToSpeech (from `../node_modules/react-native-tts`)
@@ -183,6 +186,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-firebase/ios"
   RNI18n:
     :path: "../node_modules/react-native-i18n"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
   RNStoreReview:
     :path: "../node_modules/react-native-store-review/ios"
   RNVectorIcons:
@@ -216,11 +221,12 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNFirebase: 2b25fd2e60269f26bb0a76c71dcc942b35a77df0
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
+  RNIap: 8bc4a94d49bdc32037efe605fe746a05c67c5f59
   RNStoreReview: 628ef9b80e75cbd6a6f37a1bda14295c82022638
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   TextToSpeech: 9eb1620acaff9cc703896d5e05dc8024122a8e57
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 81ef52e9190de26139cf1353841873128be64808
+PODFILE CHECKSUM: caa4ee3a46a17d23d393597372e7def6e0394577
 
 COCOAPODS: 1.5.2

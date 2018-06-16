@@ -13,9 +13,12 @@ import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import firebase from 'react-native-firebase';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
+
+import { checkAdRemoval } from '../utils/products';
 
 import { items as vocabs } from '../utils/items';
 import I18n from '../utils/i18n';
@@ -59,6 +62,8 @@ export default class VocabList extends Component<Props> {
     return {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
       headerRight: (
         <Animatable.View animation="tada" iterationCount={10} >
           <Button
@@ -78,15 +83,18 @@ export default class VocabList extends Component<Props> {
     vocabs: [],
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { item } = this.props.navigation.state.params;
     this.setState({ vocabs: vocabs[`lesson${item}`].text, lessonNo: item });
 
-    setTimeout(() => {
-      if (advert.isLoaded() && Math.random() < 0.1) {
-        advert.show();
-      }
-    }, 3000);
+    const isAdRemoval = await checkAdRemoval();
+    if (!isAdRemoval) {
+      setTimeout(() => {
+        if (advert.isLoaded() && Math.random() < 0.6) {
+          advert.show();
+        }
+      }, 3000);
+    }
   }
 
   render() {

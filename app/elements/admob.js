@@ -7,6 +7,8 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
+import { checkAdRemoval } from '../utils/products';
+
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();
 
@@ -30,10 +32,31 @@ export default class Admob extends Component {
   state = {
     isReceived: false,
     isReceivedFailed: false,
+    isAdRemoval: false,
+    isAdDelaying: true,
   };
 
+  componentDidMount() {
+    this.checkAdRemoval();
+
+    setTimeout(() => {
+      this.setState({
+        isAdDelaying: false,
+      });
+    }, 1500);
+
+    setInterval(() => {
+      this.checkAdRemoval();
+    }, 60000);
+  }
+
+  async checkAdRemoval() {
+    const isAdRemoval = await checkAdRemoval();
+    this.setState({ isAdRemoval });
+  }
+
   render() {
-    if (this.state.isReceivedFailed) {
+    if (this.state.isReceivedFailed || this.state.isAdRemoval || this.state.isAdDelaying) {
       return null;
     }
 

@@ -42,6 +42,7 @@
 		647C551CC10E42EC8EE2092F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FED696D21D1C45DBA6EB3014 /* SimpleLineIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8342D9A538B049C8827A007D /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 985194A7569A4462AD105F11 /* libRNFirebase.a */; };
+		9E01020720D42C71005DCD1B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E01020620D42C71005DCD1B /* StoreKit.framework */; };
 		9E987AD42046F00400FAA69F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E987AD32046F00400FAA69F /* GoogleService-Info.plist */; };
 		A23393A6DA4A410793AEEDA3 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2B93BA01B6746688CD75D3F /* Feather.ttf */; };
 		A410503F0B8C4999A80B011D /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F752F74B0EC24772A5B174A2 /* MaterialCommunityIcons.ttf */; };
@@ -402,6 +403,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		985194A7569A4462AD105F11 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
+		9E01020620D42C71005DCD1B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9E099C3E2045ADAC00FA69BC /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "../node_modules/react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<group>"; };
 		9E099C482045ADBD00FA69BC /* libReactNativeFabric.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReactNativeFabric.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E099C822045B4A800FA69BC /* Japanese.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Japanese.entitlements; path = Japanese/Japanese.entitlements; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				078C04E455B7EA8E718F7519 /* libPods-Japanese.a in Frameworks */,
+				9E01020720D42C71005DCD1B /* StoreKit.framework in Frameworks */,
 				8342D9A538B049C8827A007D /* libRNFirebase.a in Frameworks */,
 				B708FC48CD7844318CC15D73 /* libRNStoreReview.a in Frameworks */,
 			);
@@ -597,6 +600,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E01020620D42C71005DCD1B /* StoreKit.framework */,
 				9E099C482045ADBD00FA69BC /* libReactNativeFabric.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				B009298FD4763A623E5B57FD /* libPods-Japanese.a */,
@@ -855,6 +859,9 @@
 						DevelopmentTeam = CC4C8V8BXN;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {

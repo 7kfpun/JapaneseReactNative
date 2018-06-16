@@ -54,6 +54,8 @@ target 'Japanese' do
   pod 'OneSignal', '>= 2.8.5', '< 3.0'
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
+  pod 'RNIap', :path => '../node_modules/react-native-iap'
+
 end
 
 post_install do |installer|
