@@ -251,14 +251,19 @@ export default class Assessment extends Component<Props> {
     const { item } = this.props.navigation.state.params;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];
     const japanese = getTestVocab(vocab.split(';')[1]);
-    let length = (NO_OF_TILES * 2) - japanese.length;
-    if (length < 0) {
-      length = (NO_OF_TILES * 3) - japanese.length;
-    }
 
     if (this.state.isSoundOn) {
       Tts.stop();
       Tts.speak(japanese);
+    }
+
+    let length = (NO_OF_TILES * 2) - japanese.length;
+    if (length < 0) {
+      length = (NO_OF_TILES * 3) - japanese.length;
+    }
+    if (length < 0) {
+      this.setState({ tiles: [] });
+      return true;
     }
 
     let tiles;
