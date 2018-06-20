@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   selectorText: {
-    fontSize: 16,
-    paddingBottom: 6,
+    fontSize: 18,
+    textAlign: 'center',
   },
   originalBlock: {
-    flex: 3,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -188,12 +188,15 @@ export default class Assessment extends Component<Props> {
       } else {
         store.save('isJapaneseShown', true);
         store.save('isKanjiShown', true);
+        store.save('isRomajiShown', true);
         store.save('isTranslationShown', true);
         store.save('isSoundOn', true);
         store.save('isOrdered', true);
         store.save('notFirstStart', true);
+
         that.setState({ isJapaneseShown: true });
         that.setState({ isKanjiShown: true });
+        that.setState({ isRomajiShown: true });
         that.setState({ isTranslationShown: true });
         that.setState({ isSoundOn: true });
         that.setState({ isOrdered: true });
@@ -310,7 +313,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isJapaneseShown', { value: this.state.isJapaneseShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.kana')}</Text>
+            <Text style={[styles.selectorText, { color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kana')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -321,7 +324,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.kanji')}</Text>
+            <Text style={[styles.selectorText, { color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kanji')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -332,7 +335,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isRomajiShown', { value: this.state.isRomajiShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isRomajiShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.romaji')}</Text>
+            <Text style={[styles.selectorText, { color: this.state.isRomajiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.romaji')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}
@@ -343,7 +346,7 @@ export default class Assessment extends Component<Props> {
               tracker.logEvent('user-action-set-isTranslationShown', { value: this.state.isTranslationShown });
             })}
           >
-            <Text style={{ fontSize: 18, color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }}>{I18n.t('app.assessment.translation')}</Text>
+            <Text style={[styles.selectorText, { color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.translation')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.selectorIcon}

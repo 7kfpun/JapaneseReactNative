@@ -87,14 +87,14 @@ export default class VocabList extends Component<Props> {
     const { item } = this.props.navigation.state.params;
     this.setState({ vocabs: vocabs[`lesson${item}`].text, lessonNo: item });
 
-    const isAdRemoval = await checkAdRemoval();
-    if (!isAdRemoval) {
-      setTimeout(() => {
-        if (advert.isLoaded() && Math.random() < 0.6) {
-          advert.show();
-        }
-      }, 3000);
-    }
+    // const isAdRemoval = await checkAdRemoval();
+    // if (!isAdRemoval) {
+    setTimeout(() => {
+      if (advert.isLoaded() && Math.random() < 0.4) {
+        advert.show();
+      }
+    }, 3000);
+    // }
   }
 
   render() {

@@ -36,7 +36,8 @@
     "英語;えいご;eigo;the English language",
     "日本語;にほんご;nihongo;the Japanese language",
     "～語;～ご;~go;~language",
-    "何;なん;nanai;what",
+    "何;なに;nani;what",
+    "何;なん;nan;what",
     "そう;そう;sou;so",
     "ちがいます;ちがいます;chigaimasu;No, it isn't. You are wrong.",
     "そうですか;そうですか;sou desu ka;I see./Is that so?",
@@ -44,8 +45,7 @@
     "ほんのきもちです;ほんのきもちです;honnokimochidesu;It's nothing./It's a token of my gratitude.",
     "どうぞ;どうぞ;douzo;Please./Here you are. (used when offering someone something)",
     "どうも;どうも;doumo;Well, thanks.",
-    "どうもありがとう;どうもありがとう;doumoarigatou;Thank you",
-    "ございます;ございます;gozaimasu;very much",
+    "どうもありがとう ございます;どうもありがとう ございます;doumoarigatou gozaimasu;Thank you very much",
     "これからおせわになります;これからおせわになります;kore kara osewaninarimasu;I hope for your kind assistance hereafter.",
     "こちらこそよろしく。;こちらこそよろしく。;kochira koso yoroshiku;I am pleased to meet you.(response to どうぞよろしく)"
   ]

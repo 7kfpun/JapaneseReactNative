@@ -35,7 +35,8 @@
   "eigo": "英语",
   "nihongo": "日语",
   "~go": "～语",
-  "nanai": "什么",
+  "nani": "什么",
+  "nan": "什么",
   "sou": "是的",
   "chigaimasu": "不对。/不是。",
   "sou desu ka": "我了解了/是吗？",
@@ -43,8 +44,7 @@
   "honnokimochidesu": "小意思。/只是一点心意。",
   "douzo": "请。/给你",
   "doumo": "谢了。",
-  "doumoarigatou": "（非常）谢谢你。",
-  "gozaimasu": "（非常）谢谢你。",
+  "doumoarigatou gozaimasu": "（非常）谢谢你。",
   "kore kara osewaninarimasu": "今后还请您多多关照。",
   "kochira koso yoroshiku": "彼此彼此，请多多关照。"
 }

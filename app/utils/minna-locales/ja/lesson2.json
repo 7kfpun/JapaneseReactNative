@@ -35,7 +35,8 @@
   "eigo": "英語",
   "nihongo": "日本語",
   "~go": "～語",
-  "nanai": "何",
+  "nani": "何",
+  "nan": "何",
   "sou": "そう",
   "chigaimasu": "ちがいます",
   "sou desu ka": "そうですか",
@@ -43,8 +44,7 @@
   "honnokimochidesu": "ほんのきもちです",
   "douzo": "どうぞ",
   "doumo": "どうも",
-  "doumoarigatou": "どうもありがとう",
-  "gozaimasu": "ございます",
+  "doumoarigatou gozaimasu": "どうもありがとう ございます",
   "kore kara osewaninarimasu": "これからおせわになります",
   "kochira koso yoroshiku": "こちらこそよろしく。"
 }

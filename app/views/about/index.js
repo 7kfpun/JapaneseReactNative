@@ -53,7 +53,7 @@ export default class Main extends Component<Props> {
   }
 
   componentDidMount() {
-    this.requestProducts();
+    // this.requestProducts();
   }
 
   requestProducts() {
@@ -122,7 +122,7 @@ export default class Main extends Component<Props> {
             />
           }
         >
-          <View style={{ marginTop: 10 }}>
+          {/* <View style={{ marginTop: 10 }}>
             {
               productList.map((product, i) => (<Row
                 key={product.productId}
@@ -134,7 +134,7 @@ export default class Main extends Component<Props> {
                 disabled={purchasedProductIds.includes(product.productId)}
               />))
             }
-          </View>
+          </View> */}
 
           <View style={{ marginTop: 15 }}>
             <Row

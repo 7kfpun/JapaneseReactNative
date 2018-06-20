@@ -51,8 +51,8 @@ export default class Admob extends Component {
   }
 
   async checkAdRemoval() {
-    const isAdRemoval = await checkAdRemoval();
-    this.setState({ isAdRemoval });
+    // const isAdRemoval = await checkAdRemoval();
+    // this.setState({ isAdRemoval });
   }
 
   render() {

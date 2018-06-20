@@ -35,7 +35,8 @@
   "eigo": "the English language",
   "nihongo": "the Japanese language",
   "~go": "~language",
-  "nanai": "what",
+  "nani": "what",
+  "nan": "what",
   "sou": "so",
   "chigaimasu": "No, it isn't. You are wrong.",
   "sou desu ka": "I see./Is that so?",
@@ -43,8 +44,7 @@
   "honnokimochidesu": "It's nothing./It's a token of my gratitude.",
   "douzo": "Please./Here you are. (used when offering someone something)",
   "doumo": "Well, thanks.",
-  "doumoarigatou": "Thank you",
-  "gozaimasu": "very much",
+  "doumoarigatou gozaimasu": "Thank you very much",
   "kore kara osewaninarimasu": "I hope for your kind assistance hereafter.",
   "kochira koso yoroshiku": "I am pleased to meet you.(response to どうぞよろしく)"
 }
