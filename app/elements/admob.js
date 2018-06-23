@@ -7,7 +7,7 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
-import { checkAdRemoval } from '../utils/products';
+// import { checkAdRemoval } from '../utils/products';
 
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();

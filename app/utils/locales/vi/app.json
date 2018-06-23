@@ -1,0 +1,38 @@
+{
+  "main": {
+    "beginning_one": "Beg. I",
+    "beginning_two": "Beg. II",
+    "advanced_one": "Adv. I",
+    "advanced_two": "Adv. II",
+    "feedback": "Phản hồi",
+  },
+  "vocab-list": {
+    "learn": "Học hỏi"
+  },
+  "assessment": {
+    "kana": "Kana",
+    "kanji": "Kanji",
+    "romaji": "Rōmaji",
+    "translation": "tiếng việt",
+    "previous": "Trước",
+    "next": "Kế tiếp",
+    "read": "Đọc",
+    "random": "Ngẫu nhiên"
+  },
+  "feedback": {
+    "title": "Phản hồi",
+    "url": "https://airtable.com/shr7xvYAyInUbJNif",
+  },
+  "about": {
+    "title": "Về chúng tôi",
+  },
+  "common": {
+    "lesson_no": "Bài {{lesson_no}}",
+  },
+  "rating": {
+    "title": "Thưởng thức?",
+    "title_description": "Please give us 5 stars to cheer we up if you like this app.",
+    "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
+    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif",
+  }
+}

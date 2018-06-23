@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 26,
     fontWeight: '900',
+    color: iOSColors.black,
     lineHeight: 40,
   },
   translationBlock: {
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: '300',
+    color: iOSColors.black,
   },
   assessmentBlock: {
   },

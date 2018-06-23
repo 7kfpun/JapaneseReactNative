@@ -70,7 +70,7 @@ export default class Main extends Component<Props> {
           indicator={this.renderTabIndicator()}
         >
           {lessonGroup.map(group => (
-            <ScrollView key={Math.random()}>
+            <ScrollView key={group.text}>
               <FlatList
                 style={styles.list}
                 data={group.list}
@@ -79,9 +79,7 @@ export default class Main extends Component<Props> {
               />
             </ScrollView>
           ))}
-
         </IndicatorViewPager>
-
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-main-banner`]} />
       </SafeAreaView>
     );

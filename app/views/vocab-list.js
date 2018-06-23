@@ -72,7 +72,7 @@ export default class VocabList extends Component<Props> {
               tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
             }}
             title={I18n.t('app.vocab-list.learn')}
-            color={iOSColors.white}
+            color={iOSColors.tealBlue}
           />
         </Animatable.View>
       ),

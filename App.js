@@ -2,6 +2,7 @@ import React from 'react';
 
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
+import Tts from 'react-native-tts';
 
 import Main from './app/views/main';
 import VocabList from './app/views/vocab-list';
@@ -13,6 +14,8 @@ import tracker from './app/utils/tracker';
 
 if (!__DEV__) {
   console.log = () => {};
+} else {
+  Tts.voices().then(voices => console.log('Voices', voices));
 }
 
 const AppTab = TabNavigator({
