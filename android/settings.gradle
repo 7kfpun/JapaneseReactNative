@@ -1,4 +1,6 @@
 rootProject.name = 'Japanese'
+include ':clevertap-react-native'
+project(':clevertap-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/clevertap-react-native/android')
 include ':react-native-iap'
 project(':react-native-iap').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-iap/android')
 include ':react-native-onesignal'

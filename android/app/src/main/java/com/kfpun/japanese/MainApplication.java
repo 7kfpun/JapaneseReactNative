@@ -20,11 +20,14 @@ import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import io.invertase.firebase.perf.RNFirebasePerformancePackage;
 import io.invertase.firebase.RNFirebasePackage;
 
+import com.clevertap.android.sdk.ActivityLifecycleCallback;
+import com.clevertap.react.CleverTapPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,6 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new CleverTapPackage(),
             new FabricPackage(),
             new ReactNativeOneSignalPackage(),
             new RNDeviceInfo(),
@@ -70,8 +74,9 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    super.onCreate();
     Fabric.with(this, new Crashlytics(), new Answers());
     SoLoader.init(this, /* native exopackage */ false);
+    ActivityLifecycleCallback.register(this);
+    super.onCreate();
   }
 }
