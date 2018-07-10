@@ -56,8 +56,14 @@ export default class Main extends Component<Props> {
     tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
   };
 
-  componentWillMount() {
+  state = {}
+
+  componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
+
+    setTimeout(() => {
+      this.setState({ androidFix: Math.random() });
+    }, 1);
   }
 
   renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
@@ -66,6 +72,7 @@ export default class Main extends Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager
+          key={this.state.androidFix}
           style={{ flex: 1 }}
           indicator={this.renderTabIndicator()}
         >

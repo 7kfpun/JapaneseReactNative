@@ -54,7 +54,9 @@ buck-out/
 
 # App
 ios/GoogleService-Info.plist
-android/*/google-services.json
+android/app/google-services.json
 app/config.js
 main.jsbundle
 main.jsbundle.meta
+index.android.bundle
+index.android.bundle.meta

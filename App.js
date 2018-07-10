@@ -95,6 +95,7 @@ console.ignoredYellowBox = [
   'Sending `tts-progress` with no listeners registered.',
   'Sending `tts-finish` with no listeners registered.',
   'Sending `tts-cancel` with no listeners registered.',
+  'Method `jumpToIndex` is deprecated.',
 ];
 
 // gets the current screen from navigation state

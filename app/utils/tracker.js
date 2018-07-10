@@ -5,6 +5,7 @@ import {
 
 import { Answers } from 'react-native-fabric';
 import Analytics from 'analytics-react-native';
+import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
@@ -16,7 +17,7 @@ firebase.analytics().setAnalyticsCollectionEnabled(true);
 
 const userId = DeviceInfo.getUniqueID();
 
-const isTracking = !(
+const isTracking = true || !(
   __DEV__
   || DeviceInfo.getDeviceName().includes('kf')
   || DeviceInfo.getManufacturer() === 'Genymotion'
@@ -88,6 +89,7 @@ const tracker = {
       analytics.identify({ userId, context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
+      CleverTap.profileSet({ Identity: userId, ...context });
     }
   },
   logEvent: (event, properties) => {
@@ -102,6 +104,7 @@ const tracker = {
       analytics.track(message);
       firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
+      CleverTap.recordEvent(event, properties);
     }
   },
   view: (screen, properties) => {

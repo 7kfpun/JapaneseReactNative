@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Button,
+  TouchableOpacity,
   FlatList,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
 } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import firebase from 'react-native-firebase';
@@ -18,7 +18,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AdMob from '../elements/admob';
 import VocabItem from '../elements/vocab-item';
 
-import { checkAdRemoval } from '../utils/products';
+// import { checkAdRemoval } from '../utils/products';
 
 import { items as vocabs } from '../utils/items';
 import I18n from '../utils/i18n';
@@ -41,6 +41,11 @@ advert.on('onAdLoaded', () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  navText: {
+    paddingHorizontal: 8,
+    color: 'white',
+    fontSize: 18,
   },
 });
 
@@ -66,14 +71,15 @@ export default class VocabList extends Component<Props> {
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
       headerRight: (
         <Animatable.View animation="tada" iterationCount={10} >
-          <Button
+          <TouchableOpacity
             onPress={() => {
               navigation.navigate('assessment', { item: params.item });
               tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
             }}
-            title={I18n.t('app.vocab-list.learn')}
-            color={iOSColors.tealBlue}
-          />
+          >
+            <Text style={styles.navText}>{I18n.t('app.vocab-list.learn')}</Text>
+          </TouchableOpacity>
+
         </Animatable.View>
       ),
     };
