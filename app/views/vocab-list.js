@@ -68,7 +68,7 @@ export default class VocabList extends Component<Props> {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
-      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
+      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
       headerRight: (
         <Animatable.View animation="tada" iterationCount={10} >
           <TouchableOpacity

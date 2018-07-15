@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {};
-export default class Main extends Component<Props> {
+export default class About extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
   }

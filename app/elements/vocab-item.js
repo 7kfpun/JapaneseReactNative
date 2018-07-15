@@ -14,7 +14,7 @@ import Tts from 'react-native-tts';
 import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
-Tts.setDefaultRate(0.3);
+Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
 Tts.setDucking(true);
 
@@ -74,7 +74,7 @@ export default class VocabItem extends Component {
             <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== japanese ? kanji : ''}</Text>
           </View>
           <View style={styles.bodyRight}>
-            <Text style={styles.text}>{I18n.t(`minna.lesson${lessonNo}.${sound}`)}</Text>
+            <Text style={styles.text}>{I18n.t(`minna.${sound}`)}</Text>
             <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>
           </View>
         </View>

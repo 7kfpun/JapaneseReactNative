@@ -24,23 +24,18 @@ import tracker from '../utils/tracker';
 
 import AdMob from '../elements/admob';
 import Rating from '../elements/rating';
+import ReadableButton from '../elements/readable-button';
 
 import { config } from '../config';
+import { shuffle, cleanWord } from '../utils/helpers';
 
 const { width } = Dimensions.get('window');
 
-Tts.setDefaultRate(0.3);
+Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
 Tts.setDucking(true);
 
 const NO_OF_TILES = 5;
-
-const getTestVocab = text => text
-  .replace(/（.*?）/g, '')
-  .replace(/［.*?］/g, '')
-  .replace(/「.*?」/g, '')
-  .replace(/～/g, '')
-  .replace(/。/g, '');
 
 const styles = StyleSheet.create({
   container: {
@@ -162,7 +157,7 @@ export default class Assessment extends Component<Props> {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
       tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
-      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
+      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
     };
   };
 
@@ -243,21 +238,9 @@ export default class Assessment extends Component<Props> {
       return result;
     };
 
-    const shuffle = (a) => {
-      let j;
-      let x;
-      let i;
-      for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-      }
-    };
-
     const { item } = this.props.navigation.state.params;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];
-    const japanese = getTestVocab(vocab.split(';')[1]);
+    const japanese = cleanWord(vocab.split(';')[1]);
 
     if (this.state.isSoundOn) {
       Tts.stop();
@@ -287,7 +270,7 @@ export default class Assessment extends Component<Props> {
   read() {
     const { item } = this.props.navigation.state.params;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];
-    const japanese = getTestVocab(vocab.split(';')[1]);
+    const japanese = cleanWord(vocab.split(';')[1]);
 
     Tts.stop();
     Tts.speak(japanese);
@@ -295,7 +278,6 @@ export default class Assessment extends Component<Props> {
 
   render() {
     const { item } = this.props.navigation.state.params;
-    const lessonNo = item;
     const vocab = vocabs[`lesson${item}`].text[this.state.count];
 
     const kanji = vocab.split(';')[0];
@@ -381,13 +363,13 @@ export default class Assessment extends Component<Props> {
             {this.state.isRomajiShown && <Text style={styles.translationText}>{sound}</Text>}
           </View>
           <View style={styles.translationBlock}>
-            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.lesson${lessonNo}.${sound}`)}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${sound}`)}</Text>}
           </View>
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
               <View style={styles.answerResult}>
-                {this.state.answers.join('') === getTestVocab(japanese) && <Ionicons name="md-checkmark" size={28} color="green" />}
-                {!getTestVocab(japanese).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
+                {this.state.answers.join('') === cleanWord(japanese) && <Ionicons name="md-checkmark" size={28} color="green" />}
+                {!cleanWord(japanese).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
               </View>
               <View style={styles.answerItems}>
                 {this.state.answers.map(answer => <Text key={Math.random()} style={styles.answerText}>{answer}</Text>)}
@@ -410,15 +392,15 @@ export default class Assessment extends Component<Props> {
                 <TouchableOpacity
                   key={Math.random()}
                   onPress={() => {
-                    if (this.state.answers.length < getTestVocab(japanese).length) {
+                    if (this.state.answers.length < cleanWord(japanese).length) {
                       this.setState({ answers: [...this.state.answers, tile] }, () => {
                         tracker.logEvent('user-action-press-answer', { tile });
 
-                        if (this.state.answers.join('') === getTestVocab(japanese)) {
+                        if (this.state.answers.join('') === cleanWord(japanese)) {
                           tracker.logEvent('user-action-result-correct', { vocab });
                         }
 
-                        if (!getTestVocab(japanese).startsWith(this.state.answers.join(''))) {
+                        if (!cleanWord(japanese).startsWith(this.state.answers.join(''))) {
                           tracker.logEvent('user-action-result-incorrect', { vocab });
                         }
                       });
@@ -463,13 +445,11 @@ export default class Assessment extends Component<Props> {
             }}
           />}
 
-          <Button
+          <ReadableButton
             color={iOSColors.black}
             title={I18n.t('app.assessment.read')}
-            onPress={() => {
-              this.read();
-              tracker.logEvent('user-action-press-read');
-            }}
+            text={cleanWord(japanese)}
+            trackEvent={'user-action-press-read'}
           />
         </View>
 

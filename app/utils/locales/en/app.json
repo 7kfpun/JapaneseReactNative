@@ -1,4 +1,8 @@
 {
+  "today": {
+    "title": "Today",
+    "shuffle": "Shuffle"
+  },
   "main": {
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",

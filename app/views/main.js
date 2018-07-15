@@ -53,7 +53,7 @@ export default class Main extends Component<Props> {
   static navigationOptions = {
     headerBackTitle: null,
     title: 'みんなの日本語',
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-home' : 'ios-home-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
   };
 
   state = {}

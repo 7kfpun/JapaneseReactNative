@@ -1,4 +1,5 @@
 exports.config = {
+  server: '',
   admob: {
     'japanese-ios-popup': '',
     'japanese-ios-main-banner': '',

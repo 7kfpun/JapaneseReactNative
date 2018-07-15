@@ -4,6 +4,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
+import Today from './app/views/today';
 import Main from './app/views/main';
 import VocabList from './app/views/vocab-list';
 import Assessment from './app/views/assessment';
@@ -18,43 +19,41 @@ if (!__DEV__) {
   Tts.voices().then(voices => console.log('Voices', voices));
 }
 
+const stackOptions = {
+  swipeEnabled: false,
+  animationEnabled: true,
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: iOSColors.tealBlue,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  },
+};
+
 const AppTab = TabNavigator({
+  today: {
+    screen: StackNavigator({
+      today: { screen: Today },
+    },
+    stackOptions),
+  },
   home: {
     screen: StackNavigator({
       main: { screen: Main },
       'vocab-list': { screen: VocabList },
       assessment: { screen: Assessment },
-    }, {
-      swipeEnabled: false,
-      animationEnabled: true,
-      navigationOptions: {
-        headerStyle: {
-          backgroundColor: iOSColors.tealBlue,
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      },
-    }),
+    },
+    stackOptions),
   },
   about: {
     screen: StackNavigator({
       about: { screen: About },
       feedback: { screen: Feedback },
-    }, {
-      swipeEnabled: false,
-      animationEnabled: true,
-      navigationOptions: {
-        headerStyle: {
-          backgroundColor: iOSColors.tealBlue,
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      },
-    }),
+    },
+    stackOptions),
   },
 }, {
   tabBarOptions: {
