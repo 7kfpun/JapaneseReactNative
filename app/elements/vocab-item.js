@@ -13,6 +13,7 @@ import Tts from 'react-native-tts';
 
 import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
+import { cleanWord } from '../utils/helpers';
 
 Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
@@ -43,9 +44,12 @@ const styles = StyleSheet.create({
 
 export default class VocabItem extends Component {
   static propTypes = {
-    lessonNo: PropTypes.number.isRequired,
     index: PropTypes.number.isRequired,
-    item: PropTypes.string.isRequired,
+    item: PropTypes.shape({
+      kanji: PropTypes.string.isRequired,
+      kana: PropTypes.string.isRequired,
+      romaji: PropTypes.string.isRequired,
+    }).isRequired,
   }
 
   componentWillUnmount() {
@@ -53,28 +57,30 @@ export default class VocabItem extends Component {
   }
 
   render() {
-    const { item, index, lessonNo } = this.props;
-
-    const kanji = item.split(';')[0];
-    const japanese = item.split(';')[1];
-    const sound = item.split(';')[2];
-    // const en = item.split(';')[3];
+    const {
+      item: {
+        kanji,
+        kana,
+        romaji,
+      },
+      index,
+    } = this.props;
 
     return (
       <TouchableOpacity
         onPress={() => {
           // Tts.stop();
-          Tts.speak(japanese.replace('～', ''));
+          Tts.speak(cleanWord(kana));
           tracker.logEvent('user-action-press-speak', { item });
         }}
       >
         <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
           <View style={styles.bodyLeft}>
-            <Text style={styles.text}>{japanese}</Text>
-            <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== japanese ? kanji : ''}</Text>
+            <Text style={styles.text}>{kana}</Text>
+            <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== kana ? kanji : ''}</Text>
           </View>
           <View style={styles.bodyRight}>
-            <Text style={styles.text}>{I18n.t(`minna.${sound}`)}</Text>
+            <Text style={styles.text}>{I18n.t(`minna.${romaji}`)}</Text>
             <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>
           </View>
         </View>

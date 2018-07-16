@@ -27,7 +27,7 @@ import Rating from '../elements/rating';
 import ReadableButton from '../elements/readable-button';
 
 import { config } from '../config';
-import { shuffle, cleanWord } from '../utils/helpers';
+import { cleanWord, shuffle } from '../utils/helpers';
 
 const { width } = Dimensions.get('window');
 
@@ -201,7 +201,8 @@ export default class Assessment extends Component<Props> {
     });
 
     const { item } = this.props.navigation.state.params;
-    const total = vocabs[`lesson${item}`].text.length;
+    const total = vocabs[item].data.length;
+
     this.setState({ total });
     this.props.navigation.setParams({ count: 0, total });
 
@@ -238,18 +239,22 @@ export default class Assessment extends Component<Props> {
       return result;
     };
 
-    const { item } = this.props.navigation.state.params;
-    const vocab = vocabs[`lesson${item}`].text[this.state.count];
-    const japanese = cleanWord(vocab.split(';')[1]);
+    const {
+      item,
+    } = this.props.navigation.state.params;
+
+    const {
+      kana,
+    } = vocabs[item].data[this.state.count];
 
     if (this.state.isSoundOn) {
       Tts.stop();
-      Tts.speak(japanese);
+      Tts.speak(kana);
     }
 
-    let length = (NO_OF_TILES * 2) - japanese.length;
+    let length = (NO_OF_TILES * 2) - kana.length;
     if (length < 0) {
-      length = (NO_OF_TILES * 3) - japanese.length;
+      length = (NO_OF_TILES * 3) - kana.length;
     }
     if (length < 0) {
       this.setState({ tiles: [] });
@@ -257,10 +262,10 @@ export default class Assessment extends Component<Props> {
     }
 
     let tiles;
-    if (hiragana.includes(japanese[0])) {
-      tiles = [...getRandom(hiragana, length), ...japanese];
+    if (hiragana.includes(kana[0])) {
+      tiles = [...getRandom(hiragana, length), ...kana];
     } else {
-      tiles = [...getRandom(katakana, length), ...japanese];
+      tiles = [...getRandom(katakana, length), ...kana];
     }
 
     shuffle(tiles);
@@ -268,22 +273,28 @@ export default class Assessment extends Component<Props> {
   }
 
   read() {
-    const { item } = this.props.navigation.state.params;
-    const vocab = vocabs[`lesson${item}`].text[this.state.count];
-    const japanese = cleanWord(vocab.split(';')[1]);
+    const {
+      item,
+    } = this.props.navigation.state.params;
+
+    const {
+      kana,
+    } = vocabs[item].data[this.state.count];
 
     Tts.stop();
-    Tts.speak(japanese);
+    Tts.speak(cleanWord(kana));
   }
 
   render() {
-    const { item } = this.props.navigation.state.params;
-    const vocab = vocabs[`lesson${item}`].text[this.state.count];
+    const {
+      item,
+    } = this.props.navigation.state.params;
 
-    const kanji = vocab.split(';')[0];
-    const japanese = vocab.split(';')[1];
-    const sound = vocab.split(';')[2];
-    // const en = vocab.split(';')[3];
+    const {
+      kanji,
+      kana,
+      romaji,
+    } = vocabs[item].data[this.state.count];
 
     return (
       <SafeAreaView style={styles.container}>
@@ -358,18 +369,18 @@ export default class Assessment extends Component<Props> {
 
         <View style={{ flex: 1 }}>
           <View style={styles.originalBlock}>
-            {this.state.isKanjiShown && kanji !== japanese && <Text style={styles.originalText}>{kanji}</Text>}
-            {this.state.isJapaneseShown && <Text style={styles.originalText}>{japanese}</Text>}
-            {this.state.isRomajiShown && <Text style={styles.translationText}>{sound}</Text>}
+            {this.state.isKanjiShown && kanji !== kana && <Text style={styles.originalText}>{kanji}</Text>}
+            {this.state.isJapaneseShown && <Text style={styles.originalText}>{kana}</Text>}
+            {this.state.isRomajiShown && <Text style={styles.translationText}>{romaji}</Text>}
           </View>
           <View style={styles.translationBlock}>
-            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${sound}`)}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${romaji}`)}</Text>}
           </View>
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
               <View style={styles.answerResult}>
-                {this.state.answers.join('') === cleanWord(japanese) && <Ionicons name="md-checkmark" size={28} color="green" />}
-                {!cleanWord(japanese).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
+                {this.state.answers.join('') === cleanWord(kana) && <Ionicons name="md-checkmark" size={28} color="green" />}
+                {!cleanWord(kana).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
               </View>
               <View style={styles.answerItems}>
                 {this.state.answers.map(answer => <Text key={Math.random()} style={styles.answerText}>{answer}</Text>)}
@@ -392,15 +403,15 @@ export default class Assessment extends Component<Props> {
                 <TouchableOpacity
                   key={Math.random()}
                   onPress={() => {
-                    if (this.state.answers.length < cleanWord(japanese).length) {
+                    if (this.state.answers.length < cleanWord(kana).length) {
                       this.setState({ answers: [...this.state.answers, tile] }, () => {
                         tracker.logEvent('user-action-press-answer', { tile });
 
-                        if (this.state.answers.join('') === cleanWord(japanese)) {
+                        if (this.state.answers.join('') === cleanWord(kana)) {
                           tracker.logEvent('user-action-result-correct', { vocab });
                         }
 
-                        if (!cleanWord(japanese).startsWith(this.state.answers.join(''))) {
+                        if (!cleanWord(kana).startsWith(this.state.answers.join(''))) {
                           tracker.logEvent('user-action-result-incorrect', { vocab });
                         }
                       });
@@ -448,7 +459,7 @@ export default class Assessment extends Component<Props> {
           <ReadableButton
             color={iOSColors.black}
             title={I18n.t('app.assessment.read')}
-            text={cleanWord(japanese)}
+            text={cleanWord(kana)}
             trackEvent={'user-action-press-read'}
           />
         </View>

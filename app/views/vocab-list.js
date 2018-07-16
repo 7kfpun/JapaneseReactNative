@@ -91,7 +91,7 @@ export default class VocabList extends Component<Props> {
 
   async componentDidMount() {
     const { item } = this.props.navigation.state.params;
-    this.setState({ vocabs: vocabs[`lesson${item}`].text, lessonNo: item });
+    this.setState({ vocabs: vocabs[item].data, lessonNo: item });
 
     // const isAdRemoval = await checkAdRemoval();
     // if (!isAdRemoval) {

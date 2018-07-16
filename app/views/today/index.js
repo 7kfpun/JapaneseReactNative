@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-deck-swiper';
 
-import { shuffle, cleanWord } from '../../utils/helpers';
+import { cleanWord, shuffle } from '../../utils/helpers';
 
 import AdMob from '../../elements/admob';
 import ReadableButton from '../../elements/readable-button';
@@ -73,7 +73,7 @@ export default class Today extends Component<Props> {
     const URL = `${config.server}/today`;
     fetch(URL)
       .then(res => res.json())
-      .then(results => results.items && this.setState({ todayItems: results.items }))
+      .then(results => results.data && this.setState({ todayItems: results.data }))
       .catch((err) => {
         console.log('Request for aqi failed', err);
       });
