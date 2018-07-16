@@ -63,6 +63,7 @@ export default class VocabItem extends Component {
         kana,
         romaji,
       },
+      item,
       index,
     } = this.props;
 

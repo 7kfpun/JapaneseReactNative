@@ -249,7 +249,7 @@ export default class Assessment extends Component<Props> {
 
     if (this.state.isSoundOn) {
       Tts.stop();
-      Tts.speak(kana);
+      Tts.speak(cleanWord(kana));
     }
 
     let length = (NO_OF_TILES * 2) - kana.length;
