@@ -408,11 +408,11 @@ export default class Assessment extends Component<Props> {
                         tracker.logEvent('user-action-press-answer', { tile });
 
                         if (this.state.answers.join('') === cleanWord(kana)) {
-                          tracker.logEvent('user-action-result-correct', { vocab });
+                          tracker.logEvent('user-action-result-correct', { vocab: kana });
                         }
 
                         if (!cleanWord(kana).startsWith(this.state.answers.join(''))) {
-                          tracker.logEvent('user-action-result-incorrect', { vocab });
+                          tracker.logEvent('user-action-result-incorrect', { vocab: kana });
                         }
                       });
                     }
