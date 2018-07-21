@@ -15,5 +15,11 @@ export const cleanWord = text => text
   .replace(/（.*?）/g, '')
   .replace(/［.*?］/g, '')
   .replace(/「.*?」/g, '')
+  .replace(/\[.*\]/g, '')
   .replace(/～/g, '')
   .replace(/。/g, '');
+
+export const range = (start, stop, step = 1) =>
+  Array((stop - start) / step)
+    .fill(start)
+    .map((x, y) => x + (y * step));

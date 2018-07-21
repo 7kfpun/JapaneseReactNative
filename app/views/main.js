@@ -16,6 +16,7 @@ import OneSignal from 'react-native-onesignal';
 import AdMob from '../elements/admob';
 import LessonItem from '../elements/lesson-item';
 
+import { range } from '../utils/helpers';
 import I18n from '../utils/i18n';
 
 import { config } from '../config';
@@ -32,16 +33,16 @@ const styles = StyleSheet.create({
 
 const lessonGroup = [{
   text: I18n.t('app.main.beginning_one'),
-  list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  list: range(1, 14), // [1, 13]
 }, {
   text: I18n.t('app.main.beginning_two'),
-  list: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+  list: range(14, 26), // [14, 25]
 }, {
   text: I18n.t('app.main.advanced_one'),
-  list: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38],
+  list: range(26, 39), // [26, 38]
 }, {
   text: I18n.t('app.main.advanced_two'),
-  list: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+  list: range(39, 51), // [39, 50]
 }];
 
 type Props = {};

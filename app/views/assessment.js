@@ -17,17 +17,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
+import { cleanWord, shuffle } from '../utils/helpers';
 import { items as vocabs } from '../utils/items';
 import { hiragana, katakana } from '../utils/kana';
 import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
 import AdMob from '../elements/admob';
+import CardOptionSelector from '../elements/card-option-selector';
 import Rating from '../elements/rating';
 import ReadableButton from '../elements/readable-button';
 
 import { config } from '../config';
-import { cleanWord, shuffle } from '../utils/helpers';
 
 const { width } = Dimensions.get('window');
 
@@ -135,7 +136,6 @@ const styles = StyleSheet.create({
 });
 
 type Props = {};
-// LessonList
 export default class Assessment extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({
@@ -163,8 +163,8 @@ export default class Assessment extends Component<Props> {
 
   state = {
     count: 0,
-    isJapaneseShown: true,
     isKanjiShown: true,
+    isKanaShown: true,
     isTranslationShown: true,
     isSoundOn: true,
     isOrdered: true,
@@ -173,32 +173,12 @@ export default class Assessment extends Component<Props> {
   }
 
   componentDidMount() {
-    const that = this;
-    store.get('notFirstStart').then((notFirstStart) => {
-      if (notFirstStart) {
-        store.get('isJapaneseShown').then(isJapaneseShown => that.setState({ isJapaneseShown }));
-        store.get('isKanjiShown').then(isKanjiShown => that.setState({ isKanjiShown }));
-        store.get('isRomajiShown').then(isRomajiShown => that.setState({ isRomajiShown }));
-        store.get('isTranslationShown').then(isTranslationShown => that.setState({ isTranslationShown }));
-        store.get('isSoundOn').then(isSoundOn => that.setState({ isSoundOn }));
-        store.get('isOrdered').then(isOrdered => that.setState({ isOrdered }));
-      } else {
-        store.save('isJapaneseShown', true);
-        store.save('isKanjiShown', true);
-        store.save('isRomajiShown', true);
-        store.save('isTranslationShown', true);
-        store.save('isSoundOn', true);
-        store.save('isOrdered', true);
-        store.save('notFirstStart', true);
-
-        that.setState({ isJapaneseShown: true });
-        that.setState({ isKanjiShown: true });
-        that.setState({ isRomajiShown: true });
-        that.setState({ isTranslationShown: true });
-        that.setState({ isSoundOn: true });
-        that.setState({ isOrdered: true });
-      }
-    });
+    store.get('isKanjiShown').then(isKanjiShown => this.setState({ isKanjiShown }));
+    store.get('isKanaShown').then(isKanaShown => this.setState({ isKanaShown }));
+    store.get('isRomajiShown').then(isRomajiShown => this.setState({ isRomajiShown }));
+    store.get('isTranslationShown').then(isTranslationShown => this.setState({ isTranslationShown }));
+    store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
+    store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
 
     const { item } = this.props.navigation.state.params;
     const total = vocabs[item].data.length;
@@ -247,14 +227,16 @@ export default class Assessment extends Component<Props> {
       kana,
     } = vocabs[item].data[this.state.count];
 
+    const word = cleanWord(kana);
+
     if (this.state.isSoundOn) {
       Tts.stop();
-      Tts.speak(cleanWord(kana));
+      Tts.speak(word);
     }
 
-    let length = (NO_OF_TILES * 2) - kana.length;
+    let length = (NO_OF_TILES * 2) - word.length;
     if (length < 0) {
-      length = (NO_OF_TILES * 3) - kana.length;
+      length = (NO_OF_TILES * 3) - word.length;
     }
     if (length < 0) {
       this.setState({ tiles: [] });
@@ -262,10 +244,10 @@ export default class Assessment extends Component<Props> {
     }
 
     let tiles;
-    if (hiragana.includes(kana[0])) {
-      tiles = [...getRandom(hiragana, length), ...kana];
+    if (hiragana.includes(word[0])) {
+      tiles = [...getRandom(hiragana, length), ...word];
     } else {
-      tiles = [...getRandom(katakana, length), ...kana];
+      tiles = [...getRandom(katakana, length), ...word];
     }
 
     shuffle(tiles);
@@ -285,6 +267,30 @@ export default class Assessment extends Component<Props> {
     Tts.speak(cleanWord(kana));
   }
 
+  updateStates = (
+    isKanjiShown,
+    isKanaShown,
+    isRomajiShown,
+    isTranslationShown,
+    isSoundOn,
+  ) => {
+    console.log(
+      'updateStates',
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+    );
+    this.setState({
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+    });
+  }
+
   render() {
     const {
       item,
@@ -298,79 +304,12 @@ export default class Assessment extends Component<Props> {
 
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.selectors}>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isJapaneseShown: !this.state.isJapaneseShown,
-            }, () => {
-              store.save('isJapaneseShown', this.state.isJapaneseShown);
-              tracker.logEvent('user-action-set-isJapaneseShown', { value: this.state.isJapaneseShown });
-            })}
-          >
-            <Text style={[styles.selectorText, { color: this.state.isJapaneseShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kana')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isKanjiShown: !this.state.isKanjiShown,
-            }, () => {
-              store.save('isKanjiShown', this.state.isKanjiShown);
-              tracker.logEvent('user-action-set-isKanjiShown', { value: this.state.isKanjiShown });
-            })}
-          >
-            <Text style={[styles.selectorText, { color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kanji')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isRomajiShown: !this.state.isRomajiShown,
-            }, () => {
-              store.save('isRomajiShown', this.state.isRomajiShown);
-              tracker.logEvent('user-action-set-isRomajiShown', { value: this.state.isRomajiShown });
-            })}
-          >
-            <Text style={[styles.selectorText, { color: this.state.isRomajiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.romaji')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isTranslationShown: !this.state.isTranslationShown,
-            }, () => {
-              store.save('isTranslationShown', this.state.isTranslationShown);
-              tracker.logEvent('user-action-set-isTranslationShown', { value: this.state.isTranslationShown });
-            })}
-          >
-            <Text style={[styles.selectorText, { color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.translation')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isSoundOn: !this.state.isSoundOn,
-            }, () => {
-              store.save('isSoundOn', this.state.isSoundOn);
-              tracker.logEvent('user-action-set-isSoundOn', { value: this.state.isSoundOn });
-            })}
-          >
-            <Ionicons name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.selectorIcon}
-            onPress={() => this.setState({
-              isOrdered: !this.state.isOrdered,
-            }, () => {
-              store.save('isOrdered', this.state.isOrdered);
-              tracker.logEvent('user-action-set-isOrdered', { value: this.state.isOrdered });
-            })}
-          >
-            <Ionicons name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
-          </TouchableOpacity>
-        </View>
+        <CardOptionSelector onUpdate={this.updateStates} />
 
         <View style={{ flex: 1 }}>
           <View style={styles.originalBlock}>
             {this.state.isKanjiShown && kanji !== kana && <Text style={styles.originalText}>{kanji}</Text>}
-            {this.state.isJapaneseShown && <Text style={styles.originalText}>{kana}</Text>}
+            {this.state.isKanaShown && <Text style={styles.originalText}>{kana}</Text>}
             {this.state.isRomajiShown && <Text style={styles.translationText}>{romaji}</Text>}
           </View>
           <View style={styles.translationBlock}>
