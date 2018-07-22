@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
   Platform,
   StyleSheet,
-  RefreshControl,
+  // RefreshControl,
   ScrollView,
   View,
 } from 'react-native';
@@ -13,6 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
 
+import NotificationSetting from './notification-setting';
 import AdMob from '../../elements/admob';
 import Row from '../../elements/row';
 
@@ -115,12 +116,12 @@ export default class About extends Component<Props> {
       <SafeAreaView style={styles.container}>
         <ScrollView
           style={{ alignSelf: 'stretch' }}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={() => this.requestProducts()}
-            />
-          }
+          // refreshControl={
+          //   <RefreshControl
+          //     refreshing={this.state.refreshing}
+          //     onRefresh={() => this.requestProducts()}
+          //   />
+          // }
         >
           {/* <View style={{ marginTop: 10 }}>
             {
@@ -145,6 +146,8 @@ export default class About extends Component<Props> {
               }}
             />
           </View>
+
+          <NotificationSetting />
         </ScrollView>
 
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />

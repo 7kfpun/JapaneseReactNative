@@ -29,6 +29,7 @@
   },
   "about": {
     "title": "About",
+    "notification_label": "Study Reminder (Daily)"
   },
   "common": {
     "lesson_no": "Lesson {{lesson_no}}",

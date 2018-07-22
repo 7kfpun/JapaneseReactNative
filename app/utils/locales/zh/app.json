@@ -29,6 +29,7 @@
   },
   "about": {
     "title": "关于",
+    "notification_label": "学习通知 (每日)"
   },
   "common": {
     "lesson_no": "第 {{lesson_no}} 课",

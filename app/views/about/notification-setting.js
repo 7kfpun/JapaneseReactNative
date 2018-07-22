@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import { iOSColors } from 'react-native-typography';
 import OneSignal from 'react-native-onesignal';
 
 import { OneSignalGetTags } from '../../utils/onesignal';
@@ -16,13 +17,19 @@ import tracker from '../../utils/tracker';
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: 15,
+    backgroundColor: 'white',
+    borderTopColor: iOSColors.gray,
+    borderTopWidth: 0.5,
+    borderBottomColor: iOSColors.gray,
+    borderBottomWidth: 0.5,
   },
   text: {
-    fontWeight: '600',
     fontSize: 16,
     color: 'black',
   },
@@ -72,7 +79,7 @@ export default class NotificationSetting extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{I18n.t('notification_label')}</Text>
+        <Text style={styles.text}>{I18n.t('app.about.notification_label')}</Text>
         <Switch
           onValueChange={this.setNotification}
           value={this.state.isEnabled}

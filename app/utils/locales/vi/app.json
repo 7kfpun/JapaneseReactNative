@@ -29,6 +29,7 @@
   },
   "about": {
     "title": "Về chúng tôi",
+    "notification_label": "Study Reminder (Daily)"
   },
   "common": {
     "lesson_no": "Bài {{lesson_no}}",

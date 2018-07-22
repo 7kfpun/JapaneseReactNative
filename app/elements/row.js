@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -32,11 +32,13 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+    color: 'black',
   },
   descriptionText: {
     fontSize: 12,
     fontWeight: '300',
     marginTop: 8,
+    color: 'black',
   },
 });
 
@@ -59,7 +61,8 @@ const Row = ({
     ]}
     onPress={() => !disabled && onPress()}
   >
-    <View style={[
+    <View
+      style={[
         styles.body,
         !first && !last ? styles.borderBottom : {},
         first && !last ? styles.borderBottom : {},
