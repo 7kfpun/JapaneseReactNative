@@ -23,3 +23,7 @@ export const range = (start, stop, step = 1) =>
   Array((stop - start) / step)
     .fill(start)
     .map((x, y) => x + (y * step));
+
+export const flatten = arr =>
+  arr.reduce((flat, toFlatten) =>
+    flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);

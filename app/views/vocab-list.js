@@ -114,8 +114,6 @@ export default class VocabList extends Component<Props> {
             renderItem={({ item, index }) => (
               <VocabItem
                 index={index}
-                navigation={this.props.navigation}
-                lessonNo={this.state.lessonNo}
                 item={item}
               />
             )}

@@ -10,6 +10,11 @@
     "advanced_two": "进阶 II",
     "feedback": "反馈",
   },
+  "search": {
+    "title": "搜索",
+    "cancel": "取消",
+    "description": "你可以在所有课程中寻找单词。"
+  },
   "vocab-list": {
     "learn": "学习",
   },

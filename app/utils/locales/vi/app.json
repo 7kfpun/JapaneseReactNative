@@ -10,6 +10,11 @@
     "advanced_two": "Adv. II",
     "feedback": "Phản hồi",
   },
+  "search": {
+    "title": "Search",
+    "cancel": "Cancel",
+    "description": "You can find the word across all lessons."
+  },
   "vocab-list": {
     "learn": "Học hỏi"
   },

@@ -4,12 +4,13 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
-import Today from './app/views/today';
-import Main from './app/views/main';
-import VocabList from './app/views/vocab-list';
+import About from './app/views/about';
 import Assessment from './app/views/assessment';
 import Feedback from './app/views/feedback';
-import About from './app/views/about';
+import Main from './app/views/main';
+import Search from './app/views/search';
+import Today from './app/views/today';
+import VocabList from './app/views/vocab-list';
 
 import tracker from './app/utils/tracker';
 
@@ -45,6 +46,12 @@ const AppTab = TabNavigator({
       main: { screen: Main },
       'vocab-list': { screen: VocabList },
       assessment: { screen: Assessment },
+    },
+    stackOptions),
+  },
+  search: {
+    screen: StackNavigator({
+      search: { screen: Search },
     },
     stackOptions),
   },

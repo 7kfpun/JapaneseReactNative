@@ -49,6 +49,7 @@ export default class VocabItem extends Component {
       kanji: PropTypes.string.isRequired,
       kana: PropTypes.string.isRequired,
       romaji: PropTypes.string.isRequired,
+      lesson: PropTypes.string,
     }).isRequired,
   }
 
@@ -62,6 +63,7 @@ export default class VocabItem extends Component {
         kanji,
         kana,
         romaji,
+        lesson,
       },
       item,
       index,
@@ -82,7 +84,8 @@ export default class VocabItem extends Component {
           </View>
           <View style={styles.bodyRight}>
             <Text style={styles.text}>{I18n.t(`minna.${romaji}`)}</Text>
-            <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>
+            {!!lesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{lesson}</Text>}
+            {!lesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>}
           </View>
         </View>
       </TouchableOpacity>

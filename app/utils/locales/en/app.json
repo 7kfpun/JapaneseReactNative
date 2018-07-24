@@ -10,6 +10,11 @@
     "advanced_two": "Adv. II",
     "feedback": "Feedback",
   },
+  "search": {
+    "title": "Search",
+    "cancel": "Cancel",
+    "description": "You can find any word across all lessons."
+  },
   "vocab-list": {
     "learn": "Learn"
   },
