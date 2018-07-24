@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     borderRadius: 10,
+    borderColor: iOSColors.lightGray,
+    borderWidth: 1,
     justifyContent: 'space-between',
     backgroundColor: 'white',
     padding: 10,
