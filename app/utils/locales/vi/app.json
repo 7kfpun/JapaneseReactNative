@@ -1,7 +1,7 @@
 {
   "today": {
     "title": "Hôm Nay",
-    "shuffle": "Trộn"
+    "shuffle": "Trộn",
   },
   "main": {
     "beginning_one": "Beg. I",
@@ -11,12 +11,12 @@
     "feedback": "Phản hồi",
   },
   "search": {
-    "title": "Search",
-    "cancel": "Cancel",
-    "description": "You can find the word across all lessons."
+    "title": "Tìm kiếm",
+    "cancel": "Hủy bỏ",
+    "description": "Bạn có thể tìm thấy từ trên tất cả các bài học.",
   },
   "vocab-list": {
-    "learn": "Học hỏi"
+    "learn": "Học hỏi",
   },
   "assessment": {
     "kana": "Kana",
@@ -26,23 +26,24 @@
     "previous": "Trước",
     "next": "Kế tiếp",
     "read": "Đọc",
-    "random": "Ngẫu nhiên"
+    "random": "Ngẫu nhiên",
   },
   "feedback": {
     "title": "Phản hồi",
     "url": "https://airtable.com/shr7xvYAyInUbJNif",
+    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
   },
   "about": {
     "title": "Về chúng tôi",
-    "notification_label": "Study Reminder (Daily)"
+    "notification_label": "Nhắc nhở học tập (hàng ngày)",
   },
   "common": {
     "lesson_no": "Bài {{lesson_no}}",
   },
   "rating": {
     "title": "Thưởng thức?",
-    "title_description": "Please give us 5 stars to cheer we up if you like this app.",
-    "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
+    "title_description": "Hãy cho chúng tôi 5 sao để cổ vũ chúng tôi nếu bạn thích ứng dụng này.",
+    "feedback_description": "Không thích APP của chúng tôi? Hãy cho chúng tôi một số phản hồi. Chúng tôi chắc chắn sẽ tiếp tục cải thiện.",
     "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif",
-  }
+  },
 }

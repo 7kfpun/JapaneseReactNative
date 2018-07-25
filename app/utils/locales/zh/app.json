@@ -1,7 +1,7 @@
 {
   "today": {
     "title": "今日の日本语",
-    "shuffle": "洗牌"
+    "shuffle": "洗牌",
   },
   "main": {
     "beginning_one": "初级 I",
@@ -13,7 +13,7 @@
   "search": {
     "title": "搜索",
     "cancel": "取消",
-    "description": "你可以在所有课程中寻找单词。"
+    "description": "你可以在所有课程中寻找单词。",
   },
   "vocab-list": {
     "learn": "学习",
@@ -31,10 +31,11 @@
   "feedback": {
     "title": "反馈/建议",
     "url": "https://airtable.com/shrsfl03pU6HnE5Ar",
+    "issueUrl": "https://airtable.com/shroN1qoYaCZRsfEw?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
   },
   "about": {
     "title": "关于",
-    "notification_label": "学习通知 (每日)"
+    "notification_label": "学习通知 (每日)",
   },
   "common": {
     "lesson_no": "第 {{lesson_no}} 课",
@@ -44,5 +45,5 @@
     "title_description": "给我们 5 颗星以鼓励我们吧",
     "feedback_description": "对哪里不满意？給我们點意見吧。",
     "feedback_url": "https://airtable.com/shrsfl03pU6HnE5Ar",
-  }
+  },
 }

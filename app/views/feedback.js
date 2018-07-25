@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ActivityIndicator,
   StyleSheet,
@@ -23,6 +25,22 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class Feedback extends Component<Props> {
+  static propTypes = {
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          lesson: PropTypes.number,
+          item: PropTypes.shape({
+            kana: PropTypes.string.isRequired,
+            kanji: PropTypes.string.isRequired,
+            romaji: PropTypes.string.isRequired,
+          }),
+        }),
+      }).isRequired,
+      setParams: PropTypes.func.isRequired,
+    }).isRequired,
+  }
+
   static navigationOptions = {
     title: I18n.t('app.feedback.title'),
     tabBarLabel: I18n.t('app.feedback.title'),
@@ -34,11 +52,40 @@ export default class Feedback extends Component<Props> {
   }
 
   render() {
+    let uri;
+    const {
+      navigation: {
+        state: {
+          params,
+        },
+      },
+    } = this.props;
+
+    if (params) {
+      const {
+        lesson,
+        item: {
+          kana,
+          kanji,
+          romaji,
+        },
+      } = params;
+
+      uri = I18n.t('app.feedback.issueUrl')
+        .replace('{lesson}', lesson)
+        .replace('{kana}', kana)
+        .replace('{kanji}', kanji)
+        .replace('{romaji}', romaji)
+        .replace('{translation}', I18n.t(`minna.${romaji}`));
+    } else {
+      uri = I18n.t('app.feedback.url');
+    }
+
     return (
       <View style={styles.container}>
         {this.state.isLoading && <ActivityIndicator style={styles.loading} size="small" />}
         <WebView
-          source={{ uri: I18n.t('app.feedback.url') }}
+          source={{ uri }}
           onLoadEnd={() => this.setState({ isLoading: false })}
         />
       </View>

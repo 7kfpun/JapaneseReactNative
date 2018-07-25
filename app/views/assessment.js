@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   selectors: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderBottomColor: iOSColors.blue,
+    borderBottomColor: iOSColors.customGray,
     borderBottomWidth: 0.3,
   },
   selectorIcon: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
   },
   originalText: {
     textAlign: 'center',
@@ -293,8 +293,15 @@ export default class Assessment extends Component<Props> {
 
   render() {
     const {
-      item,
-    } = this.props.navigation.state.params;
+      navigation,
+      navigation: {
+        state: {
+          params: {
+            item,
+          },
+        },
+      },
+    } = this.props;
 
     const {
       kanji,
@@ -306,6 +313,24 @@ export default class Assessment extends Component<Props> {
       <SafeAreaView style={styles.container}>
         <CardOptionSelector onUpdate={this.updateStates} />
 
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+          <TouchableOpacity
+            style={{ padding: 10 }}
+            onPress={() => {
+              navigation.navigate('vocab-feedback', {
+                item: {
+                  kanji,
+                  kana,
+                  romaji,
+                },
+                lesson: item,
+              });
+            }}
+          >
+            <Ionicons name="ios-help-circle-outline" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+
         <View style={{ flex: 1 }}>
           <View style={styles.originalBlock}>
             {this.state.isKanjiShown && kanji !== kana && <Text style={styles.originalText}>{kanji}</Text>}
@@ -315,6 +340,7 @@ export default class Assessment extends Component<Props> {
           <View style={styles.translationBlock}>
             {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${romaji}`)}</Text>}
           </View>
+
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
               <View style={styles.answerResult}>

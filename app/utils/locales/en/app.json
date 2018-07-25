@@ -31,6 +31,7 @@
   "feedback": {
     "title": "Feedback",
     "url": "https://airtable.com/shr7xvYAyInUbJNif",
+    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}"
   },
   "about": {
     "title": "About",
