@@ -17,18 +17,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
-import { cleanWord, shuffle } from '../utils/helpers';
-import { items as vocabs } from '../utils/items';
-import { hiragana, katakana } from '../utils/kana';
-import I18n from '../utils/i18n';
-import tracker from '../utils/tracker';
+import { cleanWord, shuffle } from '../../utils/helpers';
+import { items as vocabs } from '../../utils/items';
+import { hiragana, katakana } from '../../utils/kana';
+import I18n from '../../utils/i18n';
+import tracker from '../../utils/tracker';
 
-import AdMob from '../elements/admob';
-import CardOptionSelector from '../elements/card-option-selector';
-import Rating from '../elements/rating';
-import ReadableButton from '../elements/readable-button';
+import AdMob from '../../elements/admob';
+import CardOptionSelector from '../../elements/card-option-selector';
+import Rating from '../../elements/rating';
+import ReadableButton from '../../elements/readable-button';
 
-import { config } from '../config';
+import { config } from '../../config';
 
 const { width } = Dimensions.get('window');
 

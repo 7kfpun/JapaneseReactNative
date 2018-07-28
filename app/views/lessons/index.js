@@ -13,13 +13,13 @@ import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import OneSignal from 'react-native-onesignal';
 
-import AdMob from '../elements/admob';
-import LessonItem from '../elements/lesson-item';
+import AdMob from '../../elements/admob';
+import LessonItem from '../../elements/lesson-item';
 
-import { range } from '../utils/helpers';
-import I18n from '../utils/i18n';
+import { range } from '../../utils/helpers';
+import I18n from '../../utils/i18n';
 
-import { config } from '../config';
+import { config } from '../../config';
 
 const styles = StyleSheet.create({
   container: {

@@ -5,12 +5,12 @@ import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
 import About from './app/views/about';
-import Assessment from './app/views/assessment';
+import Assessment from './app/views/lessons/assessment';
 import Feedback from './app/views/feedback';
-import Main from './app/views/main';
+import Main from './app/views/lessons';
 import Search from './app/views/search';
 import Today from './app/views/today';
-import VocabList from './app/views/vocab-list';
+import VocabList from './app/views/lessons/vocab-list';
 
 import tracker from './app/utils/tracker';
 

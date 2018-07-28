@@ -239,4 +239,8 @@ if (I18n.locale.startsWith('zh-Hant')) {
   I18n.translations[I18n.locale] = I18n.translations.zh;
 }
 
+if (I18n.locale.startsWith('vi')) {
+  I18n.translations[I18n.locale] = I18n.translations.vi;
+}
+
 export default I18n;

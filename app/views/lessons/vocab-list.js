@@ -7,7 +7,7 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
+  View,
 } from 'react-native';
 
 import { SafeAreaView } from 'react-navigation';
@@ -15,16 +15,16 @@ import * as Animatable from 'react-native-animatable';
 import firebase from 'react-native-firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import AdMob from '../elements/admob';
-import VocabItem from '../elements/vocab-item';
+import AdMob from '../../elements/admob';
+import VocabItem from '../../elements/vocab-item';
 
-// import { checkAdRemoval } from '../utils/products';
+// import { checkAdRemoval } from '../../utils/products';
 
-import { items as vocabs } from '../utils/items';
-import I18n from '../utils/i18n';
-import tracker from '../utils/tracker';
+import { items as vocabs } from '../../utils/items';
+import I18n from '../../utils/i18n';
+import tracker from '../../utils/tracker';
 
-import { config } from '../config';
+import { config } from '../../config';
 
 const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
 
@@ -70,17 +70,31 @@ export default class VocabList extends Component<Props> {
       tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
       headerRight: (
-        <Animatable.View animation="tada" iterationCount={10} >
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('assessment', { item: params.item });
-              tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
-            }}
-          >
-            <Text style={styles.navText}>{I18n.t('app.vocab-list.learn')}</Text>
-          </TouchableOpacity>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Animatable.View animation="tada" iterationCount={10}>
+            <TouchableOpacity
+              style={{ paddingHorizontal: 12 }}
+              onPress={() => {
+                navigation.navigate('read-all', { item: params.item });
+                tracker.logEvent('user-action-read-all', { lesson: `${params.item}` });
+              }}
+            >
+              <Ionicons name="ios-play" size={28} color="white" />
+            </TouchableOpacity>
+          </Animatable.View>
 
-        </Animatable.View>
+          <Animatable.View animation="tada" iterationCount={10}>
+            <TouchableOpacity
+              style={{ paddingLeft: 12, paddingRight: 15 }}
+              onPress={() => {
+                navigation.navigate('assessment', { item: params.item });
+                tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
+              }}
+            >
+              <Ionicons name="ios-list-box-outline" size={22} color="white" />
+            </TouchableOpacity>
+          </Animatable.View>
+        </View>
       ),
     };
   };
