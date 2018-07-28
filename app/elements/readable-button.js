@@ -31,6 +31,7 @@ export default class VocabItem extends Component {
         title={this.props.title}
         onPress={() => {
           console.log(this.props.text);
+          Tts.setDefaultLanguage('ja');
           Tts.speak(this.props.text);
           tracker.logEvent(this.props.trackEvent);
         }}

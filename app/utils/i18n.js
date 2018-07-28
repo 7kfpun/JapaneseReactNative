@@ -1,4 +1,5 @@
 import I18n, { getLanguages } from 'react-native-i18n';
+import Tts from 'react-native-tts';
 
 getLanguages().then((languages) => {
   console.log('All languages', languages);
@@ -6,62 +7,65 @@ getLanguages().then((languages) => {
 
 I18n.fallbacks = true;
 
+const minnaEn = {
+  ...require('./minna/en/1'),
+  ...require('./minna/en/1'),
+  ...require('./minna/en/2'),
+  ...require('./minna/en/3'),
+  ...require('./minna/en/4'),
+  ...require('./minna/en/5'),
+  ...require('./minna/en/6'),
+  ...require('./minna/en/7'),
+  ...require('./minna/en/8'),
+  ...require('./minna/en/9'),
+  ...require('./minna/en/10'),
+  ...require('./minna/en/11'),
+  ...require('./minna/en/12'),
+  ...require('./minna/en/13'),
+  ...require('./minna/en/14'),
+  ...require('./minna/en/15'),
+  ...require('./minna/en/16'),
+  ...require('./minna/en/17'),
+  ...require('./minna/en/18'),
+  ...require('./minna/en/19'),
+  ...require('./minna/en/20'),
+  ...require('./minna/en/21'),
+  ...require('./minna/en/22'),
+  ...require('./minna/en/23'),
+  ...require('./minna/en/24'),
+  ...require('./minna/en/25'),
+  ...require('./minna/en/26'),
+  ...require('./minna/en/27'),
+  ...require('./minna/en/28'),
+  ...require('./minna/en/29'),
+  ...require('./minna/en/30'),
+  ...require('./minna/en/31'),
+  ...require('./minna/en/32'),
+  ...require('./minna/en/33'),
+  ...require('./minna/en/34'),
+  ...require('./minna/en/35'),
+  ...require('./minna/en/36'),
+  ...require('./minna/en/37'),
+  ...require('./minna/en/38'),
+  ...require('./minna/en/39'),
+  ...require('./minna/en/40'),
+  ...require('./minna/en/41'),
+  ...require('./minna/en/42'),
+  ...require('./minna/en/43'),
+  ...require('./minna/en/44'),
+  ...require('./minna/en/45'),
+  ...require('./minna/en/46'),
+  ...require('./minna/en/47'),
+  ...require('./minna/en/48'),
+  ...require('./minna/en/49'),
+  ...require('./minna/en/50'),
+};
+
 I18n.translations = {
   en: {
     app: require('./locales/en/app'),
-    minna: {
-      ...require('./minna/en/1'),
-      ...require('./minna/en/1'),
-      ...require('./minna/en/2'),
-      ...require('./minna/en/3'),
-      ...require('./minna/en/4'),
-      ...require('./minna/en/5'),
-      ...require('./minna/en/6'),
-      ...require('./minna/en/7'),
-      ...require('./minna/en/8'),
-      ...require('./minna/en/9'),
-      ...require('./minna/en/10'),
-      ...require('./minna/en/11'),
-      ...require('./minna/en/12'),
-      ...require('./minna/en/13'),
-      ...require('./minna/en/14'),
-      ...require('./minna/en/15'),
-      ...require('./minna/en/16'),
-      ...require('./minna/en/17'),
-      ...require('./minna/en/18'),
-      ...require('./minna/en/19'),
-      ...require('./minna/en/20'),
-      ...require('./minna/en/21'),
-      ...require('./minna/en/22'),
-      ...require('./minna/en/23'),
-      ...require('./minna/en/24'),
-      ...require('./minna/en/25'),
-      ...require('./minna/en/26'),
-      ...require('./minna/en/27'),
-      ...require('./minna/en/28'),
-      ...require('./minna/en/29'),
-      ...require('./minna/en/30'),
-      ...require('./minna/en/31'),
-      ...require('./minna/en/32'),
-      ...require('./minna/en/33'),
-      ...require('./minna/en/34'),
-      ...require('./minna/en/35'),
-      ...require('./minna/en/36'),
-      ...require('./minna/en/37'),
-      ...require('./minna/en/38'),
-      ...require('./minna/en/39'),
-      ...require('./minna/en/40'),
-      ...require('./minna/en/41'),
-      ...require('./minna/en/42'),
-      ...require('./minna/en/43'),
-      ...require('./minna/en/44'),
-      ...require('./minna/en/45'),
-      ...require('./minna/en/46'),
-      ...require('./minna/en/47'),
-      ...require('./minna/en/48'),
-      ...require('./minna/en/49'),
-      ...require('./minna/en/50'),
-    },
+    minna: minnaEn,
+    minnaEn,
   },
   zh: {
     app: require('./locales/zh/app'),
@@ -237,10 +241,20 @@ if (I18n.locale.startsWith('zh-Hant')) {
   I18n.translations[I18n.locale] = I18n.translations['zh-Hant'];
 } else if (I18n.isZh) {
   I18n.translations[I18n.locale] = I18n.translations.zh;
-}
-
-if (I18n.locale.startsWith('vi')) {
+} else if (I18n.locale.startsWith('vi')) {
   I18n.translations[I18n.locale] = I18n.translations.vi;
 }
+
+Tts.voices().then((voices) => {
+  console.log(voices);
+  const matchVoices = voices.filter(i => I18n.locale.split('-')[0].startsWith(i.language.split('-')[0]));
+  if (matchVoices.length > 0) {
+    I18n.voiceLocale = matchVoices[0].language;
+  } else {
+    I18n.voiceLocale = 'en';
+  }
+
+  console.log('I18n.voiceLocale', I18n.voiceLocale);
+});
 
 export default I18n;

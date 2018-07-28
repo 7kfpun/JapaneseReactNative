@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: iOSColors.black,
     backgroundColor: 'transparent',
-    lineHeight: 40,
+    lineHeight: 50,
   },
 });
 

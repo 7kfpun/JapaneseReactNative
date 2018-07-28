@@ -2,12 +2,12 @@ import React from 'react';
 
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
-import Tts from 'react-native-tts';
 
 import About from './app/views/about';
 import Assessment from './app/views/lessons/assessment';
 import Feedback from './app/views/feedback';
-import Main from './app/views/lessons';
+import Lessons from './app/views/lessons';
+import ReadAll from './app/views/lessons/read-all';
 import Search from './app/views/search';
 import Today from './app/views/today';
 import VocabList from './app/views/lessons/vocab-list';
@@ -16,8 +16,6 @@ import tracker from './app/utils/tracker';
 
 if (!__DEV__) {
   console.log = () => {};
-} else {
-  Tts.voices().then(voices => console.log('Voices', voices));
 }
 
 const stackOptions = {
@@ -41,11 +39,12 @@ const AppTab = TabNavigator({
     },
     stackOptions),
   },
-  home: {
+  lessons: {
     screen: StackNavigator({
-      main: { screen: Main },
+      lessons: { screen: Lessons },
       'vocab-list': { screen: VocabList },
       assessment: { screen: Assessment },
+      'read-all': { screen: ReadAll },
       'vocab-feedback': { screen: Feedback },
     },
     stackOptions),

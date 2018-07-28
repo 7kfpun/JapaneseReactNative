@@ -27,3 +27,5 @@ export const range = (start, stop, step = 1) =>
 export const flatten = arr =>
   arr.reduce((flat, toFlatten) =>
     flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);
+
+export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));

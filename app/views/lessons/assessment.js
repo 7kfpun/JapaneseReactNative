@@ -264,6 +264,7 @@ export default class Assessment extends Component<Props> {
     } = vocabs[item].data[this.state.count];
 
     Tts.stop();
+    Tts.setDefaultLanguage('ja');
     Tts.speak(cleanWord(kana));
   }
 

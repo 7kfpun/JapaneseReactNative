@@ -105,6 +105,7 @@ export default class Today extends Component<Props> {
       .then(() => {
         if (this.state.isSoundOn && this.state.todayItems) {
           Tts.stop();
+          Tts.setDefaultLanguage('ja');
           Tts.speak(cleanWord(this.state.todayItems[0].kana));
         }
       })
@@ -164,6 +165,7 @@ export default class Today extends Component<Props> {
       )}
       onTapCard={(cardIndex) => {
         Tts.stop();
+        Tts.setDefaultLanguage('ja');
         Tts.speak(cleanWord(this.state.todayItems[cardIndex].kana));
       }}
       onSwiped={(cardIndex) => {
@@ -171,8 +173,10 @@ export default class Today extends Component<Props> {
           setTimeout(() => {
             Tts.stop();
             if (cardIndex + 1 < this.state.todayItems.length) {
+              Tts.setDefaultLanguage('ja');
               Tts.speak(cleanWord(this.state.todayItems[cardIndex + 1].kana));
             } else {
+              Tts.setDefaultLanguage('ja');
               Tts.speak(cleanWord(this.state.todayItems[0].kana));
             }
           });
@@ -192,6 +196,7 @@ export default class Today extends Component<Props> {
           this.setState({ todayItems: shuffle([...this.state.todayItems]) }, () => {
             if (this.state.isSoundOn && this.state.todayItems) {
               Tts.stop();
+              Tts.setDefaultLanguage('ja');
               Tts.speak(cleanWord(this.state.todayItems[0].kana));
             }
           });
