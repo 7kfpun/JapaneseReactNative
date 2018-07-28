@@ -2,6 +2,7 @@
   "today": {
     "title": "今日の日本语",
     "shuffle": "洗牌",
+    "out_of_connection": "没有互联网连接"
   },
   "main": {
     "beginning_one": "初级 I",

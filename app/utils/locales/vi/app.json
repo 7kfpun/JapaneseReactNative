@@ -2,6 +2,7 @@
   "today": {
     "title": "Hôm Nay",
     "shuffle": "Trộn",
+    "out_of_connection": "Ra khỏi kết nối internet"
   },
   "main": {
     "beginning_one": "Beg. I",

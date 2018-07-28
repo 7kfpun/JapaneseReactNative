@@ -1,7 +1,8 @@
 {
   "today": {
     "title": "Today",
-    "shuffle": "Shuffle"
+    "shuffle": "Shuffle",
+    "out_of_connection": "Out of Internet Connection"
   },
   "main": {
     "beginning_one": "Beg. I",
