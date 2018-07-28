@@ -46,6 +46,7 @@ const AppTab = TabNavigator({
       main: { screen: Main },
       'vocab-list': { screen: VocabList },
       assessment: { screen: Assessment },
+      'vocab-feedback': { screen: Feedback },
     },
     stackOptions),
   },

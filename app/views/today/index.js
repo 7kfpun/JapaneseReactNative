@@ -17,6 +17,8 @@ import Tts from 'react-native-tts';
 
 import { cleanWord, shuffle } from '../../utils/helpers';
 
+import OutOfConnection from './out-of-connection';
+
 import AdMob from '../../elements/admob';
 import CardOptionSelector from '../../elements/card-option-selector';
 import ReadableButton from '../../elements/readable-button';
@@ -78,6 +80,7 @@ export default class Today extends Component<Props> {
     isSoundOn: false,
 
     todayItems: [],
+    outOfConnection: false,
   }
 
   componentDidMount() {
@@ -100,13 +103,16 @@ export default class Today extends Component<Props> {
       .then(res => res.json())
       .then(results => results.data && this.setState({ todayItems: results.data }))
       .then(() => {
-        if (this.state.isSoundOn) {
+        if (this.state.isSoundOn && this.state.todayItems) {
           Tts.stop();
           Tts.speak(cleanWord(this.state.todayItems[0].kana));
         }
       })
       .catch((err) => {
         console.log('Request for aqi failed', err);
+        this.setState({
+          outOfConnection: true,
+        });
       });
   }
 
@@ -134,71 +140,76 @@ export default class Today extends Component<Props> {
     });
   }
 
+  renderSwiperCard() {
+    return (<Swiper
+      key={
+        `${this.state.isKanjiShown}${this.state.isKanaShown}${this.state.isRomajiShown}${this.state.isTranslationShown}${this.state.isSoundOn}`
+      }
+      cards={this.state.todayItems}
+      renderCard={card => (
+        <View style={styles.card}>
+          <View>
+            {this.state.isKanjiShown && card.kanji !== card.kana && <Text style={styles.text}>{card.kanji}</Text>}
+            {this.state.isKanaShown && <Text style={styles.text}>{card.kana}</Text>}
+            {this.state.isRomajiShown && <Text style={styles.thinText}>{card.romaji}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.thinText}>{I18n.t(`minna.${card.romaji}`)}</Text>}
+          </View>
+
+          <ReadableButton
+            title={I18n.t('app.assessment.read')}
+            text={cleanWord(card.kana)}
+            trackEvent={'user-action-press-today-read'}
+          />
+        </View>
+      )}
+      onTapCard={(cardIndex) => {
+        Tts.stop();
+        Tts.speak(cleanWord(this.state.todayItems[cardIndex].kana));
+      }}
+      onSwiped={(cardIndex) => {
+        if (this.state.isSoundOn) {
+          setTimeout(() => {
+            Tts.stop();
+            if (cardIndex + 1 < this.state.todayItems.length) {
+              Tts.speak(cleanWord(this.state.todayItems[cardIndex + 1].kana));
+            } else {
+              Tts.speak(cleanWord(this.state.todayItems[0].kana));
+            }
+          });
+        }
+
+        tracker.logEvent('user-action-swipe', { value: cardIndex });
+      }}
+      onSwipedAll={() => tracker.logEvent('user-action-swipe-all')}
+      cardVerticalMargin={Platform.OS === 'ios' ? 40 : 50}
+      backgroundColor={iOSColors.customGray}
+      stackSize={3}
+      marginBottom={Platform.OS === 'ios' ? 170 : 20}
+      infinite
+    >
+      {this.state.todayItems.length > 0 && <Button
+        onPress={() => {
+          this.setState({ todayItems: shuffle([...this.state.todayItems]) }, () => {
+            if (this.state.isSoundOn && this.state.todayItems) {
+              Tts.stop();
+              Tts.speak(cleanWord(this.state.todayItems[0].kana));
+            }
+          });
+          tracker.logEvent('user-action-today-shuffle');
+        }}
+        title="Shuffle"
+      />}
+    </Swiper>);
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <CardOptionSelector isOrderedEnable={false} onUpdate={this.updateStates} />
 
         <View style={{ flex: 1 }}>
-          <Swiper
-            key={
-              `${this.state.isKanjiShown}${this.state.isKanaShown}${this.state.isRomajiShown}${this.state.isTranslationShown}${this.state.isSoundOn}`
-            }
-            cards={this.state.todayItems}
-            renderCard={card => (
-              <View style={styles.card}>
-                <View>
-                  {this.state.isKanjiShown && card.kanji !== card.kana && <Text style={styles.text}>{card.kanji}</Text>}
-                  {this.state.isKanaShown && <Text style={styles.text}>{card.kana}</Text>}
-                  {this.state.isRomajiShown && <Text style={styles.thinText}>{card.romaji}</Text>}
-                  {this.state.isTranslationShown && <Text style={styles.thinText}>{I18n.t(`minna.${card.romaji}`)}</Text>}
-                </View>
-
-                <ReadableButton
-                  title={I18n.t('app.assessment.read')}
-                  text={cleanWord(card.kana)}
-                  trackEvent={'user-action-press-today-read'}
-                />
-              </View>
-            )}
-            onTapCard={(cardIndex) => {
-              Tts.stop();
-              Tts.speak(cleanWord(this.state.todayItems[cardIndex].kana));
-            }}
-            onSwiped={(cardIndex) => {
-              if (this.state.isSoundOn) {
-                setTimeout(() => {
-                  Tts.stop();
-                  if (cardIndex + 1 < this.state.todayItems.length) {
-                    Tts.speak(cleanWord(this.state.todayItems[cardIndex + 1].kana));
-                  } else {
-                    Tts.speak(cleanWord(this.state.todayItems[0].kana));
-                  }
-                });
-              }
-
-              tracker.logEvent('user-action-swipe', { value: cardIndex });
-            }}
-            onSwipedAll={() => tracker.logEvent('user-action-swipe-all')}
-            cardVerticalMargin={Platform.OS === 'ios' ? 40 : 50}
-            backgroundColor={iOSColors.customGray}
-            stackSize={3}
-            marginBottom={Platform.OS === 'ios' ? 170 : 20}
-            infinite
-          >
-            <Button
-              onPress={() => {
-                this.setState({ todayItems: shuffle([...this.state.todayItems]) }, () => {
-                  if (this.state.isSoundOn) {
-                    Tts.stop();
-                    Tts.speak(cleanWord(this.state.todayItems[0].kana));
-                  }
-                });
-                tracker.logEvent('user-action-today-shuffle');
-              }}
-              title="Shuffle"
-            />
-          </Swiper>
+          {this.state.outOfConnection && <OutOfConnection />}
+          {!this.state.outOfConnection && this.renderSwiperCard()}
         </View>
 
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-today-banner`]} />

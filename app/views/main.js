@@ -62,6 +62,7 @@ export default class Main extends Component<Props> {
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
 
+    // TODO:
     setTimeout(() => {
       this.setState({ androidFix: Math.random() });
     }, 1);
