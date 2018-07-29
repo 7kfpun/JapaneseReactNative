@@ -250,8 +250,6 @@ Tts.voices().then((voices) => {
   const matchVoices = voices.filter(i => I18n.locale.split('-')[0].startsWith(i.language.split('-')[0]));
   if (matchVoices.length > 0) {
     I18n.voiceLocale = matchVoices[0].language;
-  } else {
-    I18n.voiceLocale = 'en';
   }
 
   console.log('I18n.voiceLocale', I18n.voiceLocale);

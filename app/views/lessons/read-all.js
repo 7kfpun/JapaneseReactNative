@@ -23,7 +23,7 @@ import AdMob from '../../elements/admob';
 
 import { config } from '../../config';
 
-Tts.setDefaultRate(0.6);
+Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
 Tts.setDucking(true);
 
@@ -104,7 +104,7 @@ export default class ReadAll extends Component<Props> {
     this.ttsEventListener = () => {
       if (this.state.count + 1 < this.state.total) {
         this.setState({
-          count: parseInt(this.state.speakTimes / 3, 10),
+          count: parseInt((this.state.speakTimes + 1) / 2, 10),
           speakTimes: this.state.speakTimes + 1,
         }, () => this.setCount(this.state.count));
       } else {
@@ -135,12 +135,12 @@ export default class ReadAll extends Component<Props> {
     vocabs[item].data.forEach((i) => {
       Tts.setDefaultLanguage('ja');
       Tts.speak(cleanWord(i.kana));
-      Tts.speak(' ,,,,,,,, '); // pause between word
-      Tts.setDefaultLanguage(I18n.voiceLocale);
-      if (I18n.voiceLocale === 'en') {
-        Tts.speak(I18n.t(`minnaEn.${i.romaji}`));
-      } else {
+
+      if (I18n.voiceLocale) {
+        Tts.setDefaultLanguage(I18n.voiceLocale);
         Tts.speak(I18n.t(`minna.${i.romaji}`));
+      } else {
+        Tts.speak(' ,,,,, '); // pause between word
       }
     });
   }

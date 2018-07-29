@@ -13,6 +13,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
+import * as Animatable from 'react-native-animatable';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
@@ -345,8 +346,12 @@ export default class Assessment extends Component<Props> {
           <View style={styles.assessmentBlock}>
             <View style={styles.answerBlock}>
               <View style={styles.answerResult}>
-                {this.state.answers.join('') === cleanWord(kana) && <Ionicons name="md-checkmark" size={28} color="green" />}
-                {!cleanWord(kana).startsWith(this.state.answers.join('')) && <Ionicons name="md-close" size={28} color="red" />}
+                {this.state.answers.join('') === cleanWord(kana) && <Animatable.View animation="fadeIn">
+                  <Ionicons name="md-checkmark" size={28} color="green" />
+                </Animatable.View>}
+                {!cleanWord(kana).startsWith(this.state.answers.join('')) && <Animatable.View animation="fadeIn">
+                  <Ionicons name="md-close" size={28} color="red" />
+                </Animatable.View>}
               </View>
               <View style={styles.answerItems}>
                 {this.state.answers.map(answer => <Text key={Math.random()} style={styles.answerText}>{answer}</Text>)}

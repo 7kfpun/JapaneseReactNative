@@ -73,7 +73,7 @@ export default class VocabList extends Component<Props> {
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
-              style={{ paddingHorizontal: 12 }}
+              style={{ padding: 12 }}
               onPress={() => {
                 navigation.navigate('read-all', { item: params.item });
                 tracker.logEvent('user-action-read-all', { lesson: `${params.item}` });
@@ -85,13 +85,13 @@ export default class VocabList extends Component<Props> {
 
           <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
-              style={{ paddingLeft: 12, paddingRight: 15 }}
+              style={{ padding: 12, paddingRight: 15 }}
               onPress={() => {
                 navigation.navigate('assessment', { item: params.item });
                 tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
               }}
             >
-              <Ionicons name="ios-list-box-outline" size={22} color="white" />
+              <Ionicons name="md-list-box" size={22} color="white" />
             </TouchableOpacity>
           </Animatable.View>
         </View>
