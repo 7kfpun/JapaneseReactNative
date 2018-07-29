@@ -61,6 +61,7 @@ export default class ReadAll extends Component<Props> {
         }).isRequired,
       }).isRequired,
       setParams: PropTypes.func.isRequired,
+      goBack: PropTypes.func.isRequired,
     }).isRequired,
   }
 
@@ -84,7 +85,15 @@ export default class ReadAll extends Component<Props> {
   }
 
   componentDidMount() {
-    const { item } = this.props.navigation.state.params;
+    const {
+      state: {
+        params: {
+          item,
+        },
+      },
+      goBack,
+    } = this.props.navigation;
+
     const total = vocabs[item].data.length;
 
     this.setState({ total });
@@ -98,6 +107,8 @@ export default class ReadAll extends Component<Props> {
           count: parseInt(this.state.speakTimes / 3, 10),
           speakTimes: this.state.speakTimes + 1,
         }, () => this.setCount(this.state.count));
+      } else {
+        setTimeout(() => goBack(), 3000);
       }
     };
 
