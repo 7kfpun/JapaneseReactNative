@@ -4,6 +4,12 @@
     "shuffle": "洗牌",
     "out_of_connection": "沒有互聯網連接"
   },
+  "kana": {
+    "title": "五十音",
+    "seion": "清音",
+    "dakuon": "濁音",
+    "youon": "拗音",
+  },
   "main": {
     "beginning_one": "初級 I",
     "beginning_two": "初級 II",

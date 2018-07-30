@@ -69,7 +69,7 @@ export default class Today extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.today.title'),
     tabBarLabel: I18n.t('app.today.title'),
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-clipboard' : 'ios-clipboard-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-clipboard' : 'ios-clipboard-outline'} size={19} color={tintColor} />,
   };
 
   state = {

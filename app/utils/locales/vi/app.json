@@ -4,6 +4,12 @@
     "shuffle": "Trộn",
     "out_of_connection": "Ra khỏi kết nối internet"
   },
+  "kana": {
+    "title": "Kana",
+    "seion": "Seion",
+    "dakuon": "Dakuon",
+    "youon": "Youon",
+  },
   "main": {
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",

@@ -6,6 +6,7 @@ import { iOSColors } from 'react-native-typography';
 import About from './app/views/about';
 import Assessment from './app/views/lessons/assessment';
 import Feedback from './app/views/feedback';
+import Kana from './app/views/kana';
 import Lessons from './app/views/lessons';
 import ReadAll from './app/views/lessons/read-all';
 import Search from './app/views/search';
@@ -36,6 +37,12 @@ const AppTab = TabNavigator({
   today: {
     screen: StackNavigator({
       today: { screen: Today },
+    },
+    stackOptions),
+  },
+  kana: {
+    screen: StackNavigator({
+      kana: { screen: Kana },
     },
     stackOptions),
   },

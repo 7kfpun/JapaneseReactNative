@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  tabText: {
+  tabIndicatorText: {
     fontSize: 16,
     paddingBottom: 6,
   },
@@ -54,7 +54,7 @@ export default class Main extends Component<Props> {
   static navigationOptions = {
     headerBackTitle: null,
     title: 'みんなの日本語',
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={24} color={tintColor} />,
   };
 
   state = {}
@@ -68,7 +68,7 @@ export default class Main extends Component<Props> {
     }, 1);
   }
 
-  renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabText} selectedTextStyle={styles.tabText} />
+  renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabIndicatorText} selectedTextStyle={styles.tabIndicatorText} />
 
   render() {
     return (
