@@ -75,7 +75,7 @@ export default class VocabList extends Component<Props> {
             <TouchableOpacity
               style={{ padding: 12 }}
               onPress={() => {
-                navigation.navigate('read-all', { item: params.item });
+                navigation.navigate('read-all', { lesson: params.item });
                 tracker.logEvent('user-action-read-all', { lesson: `${params.item}` });
               }}
             >
@@ -87,7 +87,7 @@ export default class VocabList extends Component<Props> {
             <TouchableOpacity
               style={{ padding: 12, paddingRight: 15 }}
               onPress={() => {
-                navigation.navigate('assessment', { item: params.item });
+                navigation.navigate('assessment', { lesson: params.item });
                 tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
               }}
             >
@@ -118,6 +118,8 @@ export default class VocabList extends Component<Props> {
   }
 
   render() {
+    const { item: lesson } = this.props.navigation.state.params;
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -129,6 +131,7 @@ export default class VocabList extends Component<Props> {
               <VocabItem
                 index={index}
                 item={item}
+                lesson={lesson}
               />
             )}
           />

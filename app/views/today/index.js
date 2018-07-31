@@ -153,7 +153,7 @@ export default class Today extends Component<Props> {
             {this.state.isKanjiShown && card.kanji !== card.kana && <Text style={styles.text}>{card.kanji}</Text>}
             {this.state.isKanaShown && <Text style={styles.text}>{card.kana}</Text>}
             {this.state.isRomajiShown && <Text style={styles.thinText}>{card.romaji}</Text>}
-            {this.state.isTranslationShown && <Text style={styles.thinText}>{I18n.t(`minna.${card.romaji}`)}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.thinText}>{I18n.t(`minna.${card.lesson}.${card.romaji}`)}</Text>}
           </View>
 
           <ReadableButton

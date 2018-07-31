@@ -57,7 +57,7 @@ export default class ReadAll extends Component<Props> {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
-          item: PropTypes.number.isRequired,
+          lesson: PropTypes.number.isRequired,
         }).isRequired,
       }).isRequired,
       setParams: PropTypes.func.isRequired,
@@ -71,9 +71,9 @@ export default class ReadAll extends Component<Props> {
     const count = navigation.state && navigation.state.params && navigation.state.params.count;
     const total = navigation.state && navigation.state.params && navigation.state.params.total;
     return {
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
-      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
     };
   };
@@ -88,13 +88,13 @@ export default class ReadAll extends Component<Props> {
     const {
       state: {
         params: {
-          item,
+          lesson,
         },
       },
       goBack,
     } = this.props.navigation;
 
-    const total = vocabs[item].data.length;
+    const total = vocabs[lesson].data.length;
 
     this.setState({ total });
     this.props.navigation.setParams({ count: 0, total });
@@ -127,18 +127,18 @@ export default class ReadAll extends Component<Props> {
 
   read() {
     const {
-      item,
+      lesson,
     } = this.props.navigation.state.params;
 
     Tts.stop();
 
-    vocabs[item].data.forEach((i) => {
+    vocabs[lesson].data.forEach((i) => {
       Tts.setDefaultLanguage('ja');
       Tts.speak(cleanWord(i.kana));
 
       if (I18n.voiceLocale) {
         Tts.setDefaultLanguage(I18n.voiceLocale);
-        Tts.speak(I18n.t(`minna.${i.romaji}`));
+        Tts.speak(I18n.t(`minna.${lesson}.${i.romaji}`));
       } else {
         Tts.speak(' ,,,,, '); // pause between word
       }

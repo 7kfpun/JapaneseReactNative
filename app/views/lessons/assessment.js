@@ -142,7 +142,7 @@ export default class Assessment extends Component<Props> {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
-          item: PropTypes.number.isRequired,
+          lesson: PropTypes.number.isRequired,
         }).isRequired,
       }).isRequired,
       setParams: PropTypes.func.isRequired,
@@ -155,9 +155,9 @@ export default class Assessment extends Component<Props> {
     const count = navigation.state && navigation.state.params && navigation.state.params.count;
     const total = navigation.state && navigation.state.params && navigation.state.params.total;
     return {
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
-      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
     };
   };
@@ -181,8 +181,8 @@ export default class Assessment extends Component<Props> {
     store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
     store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
 
-    const { item } = this.props.navigation.state.params;
-    const total = vocabs[item].data.length;
+    const { lesson } = this.props.navigation.state.params;
+    const total = vocabs[lesson].data.length;
 
     this.setState({ total });
     this.props.navigation.setParams({ count: 0, total });
@@ -221,12 +221,12 @@ export default class Assessment extends Component<Props> {
     };
 
     const {
-      item,
+      lesson,
     } = this.props.navigation.state.params;
 
     const {
       kana,
-    } = vocabs[item].data[this.state.count];
+    } = vocabs[lesson].data[this.state.count];
 
     const word = cleanWord(kana);
 
@@ -257,12 +257,12 @@ export default class Assessment extends Component<Props> {
 
   read() {
     const {
-      item,
+      lesson,
     } = this.props.navigation.state.params;
 
     const {
       kana,
-    } = vocabs[item].data[this.state.count];
+    } = vocabs[lesson].data[this.state.count];
 
     Tts.stop();
     Tts.setDefaultLanguage('ja');
@@ -299,7 +299,7 @@ export default class Assessment extends Component<Props> {
       navigation: {
         state: {
           params: {
-            item,
+            lesson,
           },
         },
       },
@@ -309,7 +309,7 @@ export default class Assessment extends Component<Props> {
       kanji,
       kana,
       romaji,
-    } = vocabs[item].data[this.state.count];
+    } = vocabs[lesson].data[this.state.count];
 
     return (
       <SafeAreaView style={styles.container}>
@@ -325,7 +325,7 @@ export default class Assessment extends Component<Props> {
                   kana,
                   romaji,
                 },
-                lesson: item,
+                lesson,
               });
             }}
           >
@@ -340,7 +340,7 @@ export default class Assessment extends Component<Props> {
             {this.state.isRomajiShown && <Text style={styles.translationText}>{romaji}</Text>}
           </View>
           <View style={styles.translationBlock}>
-            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${romaji}`)}</Text>}
+            {this.state.isTranslationShown && <Text style={styles.translationText}>{I18n.t(`minna.${lesson}.${romaji}`)}</Text>}
           </View>
 
           <View style={styles.assessmentBlock}>
@@ -414,7 +414,7 @@ export default class Assessment extends Component<Props> {
             disabled={this.state.count >= this.state.total - 1}
             onPress={() => {
               this.setCount(this.state.count + 1);
-              tracker.logEvent('user-action-press-next', { lesson: `${item}` });
+              tracker.logEvent('user-action-press-next', { lesson: `${lesson}` });
             }}
           />}
           {!this.state.isOrdered && <Button

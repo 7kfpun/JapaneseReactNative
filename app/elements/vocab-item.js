@@ -49,8 +49,16 @@ export default class VocabItem extends Component {
       kanji: PropTypes.string.isRequired,
       kana: PropTypes.string.isRequired,
       romaji: PropTypes.string.isRequired,
-      lesson: PropTypes.string,
     }).isRequired,
+    lesson: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    isShowLesson: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    isShowLesson: false,
   }
 
   componentWillUnmount() {
@@ -63,10 +71,11 @@ export default class VocabItem extends Component {
         kanji,
         kana,
         romaji,
-        lesson,
       },
       item,
       index,
+      lesson,
+      isShowLesson,
     } = this.props;
 
     return (
@@ -84,9 +93,9 @@ export default class VocabItem extends Component {
             <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== kana ? kanji : ''}</Text>
           </View>
           <View style={styles.bodyRight}>
-            <Text style={styles.text}>{I18n.t(`minna.${romaji}`)}</Text>
-            {!!lesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{lesson}</Text>}
-            {!lesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>}
+            <Text style={styles.text}>{I18n.t(`minna.${lesson}.${romaji}`)}</Text>
+            {isShowLesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{lesson}</Text>}
+            {!isShowLesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>}
           </View>
         </View>
       </TouchableOpacity>

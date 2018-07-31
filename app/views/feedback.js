@@ -76,7 +76,7 @@ export default class Feedback extends Component<Props> {
         .replace('{kana}', kana)
         .replace('{kanji}', kanji)
         .replace('{romaji}', romaji)
-        .replace('{translation}', I18n.t(`minna.${romaji}`));
+        .replace('{translation}', I18n.t(`minna.${lesson}.${romaji}`));
     } else {
       uri = I18n.t('app.feedback.url');
     }

@@ -115,6 +115,7 @@ export default class SearchView extends Component<Props> {
                 index={index}
                 item={item}
                 lesson={item.lesson}
+                isShowLesson={true}
               />
             )}
           />}
