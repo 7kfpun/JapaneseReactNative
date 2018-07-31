@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
@@ -18,8 +17,8 @@ import Tile from './tile';
 
 import AdMob from '../../elements/admob';
 
-import I18n from '../../utils/i18n';
 import { seion, dakuon, youon } from '../../utils/kana';
+import I18n from '../../utils/i18n';
 
 import { config } from '../../config';
 

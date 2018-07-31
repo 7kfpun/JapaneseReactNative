@@ -71,7 +71,7 @@ export default class VocabList extends Component<Props> {
       tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Animatable.View animation="tada" iterationCount={10}>
+          {/* <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
               style={{ padding: 12 }}
               onPress={() => {
@@ -81,7 +81,7 @@ export default class VocabList extends Component<Props> {
             >
               <Ionicons name="ios-play" size={28} color="white" />
             </TouchableOpacity>
-          </Animatable.View>
+          </Animatable.View> */}
 
           <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
