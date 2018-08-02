@@ -29,3 +29,5 @@ export const flatten = arr =>
     flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);
 
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+export const noop = () => {};

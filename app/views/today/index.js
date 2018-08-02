@@ -4,7 +4,6 @@ import {
   Button,
   Platform,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
@@ -12,7 +11,7 @@ import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
-import Swiper from 'react-native-deck-swiper';
+// import Swiper from 'react-native-deck-swiper';
 import Tts from 'react-native-tts';
 
 import { cleanWord, shuffle } from '../../utils/helpers';
@@ -20,8 +19,11 @@ import { cleanWord, shuffle } from '../../utils/helpers';
 import OutOfConnection from './out-of-connection';
 
 import AdMob from '../../elements/admob';
+import Card from '../../elements/card';
+import CustomButton from '../../elements/button';
+import SoundButton from '../../elements/sound-button';
 import CardOptionSelector from '../../elements/card-option-selector';
-import ReadableButton from '../../elements/readable-button';
+// import ReadableButton from '../../elements/readable-button';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -35,6 +37,7 @@ Tts.setDucking(true);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
   card: {
     flex: 1,
@@ -81,6 +84,8 @@ export default class Today extends Component<Props> {
 
     todayItems: [],
     outOfConnection: false,
+
+    cardIndex: 0,
   }
 
   componentDidMount() {
@@ -141,80 +146,80 @@ export default class Today extends Component<Props> {
     });
   }
 
-  renderSwiperCard() {
-    return (<Swiper
-      key={
-        `${this.state.isKanjiShown}${this.state.isKanaShown}${this.state.isRomajiShown}${this.state.isTranslationShown}${this.state.isSoundOn}`
-      }
-      cards={this.state.todayItems}
-      renderCard={card => (
-        <View style={styles.card}>
-          <View>
-            {this.state.isKanjiShown && card.kanji !== card.kana && <Text style={styles.text}>{card.kanji}</Text>}
-            {this.state.isKanaShown && <Text style={styles.text}>{card.kana}</Text>}
-            {this.state.isRomajiShown && <Text style={styles.thinText}>{card.romaji}</Text>}
-            {this.state.isTranslationShown && <Text style={styles.thinText}>{I18n.t(`minna.${card.lesson}.${card.romaji}`)}</Text>}
-          </View>
-
-          <ReadableButton
-            title={I18n.t('app.assessment.read')}
-            text={cleanWord(card.kana)}
-            trackEvent={'user-action-press-today-read'}
-          />
-        </View>
-      )}
-      onTapCard={(cardIndex) => {
-        Tts.stop();
-        Tts.setDefaultLanguage('ja');
-        Tts.speak(cleanWord(this.state.todayItems[cardIndex].kana));
-      }}
-      onSwiped={(cardIndex) => {
-        if (this.state.isSoundOn) {
-          setTimeout(() => {
-            Tts.stop();
-            if (cardIndex + 1 < this.state.todayItems.length) {
-              Tts.setDefaultLanguage('ja');
-              Tts.speak(cleanWord(this.state.todayItems[cardIndex + 1].kana));
-            } else {
-              Tts.setDefaultLanguage('ja');
-              Tts.speak(cleanWord(this.state.todayItems[0].kana));
-            }
-          });
-        }
-
-        tracker.logEvent('user-action-swipe', { value: cardIndex });
-      }}
-      onSwipedAll={() => tracker.logEvent('user-action-swipe-all')}
-      cardVerticalMargin={Platform.OS === 'ios' ? 40 : 50}
-      backgroundColor={iOSColors.customGray}
-      stackSize={3}
-      marginBottom={Platform.OS === 'ios' ? 170 : 20}
-      infinite
-    >
-      {this.state.todayItems.length > 0 && <Button
-        onPress={() => {
-          this.setState({ todayItems: shuffle([...this.state.todayItems]) }, () => {
-            if (this.state.isSoundOn && this.state.todayItems) {
-              Tts.stop();
-              Tts.setDefaultLanguage('ja');
-              Tts.speak(cleanWord(this.state.todayItems[0].kana));
-            }
-          });
-          tracker.logEvent('user-action-today-shuffle');
-        }}
-        title="Shuffle"
-      />}
-    </Swiper>);
-  }
-
   render() {
+    const {
+      todayItems,
+      cardIndex,
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+    } = this.state;
+
+    const card = todayItems.length > 0 ? todayItems[cardIndex] : null;
+
     return (
       <SafeAreaView style={styles.container}>
         <CardOptionSelector isOrderedEnable={false} onUpdate={this.updateStates} />
 
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
           {this.state.outOfConnection && <OutOfConnection />}
-          {!this.state.outOfConnection && this.renderSwiperCard()}
+          {!this.state.outOfConnection && card && <Card
+            kanji={isKanjiShown && card.kanji}
+            kana={isKanaShown && card.kana}
+            romaji={isRomajiShown && card.romaji}
+            translation={isTranslationShown && I18n.t(`minna.${card.lesson}.${card.romaji}`)}
+          />}
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingVertical: 12,
+            paddingHorizontal: 30,
+            alignItems: 'center',
+          }}
+        >
+          <CustomButton
+            raised
+            onPress={() => {
+              this.setState({ todayItems: shuffle([...todayItems]) }, () => {
+                if (isSoundOn && todayItems) {
+                  Tts.stop();
+                  Tts.setDefaultLanguage('ja');
+                  Tts.speak(cleanWord(todayItems[0].kana));
+                }
+              });
+              tracker.logEvent('user-action-today-shuffle');
+            }}
+            title={I18n.t('app.today.shuffle')}
+            titleStyles={{ fontSize: 18 }}
+          />
+
+          <SoundButton
+            onPress={() => {
+              Tts.setDefaultLanguage('ja');
+              Tts.speak(cleanWord(todayItems[cardIndex].kana));
+              tracker.logEvent('user-action-today-read');
+            }}
+          />
+
+          <CustomButton
+            raised
+            onPress={() => {
+              const isLast = cardIndex === todayItems.length - 1;
+              this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
+                if (isSoundOn) {
+                  Tts.setDefaultLanguage('ja');
+                  Tts.speak(cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana));
+                }
+              });
+              tracker.logEvent('user-action-today-next');
+            }}
+            title={I18n.t('app.assessment.next')}
+            titleStyles={{ fontSize: 18 }}
+          />
         </View>
 
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-today-banner`]} />

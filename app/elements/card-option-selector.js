@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderBottomColor: iOSColors.blue,
-    borderBottomWidth: 0.3,
+    padding: 5,
   },
   icon: {
     flex: 1,
@@ -115,35 +114,35 @@ export default class CardOptionSelector extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.isKanjiShownEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isKanjiShown')}
-        >
-          <Text style={[styles.text, { color: this.state.isKanjiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kanji')}</Text>
-        </TouchableOpacity>}
         {this.props.isKanaShownEnable && <TouchableOpacity
           style={styles.icon}
           onPress={() => this.toggleSelection('isKanaShown')}
         >
-          <Text style={[styles.text, { color: this.state.isKanaShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.kana')}</Text>
+          <Text style={[styles.text, { color: this.state.isKanaShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.kana')}</Text>
+        </TouchableOpacity>}
+        {this.props.isKanjiShownEnable && <TouchableOpacity
+          style={styles.icon}
+          onPress={() => this.toggleSelection('isKanjiShown')}
+        >
+          <Text style={[styles.text, { color: this.state.isKanjiShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.kanji')}</Text>
         </TouchableOpacity>}
         {this.props.isRomajiShownEnable && <TouchableOpacity
           style={styles.icon}
           onPress={() => this.toggleSelection('isRomajiShown')}
         >
-          <Text style={[styles.text, { color: this.state.isRomajiShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.romaji')}</Text>
+          <Text style={[styles.text, { color: this.state.isRomajiShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.romaji')}</Text>
         </TouchableOpacity>}
         {this.props.isTranslationShownEnable && <TouchableOpacity
           style={styles.icon}
           onPress={() => this.toggleSelection('isTranslationShown')}
         >
-          <Text style={[styles.text, { color: this.state.isTranslationShown ? iOSColors.black : iOSColors.lightGray }]}>{I18n.t('app.assessment.translation')}</Text>
+          <Text style={[styles.text, { color: this.state.isTranslationShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.translation')}</Text>
         </TouchableOpacity>}
         {this.props.isSoundOnEnable && <TouchableOpacity
           style={styles.icon}
           onPress={() => this.toggleSelection('isSoundOn')}
         >
-          <Ionicons name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.black : iOSColors.lightGray} />
+          <Ionicons name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.tealBlue : iOSColors.midGray} />
         </TouchableOpacity>}
         {this.props.isOrderedEnable && <TouchableOpacity
           style={styles.icon}

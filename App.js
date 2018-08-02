@@ -24,9 +24,10 @@ const stackOptions = {
   animationEnabled: true,
   navigationOptions: {
     headerStyle: {
-      backgroundColor: iOSColors.tealBlue,
+      backgroundColor: '#F7F7F7',
+      borderBottomWidth: 0,
     },
-    headerTintColor: '#fff',
+    headerTintColor: 'gray',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
