@@ -12,7 +12,18 @@
     "install-android": "adb install android/app/build/outputs/apk/release/app-release.apk",
     "uninstall-android": "adb uninstall com.kfpun.japanese",
     "capture-android": "adb shell screencap /sdcard/temp.png && adb pull /sdcard/temp.png screenshot.png",
+    "precommit": "lint-staged",
     "test": "jest"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "analytics-react-native": "^1.2.0",
@@ -44,10 +55,15 @@
     "babel-preset-react-native": "^4.0.0",
     "eslint": "^5.2.0",
     "eslint-config-airbnb": "17.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
+    "husky": "^0.14.3",
     "jest": "^23.4.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
     "react-test-renderer": "16.4.1"
   },
   "jest": {

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,7 +14,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 5,
+    padding: 10,
   },
   icon: {
     flex: 1,
@@ -41,7 +36,7 @@ export default class CardOptionSelector extends Component {
     isTranslationShownEnable: PropTypes.bool,
     isSoundOnEnable: PropTypes.bool,
     isOrderedEnable: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     onUpdate: () => {},
@@ -51,7 +46,7 @@ export default class CardOptionSelector extends Component {
     isTranslationShownEnable: true,
     isSoundOnEnable: true,
     isOrderedEnable: true,
-  }
+  };
 
   state = {
     isKanjiShown: true,
@@ -60,96 +55,201 @@ export default class CardOptionSelector extends Component {
     isTranslationShown: true,
     isSoundOn: true,
     isOrdered: true,
-  }
+  };
 
   componentDidMount() {
-    store
-      .get('notFirstStart').then((notFirstStart) => {
-        if (notFirstStart) {
-          store.get('isKanjiShown').then(isKanjiShown => this.setState({ isKanjiShown }));
-          store.get('isKanaShown').then(isKanaShown => this.setState({ isKanaShown }));
-          store.get('isRomajiShown').then(isRomajiShown => this.setState({ isRomajiShown }));
-          store.get('isTranslationShown').then(isTranslationShown => this.setState({ isTranslationShown }));
-          store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
-          store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
-        } else {
-          store.save('isKanjiShown', true);
-          store.save('isKanaShown', true);
-          store.save('isRomajiShown', true);
-          store.save('isTranslationShown', true);
-          store.save('isSoundOn', true);
-          store.save('isOrdered', true);
-          store.save('notFirstStart', true);
+    store.get('notFirstStart').then(notFirstStart => {
+      if (notFirstStart) {
+        store
+          .get('isKanjiShown')
+          .then(isKanjiShown => this.setState({ isKanjiShown }));
+        store
+          .get('isKanaShown')
+          .then(isKanaShown => this.setState({ isKanaShown }));
+        store
+          .get('isRomajiShown')
+          .then(isRomajiShown => this.setState({ isRomajiShown }));
+        store
+          .get('isTranslationShown')
+          .then(isTranslationShown => this.setState({ isTranslationShown }));
+        store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
+        store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
+      } else {
+        store.save('isKanjiShown', true);
+        store.save('isKanaShown', true);
+        store.save('isRomajiShown', true);
+        store.save('isTranslationShown', true);
+        store.save('isSoundOn', true);
+        store.save('isOrdered', true);
+        store.save('notFirstStart', true);
 
-          this.setState({ isKanjiShown: true });
-          this.setState({ isKanaShown: true });
-          this.setState({ isRomajiShown: true });
-          this.setState({ isTranslationShown: true });
-          this.setState({ isSoundOn: true });
-          this.setState({ isOrdered: true });
-        }
-      });
-  }
-
-  toggleSelection(name) {
-    this.setState({
-      [name]: !this.state[name],
-    }, () => {
-      store.save(name, this.state[name]);
-
-      console.log('toggleSelection', name, this.state[name]);
-      this.props.onUpdate(
-        this.state.isKanjiShown,
-        this.state.isKanaShown,
-        this.state.isRomajiShown,
-        this.state.isTranslationShown,
-        this.state.isSoundOn,
-        this.state.isOrdered,
-      );
-
-      tracker.logEvent(`user-action-set-${name}`, { value: this.state[name] });
+        this.setState({ isKanjiShown: true });
+        this.setState({ isKanaShown: true });
+        this.setState({ isRomajiShown: true });
+        this.setState({ isTranslationShown: true });
+        this.setState({ isSoundOn: true });
+        this.setState({ isOrdered: true });
+      }
     });
   }
 
+  toggleSelection(name) {
+    const { [name]: nameState } = this.state;
+
+    this.setState(
+      {
+        [name]: !nameState,
+      },
+      () => {
+        store.save(name, nameState);
+
+        console.log('toggleSelection', name, nameState);
+
+        const {
+          isKanaShown,
+          isKanjiShown,
+          isRomajiShown,
+          isTranslationShown,
+          isSoundOn,
+          isOrdered,
+        } = this.state;
+
+        const { onUpdate } = this.props;
+        onUpdate(
+          isKanjiShown,
+          isKanaShown,
+          isRomajiShown,
+          isTranslationShown,
+          isSoundOn,
+          isOrdered
+        );
+
+        tracker.logEvent(`user-action-set-${name}`, { value: nameState });
+      }
+    );
+  }
+
   render() {
+    const {
+      isKanaShownEnable,
+      isKanjiShownEnable,
+      isRomajiShownEnable,
+      isTranslationShownEnable,
+      isSoundOnEnable,
+      isOrderedEnable,
+    } = this.props;
+
+    const {
+      isKanaShown,
+      isKanjiShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+      isOrdered,
+    } = this.state;
+
     return (
       <View style={styles.container}>
-        {this.props.isKanaShownEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isKanaShown')}
-        >
-          <Text style={[styles.text, { color: this.state.isKanaShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.kana')}</Text>
-        </TouchableOpacity>}
-        {this.props.isKanjiShownEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isKanjiShown')}
-        >
-          <Text style={[styles.text, { color: this.state.isKanjiShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.kanji')}</Text>
-        </TouchableOpacity>}
-        {this.props.isRomajiShownEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isRomajiShown')}
-        >
-          <Text style={[styles.text, { color: this.state.isRomajiShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.romaji')}</Text>
-        </TouchableOpacity>}
-        {this.props.isTranslationShownEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isTranslationShown')}
-        >
-          <Text style={[styles.text, { color: this.state.isTranslationShown ? iOSColors.tealBlue : iOSColors.midGray }]}>{I18n.t('app.assessment.translation')}</Text>
-        </TouchableOpacity>}
-        {this.props.isSoundOnEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isSoundOn')}
-        >
-          <Ionicons name={this.state.isSoundOn ? 'ios-volume-up' : 'ios-volume-off'} size={28} color={this.state.isSoundOn ? iOSColors.tealBlue : iOSColors.midGray} />
-        </TouchableOpacity>}
-        {this.props.isOrderedEnable && <TouchableOpacity
-          style={styles.icon}
-          onPress={() => this.toggleSelection('isOrdered')}
-        >
-          <Ionicons name={this.state.isOrdered ? 'ios-shuffle' : 'ios-list'} size={28} color="black" />
-        </TouchableOpacity>}
+        {isKanaShownEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isKanaShown')}
+          >
+            <Text
+              style={[
+                styles.text,
+                { color: isKanaShown ? iOSColors.tealBlue : iOSColors.midGray },
+              ]}
+            >
+              {I18n.t('app.assessment.kana')}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isKanjiShownEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isKanjiShown')}
+          >
+            <Text
+              style={[
+                styles.text,
+                {
+                  color: isKanjiShown ? iOSColors.tealBlue : iOSColors.midGray,
+                },
+              ]}
+            >
+              {I18n.t('app.assessment.kanji')}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isRomajiShownEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isRomajiShown')}
+          >
+            <Text
+              style={[
+                styles.text,
+                {
+                  color: isRomajiShown ? iOSColors.tealBlue : iOSColors.midGray,
+                },
+              ]}
+            >
+              {I18n.t('app.assessment.romaji')}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isTranslationShownEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isTranslationShown')}
+          >
+            <Text
+              style={[
+                styles.text,
+                {
+                  color: isTranslationShown
+                    ? iOSColors.tealBlue
+                    : iOSColors.midGray,
+                },
+              ]}
+            >
+              {I18n.t('app.assessment.translation')}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isSoundOnEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isSoundOn')}
+          >
+            <Text
+              style={[
+                styles.text,
+                { color: isSoundOn ? iOSColors.tealBlue : iOSColors.midGray },
+              ]}
+            >
+              {I18n.t('app.assessment.sound')}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isOrderedEnable && (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => this.toggleSelection('isOrdered')}
+          >
+            <Ionicons
+              name={isOrdered ? 'ios-shuffle' : 'ios-list'}
+              size={28}
+              color={iOSColors.tealBlue}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     );
   }

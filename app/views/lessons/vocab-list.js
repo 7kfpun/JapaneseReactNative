@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 
+import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import firebase from 'react-native-firebase';
@@ -20,17 +21,22 @@ import VocabItem from '../../elements/vocab-item';
 
 // import { checkAdRemoval } from '../../utils/products';
 
-import { items as vocabs } from '../../utils/items';
+import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
 import { config } from '../../config';
 
-const advert = firebase.admob().interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
+const advert = firebase
+  .admob()
+  .interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
 
 const { AdRequest } = firebase.admob;
 const request = new AdRequest();
-request.addKeyword('study').addKeyword('japanese').addKeyword('travel');
+request
+  .addKeyword('study')
+  .addKeyword('japanese')
+  .addKeyword('travel');
 
 advert.loadAd(request.build());
 
@@ -51,16 +57,6 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class VocabList extends Component<Props> {
-  static propTypes = {
-    navigation: PropTypes.shape({
-      state: PropTypes.shape({
-        params: PropTypes.shape({
-          item: PropTypes.number.isRequired,
-        }).isRequired,
-      }).isRequired,
-    }).isRequired,
-  }
-
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
@@ -68,7 +64,13 @@ export default class VocabList extends Component<Props> {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
-      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-list' : 'ios-list-outline'}
+          size={20}
+          color={tintColor}
+        />
+      ),
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {/* <Animatable.View animation="tada" iterationCount={10}>
@@ -88,10 +90,12 @@ export default class VocabList extends Component<Props> {
               style={{ padding: 12, paddingRight: 15 }}
               onPress={() => {
                 navigation.navigate('assessment', { lesson: params.item });
-                tracker.logEvent('user-action-goto-assessment', { lesson: `${params.item}` });
+                tracker.logEvent('user-action-goto-assessment', {
+                  lesson: `${params.item}`,
+                });
               }}
             >
-              <Ionicons name="md-list-box" size={22} color="white" />
+              <Ionicons name="md-list-box" size={22} color={iOSColors.gray} />
             </TouchableOpacity>
           </Animatable.View>
         </View>
@@ -99,13 +103,22 @@ export default class VocabList extends Component<Props> {
     };
   };
 
+  static propTypes = {
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          item: PropTypes.number.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  };
+
   state = {
     vocabs: [],
-  }
+  };
 
   async componentDidMount() {
-    const { item } = this.props.navigation.state.params;
-    this.setState({ vocabs: vocabs[item].data, lessonNo: item });
+    this.getVocabs();
 
     // const isAdRemoval = await checkAdRemoval();
     // if (!isAdRemoval) {
@@ -117,26 +130,44 @@ export default class VocabList extends Component<Props> {
     // }
   }
 
+  getVocabs = () => {
+    const {
+      navigation: {
+        state: {
+          params: { item },
+        },
+      },
+    } = this.props;
+
+    this.setState({ vocabs: vocabularies[item].data });
+  };
+
   render() {
-    const { item: lesson } = this.props.navigation.state.params;
+    const {
+      navigation: {
+        state: {
+          params: { item: lesson },
+        },
+      },
+    } = this.props;
+
+    const { vocabs } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <FlatList
             style={styles.list}
-            data={this.state.vocabs}
+            data={vocabs}
             keyExtractor={(item, index) => `${index}-${item}`}
             renderItem={({ item, index }) => (
-              <VocabItem
-                index={index}
-                item={item}
-                lesson={lesson}
-              />
+              <VocabItem index={index} item={item} lesson={lesson} />
             )}
           />
         </ScrollView>
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-vocablist-banner`]} />
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-vocablist-banner`]}
+        />
       </SafeAreaView>
     );
   }

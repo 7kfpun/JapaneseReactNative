@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  Button,
-  Platform,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
@@ -72,7 +67,13 @@ export default class Today extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.today.title'),
     tabBarLabel: I18n.t('app.today.title'),
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-clipboard' : 'ios-clipboard-outline'} size={19} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => (
+      <Ionicons
+        name={focused ? 'ios-clipboard' : 'ios-clipboard-outline'}
+        size={19}
+        color={tintColor}
+      />
+    ),
   };
 
   state = {
@@ -86,13 +87,21 @@ export default class Today extends Component<Props> {
     outOfConnection: false,
 
     cardIndex: 0,
-  }
+  };
 
   componentDidMount() {
-    store.get('isKanaShown').then(isKanaShown => this.setState({ isKanaShown }));
-    store.get('isKanjiShown').then(isKanjiShown => this.setState({ isKanjiShown }));
-    store.get('isRomajiShown').then(isRomajiShown => this.setState({ isRomajiShown }));
-    store.get('isTranslationShown').then(isTranslationShown => this.setState({ isTranslationShown }));
+    store
+      .get('isKanaShown')
+      .then(isKanaShown => this.setState({ isKanaShown }));
+    store
+      .get('isKanjiShown')
+      .then(isKanjiShown => this.setState({ isKanjiShown }));
+    store
+      .get('isRomajiShown')
+      .then(isRomajiShown => this.setState({ isRomajiShown }));
+    store
+      .get('isTranslationShown')
+      .then(isTranslationShown => this.setState({ isTranslationShown }));
     store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
 
     this.requestTodayItems();
@@ -102,32 +111,12 @@ export default class Today extends Component<Props> {
     Tts.stop();
   }
 
-  requestTodayItems() {
-    const URL = `${config.server}/today`;
-    fetch(URL)
-      .then(res => res.json())
-      .then(results => results.data && this.setState({ todayItems: results.data }))
-      .then(() => {
-        if (this.state.isSoundOn && this.state.todayItems) {
-          Tts.stop();
-          Tts.setDefaultLanguage('ja');
-          Tts.speak(cleanWord(this.state.todayItems[0].kana));
-        }
-      })
-      .catch((err) => {
-        console.log('Request for aqi failed', err);
-        this.setState({
-          outOfConnection: true,
-        });
-      });
-  }
-
   updateStates = (
     isKanjiShown,
     isKanaShown,
     isRomajiShown,
     isTranslationShown,
-    isSoundOn,
+    isSoundOn
   ) => {
     console.log(
       'updateStates',
@@ -135,7 +124,7 @@ export default class Today extends Component<Props> {
       isKanaShown,
       isRomajiShown,
       isTranslationShown,
-      isSoundOn,
+      isSoundOn
     );
     this.setState({
       isKanjiShown,
@@ -144,6 +133,30 @@ export default class Today extends Component<Props> {
       isTranslationShown,
       isSoundOn,
     });
+  };
+
+  requestTodayItems() {
+    const { isSoundOn, todayItems } = this.state;
+
+    const URL = `${config.server}/today`;
+    fetch(URL)
+      .then(res => res.json())
+      .then(
+        results => results.data && this.setState({ todayItems: results.data })
+      )
+      .then(() => {
+        if (isSoundOn && todayItems) {
+          Tts.stop();
+          Tts.setDefaultLanguage('ja');
+          Tts.speak(cleanWord(todayItems[0].kana));
+        }
+      })
+      .catch(err => {
+        console.log('Request for aqi failed', err);
+        this.setState({
+          outOfConnection: true,
+        });
+      });
   }
 
   render() {
@@ -155,22 +168,32 @@ export default class Today extends Component<Props> {
       isRomajiShown,
       isTranslationShown,
       isSoundOn,
+      outOfConnection,
     } = this.state;
 
     const card = todayItems.length > 0 ? todayItems[cardIndex] : null;
 
     return (
       <SafeAreaView style={styles.container}>
-        <CardOptionSelector isOrderedEnable={false} onUpdate={this.updateStates} />
+        <CardOptionSelector
+          isOrderedEnable={false}
+          onUpdate={this.updateStates}
+        />
 
         <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
-          {this.state.outOfConnection && <OutOfConnection />}
-          {!this.state.outOfConnection && card && <Card
-            kanji={isKanjiShown && card.kanji}
-            kana={isKanaShown && card.kana}
-            romaji={isRomajiShown && card.romaji}
-            translation={isTranslationShown && I18n.t(`minna.${card.lesson}.${card.romaji}`)}
-          />}
+          {outOfConnection && <OutOfConnection />}
+          {!outOfConnection &&
+            card && (
+              <Card
+                kanji={isKanjiShown && card.kanji}
+                kana={isKanaShown && card.kana}
+                romaji={isRomajiShown && card.romaji}
+                translation={
+                  isTranslationShown &&
+                  I18n.t(`minna.${card.lesson}.${card.romaji}`)
+                }
+              />
+            )}
         </View>
 
         <View
@@ -212,7 +235,9 @@ export default class Today extends Component<Props> {
               this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
                 if (isSoundOn) {
                   Tts.setDefaultLanguage('ja');
-                  Tts.speak(cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana));
+                  Tts.speak(
+                    cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana)
+                  );
                 }
               });
               tracker.logEvent('user-action-today-next');

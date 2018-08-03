@@ -55,26 +55,21 @@ export default class VocabItem extends Component {
     kana: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     romaji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     translation: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  }
+  };
 
   static defaultProps = {
     kanji: '',
     kana: '',
     romaji: '',
     translation: '',
-  }
+  };
 
   componentWillUnmount() {
     Tts.stop();
   }
 
   render() {
-    const {
-      kanji,
-      kana,
-      romaji,
-      translation,
-    } = this.props;
+    const { kanji, kana, romaji, translation } = this.props;
 
     return (
       <TouchableOpacity
@@ -89,20 +84,33 @@ export default class VocabItem extends Component {
         }}
       >
         <View style={styles.container}>
-          {kana && kana !== kanji && <View
-            style={{
-              alignItems: 'center',
-              width: width - 150,
-              paddingBottom: 5,
-              borderBottomColor: iOSColors.midGray,
-              borderBottomWidth: 1,
-            }}
-          >
-            <Text style={[styles.text, { color: iOSColors.gray }]}>{kana}</Text>
-          </View>}
-          {kanji && <Text style={[styles.text, { lineHeight: 60 }]}>{kanji}</Text>}
-          {romaji && <Text style={[styles.thinText, { lineHeight: 40 }]}>{romaji}</Text>}
-          {translation && <Text style={[styles.thinText, { lineHeight: 60 }]}>{translation}</Text>}
+          {kana &&
+            kana !== kanji && (
+              <View
+                style={{
+                  alignItems: 'center',
+                  width: width - 150,
+                  paddingBottom: 5,
+                  borderBottomColor: iOSColors.midGray,
+                  borderBottomWidth: 1,
+                }}
+              >
+                <Text style={[styles.text, { color: iOSColors.gray }]}>
+                  {kana}
+                </Text>
+              </View>
+            )}
+          {kanji && (
+            <Text style={[styles.text, { marginTop: 20 }]}>{kanji}</Text>
+          )}
+          {romaji && (
+            <Text style={[styles.thinText, { marginTop: 10 }]}>{romaji}</Text>
+          )}
+          {translation && (
+            <Text style={[styles.thinText, { marginTop: 20 }]}>
+              {translation}
+            </Text>
+          )}
         </View>
       </TouchableOpacity>
     );
