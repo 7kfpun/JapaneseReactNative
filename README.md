@@ -5,6 +5,7 @@
 ## Download
 
 [![App Store Button](assets/app-store.png "App Store Button")](https://itunes.apple.com/us/app/minna-no-nihongo/id1352780398?ls=1&mt=8)
+[![Play Store Button](assets/google-play.png "Google Play Button")](https://play.google.com/store/apps/details?id=com.kfpun.japanese)
 
 ## Screenshots
 
