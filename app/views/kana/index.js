@@ -26,12 +26,26 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   tabIndicatorText: {
-    fontSize: 16,
+    ...Platform.select({
+      ios: {
+        fontSize: 16,
+      },
+      android: {
+        fontSize: 12,
+      },
+    }),
     paddingBottom: 6,
     color: iOSColors.gray,
   },
   tabIndicatorSelectedText: {
-    fontSize: 16,
+    ...Platform.select({
+      ios: {
+        fontSize: 16,
+      },
+      android: {
+        fontSize: 12,
+      },
+    }),
     paddingBottom: 6,
     color: iOSColors.tealBlue,
   },

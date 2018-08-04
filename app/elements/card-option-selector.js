@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,7 +21,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 8,
+    ...Platform.select({
+      ios: {
+        padding: 8,
+      },
+      android: {
+        paddingHorizontal: 8,
+        paddingVertical: 2,
+      },
+    }),
   },
   icon: {
     flex: 1,
@@ -163,7 +177,7 @@ export default class CardOptionSelector extends Component {
                 { color: isKanaShown ? iOSColors.tealBlue : iOSColors.midGray },
               ]}
             >
-              {I18n.t('app.assessment.kana')}
+              {I18n.t('app.common.kana')}
             </Text>
           </TouchableOpacity>
         )}
@@ -181,7 +195,7 @@ export default class CardOptionSelector extends Component {
                 },
               ]}
             >
-              {I18n.t('app.assessment.kanji')}
+              {I18n.t('app.common.kanji')}
             </Text>
           </TouchableOpacity>
         )}
@@ -199,7 +213,7 @@ export default class CardOptionSelector extends Component {
                 },
               ]}
             >
-              {I18n.t('app.assessment.romaji')}
+              {I18n.t('app.common.romaji')}
             </Text>
           </TouchableOpacity>
         )}

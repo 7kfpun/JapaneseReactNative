@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: '300',
+    color: iOSColors.black,
   },
 });
 

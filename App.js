@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Platform, ToastAndroid } from 'react-native';
+
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
@@ -15,13 +17,34 @@ import Today from './app/views/today';
 import VocabList from './app/views/lessons/vocab-list';
 
 import tracker from './app/utils/tracker';
-
-Tts.setDefaultRate(0.4);
-Tts.setDucking(true);
+import I18n from './app/utils/i18n';
 
 if (!__DEV__) {
   console.log = () => {};
 }
+
+Tts.getInitStatus().then(
+  () => {
+    Tts.setDefaultRate(0.4);
+    Tts.setDucking(true);
+
+    if (!I18n.isJaVoiceSupport && Platform.OS === 'android') {
+      setTimeout(() => {
+        ToastAndroid.show(I18n.t('app.common.tts_required'), ToastAndroid.LONG);
+      }, 5000);
+    }
+  },
+  err => {
+    ToastAndroid.show(I18n.t('app.common.tts_required'), ToastAndroid.LONG);
+    if (err.code === 'no_engine') {
+      try {
+        Tts.requestInstallEngine();
+      } catch (e) {
+        console.log('Cannot requestInstallEngine');
+      }
+    }
+  }
+);
 
 const stackOptions = {
   swipeEnabled: false,
@@ -95,8 +118,9 @@ const AppTab = TabNavigator(
       showIcon: true,
       pressColor: '#E0E0E0',
       labelStyle: {
-        fontSize: 10,
-        paddingBottom: 2,
+        fontSize: Platform.OS === 'ios' ? 10 : 6,
+        paddingBottom: Platform.OS === 'ios' ? 2 : 0,
+        paddingTop: Platform.OS === 'ios' ? 2 : 0,
       },
       indicatorStyle: {
         backgroundColor: iOSColors.tealBlue,

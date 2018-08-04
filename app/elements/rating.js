@@ -23,7 +23,7 @@ const STARS_TO_APP_STORE = 4;
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: 200,
+    top: 100,
     left: 20,
     right: 20,
     padding: 20,
@@ -69,7 +69,7 @@ export default class Rating extends Component {
 
   componentDidMount() {
     const that = this;
-    store.get('isRatingGiven').then((isRatingGiven) => {
+    store.get('isRatingGiven').then(isRatingGiven => {
       if (isRatingGiven) {
         that.setState({ isRatingClose: true });
       }
@@ -103,7 +103,10 @@ export default class Rating extends Component {
       }, 2000);
     }
 
-    tracker.logEvent('user-action-rating', { method, starCount: `${starCount}` });
+    tracker.logEvent('user-action-rating', {
+      method,
+      starCount: `${starCount}`,
+    });
     store.save('isRatingGiven', true);
   }
 
@@ -113,7 +116,7 @@ export default class Rating extends Component {
     that.openFeedbackUrlTimeout = setTimeout(() => {
       this.setState({ isRatingClose: true });
     }, 2000);
-  }
+  };
 
   render() {
     if (this.state.isRatingClose) {
@@ -122,29 +125,63 @@ export default class Rating extends Component {
 
     return (
       <Animatable.View style={styles.container} animation="fadeIn">
-        <TouchableOpacity style={styles.close} onPress={() => this.setState({ isRatingClose: true })}>
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() => this.setState({ isRatingClose: true })}
+        >
           <Icon name="clear" size={24} color="#616161" />
         </TouchableOpacity>
         <Animatable.View animation="tada" iterationCount="infinite">
           <Icon name="thumb-up" size={32} color="#616161" />
         </Animatable.View>
         <Text style={styles.ratingTitleText}>{I18n.t('app.rating.title')}</Text>
-        <Text style={styles.ratingDescriptionText}>{I18n.t('app.rating.title_description')}</Text>
-        {this.state.starCount === 0 &&
+        <Text style={styles.ratingDescriptionText}>
+          {I18n.t('app.rating.title_description')}
+        </Text>
+        {this.state.starCount === 0 && (
           <View style={{ flexDirection: 'row' }}>
-            <Icon name={this.state.starCount >= 1 ? 'star' : 'star-border'} size={26} color="#616161" onPress={() => this.onStarRatingPress(1)} />
-            <Icon name={this.state.starCount >= 2 ? 'star' : 'star-border'} size={26} color="#616161" onPress={() => this.onStarRatingPress(2)} />
-            <Icon name={this.state.starCount >= 3 ? 'star' : 'star-border'} size={26} color="#616161" onPress={() => this.onStarRatingPress(3)} />
-            <Icon name={this.state.starCount >= 4 ? 'star' : 'star-border'} size={26} color="#616161" onPress={() => this.onStarRatingPress(4)} />
-            <Icon name={this.state.starCount >= 5 ? 'star' : 'star-border'} size={26} color="#616161" onPress={() => this.onStarRatingPress(5)} />
-          </View>}
+            <Icon
+              name={this.state.starCount >= 1 ? 'star' : 'star-border'}
+              size={26}
+              color="#616161"
+              onPress={() => this.onStarRatingPress(1)}
+            />
+            <Icon
+              name={this.state.starCount >= 2 ? 'star' : 'star-border'}
+              size={26}
+              color="#616161"
+              onPress={() => this.onStarRatingPress(2)}
+            />
+            <Icon
+              name={this.state.starCount >= 3 ? 'star' : 'star-border'}
+              size={26}
+              color="#616161"
+              onPress={() => this.onStarRatingPress(3)}
+            />
+            <Icon
+              name={this.state.starCount >= 4 ? 'star' : 'star-border'}
+              size={26}
+              color="#616161"
+              onPress={() => this.onStarRatingPress(4)}
+            />
+            <Icon
+              name={this.state.starCount >= 5 ? 'star' : 'star-border'}
+              size={26}
+              color="#616161"
+              onPress={() => this.onStarRatingPress(5)}
+            />
+          </View>
+        )}
         {this.state.starCount > 0 &&
-          this.state.starCount < STARS_TO_APP_STORE &&
-          <TouchableOpacity onPress={this.openFeedbackUrl}>
-            <Animatable.View style={styles.button} animation="fadeIn">
-              <Text style={styles.feedbackDescriptionText}>{I18n.t('app.rating.feedback_description')}</Text>
-            </Animatable.View>
-          </TouchableOpacity>}
+          this.state.starCount < STARS_TO_APP_STORE && (
+            <TouchableOpacity onPress={this.openFeedbackUrl}>
+              <Animatable.View style={styles.button} animation="fadeIn">
+                <Text style={styles.feedbackDescriptionText}>
+                  {I18n.t('app.rating.feedback_description')}
+                </Text>
+              </Animatable.View>
+            </TouchableOpacity>
+          )}
       </Animatable.View>
     );
   }

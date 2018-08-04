@@ -19,7 +19,14 @@ const MATERIAL_BLUE = '#2196F3';
 const styles = StyleSheet.create({
   button: {
     flex: 1,
-    padding: 16,
+    ...Platform.select({
+      ios: {
+        padding: 16,
+      },
+      android: {
+        padding: 12,
+      },
+    }),
   },
   buttonRaised: {
     borderRadius: 28,
@@ -80,7 +87,7 @@ const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
       return (
         <TouchableNativeFeedback
           onPress={onPress}
-          background={TouchableNativeFeedback.Ripple('#FFF')}
+          background={TouchableNativeFeedback.Ripple('#F7F7F7')}
         >
           <View style={[styles.button, styles.buttonRaised]}>{children}</View>
         </TouchableNativeFeedback>

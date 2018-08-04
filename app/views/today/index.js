@@ -231,14 +231,14 @@ export default class Today extends Component<Props> {
               <Card
                 navigation={navigation}
                 lesson={card.lesson}
-                kanji={isKanjiShown && card.kanji}
+                kanji={card.kanji}
                 kana={card.kana}
-                romaji={isRomajiShown && card.romaji}
-                translation={
-                  isTranslationShown &&
-                  I18n.t(`minna.${card.lesson}.${card.romaji}`)
-                }
-                isHideAnswer={!isKanaShown}
+                romaji={card.romaji}
+                translation={I18n.t(`minna.${card.lesson}.${card.romaji}`)}
+                isKanjiShown={isKanjiShown}
+                isKanaShown={isKanaShown}
+                isRomajiShown={isRomajiShown}
+                isTranslationShown={isTranslationShown}
               />
             )}
         </View>
@@ -287,7 +287,7 @@ export default class Today extends Component<Props> {
               });
               tracker.logEvent('user-action-today-next');
             }}
-            title={I18n.t('app.assessment.next')}
+            title={I18n.t('app.common.next')}
             titleStyles={{ fontSize: 20 }}
           />
         </View>

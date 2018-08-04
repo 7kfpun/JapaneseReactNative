@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   Dimensions,
+  Platform,
   Text,
   TouchableOpacity,
   View,
@@ -26,28 +27,20 @@ const styles = StyleSheet.create({
   },
   containerInner: {
     flex: 1,
-    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        justifyContent: 'center',
+      },
+    }),
     alignItems: 'center',
-  },
-  card: {
-    flex: 1,
-    borderRadius: 10,
-    borderColor: iOSColors.lightGray,
-    borderWidth: 1,
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    padding: 10,
-    paddingTop: 60,
   },
   text: {
     textAlign: 'center',
-    fontSize: 28,
     fontWeight: '800',
     color: iOSColors.black,
   },
   thinText: {
     textAlign: 'center',
-    fontSize: 20,
     fontWeight: '300',
     color: iOSColors.black,
   },
@@ -60,9 +53,14 @@ export default class VocabItem extends Component {
     kana: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     romaji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     translation: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+
+    isKanjiShown: PropTypes.bool,
+    isKanaShown: PropTypes.bool,
+    isRomajiShown: PropTypes.bool,
+    isTranslationShown: PropTypes.bool,
+
     answers: PropTypes.oneOfType([null, PropTypes.arrayOf([PropTypes.string])]),
     removeAnswer: PropTypes.func,
-    isHideAnswer: PropTypes.bool,
     navigation: PropTypes.shape({}).isRequired,
   };
 
@@ -74,7 +72,11 @@ export default class VocabItem extends Component {
     translation: '',
     answers: [],
     removeAnswer: noop,
-    isHideAnswer: false,
+
+    isKanjiShown: true,
+    isKanaShown: true,
+    isRomajiShown: true,
+    isTranslationShown: true,
   };
 
   componentWillUnmount() {
@@ -90,10 +92,15 @@ export default class VocabItem extends Component {
       translation,
       answers,
       removeAnswer,
-      isHideAnswer,
+
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+
       navigation,
     } = this.props;
-    const isTooLong = kanji && kanji.length > 10;
+    const isTooLong = Platform.OS === 'android' || (kana && kana.length >= 8);
     const answerLength = answers.length;
 
     const isCorrect = answers.join('') === cleanWord(kana);
@@ -166,7 +173,7 @@ export default class VocabItem extends Component {
                   style={[
                     styles.text,
                     {
-                      color: isHideAnswer
+                      color: !isKanaShown
                         ? iOSColors.white
                         : answers.length > 0
                           ? iOSColors.customGray
@@ -179,7 +186,7 @@ export default class VocabItem extends Component {
                     {answers.join('').substring(0, answerLength)}
                   </Text>
                   {answerLength > 0
-                    ? cleanWord(kana.substring(answerLength, kana.length))
+                    ? cleanWord(kana).substring(answerLength, kana.length)
                     : kana}
                 </Text>
                 <TouchableOpacity
@@ -220,32 +227,32 @@ export default class VocabItem extends Component {
                 paddingHorizontal: 30,
               }}
             >
-              {kanji &&
+              {isKanjiShown &&
                 kana !== kanji && (
                   <Text
                     style={[
                       styles.text,
-                      { marginTop: 20, fontSize: isTooLong ? 16 : 24 },
+                      { marginTop: 20, fontSize: isTooLong ? 14 : 24 },
                     ]}
                   >
                     {kanji}
                   </Text>
                 )}
-              {romaji && (
+              {isRomajiShown && (
                 <Text
                   style={[
                     styles.thinText,
-                    { marginTop: 10, fontSize: isTooLong ? 16 : 20 },
+                    { marginTop: 10, fontSize: isTooLong ? 14 : 20 },
                   ]}
                 >
                   {romaji}
                 </Text>
               )}
-              {translation && (
+              {isTranslationShown && (
                 <Text
                   style={[
                     styles.thinText,
-                    { marginTop: 20, fontSize: isTooLong ? 16 : 20 },
+                    { marginTop: 20, fontSize: isTooLong ? 14 : 20 },
                   ]}
                 >
                   {translation}

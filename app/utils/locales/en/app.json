@@ -8,14 +8,14 @@
     "title": "Kana",
     "seion": "Seion",
     "dakuon": "Dakuon",
-    "youon": "Youon",
+    "youon": "Youon"
   },
   "main": {
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",
     "advanced_one": "Adv. I",
     "advanced_two": "Adv. II",
-    "feedback": "Feedback",
+    "feedback": "Feedback"
   },
   "search": {
     "title": "Search",
@@ -24,17 +24,6 @@
   },
   "vocab-list": {
     "learn": "Learn"
-  },
-  "assessment": {
-    "kana": "Kana",
-    "kanji": "Kanji",
-    "romaji": "Romaji",
-    "translation": "Eng",
-    "sound": "Sound",
-    "previous": "Previous",
-    "next": "Next",
-    "read": "Read",
-    "random": "Random"
   },
   "feedback": {
     "title": "Feedback",
@@ -46,12 +35,19 @@
     "notification_label": "Study Reminder (Daily)"
   },
   "common": {
+    "kana": "Kana",
+    "kanji": "Kanji",
+    "romaji": "Romaji",
+    "previous": "Previous",
+    "next": "Next",
+    "random": "Random",
     "lesson_no": "Lesson {{lesson_no}}",
+    "tts_required": "Google Text-to-Speech is required for using this app"
   },
   "rating": {
     "title": "Enjoy our APP?",
     "title_description": "Please give us 5 stars to cheer we up if you like this app.",
     "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
-    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif",
+    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif"
   }
 }

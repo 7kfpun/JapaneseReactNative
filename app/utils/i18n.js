@@ -1,7 +1,7 @@
 import I18n, { getLanguages } from 'react-native-i18n';
 import Tts from 'react-native-tts';
 
-getLanguages().then((languages) => {
+getLanguages().then(languages => {
   console.log('All languages', languages);
 });
 
@@ -246,12 +246,23 @@ if (I18n.locale.startsWith('zh-Hant')) {
   I18n.translations[I18n.locale] = I18n.translations.vi;
 }
 
-Tts.voices().then((voices) => {
-  console.log(voices);
-  const matchVoices = voices.filter(i => I18n.locale.split('-')[0].startsWith(i.language.split('-')[0]));
+Tts.voices().then(voices => {
+  console.log('Tts voices', voices);
+  const matchVoices = voices.filter(i =>
+    I18n.locale.split('-')[0].startsWith(i.language.split('-')[0])
+  );
   if (matchVoices.length > 0) {
     I18n.voiceLocale = matchVoices[0].language;
   }
+
+  const jpVoices = voices.filter(
+    i =>
+      ((i.language && i.language.toLowerCase().startsWith('ja')) ||
+        (i.name && i.name.toLowerCase().startsWith('ja'))) &&
+      i.notInstalled === false
+  );
+  I18n.isJaVoiceSupport = jpVoices.length > 0;
+  console.log('jpVoices', jpVoices, I18n.isJaVoiceSupport);
 
   console.log('I18n.voiceLocale', I18n.voiceLocale);
 });

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   upperText: {
     fontSize: 30,
     lineHeight: 34,
+    color: iOSColors.black,
   },
   lowerRow: {
     flex: 1,

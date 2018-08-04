@@ -368,18 +368,25 @@ export default class Assessment extends Component<Props> {
       <SafeAreaView style={styles.container}>
         <CardOptionSelector onUpdate={this.updateStates} />
 
-        <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
+        <View
+          style={{
+            flex: 1,
+            paddingHorizontal: 26,
+            paddingBottom: Platform.OS === 'ios' ? 30 : 0,
+          }}
+        >
           <View style={{ flex: 2 }}>
             <Card
               navigation={navigation}
               lesson={lesson}
-              kanji={!!isKanjiShown && kanji}
+              kanji={kanji}
               kana={kana}
-              romaji={!!isRomajiShown && romaji}
-              translation={
-                !!isTranslationShown && I18n.t(`minna.${lesson}.${romaji}`)
-              }
-              isHideAnswer={!isKanaShown}
+              romaji={romaji}
+              translation={I18n.t(`minna.${lesson}.${romaji}`)}
+              isKanjiShown={isKanjiShown}
+              isKanaShown={isKanaShown}
+              isRomajiShown={isRomajiShown}
+              isTranslationShown={isTranslationShown}
               answers={answers}
               removeAnswer={() => {
                 const tempAnswers = [...answers];
@@ -428,7 +435,7 @@ export default class Assessment extends Component<Props> {
             <Fragment>
               <CustomButton
                 raised
-                title={I18n.t('app.assessment.previous')}
+                title={I18n.t('app.common.previous')}
                 disabled={count <= 0}
                 onPress={() => {
                   this.setCount(count - 1);
@@ -448,7 +455,7 @@ export default class Assessment extends Component<Props> {
 
               <CustomButton
                 raised
-                title={I18n.t('app.assessment.next')}
+                title={I18n.t('app.common.next')}
                 disabled={count >= total - 1}
                 onPress={() => {
                   this.setCount(count + 1);
@@ -465,7 +472,7 @@ export default class Assessment extends Component<Props> {
             <Fragment>
               <CustomButton
                 raised
-                title={I18n.t('app.assessment.random')}
+                title={I18n.t('app.common.random')}
                 onPress={() => {
                   this.getNext();
                   tracker.logEvent('user-action-press-random');
