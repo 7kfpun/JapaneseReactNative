@@ -251,16 +251,16 @@ export default class Assessment extends Component<Props> {
 
     const { kana } = vocabularies[lesson].data[count];
 
-    const word = cleanWord(kana);
+    const cleanKana = cleanWord(kana);
 
     if (isSoundOn) {
       Tts.stop();
-      Tts.speak(word);
+      Tts.speak(cleanWord(kana));
     }
 
-    let length = NO_OF_TILES * 2 - word.length;
+    let length = NO_OF_TILES * 2 - cleanKana.length;
     if (length < 0) {
-      length = NO_OF_TILES * 3 - word.length;
+      length = NO_OF_TILES * 3 - cleanKana.length;
     }
     if (length < 0) {
       this.setState({ tiles: [] });
@@ -268,10 +268,10 @@ export default class Assessment extends Component<Props> {
     }
 
     let tiles;
-    if (hiragana.includes(word[0])) {
-      tiles = [...getRandom(hiragana, length), ...word];
+    if (hiragana.includes(cleanKana[0])) {
+      tiles = [...getRandom(hiragana, length), ...cleanKana];
     } else {
-      tiles = [...getRandom(katakana, length), ...word];
+      tiles = [...getRandom(katakana, length), ...cleanKana];
     }
 
     shuffle(tiles);
@@ -374,11 +374,12 @@ export default class Assessment extends Component<Props> {
               navigation={navigation}
               lesson={lesson}
               kanji={!!isKanjiShown && kanji}
-              kana={!!isKanaShown && kana}
+              kana={kana}
               romaji={!!isRomajiShown && romaji}
               translation={
                 !!isTranslationShown && I18n.t(`minna.${lesson}.${romaji}`)
               }
+              isHideAnswer={!isKanaShown}
               answers={answers}
               removeAnswer={() => {
                 const tempAnswers = [...answers];

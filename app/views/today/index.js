@@ -208,12 +208,13 @@ export default class Today extends Component<Props> {
                 navigation={navigation}
                 lesson={card.lesson}
                 kanji={isKanjiShown && card.kanji}
-                kana={isKanaShown && card.kana}
+                kana={card.kana}
                 romaji={isRomajiShown && card.romaji}
                 translation={
                   isTranslationShown &&
                   I18n.t(`minna.${card.lesson}.${card.romaji}`)
                 }
+                isHideAnswer={!isKanaShown}
               />
             )}
         </View>

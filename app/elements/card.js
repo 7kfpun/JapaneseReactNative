@@ -63,7 +63,7 @@ export default class VocabItem extends Component {
     translation: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     answers: PropTypes.oneOfType([null, PropTypes.arrayOf([PropTypes.string])]),
     removeAnswer: PropTypes.func,
-    isAssessment: PropTypes.bool,
+    isHideAnswer: PropTypes.bool,
     navigation: PropTypes.shape({}).isRequired,
   };
 
@@ -75,7 +75,7 @@ export default class VocabItem extends Component {
     translation: '',
     answers: [],
     removeAnswer: noop,
-    isAssessment: false,
+    isHideAnswer: false,
   };
 
   componentWillUnmount() {
@@ -91,7 +91,7 @@ export default class VocabItem extends Component {
       translation,
       answers,
       removeAnswer,
-      isAssessment,
+      isHideAnswer,
       navigation,
     } = this.props;
     const isTooLong = kanji.length > 10;
@@ -158,8 +158,9 @@ export default class VocabItem extends Component {
                   style={[
                     styles.text,
                     {
-                      color:
-                        answers.length > 0
+                      color: isHideAnswer
+                        ? iOSColors.white
+                        : answers.length > 0
                           ? iOSColors.customGray
                           : iOSColors.black,
                       fontSize: isTooLong ? 20 : 28,
