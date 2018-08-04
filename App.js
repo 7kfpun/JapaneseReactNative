@@ -24,82 +24,96 @@ const stackOptions = {
   animationEnabled: true,
   navigationOptions: {
     headerStyle: {
-      backgroundColor: '#F7F7F7',
-      borderBottomWidth: 0,
+      backgroundColor: iOSColors.tealBlue,
+      // backgroundColor: '#F7F7F7',
+      // borderBottomWidth: 0,
     },
-    headerTintColor: 'gray',
+    headerTintColor: iOSColors.white,
     headerTitleStyle: {
       fontWeight: 'bold',
     },
   },
 };
 
-const AppTab = TabNavigator({
-  today: {
-    screen: StackNavigator({
-      today: { screen: Today },
+const AppTab = TabNavigator(
+  {
+    today: {
+      screen: StackNavigator(
+        {
+          today: { screen: Today },
+        },
+        stackOptions
+      ),
     },
-    stackOptions),
-  },
-  kana: {
-    screen: StackNavigator({
-      kana: { screen: Kana },
+    kana: {
+      screen: StackNavigator(
+        {
+          kana: { screen: Kana },
+        },
+        stackOptions
+      ),
     },
-    stackOptions),
-  },
-  lessons: {
-    screen: StackNavigator({
-      lessons: { screen: Lessons },
-      'vocab-list': { screen: VocabList },
-      assessment: { screen: Assessment },
-      'read-all': { screen: ReadAll },
-      'vocab-feedback': { screen: Feedback },
+    lessons: {
+      screen: StackNavigator(
+        {
+          lessons: { screen: Lessons },
+          'vocab-list': { screen: VocabList },
+          assessment: { screen: Assessment },
+          'read-all': { screen: ReadAll },
+          'vocab-feedback': { screen: Feedback },
+        },
+        stackOptions
+      ),
     },
-    stackOptions),
-  },
-  search: {
-    screen: StackNavigator({
-      search: { screen: Search },
+    search: {
+      screen: StackNavigator(
+        {
+          search: { screen: Search },
+        },
+        stackOptions
+      ),
     },
-    stackOptions),
-  },
-  about: {
-    screen: StackNavigator({
-      about: { screen: About },
-      feedback: { screen: Feedback },
-    },
-    stackOptions),
-  },
-}, {
-  tabBarOptions: {
-    activeTintColor: iOSColors.tealBlue,
-    inactiveTintColor: iOSColors.black,
-    // showIcon and pressColor are for Android
-    showIcon: true,
-    pressColor: '#E0E0E0',
-    labelStyle: {
-      fontSize: 10,
-      paddingBottom: 2,
-    },
-    indicatorStyle: {
-      backgroundColor: iOSColors.tealBlue,
-    },
-    style: {
-      backgroundColor: 'white',
+    about: {
+      screen: StackNavigator(
+        {
+          about: { screen: About },
+          feedback: { screen: Feedback },
+        },
+        stackOptions
+      ),
     },
   },
-  tabBarPosition: 'bottom',
+  {
+    tabBarOptions: {
+      activeTintColor: iOSColors.tealBlue,
+      inactiveTintColor: iOSColors.black,
+      // showIcon and pressColor are for Android
+      showIcon: true,
+      pressColor: '#E0E0E0',
+      labelStyle: {
+        fontSize: 10,
+        paddingBottom: 2,
+      },
+      indicatorStyle: {
+        backgroundColor: iOSColors.tealBlue,
+      },
+      style: {
+        backgroundColor: 'white',
+      },
+    },
+    tabBarPosition: 'bottom',
 
-  navigationOptions: {
-    headerStyle: {
-      backgroundColor: iOSColors.tealBlue,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: iOSColors.tealBlue,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  },
-});
+  }
+);
 
 console.ignoredYellowBox = [
   'NetInfo\'s "change" event is deprecated. Listen to the "connectionChange" event instead.',

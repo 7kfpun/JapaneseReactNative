@@ -95,7 +95,7 @@ export default class VocabList extends Component<Props> {
                 });
               }}
             >
-              <Ionicons name="md-list-box" size={22} color={iOSColors.gray} />
+              <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
             </TouchableOpacity>
           </Animatable.View>
         </View>

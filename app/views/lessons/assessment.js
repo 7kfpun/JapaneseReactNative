@@ -6,7 +6,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  TouchableHighlight,
   View,
 } from 'react-native';
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: iOSColors.gray,
+    color: iOSColors.white,
   },
   selectors: {
     flexDirection: 'row',
@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: (width - 160) / NO_OF_TILES,
     width: (width - 130) / NO_OF_TILES,
-    marginTop: 10,
     backgroundColor: iOSColors.white,
+    marginTop: 10,
   },
   tileText: {
     fontSize: 20,
@@ -392,7 +392,9 @@ export default class Assessment extends Component<Props> {
 
           <View style={styles.tileBlock}>
             {tiles.map(tile => (
-              <TouchableOpacity
+              <TouchableHighlight
+                underlayColor={iOSColors.midGray}
+                style={styles.tile}
                 key={Math.random()}
                 onPress={() => {
                   if (answers.length < cleanWord(kana).length) {
@@ -414,10 +416,8 @@ export default class Assessment extends Component<Props> {
                   }
                 }}
               >
-                <View style={styles.tile}>
-                  <Text style={styles.tileText}>{tile}</Text>
-                </View>
-              </TouchableOpacity>
+                <Text style={styles.tileText}>{tile}</Text>
+              </TouchableHighlight>
             ))}
           </View>
         </View>

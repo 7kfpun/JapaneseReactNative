@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   tabIndicatorText: {
     fontSize: 16,
     paddingBottom: 6,
+    color: iOSColors.tealBlue,
   },
   row: {
     flexDirection: 'row',

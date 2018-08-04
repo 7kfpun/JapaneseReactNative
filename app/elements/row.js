@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 
@@ -24,11 +19,11 @@ const styles = StyleSheet.create({
   },
   borderTop: {
     borderTopWidth: 0.5,
-    borderTopColor: iOSColors.gray,
+    borderTopColor: iOSColors.midGray,
   },
   borderBottom: {
     borderBottomWidth: 0.5,
-    borderBottomColor: iOSColors.gray,
+    borderBottomColor: iOSColors.midGray,
   },
   text: {
     fontSize: 16,
@@ -69,7 +64,9 @@ const Row = ({
       ]}
     >
       <Text style={styles.text}>{text}</Text>
-      {!!description && <Text style={styles.descriptionText}>{description}</Text>}
+      {!!description && (
+        <Text style={styles.descriptionText}>{description}</Text>
+      )}
     </View>
   </TouchableOpacity>
 );

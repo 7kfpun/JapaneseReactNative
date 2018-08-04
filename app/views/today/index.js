@@ -7,7 +7,6 @@ import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
-// import Swiper from 'react-native-deck-swiper';
 import Tts from 'react-native-tts';
 
 import { cleanWord, shuffle } from '../../utils/helpers';
@@ -19,7 +18,6 @@ import Card from '../../elements/card';
 import CustomButton from '../../elements/button';
 import SoundButton from '../../elements/sound-button';
 import CardOptionSelector from '../../elements/card-option-selector';
-// import ReadableButton from '../../elements/readable-button';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';

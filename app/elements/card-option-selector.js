@@ -5,6 +5,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import store from 'react-native-simple-store';
 
 import I18n from '../utils/i18n';
@@ -208,18 +209,13 @@ export default class CardOptionSelector extends Component {
             style={styles.icon}
             onPress={() => this.toggleSelection('isTranslationShown')}
           >
-            <Text
-              style={[
-                styles.text,
-                {
-                  color: isTranslationShown
-                    ? iOSColors.tealBlue
-                    : iOSColors.midGray,
-                },
-              ]}
-            >
-              {I18n.t('app.assessment.translation')}
-            </Text>
+            <MaterialCommunityIcons
+              name="translate"
+              size={22}
+              color={
+                isTranslationShown ? iOSColors.tealBlue : iOSColors.midGray
+              }
+            />
           </TouchableOpacity>
         )}
 
@@ -228,14 +224,11 @@ export default class CardOptionSelector extends Component {
             style={styles.icon}
             onPress={() => this.toggleSelection('isSoundOn')}
           >
-            <Text
-              style={[
-                styles.text,
-                { color: isSoundOn ? iOSColors.tealBlue : iOSColors.midGray },
-              ]}
-            >
-              {I18n.t('app.assessment.sound')}
-            </Text>
+            <MaterialCommunityIcons
+              name="ear-hearing"
+              size={22}
+              color={isSoundOn ? iOSColors.tealBlue : iOSColors.midGray}
+            />
           </TouchableOpacity>
         )}
 

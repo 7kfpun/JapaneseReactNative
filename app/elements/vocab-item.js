@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
@@ -50,16 +45,14 @@ export default class VocabItem extends Component {
       kana: PropTypes.string.isRequired,
       romaji: PropTypes.string.isRequired,
     }).isRequired,
-    lesson: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]).isRequired,
+    lesson: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     isShowLesson: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     isShowLesson: false,
-  }
+  };
 
   componentWillUnmount() {
     Tts.stop();
@@ -67,11 +60,7 @@ export default class VocabItem extends Component {
 
   render() {
     const {
-      item: {
-        kanji,
-        kana,
-        romaji,
-      },
+      item: { kanji, kana, romaji },
       item,
       index,
       lesson,
@@ -87,15 +76,36 @@ export default class VocabItem extends Component {
           tracker.logEvent('user-action-press-speak', { item });
         }}
       >
-        <View style={[styles.container, { backgroundColor: index % 2 ? iOSColors.customGray : 'white' }]}>
+        <View
+          style={[
+            styles.container,
+            { backgroundColor: index % 2 ? '#F7F7F7' : 'white' },
+          ]}
+        >
           <View style={styles.bodyLeft}>
             <Text style={styles.text}>{kana}</Text>
-            <Text style={[styles.text, { paddingTop: 12 }]}>{kanji !== kana ? kanji : ''}</Text>
+            <Text style={[styles.text, { paddingTop: 12 }]}>
+              {kanji !== kana ? kanji : ''}
+            </Text>
           </View>
           <View style={styles.bodyRight}>
-            <Text style={styles.text}>{I18n.t(`minna.${lesson}.${romaji}`)}</Text>
-            {isShowLesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{lesson}</Text>}
-            {!isShowLesson && <Text style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}>{index + 1}</Text>}
+            <Text style={styles.text}>
+              {I18n.t(`minna.${lesson}.${romaji}`)}
+            </Text>
+            {isShowLesson && (
+              <Text
+                style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}
+              >
+                {lesson}
+              </Text>
+            )}
+            {!isShowLesson && (
+              <Text
+                style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}
+              >
+                {index + 1}
+              </Text>
+            )}
           </View>
         </View>
       </TouchableOpacity>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { FlatList, Platform, ScrollView, StyleSheet } from 'react-native';
 
+import { iOSColors } from 'react-native-typography';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
   tabIndicatorText: {
     fontSize: 16,
     paddingBottom: 6,
+    color: iOSColors.tealBlue,
   },
 });
 
