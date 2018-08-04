@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
   tabIndicatorText: {
     fontSize: 16,
     paddingBottom: 6,
+    color: iOSColors.gray,
+  },
+  tabIndicatorSelectedText: {
+    fontSize: 16,
+    paddingBottom: 6,
     color: iOSColors.tealBlue,
   },
   row: {
@@ -71,7 +76,7 @@ export default class About extends Component<Props> {
         },
       ]}
       textStyle={styles.tabIndicatorText}
-      selectedTextStyle={styles.tabIndicatorText}
+      selectedTextStyle={styles.tabIndicatorSelectedText}
     />
   );
 

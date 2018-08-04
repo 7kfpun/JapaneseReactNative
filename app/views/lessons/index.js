@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
   tabIndicatorText: {
     fontSize: 16,
     paddingBottom: 6,
+    color: iOSColors.gray,
+  },
+  tabIndicatorSelectedText: {
+    fontSize: 16,
+    paddingBottom: 6,
     color: iOSColors.tealBlue,
   },
 });
@@ -81,7 +86,7 @@ export default class Main extends Component<Props> {
     <PagerTabIndicator
       tabs={lessonGroup}
       textStyle={styles.tabIndicatorText}
-      selectedTextStyle={styles.tabIndicatorText}
+      selectedTextStyle={styles.tabIndicatorSelectedText}
     />
   );
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
   },
   containerInner: {
     flex: 1,
-    paddingTop: 0,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -94,8 +93,11 @@ export default class VocabItem extends Component {
       isHideAnswer,
       navigation,
     } = this.props;
-    const isTooLong = kanji.length > 10;
+    const isTooLong = kanji && kanji.length > 10;
     const answerLength = answers.length;
+
+    const isCorrect = answers.join('') === cleanWord(kana);
+    const isWrong = !cleanWord(kana).startsWith(answers.join(''));
 
     return (
       <TouchableOpacity
@@ -138,22 +140,28 @@ export default class VocabItem extends Component {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'space-between',
-                  width: width - 140,
+                  width: width - 100,
                   paddingBottom: 5,
                 }}
               >
-                <View style={styles.answerResult}>
-                  {answers.join('') === cleanWord(kana) && (
+                <Fragment>
+                  {!isCorrect &&
+                    !isWrong && (
+                      <Ionicons name="md-checkmark" size={28} color="white" />
+                    )}
+
+                  {isCorrect && (
                     <Animatable.View animation="fadeIn">
                       <Ionicons name="md-checkmark" size={28} color="green" />
                     </Animatable.View>
                   )}
-                  {!cleanWord(kana).startsWith(answers.join('')) && (
+
+                  {isWrong && (
                     <Animatable.View animation="fadeIn">
                       <Ionicons name="md-close" size={28} color="red" />
                     </Animatable.View>
                   )}
-                </View>
+                </Fragment>
                 <Text
                   style={[
                     styles.text,
@@ -178,11 +186,21 @@ export default class VocabItem extends Component {
                   style={styles.answerBack}
                   onPress={() => removeAnswer()}
                 >
-                  {answers.length > 0 && (
+                  {answers.length > 0 ? (
+                    <Animatable.View animation="fadeIn">
+                      <Ionicons
+                        name="ios-backspace-outline"
+                        size={28}
+                        color={
+                          answers.length > 0 ? iOSColors.black : iOSColors.white
+                        }
+                      />
+                    </Animatable.View>
+                  ) : (
                     <Ionicons
                       name="ios-backspace-outline"
                       size={28}
-                      color="black"
+                      color="white"
                     />
                   )}
                 </TouchableOpacity>
