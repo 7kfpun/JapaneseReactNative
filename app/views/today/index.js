@@ -94,20 +94,35 @@ export default class Today extends Component<Props> {
 
   componentDidMount() {
     store
-      .get('isKanaShown')
-      .then(isKanaShown => this.setState({ isKanaShown }));
-    store
-      .get('isKanjiShown')
-      .then(isKanjiShown => this.setState({ isKanjiShown }));
-    store
-      .get('isRomajiShown')
-      .then(isRomajiShown => this.setState({ isRomajiShown }));
-    store
-      .get('isTranslationShown')
-      .then(isTranslationShown => this.setState({ isTranslationShown }));
-    store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
-
-    this.requestTodayItems();
+      .get('notFirstStart')
+      .then(notFirstStart => {
+        if (notFirstStart) {
+          store
+            .get('isKanaShown')
+            .then(isKanaShown => this.setState({ isKanaShown }));
+          store
+            .get('isKanjiShown')
+            .then(isKanjiShown => this.setState({ isKanjiShown }));
+          store
+            .get('isRomajiShown')
+            .then(isRomajiShown => this.setState({ isRomajiShown }));
+          store
+            .get('isTranslationShown')
+            .then(isTranslationShown => this.setState({ isTranslationShown }));
+          store
+            .get('isSoundOn')
+            .then(isSoundOn => this.setState({ isSoundOn }));
+        } else {
+          this.setState({
+            isKanaShown: true,
+            isKanjiShown: true,
+            isRomajiShown: true,
+            isTranslationShown: true,
+            isSoundOn: true,
+          });
+        }
+      })
+      .then(() => this.requestTodayItems());
   }
 
   componentWillUnmount() {

@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+import OneSignal from 'react-native-onesignal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
@@ -60,6 +61,8 @@ export default class About extends Component<Props> {
   };
 
   componentDidMount() {
+    OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
+
     // this.requestProducts();
   }
 

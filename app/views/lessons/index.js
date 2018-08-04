@@ -7,7 +7,6 @@ import { iOSColors } from 'react-native-typography';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../../elements/admob';
 import LessonItem from '../../elements/lesson-item';
@@ -74,8 +73,6 @@ export default class Main extends Component<Props> {
   state = {};
 
   componentDidMount() {
-    OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
-
     // TODO:
     setTimeout(() => {
       this.setState({ androidFix: Math.random() });
