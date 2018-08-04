@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  FlatList,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
@@ -28,6 +22,7 @@ import { config } from '../../config';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
   empty: {
     flex: 1,
@@ -50,9 +45,9 @@ const styles = StyleSheet.create({
 });
 
 const vocabs = flatten(
-  Object.keys(items).map(
-    key => items[key].data.map(i => Object.assign({ lesson: key }, i)),
-  ),
+  Object.keys(items).map(key =>
+    items[key].data.map(i => Object.assign({ lesson: key }, i))
+  )
 );
 
 type Props = {};
@@ -60,7 +55,13 @@ export default class SearchView extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.search.title'),
     tabBarLabel: I18n.t('app.search.title'),
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-search' : 'ios-search-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => (
+      <Ionicons
+        name={focused ? 'ios-search' : 'ios-search-outline'}
+        size={20}
+        color={tintColor}
+      />
+    ),
   };
 
   state = {
@@ -68,7 +69,7 @@ export default class SearchView extends Component<Props> {
     searchResult: [],
   };
 
-  onChangeText = (searchText) => {
+  onChangeText = searchText => {
     const options = {
       shouldSort: true,
       threshold: 0.18,
@@ -83,11 +84,11 @@ export default class SearchView extends Component<Props> {
 
     this.setState({ searchText, searchResult });
     tracker.logEvent('user-action-search-vocab', { text: searchText });
-  }
+  };
 
   onCancelOrDelete = () => {
     this.setState({ searchText: '' });
-  }
+  };
 
   render() {
     return (
@@ -96,7 +97,6 @@ export default class SearchView extends Component<Props> {
           <Search
             backgroundColor={iOSColors.white}
             titleCancelColor={iOSColors.blue}
-
             onChangeText={this.onChangeText}
             onCancel={this.onCancelOrDelete}
             onDelete={this.onCancelOrDelete}
@@ -106,23 +106,29 @@ export default class SearchView extends Component<Props> {
         </View>
 
         <View style={{ flex: 1 }}>
-          {!!this.state.searchText && <FlatList
-            style={styles.list}
-            data={this.state.searchResult}
-            keyExtractor={(item, index) => `${index}-${item}`}
-            renderItem={({ item, index }) => (
-              <VocabItem
-                index={index}
-                item={item}
-                lesson={item.lesson}
-                isShowLesson={true}
-              />
-            )}
-          />}
+          {!!this.state.searchText && (
+            <FlatList
+              style={styles.list}
+              data={this.state.searchResult}
+              keyExtractor={(item, index) => `${index}-${item}`}
+              renderItem={({ item, index }) => (
+                <VocabItem
+                  index={index}
+                  item={item}
+                  lesson={item.lesson}
+                  isShowLesson={true}
+                />
+              )}
+            />
+          )}
 
-          {!this.state.searchText && <View style={styles.empty}>
-            <Text style={styles.text}>{I18n.t('app.search.description')}</Text>
-          </View>}
+          {!this.state.searchText && (
+            <View style={styles.empty}>
+              <Text style={styles.text}>
+                {I18n.t('app.search.description')}
+              </Text>
+            </View>
+          )}
         </View>
 
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-search-banner`]} />

@@ -9,10 +9,12 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import * as Animatable from 'react-native-animatable';
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
-import { cleanWord } from '../utils/helpers';
+import { cleanWord, noop } from '../utils/helpers';
 
 const { width } = Dimensions.get('window');
 
@@ -21,9 +23,12 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 16,
     backgroundColor: iOSColors.white,
+  },
+  containerInner: {
+    flex: 1,
+    paddingTop: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 30,
   },
   card: {
     flex: 1,
@@ -51,17 +56,26 @@ const styles = StyleSheet.create({
 
 export default class VocabItem extends Component {
   static propTypes = {
+    lesson: PropTypes.number,
     kanji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     kana: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     romaji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     translation: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    answers: PropTypes.oneOfType([null, PropTypes.arrayOf([PropTypes.string])]),
+    removeAnswer: PropTypes.func,
+    isAssessment: PropTypes.bool,
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
+    lesson: 0,
     kanji: '',
     kana: '',
     romaji: '',
     translation: '',
+    answers: [],
+    removeAnswer: noop,
+    isAssessment: false,
   };
 
   componentWillUnmount() {
@@ -69,7 +83,19 @@ export default class VocabItem extends Component {
   }
 
   render() {
-    const { kanji, kana, romaji, translation } = this.props;
+    const {
+      lesson,
+      kanji,
+      kana,
+      romaji,
+      translation,
+      answers,
+      removeAnswer,
+      isAssessment,
+      navigation,
+    } = this.props;
+    const isTooLong = kanji.length > 10;
+    const answerLength = answers.length;
 
     return (
       <TouchableOpacity
@@ -84,33 +110,130 @@ export default class VocabItem extends Component {
         }}
       >
         <View style={styles.container}>
-          {kana &&
-            kana !== kanji && (
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <TouchableOpacity
+              style={{ paddingTop: 10, paddingRight: 10 }}
+              onPress={() => {
+                navigation.navigate('vocab-feedback', {
+                  item: {
+                    kanji,
+                    kana,
+                    romaji,
+                  },
+                  lesson,
+                });
+              }}
+            >
+              <Ionicons
+                name="ios-help-circle-outline"
+                size={24}
+                color="black"
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.containerInner}>
+            {kana && (
               <View
                 style={{
-                  alignItems: 'center',
-                  width: width - 150,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  width: width - 140,
                   paddingBottom: 5,
-                  borderBottomColor: iOSColors.midGray,
-                  borderBottomWidth: 1,
                 }}
               >
-                <Text style={[styles.text, { color: iOSColors.gray }]}>
-                  {kana}
+                <View style={styles.answerResult}>
+                  {answers.join('') === cleanWord(kana) && (
+                    <Animatable.View animation="fadeIn">
+                      <Ionicons name="md-checkmark" size={28} color="green" />
+                    </Animatable.View>
+                  )}
+                  {!cleanWord(kana).startsWith(answers.join('')) && (
+                    <Animatable.View animation="fadeIn">
+                      <Ionicons name="md-close" size={28} color="red" />
+                    </Animatable.View>
+                  )}
+                </View>
+                <Text
+                  style={[
+                    styles.text,
+                    {
+                      color:
+                        answers.length > 0
+                          ? iOSColors.customGray
+                          : iOSColors.black,
+                      fontSize: isTooLong ? 20 : 28,
+                    },
+                  ]}
+                >
+                  <Text style={{ color: 'black' }}>
+                    {answers.join('').substring(0, answerLength)}
+                  </Text>
+                  {answerLength > 0
+                    ? cleanWord(kana.substring(answerLength, kana.length))
+                    : kana}
                 </Text>
+                <TouchableOpacity
+                  style={styles.answerBack}
+                  onPress={() => removeAnswer()}
+                >
+                  {answers.length > 0 && (
+                    <Ionicons
+                      name="ios-backspace-outline"
+                      size={28}
+                      color="black"
+                    />
+                  )}
+                </TouchableOpacity>
               </View>
             )}
-          {kanji && (
-            <Text style={[styles.text, { marginTop: 20 }]}>{kanji}</Text>
-          )}
-          {romaji && (
-            <Text style={[styles.thinText, { marginTop: 10 }]}>{romaji}</Text>
-          )}
-          {translation && (
-            <Text style={[styles.thinText, { marginTop: 20 }]}>
-              {translation}
-            </Text>
-          )}
+
+            <View
+              style={{
+                width: width - 140,
+                borderBottomColor: iOSColors.midGray,
+                borderBottomWidth: 1,
+              }}
+            />
+
+            <View
+              style={{
+                paddingHorizontal: 30,
+              }}
+            >
+              {kanji &&
+                kana !== kanji && (
+                  <Text
+                    style={[
+                      styles.text,
+                      { marginTop: 20, fontSize: isTooLong ? 16 : 28 },
+                    ]}
+                  >
+                    {kanji}
+                  </Text>
+                )}
+              {romaji && (
+                <Text
+                  style={[
+                    styles.thinText,
+                    { marginTop: 10, fontSize: isTooLong ? 16 : 20 },
+                  ]}
+                >
+                  {romaji}
+                </Text>
+              )}
+              {translation && (
+                <Text
+                  style={[
+                    styles.thinText,
+                    { marginTop: 20, fontSize: isTooLong ? 16 : 20 },
+                  ]}
+                >
+                  {translation}
+                </Text>
+              )}
+            </View>
+          </View>
         </View>
       </TouchableOpacity>
     );

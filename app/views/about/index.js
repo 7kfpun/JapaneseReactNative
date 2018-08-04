@@ -30,6 +30,7 @@ const itemSkus = Platform.select({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
 });
 
@@ -37,21 +38,26 @@ type Props = {};
 export default class About extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
-  }
+  };
 
   static navigationOptions = {
     title: I18n.t('app.about.title'),
     tabBarLabel: I18n.t('app.about.title'),
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-chatboxes' : 'ios-chatboxes-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => (
+      <Ionicons
+        name={focused ? 'ios-chatboxes' : 'ios-chatboxes-outline'}
+        size={20}
+        color={tintColor}
+      />
+    ),
   };
-
 
   state = {
     productList: [],
     // purchasedProduct: [],
     purchasedProductIds: [],
     refreshing: false,
-  }
+  };
 
   componentDidMount() {
     // this.requestProducts();
@@ -71,7 +77,7 @@ export default class About extends Component<Props> {
     } catch (err) {
       console.warn(err);
     }
-  }
+  };
 
   getAvailablePurchases = async () => {
     try {
@@ -89,9 +95,9 @@ export default class About extends Component<Props> {
       console.warn(err.code, err.message);
       return false;
     }
-  }
+  };
 
-  buySubscribeItem = async (sku) => {
+  buySubscribeItem = async sku => {
     try {
       console.log('buySubscribeItem:', sku);
       const purchase = await RNIap.buySubscription(sku);
@@ -100,17 +106,12 @@ export default class About extends Component<Props> {
     } catch (err) {
       console.warn(err.code, err.message);
     }
-  }
+  };
 
   render() {
-    const {
-      navigation,
-    } = this.props;
+    const { navigation } = this.props;
 
-    const {
-      productList,
-      purchasedProductIds,
-    } = this.state;
+    const { productList, purchasedProductIds } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

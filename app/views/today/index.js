@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Platform, StyleSheet, View } from 'react-native';
 
@@ -74,6 +75,10 @@ export default class Today extends Component<Props> {
         color={tintColor}
       />
     ),
+  };
+
+  static propTypes = {
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   state = {
@@ -160,6 +165,8 @@ export default class Today extends Component<Props> {
   }
 
   render() {
+    const { navigation } = this.props;
+
     const {
       todayItems,
       cardIndex,
@@ -185,6 +192,8 @@ export default class Today extends Component<Props> {
           {!outOfConnection &&
             card && (
               <Card
+                navigation={navigation}
+                lesson={card.lesson}
                 kanji={isKanjiShown && card.kanji}
                 kana={isKanaShown && card.kana}
                 romaji={isRomajiShown && card.romaji}
@@ -209,9 +218,11 @@ export default class Today extends Component<Props> {
             onPress={() => {
               this.setState({ todayItems: shuffle([...todayItems]) }, () => {
                 if (isSoundOn && todayItems) {
+                  const { todayItems: newTodayItems } = this.state;
+
                   Tts.stop();
                   Tts.setDefaultLanguage('ja');
-                  Tts.speak(cleanWord(todayItems[0].kana));
+                  Tts.speak(cleanWord(newTodayItems[0].kana));
                 }
               });
               tracker.logEvent('user-action-today-shuffle');
@@ -221,6 +232,7 @@ export default class Today extends Component<Props> {
           />
 
           <SoundButton
+            containerStyles={{ marginHorizontal: 15 }}
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(cleanWord(todayItems[cardIndex].kana));

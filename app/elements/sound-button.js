@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  TouchableHighlight,
-} from 'react-native';
+import { TouchableHighlight } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -13,17 +11,18 @@ import { noop } from '../utils/helpers';
 export default class VocabItem extends Component {
   static propTypes = {
     onPress: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     onPress: noop,
-  }
+  };
 
   render() {
+    const { containerStyles } = this.props;
     return (
       <TouchableHighlight
         style={{
-          marginHorizontal: 20,
+          ...containerStyles,
           height: 48,
           width: 48,
           borderRadius: 24,
@@ -36,11 +35,7 @@ export default class VocabItem extends Component {
           this.props.onPress();
         }}
       >
-        <Ionicons
-          name="md-volume-up"
-          color={iOSColors.white}
-          size={24}
-        />
+        <Ionicons name="md-volume-up" color={iOSColors.white} size={24} />
       </TouchableHighlight>
     );
   }

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Button,
   Dimensions,
   Platform,
   StyleSheet,
@@ -13,7 +12,6 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
-import * as Animatable from 'react-native-animatable';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
@@ -27,8 +25,9 @@ import tracker from '../../utils/tracker';
 import AdMob from '../../elements/admob';
 import Card from '../../elements/card';
 import CardOptionSelector from '../../elements/card-option-selector';
+import CustomButton from '../../elements/button';
 import Rating from '../../elements/rating';
-import ReadableButton from '../../elements/readable-button';
+import SoundButton from '../../elements/sound-button';
 
 import { config } from '../../config';
 
@@ -47,13 +46,13 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: 'white',
+    color: iOSColors.gray,
   },
   selectors: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderBottomColor: iOSColors.customGray,
-    borderBottomWidth: 0.3,
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    alignItems: 'center',
   },
   selectorIcon: {
     flex: 1,
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: iOSColors.black,
   },
-  assessmentBlock: {},
   answerBlock: {
     height: 50,
     flexDirection: 'row',
@@ -120,12 +118,15 @@ const styles = StyleSheet.create({
   tileBlock: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
   },
   tile: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: (width - 100) / NO_OF_TILES,
-    width: (width - 100) / NO_OF_TILES,
+    height: (width - 160) / NO_OF_TILES,
+    width: (width - 130) / NO_OF_TILES,
+    marginTop: 10,
     backgroundColor: iOSColors.white,
   },
   tileText: {
@@ -298,7 +299,8 @@ export default class Assessment extends Component<Props> {
     isKanaShown,
     isRomajiShown,
     isTranslationShown,
-    isSoundOn
+    isSoundOn,
+    isOrdered
   ) => {
     console.log(
       'updateStates',
@@ -306,7 +308,8 @@ export default class Assessment extends Component<Props> {
       isKanaShown,
       isRomajiShown,
       isTranslationShown,
-      isSoundOn
+      isSoundOn,
+      isOrdered
     );
     this.setState({
       isKanjiShown,
@@ -314,6 +317,7 @@ export default class Assessment extends Component<Props> {
       isRomajiShown,
       isTranslationShown,
       isSoundOn,
+      isOrdered,
     });
   };
 
@@ -364,151 +368,117 @@ export default class Assessment extends Component<Props> {
       <SafeAreaView style={styles.container}>
         <CardOptionSelector onUpdate={this.updateStates} />
 
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-          <TouchableOpacity
-            style={{ padding: 10 }}
-            onPress={() => {
-              navigation.navigate('vocab-feedback', {
-                item: {
-                  kanji,
-                  kana,
-                  romaji,
-                },
-                lesson,
-              });
-            }}
-          >
-            <Ionicons name="ios-help-circle-outline" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
+        <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
+          <View style={{ flex: 2 }}>
             <Card
+              navigation={navigation}
+              lesson={lesson}
               kanji={!!isKanjiShown && kanji}
               kana={!!isKanaShown && kana}
               romaji={!!isRomajiShown && romaji}
               translation={
-                isTranslationShown && I18n.t(`minna.${lesson}.${romaji}`)
+                !!isTranslationShown && I18n.t(`minna.${lesson}.${romaji}`)
               }
+              answers={answers}
+              removeAnswer={() => {
+                const tempAnswers = [...answers];
+                tempAnswers.pop();
+                this.setState({ answers: tempAnswers });
+                tracker.logEvent('user-action-press-backspace');
+              }}
+              isAssessment
             />
           </View>
 
-          <View style={styles.assessmentBlock}>
-            <View style={styles.answerBlock}>
-              <View style={styles.answerResult}>
-                {answers.join('') === cleanWord(kana) && (
-                  <Animatable.View animation="fadeIn">
-                    <Ionicons name="md-checkmark" size={28} color="green" />
-                  </Animatable.View>
-                )}
-                {!cleanWord(kana).startsWith(answers.join('')) && (
-                  <Animatable.View animation="fadeIn">
-                    <Ionicons name="md-close" size={28} color="red" />
-                  </Animatable.View>
-                )}
-              </View>
-              <View style={styles.answerItems}>
-                {answers.map(answer => (
-                  <Text key={Math.random()} style={styles.answerText}>
-                    {answer}
-                  </Text>
-                ))}
-              </View>
+          <View style={styles.tileBlock}>
+            {tiles.map(tile => (
               <TouchableOpacity
-                style={styles.answerBack}
+                key={Math.random()}
                 onPress={() => {
-                  const tempAnswers = [...answers];
-                  tempAnswers.pop();
-                  this.setState({ answers: tempAnswers });
-                  tracker.logEvent('user-action-press-backspace');
+                  if (answers.length < cleanWord(kana).length) {
+                    this.setState({ answers: [...answers, tile] }, () => {
+                      tracker.logEvent('user-action-press-answer', { tile });
+
+                      if (answers.join('') === cleanWord(kana)) {
+                        tracker.logEvent('user-action-result-correct', {
+                          vocab: kana,
+                        });
+                      }
+
+                      if (!cleanWord(kana).startsWith(answers.join(''))) {
+                        tracker.logEvent('user-action-result-incorrect', {
+                          vocab: kana,
+                        });
+                      }
+                    });
+                  }
                 }}
               >
-                {answers.length > 0 && (
-                  <Ionicons
-                    name="ios-backspace-outline"
-                    size={28}
-                    color="black"
-                  />
-                )}
+                <View style={styles.tile}>
+                  <Text style={styles.tileText}>{tile}</Text>
+                </View>
               </TouchableOpacity>
-            </View>
-            <View style={styles.tileBlock}>
-              {tiles.map(tile => (
-                <TouchableOpacity
-                  key={Math.random()}
-                  onPress={() => {
-                    if (answers.length < cleanWord(kana).length) {
-                      this.setState({ answers: [...answers, tile] }, () => {
-                        tracker.logEvent('user-action-press-answer', { tile });
-
-                        if (answers.join('') === cleanWord(kana)) {
-                          tracker.logEvent('user-action-result-correct', {
-                            vocab: kana,
-                          });
-                        }
-
-                        if (!cleanWord(kana).startsWith(answers.join(''))) {
-                          tracker.logEvent('user-action-result-incorrect', {
-                            vocab: kana,
-                          });
-                        }
-                      });
-                    }
-                  }}
-                >
-                  <View style={styles.tile}>
-                    <Text style={styles.tileText}>{tile}</Text>
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
+            ))}
           </View>
         </View>
 
         <View style={styles.selectors}>
           {isOrdered && (
-            <Button
-              color={count > 0 ? iOSColors.black : iOSColors.lightGray}
-              title={I18n.t('app.assessment.previous')}
-              disabled={count <= 0}
-              onPress={() => {
-                this.setCount(count - 1);
-                tracker.logEvent('user-action-press-previous');
-              }}
-            />
-          )}
-          {isOrdered && (
-            <Button
-              color={count < total ? iOSColors.black : iOSColors.lightGray}
-              title={I18n.t('app.assessment.next')}
-              disabled={count >= total - 1}
-              onPress={() => {
-                this.setCount(count + 1);
-                tracker.logEvent('user-action-press-next', {
-                  lesson: `${lesson}`,
-                });
-              }}
-            />
-          )}
-          {!isOrdered && (
-            <Button
-              color={iOSColors.black}
-              title={I18n.t('app.assessment.random')}
-              disabled={false}
-              onPress={() => {
-                this.getNext();
-                tracker.logEvent('user-action-press-random');
-              }}
-            />
+            <Fragment>
+              <CustomButton
+                raised
+                title={I18n.t('app.assessment.previous')}
+                disabled={count <= 0}
+                onPress={() => {
+                  this.setCount(count - 1);
+                  tracker.logEvent('user-action-press-previous');
+                }}
+              />
+
+              <SoundButton
+                containerStyles={{ marginHorizontal: 15 }}
+                onPress={() => {
+                  Tts.setDefaultLanguage('ja');
+                  Tts.speak(cleanWord(kana));
+                  tracker.logEvent('user-action-assessment-read');
+                }}
+              />
+
+              <CustomButton
+                raised
+                title={I18n.t('app.assessment.next')}
+                disabled={count >= total - 1}
+                onPress={() => {
+                  this.setCount(count + 1);
+                  tracker.logEvent('user-action-press-next', {
+                    lesson: `${lesson}`,
+                  });
+                }}
+              />
+            </Fragment>
           )}
 
-          <ReadableButton
-            color={iOSColors.black}
-            title={I18n.t('app.assessment.read')}
-            text={cleanWord(kana)}
-            trackEvent="user-action-press-read"
-          />
+          {!isOrdered && (
+            <Fragment>
+              <CustomButton
+                raised
+                title={I18n.t('app.assessment.random')}
+                onPress={() => {
+                  this.getNext();
+                  tracker.logEvent('user-action-press-random');
+                }}
+              />
+
+              <SoundButton
+                containerStyles={{ marginLeft: 10 }}
+                onPress={() => {
+                  Tts.setDefaultLanguage('ja');
+                  Tts.speak(cleanWord(kana));
+                  tracker.logEvent('user-action-assessment-read');
+                }}
+              />
+            </Fragment>
+          )}
         </View>
 
         {answers.length > 2 && <Rating />}

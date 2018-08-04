@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  FlatList,
-  Platform,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import { FlatList, Platform, ScrollView, StyleSheet } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { SafeAreaView } from 'react-navigation';
@@ -24,6 +19,7 @@ import { config } from '../../config';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
   tabIndicatorText: {
     fontSize: 16,
@@ -31,33 +27,44 @@ const styles = StyleSheet.create({
   },
 });
 
-const lessonGroup = [{
-  text: I18n.t('app.main.beginning_one'),
-  list: range(1, 14), // [1, 13]
-}, {
-  text: I18n.t('app.main.beginning_two'),
-  list: range(14, 26), // [14, 25]
-}, {
-  text: I18n.t('app.main.advanced_one'),
-  list: range(26, 39), // [26, 38]
-}, {
-  text: I18n.t('app.main.advanced_two'),
-  list: range(39, 51), // [39, 50]
-}];
+const lessonGroup = [
+  {
+    text: I18n.t('app.main.beginning_one'),
+    list: range(1, 14), // [1, 13]
+  },
+  {
+    text: I18n.t('app.main.beginning_two'),
+    list: range(14, 26), // [14, 25]
+  },
+  {
+    text: I18n.t('app.main.advanced_one'),
+    list: range(26, 39), // [26, 38]
+  },
+  {
+    text: I18n.t('app.main.advanced_two'),
+    list: range(39, 51), // [39, 50]
+  },
+];
 
 type Props = {};
 export default class Main extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
-  }
+  };
 
   static navigationOptions = {
     headerBackTitle: null,
     title: 'みんなの日本語',
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={24} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => (
+      <Ionicons
+        name={focused ? 'ios-list' : 'ios-list-outline'}
+        size={24}
+        color={tintColor}
+      />
+    ),
   };
 
-  state = {}
+  state = {};
 
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
@@ -68,7 +75,13 @@ export default class Main extends Component<Props> {
     }, 1);
   }
 
-  renderTabIndicator = () => <PagerTabIndicator tabs={lessonGroup} textStyle={styles.tabIndicatorText} selectedTextStyle={styles.tabIndicatorText} />
+  renderTabIndicator = () => (
+    <PagerTabIndicator
+      tabs={lessonGroup}
+      textStyle={styles.tabIndicatorText}
+      selectedTextStyle={styles.tabIndicatorText}
+    />
+  );
 
   render() {
     return (
@@ -84,7 +97,13 @@ export default class Main extends Component<Props> {
                 style={styles.list}
                 data={group.list}
                 keyExtractor={(item, index) => `${index}-${item}`}
-                renderItem={({ item, index }) => <LessonItem index={index} item={item} navigation={this.props.navigation} />}
+                renderItem={({ item, index }) => (
+                  <LessonItem
+                    index={index}
+                    item={item}
+                    navigation={this.props.navigation}
+                  />
+                )}
               />
             </ScrollView>
           ))}

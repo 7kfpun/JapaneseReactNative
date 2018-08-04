@@ -101,9 +101,10 @@ export default class CardOptionSelector extends Component {
         [name]: !nameState,
       },
       () => {
-        store.save(name, nameState);
+        const { [name]: newNameState } = this.state;
+        store.save(name, newNameState);
 
-        console.log('toggleSelection', name, nameState);
+        console.log('toggleSelection', name, newNameState);
 
         const {
           isKanaShown,
@@ -124,7 +125,7 @@ export default class CardOptionSelector extends Component {
           isOrdered
         );
 
-        tracker.logEvent(`user-action-set-${name}`, { value: nameState });
+        tracker.logEvent(`user-action-set-${name}`, { value: newNameState });
       }
     );
   }
