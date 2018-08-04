@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  TouchableOpacity,
   FlatList,
   Platform,
-  ScrollView,
   StyleSheet,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -47,6 +46,7 @@ advert.on('onAdLoaded', () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
   navText: {
     paddingHorizontal: 8,
@@ -125,6 +125,7 @@ export default class VocabList extends Component<Props> {
     setTimeout(() => {
       if (advert.isLoaded() && Math.random() < 0.4) {
         advert.show();
+        tracker.logEvent('app-action-vocab-list-popup');
       }
     }, 3000);
     // }
@@ -155,18 +156,17 @@ export default class VocabList extends Component<Props> {
 
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <FlatList
-            style={styles.list}
-            data={vocabs}
-            keyExtractor={(item, index) => `${index}-${item}`}
-            renderItem={({ item, index }) => (
-              <VocabItem index={index} item={item} lesson={lesson} />
-            )}
-          />
-        </ScrollView>
+        <FlatList
+          style={styles.list}
+          data={vocabs}
+          keyExtractor={(item, index) => `${index}-${item}`}
+          renderItem={({ item, index }) => (
+            <VocabItem index={index} item={item} lesson={lesson} />
+          )}
+        />
+
         <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-vocablist-banner`]}
+          unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
         />
       </SafeAreaView>
     );

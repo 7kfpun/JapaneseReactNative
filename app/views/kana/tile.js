@@ -45,16 +45,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tile = ({
-  hiragana,
-  katakana,
-  romaji,
-  itemsPerRow,
-}) => (
+const Tile = ({ hiragana, katakana, romaji, itemsPerRow }) => (
   <TouchableOpacity
     style={[styles.container, { width: width / itemsPerRow }]}
     onPress={() => {
-      Tts.setDefaultRate(0.4);
       Tts.setDefaultLanguage('ja');
       Tts.speak(hiragana);
       tracker.logEvent('user-action-press-kana-read', { text: hiragana });

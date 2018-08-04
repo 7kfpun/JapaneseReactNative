@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { FlatList, Platform, ScrollView, StyleSheet } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
@@ -96,7 +96,7 @@ export default class Main extends Component<Props> {
           indicator={this.renderTabIndicator()}
         >
           {lessonGroup.map(group => (
-            <ScrollView key={group.text}>
+            <View key={group.text}>
               <FlatList
                 style={styles.list}
                 data={group.list}
@@ -109,10 +109,13 @@ export default class Main extends Component<Props> {
                   />
                 )}
               />
-            </ScrollView>
+            </View>
           ))}
         </IndicatorViewPager>
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-main-banner`]} />
+
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
+        />
       </SafeAreaView>
     );
   }

@@ -24,10 +24,6 @@ import tracker from '../../utils/tracker';
 
 import { config } from '../../config';
 
-Tts.setDefaultRate(0.4);
-Tts.setDefaultLanguage('ja');
-Tts.setDucking(true);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -58,6 +54,12 @@ const styles = StyleSheet.create({
     color: iOSColors.black,
     backgroundColor: 'transparent',
     lineHeight: 40,
+  },
+  footer: {
+    flexDirection: 'row',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    alignItems: 'center',
   },
 });
 
@@ -175,6 +177,7 @@ export default class Today extends Component<Props> {
             Tts.stop();
             Tts.setDefaultLanguage('ja');
             Tts.speak(cleanWord(todayItems[0].kana));
+            tracker.logEvent('app-action-today-read');
           }
         } else {
           this.setState({
@@ -187,6 +190,7 @@ export default class Today extends Component<Props> {
         this.setState({
           outOfConnection: true,
         });
+        tracker.logEvent('app-action-today-out-of-connection');
       });
   }
 
@@ -215,7 +219,12 @@ export default class Today extends Component<Props> {
 
         <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
           {outOfConnection && (
-            <OutOfConnection onPress={() => this.requestTodayItems()} />
+            <OutOfConnection
+              onPress={() => {
+                this.requestTodayItems();
+                tracker.logEvent('user-action-today-reconnect');
+              }}
+            />
           )}
           {!outOfConnection &&
             card && (
@@ -234,14 +243,7 @@ export default class Today extends Component<Props> {
             )}
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            paddingVertical: 12,
-            paddingHorizontal: 30,
-            alignItems: 'center',
-          }}
-        >
+        <View style={styles.footer}>
           <CustomButton
             raised
             onPress={() => {
@@ -252,12 +254,13 @@ export default class Today extends Component<Props> {
                   Tts.stop();
                   Tts.setDefaultLanguage('ja');
                   Tts.speak(cleanWord(newTodayItems[0].kana));
+                  tracker.logEvent('app-action-today-shuffle-read');
                 }
               });
               tracker.logEvent('user-action-today-shuffle');
             }}
             title={I18n.t('app.today.shuffle')}
-            titleStyles={{ fontSize: 18 }}
+            titleStyles={{ fontSize: 20 }}
           />
 
           <SoundButton
@@ -279,12 +282,13 @@ export default class Today extends Component<Props> {
                   Tts.speak(
                     cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana)
                   );
+                  tracker.logEvent('app-action-today-next-read');
                 }
               });
               tracker.logEvent('user-action-today-next');
             }}
             title={I18n.t('app.assessment.next')}
-            titleStyles={{ fontSize: 18 }}
+            titleStyles={{ fontSize: 20 }}
           />
         </View>
 

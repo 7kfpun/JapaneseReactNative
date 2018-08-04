@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import { noop } from '../utils/helpers';
 
 const MATERIAL_BLUE = '#2196F3';
 
@@ -44,8 +45,7 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  buttonFlat: {
-  },
+  buttonFlat: {},
   buttonLabel: {
     textAlign: 'center',
     ...Platform.select({
@@ -82,9 +82,7 @@ const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
           onPress={onPress}
           background={TouchableNativeFeedback.Ripple('#FFF')}
         >
-          <View style={[styles.button, styles.buttonRaised]}>
-            {children}
-          </View>
+          <View style={[styles.button, styles.buttonRaised]}>{children}</View>
         </TouchableNativeFeedback>
       );
     }
@@ -95,9 +93,7 @@ const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
         onPress={onPress}
         background={TouchableNativeFeedback.Ripple()}
       >
-        <View style={[styles.button, styles.buttonFLat]}>
-          {children}
-        </View>
+        <View style={[styles.button, styles.buttonFLat]}>{children}</View>
       </TouchableNativeFeedback>
     );
   }
@@ -137,12 +133,12 @@ class Button extends Component {
     raised: PropTypes.bool,
     disabled: PropTypes.bool,
     title: PropTypes.string.isRequired,
-  }
+  };
 
   static defaultProps = {
     raised: false,
     disabled: false,
-  }
+  };
 
   renderLabel() {
     const titleStyles = [styles.buttonLabel];
@@ -163,12 +159,20 @@ class Button extends Component {
   }
 
   render() {
-    return (
-      <ButtonWrapper {...this.props}>
-        {this.renderLabel()}
-      </ButtonWrapper>
-    );
+    return <ButtonWrapper {...this.props}>{this.renderLabel()}</ButtonWrapper>;
   }
 }
+
+ButtonWrapper.propTypes = {
+  raised: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onPress: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
+ButtonWrapper.defaultProps = {
+  raised: false,
+  disabled: false,
+  onPress: noop,
+};
 
 export default Button;

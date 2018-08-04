@@ -2,6 +2,7 @@ import React from 'react';
 
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
+import Tts from 'react-native-tts';
 
 import About from './app/views/about';
 import Assessment from './app/views/lessons/assessment';
@@ -14,6 +15,9 @@ import Today from './app/views/today';
 import VocabList from './app/views/lessons/vocab-list';
 
 import tracker from './app/utils/tracker';
+
+Tts.setDefaultRate(0.4);
+Tts.setDucking(true);
 
 if (!__DEV__) {
   console.log = () => {};

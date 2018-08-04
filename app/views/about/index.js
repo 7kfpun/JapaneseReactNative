@@ -66,11 +66,6 @@ export default class About extends Component<Props> {
     // this.requestProducts();
   }
 
-  requestProducts() {
-    this.getProducts();
-    this.getAvailablePurchases();
-  }
-
   getProducts = async () => {
     try {
       await RNIap.prepare();
@@ -110,6 +105,11 @@ export default class About extends Component<Props> {
       console.warn(err.code, err.message);
     }
   };
+
+  requestProducts() {
+    this.getProducts();
+    this.getAvailablePurchases();
+  }
 
   render() {
     const { navigation } = this.props;

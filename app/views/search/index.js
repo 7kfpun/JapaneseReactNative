@@ -86,8 +86,18 @@ export default class SearchView extends Component<Props> {
     tracker.logEvent('user-action-search-vocab', { text: searchText });
   };
 
-  onCancelOrDelete = () => {
+  onFocus = () => {
+    tracker.logEvent('user-action-search-on-focus');
+  };
+
+  onCancel = () => {
     this.setState({ searchText: '' });
+    tracker.logEvent('user-action-search-on-cancel');
+  };
+
+  onDelete = () => {
+    this.setState({ searchText: '' });
+    tracker.logEvent('user-action-search-on-delete');
   };
 
   render() {
@@ -98,8 +108,9 @@ export default class SearchView extends Component<Props> {
             backgroundColor={iOSColors.white}
             titleCancelColor={iOSColors.blue}
             onChangeText={this.onChangeText}
-            onCancel={this.onCancelOrDelete}
-            onDelete={this.onCancelOrDelete}
+            onFocus={this.onFocus}
+            onCancel={this.onCancel}
+            onDelete={this.onDelete}
             cancelTitle={I18n.t('app.search.cancel')}
             placeholder={I18n.t('app.search.title')}
           />

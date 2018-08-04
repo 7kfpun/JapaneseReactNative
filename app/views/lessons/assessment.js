@@ -434,6 +434,7 @@ export default class Assessment extends Component<Props> {
                   this.setCount(count - 1);
                   tracker.logEvent('user-action-press-previous');
                 }}
+                titleStyles={{ fontSize: 20 }}
               />
 
               <SoundButton
@@ -455,6 +456,7 @@ export default class Assessment extends Component<Props> {
                     lesson: `${lesson}`,
                   });
                 }}
+                titleStyles={{ fontSize: 20 }}
               />
             </Fragment>
           )}
@@ -468,6 +470,7 @@ export default class Assessment extends Component<Props> {
                   this.getNext();
                   tracker.logEvent('user-action-press-random');
                 }}
+                titleStyles={{ fontSize: 20 }}
               />
 
               <SoundButton
