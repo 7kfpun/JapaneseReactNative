@@ -206,7 +206,7 @@ export default class VocabItem extends Component {
                   <Text
                     style={[
                       styles.text,
-                      { marginTop: 20, fontSize: isTooLong ? 16 : 28 },
+                      { marginTop: 20, fontSize: isTooLong ? 16 : 24 },
                     ]}
                   >
                     {kanji}

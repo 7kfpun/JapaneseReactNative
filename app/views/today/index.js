@@ -139,19 +139,32 @@ export default class Today extends Component<Props> {
   };
 
   requestTodayItems() {
-    const { isSoundOn, todayItems } = this.state;
+    const { isSoundOn } = this.state;
 
     const URL = `${config.server}/today`;
+    console.log('Call', URL);
     fetch(URL)
       .then(res => res.json())
       .then(
         results => results.data && this.setState({ todayItems: results.data })
       )
       .then(() => {
-        if (isSoundOn && todayItems) {
-          Tts.stop();
-          Tts.setDefaultLanguage('ja');
-          Tts.speak(cleanWord(todayItems[0].kana));
+        const { todayItems } = this.state;
+
+        if (todayItems.length > 0) {
+          this.setState({
+            outOfConnection: false,
+          });
+
+          if (isSoundOn) {
+            Tts.stop();
+            Tts.setDefaultLanguage('ja');
+            Tts.speak(cleanWord(todayItems[0].kana));
+          }
+        } else {
+          this.setState({
+            outOfConnection: true,
+          });
         }
       })
       .catch(err => {
@@ -186,7 +199,9 @@ export default class Today extends Component<Props> {
         />
 
         <View style={{ flex: 1, paddingHorizontal: 26, paddingBottom: 30 }}>
-          {outOfConnection && <OutOfConnection />}
+          {outOfConnection && (
+            <OutOfConnection onPress={() => this.requestTodayItems()} />
+          )}
           {!outOfConnection &&
             card && (
               <Card
