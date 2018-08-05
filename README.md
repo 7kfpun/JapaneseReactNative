@@ -11,11 +11,15 @@
 
 ### iOS screenshots
 
-<img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios0.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios1.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios2.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios3.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios4.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios5.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshot-ios6.png" width="210">
+<img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios0.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios1.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios2.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios3.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios4.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios5.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/ios6.png" width="210">
+
+### Android screenshots
+
+<img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android0.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android1.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android2.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android3.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android4.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android5.png" width="210"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/android6.png" width="210">
 
 #### Previous version (archive)
 
-<img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/archive/screenshot-ios0.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/archive/screenshot-ios1.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/archive/screenshot-ios2.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/archive/screenshot-ios3.png" width="120">
+<img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/archive/ios0.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/archive/ios1.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/archive/ios2.png" width="120"> <img src="https://raw.github.com/7kfpun/JapaneseReactNative/master/assets/screenshots/archive/ios3.png" width="120">
 
 ## Libraries
 
