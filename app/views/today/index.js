@@ -78,6 +78,9 @@ export default class Today extends Component<Props> {
   };
 
   static propTypes = {
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
     navigation: PropTypes.shape({}).isRequired,
   };
 
@@ -195,7 +198,10 @@ export default class Today extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props;
+    const {
+      screenProps: { isPremium },
+      navigation,
+    } = this.props;
 
     const {
       todayItems,
@@ -292,7 +298,11 @@ export default class Today extends Component<Props> {
           />
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-today-banner`]} />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-today-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

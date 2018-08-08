@@ -39,6 +39,9 @@ type Props = {};
 export default class About extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
   };
 
   static navigationOptions = {
@@ -112,7 +115,10 @@ export default class About extends Component<Props> {
   }
 
   render() {
-    const { navigation } = this.props;
+    const {
+      navigation,
+      screenProps: { isPremium },
+    } = this.props;
 
     const { productList, purchasedProductIds } = this.state;
 
@@ -154,7 +160,11 @@ export default class About extends Component<Props> {
           <NotificationSetting />
         </ScrollView>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-about-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

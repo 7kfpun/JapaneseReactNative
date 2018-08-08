@@ -165,6 +165,9 @@ export default class Assessment extends Component<Props> {
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
   };
 
   state = {
@@ -339,6 +342,7 @@ export default class Assessment extends Component<Props> {
           params: { lesson },
         },
       },
+      screenProps: { isPremium },
     } = this.props;
 
     const {
@@ -484,9 +488,12 @@ export default class Assessment extends Component<Props> {
         </View>
 
         {answers.length > 2 && <Rating />}
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
-        />
+
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

@@ -70,6 +70,9 @@ type Props = {};
 export default class Main extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
   };
 
   static navigationOptions = {
@@ -102,6 +105,10 @@ export default class Main extends Component<Props> {
   );
 
   render() {
+    const {
+      screenProps: { isPremium },
+    } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager
@@ -127,9 +134,11 @@ export default class Main extends Component<Props> {
           ))}
         </IndicatorViewPager>
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
-        />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

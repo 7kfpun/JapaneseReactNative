@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
@@ -64,6 +65,12 @@ export default class SearchView extends Component<Props> {
     ),
   };
 
+  static propTypes = {
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
+  };
+
   state = {
     searchText: '',
     searchResult: [],
@@ -101,6 +108,10 @@ export default class SearchView extends Component<Props> {
   };
 
   render() {
+    const {
+      screenProps: { isPremium },
+    } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.searchBlock}>
@@ -142,7 +153,11 @@ export default class SearchView extends Component<Props> {
           )}
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-search-banner`]} />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-search-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

@@ -111,6 +111,9 @@ export default class VocabList extends Component<Props> {
         }).isRequired,
       }).isRequired,
     }).isRequired,
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
   };
 
   state = {
@@ -118,12 +121,16 @@ export default class VocabList extends Component<Props> {
   };
 
   async componentDidMount() {
+    const {
+      screenProps: { isPremium },
+    } = this.props;
+
     this.getVocabs();
 
     // const isAdRemoval = await checkAdRemoval();
     // if (!isAdRemoval) {
     setTimeout(() => {
-      if (advert.isLoaded() && Math.random() < 0.4) {
+      if (!isPremium && advert.isLoaded() && Math.random() < 0.4) {
         advert.show();
         tracker.logEvent('app-action-vocab-list-popup');
       }
@@ -150,6 +157,7 @@ export default class VocabList extends Component<Props> {
           params: { item: lesson },
         },
       },
+      screenProps: { isPremium },
     } = this.props;
 
     const { vocabs } = this.state;
@@ -165,9 +173,11 @@ export default class VocabList extends Component<Props> {
           )}
         />
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
-        />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

@@ -66,7 +66,11 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class Kana extends Component<Props> {
-  static propTypes = {};
+  static propTypes = {
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
+  };
 
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || { position: 0 };
@@ -152,6 +156,10 @@ export default class Kana extends Component<Props> {
   );
 
   render() {
+    const {
+      screenProps: { isPremium },
+    } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager
@@ -208,7 +216,9 @@ export default class Kana extends Component<Props> {
           </ScrollView>
         </IndicatorViewPager>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+        {!isPremium && (
+          <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+        )}
       </SafeAreaView>
     );
   }

@@ -102,6 +102,9 @@ export default class KanaAssessment extends Component<Props> {
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
+    screenProps: PropTypes.shape({
+      isPremium: PropTypes.bool,
+    }).isRequired,
   };
 
   state = {
@@ -193,6 +196,10 @@ export default class KanaAssessment extends Component<Props> {
   };
 
   render() {
+    const {
+      screenProps: { isPremium },
+    } = this.props;
+
     const { origin, choices, modeFrom, modeTo } = this.state;
     const { isCorrect, answerPosition } = this.state;
 
@@ -377,7 +384,9 @@ export default class KanaAssessment extends Component<Props> {
           />
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+        {!isPremium && (
+          <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+        )}
       </SafeAreaView>
     );
   }
