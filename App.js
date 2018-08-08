@@ -10,6 +10,7 @@ import About from './app/views/about';
 import Assessment from './app/views/lessons/assessment';
 import Feedback from './app/views/feedback';
 import Kana from './app/views/kana';
+import KanaAssessment from './app/views/kana/assessment';
 import Lessons from './app/views/lessons';
 import ReadAll from './app/views/lessons/read-all';
 import Search from './app/views/search';
@@ -76,6 +77,7 @@ const AppTab = TabNavigator(
       screen: StackNavigator(
         {
           kana: { screen: Kana },
+          'kana-assessment': { screen: KanaAssessment },
         },
         stackOptions
       ),
@@ -118,9 +120,18 @@ const AppTab = TabNavigator(
       showIcon: true,
       pressColor: '#E0E0E0',
       labelStyle: {
-        fontSize: Platform.OS === 'ios' ? 10 : 6,
-        paddingBottom: Platform.OS === 'ios' ? 2 : 0,
-        paddingTop: Platform.OS === 'ios' ? 2 : 0,
+        ...Platform.select({
+          ios: {
+            fontSize: 10,
+            paddingBottom: 2,
+            paddingTop: 2,
+          },
+          android: {
+            fontSize: 6,
+            paddingBottom: 0,
+            paddingTop: 0,
+          },
+        }),
       },
       indicatorStyle: {
         backgroundColor: iOSColors.tealBlue,

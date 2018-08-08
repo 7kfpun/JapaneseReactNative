@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import { SafeAreaView } from 'react-navigation';
 
@@ -56,25 +65,73 @@ const styles = StyleSheet.create({
 });
 
 type Props = {};
-export default class About extends Component<Props> {
+export default class Kana extends Component<Props> {
   static propTypes = {};
 
-  static navigationOptions = {
-    title: I18n.t('app.kana.title'),
-    tabBarLabel: I18n.t('app.kana.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Text
-        style={[
-          styles.tabText,
-          { color: focused ? tintColor : iOSColors.black },
-        ]}
-      >
-        {'あ'}
-      </Text>
-    ),
+  static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || { position: 0 };
+    const assessmentMode = [
+      {
+        mode: 'seion',
+        kana: seion,
+      },
+      {
+        mode: 'dakuon',
+        kana: dakuon,
+      },
+      {
+        mode: 'youon',
+        kana: youon,
+      },
+    ][params.position];
+
+    return {
+      title: I18n.t('app.kana.title'),
+      tabBarLabel: I18n.t('app.kana.title'),
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Text
+          style={[
+            styles.tabText,
+            { color: focused ? tintColor : iOSColors.black },
+          ]}
+        >
+          {'あ'}
+        </Text>
+      ),
+      headerRight: (
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <TouchableOpacity
+            style={{ padding: 12, paddingRight: 15 }}
+            onPress={() => {
+              navigation.navigate('kana-assessment', {
+                ...assessmentMode,
+                nodeIndex: params.position,
+                correctNumber: 0,
+                total: 0,
+              });
+              // tracker.logEvent('user-action-goto-kana-assessment', {
+              //   mode: assessmentMode.mode,
+              // });
+            }}
+          >
+            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
+          </TouchableOpacity>
+        </View>
+      ),
+    };
   };
 
-  state = {};
+  static propTypes = {
+    navigation: PropTypes.shape({
+      setParams: PropTypes.func,
+    }).isRequired,
+  };
+
+  onPageSelected = position => {
+    const { navigation } = this.props;
+    navigation.setParams({ position });
+    console.log('onPageSelected', position);
+  };
 
   renderTabIndicator = () => (
     <PagerTabIndicator
@@ -98,9 +155,9 @@ export default class About extends Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager
-          key={this.state.androidFix}
           style={{ flex: 1 }}
           indicator={this.renderTabIndicator()}
+          onPageSelected={({ position }) => this.onPageSelected(position)}
         >
           <ScrollView>
             {seion.map((row, i) => (
@@ -151,7 +208,7 @@ export default class About extends Component<Props> {
           </ScrollView>
         </IndicatorViewPager>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
       </SafeAreaView>
     );
   }

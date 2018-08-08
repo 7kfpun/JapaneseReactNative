@@ -8,9 +8,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { noop } from '../utils/helpers';
 
-export default class VocabItem extends Component {
+export default class SoundButton extends Component {
   static propTypes = {
     onPress: PropTypes.func,
+    containerStyles: TouchableHighlight.propTypes.style,
+  };
+
+  static defaultProps = {
+    containerStyles: {},
   };
 
   static defaultProps = {

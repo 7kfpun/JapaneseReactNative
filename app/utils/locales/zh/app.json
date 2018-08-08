@@ -8,7 +8,10 @@
     "title": "五十音",
     "seion": "清音",
     "dakuon": "浊音",
-    "youon": "拗音"
+    "youon": "拗音",
+    "hiragana": "平假名",
+    "katakana": "片假名",
+    "romaji": "罗马字"
   },
   "main": {
     "beginning_one": "初级 I",

@@ -1,4 +1,4 @@
-export const shuffle = (a) => {
+export const shuffle = a => {
   let j;
   let x;
   let i;
@@ -11,23 +11,31 @@ export const shuffle = (a) => {
   return a;
 };
 
-export const cleanWord = text => text
-  .replace(/（.*?）/g, '')
-  .replace(/［.*?］/g, '')
-  .replace(/「.*?」/g, '')
-  .replace(/\[.*\]/g, '')
-  .replace(/～/g, '')
-  .replace(/。/g, '');
+export const cleanWord = text =>
+  text
+    .replace(/（.*?）/g, '')
+    .replace(/［.*?］/g, '')
+    .replace(/「.*?」/g, '')
+    .replace(/\[.*\]/g, '')
+    .replace(/～/g, '')
+    .replace(/。/g, '');
 
 export const range = (start, stop, step = 1) =>
   Array((stop - start) / step)
     .fill(start)
-    .map((x, y) => x + (y * step));
+    .map((x, y) => x + y * step);
 
 export const flatten = arr =>
-  arr.reduce((flat, toFlatten) =>
-    flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);
+  arr.reduce(
+    (flat, toFlatten) =>
+      flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten),
+    []
+  );
 
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+export const choice = arr => arr[Math.floor(Math.random() * arr.length)];
+
+export const randomInt = max => Math.floor(Math.random() * Math.floor(max));
 
 export const noop = () => {};

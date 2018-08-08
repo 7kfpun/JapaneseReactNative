@@ -33,9 +33,7 @@ import { config } from '../../config';
 
 const { width } = Dimensions.get('window');
 
-Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
-Tts.setDucking(true);
 
 const NO_OF_TILES = 5;
 
@@ -140,14 +138,8 @@ export default class Assessment extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
-    const count =
-      navigation.state &&
-      navigation.state.params &&
-      navigation.state.params.count;
-    const total =
-      navigation.state &&
-      navigation.state.params &&
-      navigation.state.params.total;
+    const count = params && params.count;
+    const total = params && params.total;
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       headerRight: total && (
@@ -394,7 +386,6 @@ export default class Assessment extends Component<Props> {
                 this.setState({ answers: tempAnswers });
                 tracker.logEvent('user-action-press-backspace');
               }}
-              isAssessment
             />
           </View>
 

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class VocabItem extends Component {
+export default class Card extends Component {
   static propTypes = {
     lesson: PropTypes.number,
     kanji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -108,9 +108,7 @@ export default class VocabItem extends Component {
 
     return (
       <TouchableOpacity
-        style={{
-          flex: 1,
-        }}
+        style={{ flex: 1 }}
         underlayColor={iOSColors.gray}
         onPress={() => {
           Tts.stop();

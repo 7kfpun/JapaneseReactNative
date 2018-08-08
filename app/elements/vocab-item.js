@@ -10,9 +10,7 @@ import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 import { cleanWord } from '../utils/helpers';
 
-Tts.setDefaultRate(0.4);
 Tts.setDefaultLanguage('ja');
-Tts.setDucking(true);
 
 const styles = StyleSheet.create({
   container: {

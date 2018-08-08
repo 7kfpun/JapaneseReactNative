@@ -8,7 +8,10 @@
     "title": "Kana",
     "seion": "Seion",
     "dakuon": "Dakuon",
-    "youon": "Youon"
+    "youon": "Youon",
+    "hiragana": "Hiragana",
+    "katakana": "Katakana",
+    "romaji": "Romaji"
   },
   "main": {
     "beginning_one": "Beg. I",
