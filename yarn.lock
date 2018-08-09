@@ -6144,6 +6144,10 @@ react-native-firebase@^4.3.7:
     postinstall-build "^5.0.1"
     prop-types "^15.6.1"
 
+react-native-flurry-analytics@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-flurry-analytics/-/react-native-flurry-analytics-3.0.2.tgz#2bbe1399e7c9fdf284d078ff90cb21d6f425a8c9"
+
 react-native-i18n@^2.0.12:
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.12.tgz#4a503cc73b2fe55e8518f6d4a1340d3b449d8d1a"
@@ -6161,6 +6165,10 @@ react-native-onesignal@^3.2.5:
   resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.2.5.tgz#8b20a63877ee8fe3a77c76db40b0d8d9e192ec42"
   dependencies:
     invariant "^2.2.2"
+
+react-native-restart@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-restart/-/react-native-restart-0.0.6.tgz#77770d078683947b2c1f2adb876f179269d8443a"
 
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"
