@@ -35,7 +35,10 @@
   },
   "about": {
     "title": "About",
-    "notification_label": "Study Reminder (Daily)"
+    "notification_label": "Study Reminder (Daily)",
+    "restore": "Restore your in-app purchases",
+    "purchase_title": "You are our premium user now",
+    "purchase_description": "Enjoy learning Japanese"
   },
   "common": {
     "kana": "Kana",

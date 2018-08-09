@@ -59,10 +59,9 @@ export default class About extends Component<Props> {
 
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
-
-    this.requestProducts();
-
     store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+
+    this.getProducts();
   }
 
   getProducts = async () => {
@@ -84,7 +83,12 @@ export default class About extends Component<Props> {
         this.setState({
           // purchasedProduct: purchases,
           purchasedProductIds: purchases.map(item => item.productId),
-          refreshing: false,
+        });
+
+        purchases.forEach(purchase => {
+          if (purchase.productId === config.inAppProducts[0]) {
+            this.refreshForApplyingPurchase();
+          }
         });
       }
     } catch (err) {
@@ -100,52 +104,56 @@ export default class About extends Component<Props> {
       const purchase = await RNIap.buySubscription(sku);
       console.info('Purchase result', purchase);
       if (purchase.productId === config.inAppProducts[0]) {
-        store.save('isPremium', true);
-
-        Alert.alert(
-          'Thanks for your purchase',
-          'You are our premium user now',
-          [{ text: 'OK', onPress: () => RNRestart.Restart() }],
-          { cancelable: false }
-        );
+        this.refreshForApplyingPurchase();
       }
-
-      // this.requestProducts();
     } catch (err) {
       console.warn('Purchase result error', err.code, err.message);
     }
   };
 
-  requestProducts() {
-    this.getProducts();
-    // this.getAvailablePurchases();
-  }
+  refreshForApplyingPurchase = () => {
+    store.save('isPremium', true);
+
+    Alert.alert(
+      I18n.t('app.about.purchase_title'),
+      I18n.t('app.about.purchase_description'),
+      [{ text: 'OK', onPress: () => RNRestart.Restart() }],
+      { cancelable: false }
+    );
+  };
 
   render() {
     const { navigation } = this.props;
-
-    const { isPremium } = this.state;
-
-    const { productList, purchasedProductIds } = this.state;
+    const { isPremium, productList, purchasedProductIds } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
-          <View style={{ marginTop: 10 }}>
-            {productList.map((product, i) => (
+          {!isPremium && (
+            <View style={{ marginTop: 10 }}>
+              {productList.map((product, i) => (
+                <Row
+                  key={product.productId}
+                  text={`${
+                    purchasedProductIds.includes(product.productId) ? '✓' : ''
+                  }${product.title} (${product.localizedPrice})`}
+                  description={product.description}
+                  first={i === 0}
+                  last={i === productList.length - 1}
+                  onPress={() => this.buySubscribeItem(product.productId)}
+                  disabled={purchasedProductIds.includes(product.productId)}
+                />
+              ))}
+
               <Row
-                key={product.productId}
-                text={`${
-                  purchasedProductIds.includes(product.productId) ? '✓' : ''
-                }${product.title} (${product.localizedPrice})`}
-                description={product.description}
-                first={i === 0}
-                last={i === productList.length - 1}
-                onPress={() => this.buySubscribeItem(product.productId)}
-                disabled={purchasedProductIds.includes(product.productId)}
+                text={I18n.t('app.about.restore')}
+                onPress={() => {
+                  this.getAvailablePurchases();
+                  tracker.logEvent('user-action-restore-purchase');
+                }}
               />
-            ))}
-          </View>
+            </View>
+          )}
 
           <View style={{ marginTop: 15 }}>
             <Row

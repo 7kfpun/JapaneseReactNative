@@ -32,7 +32,10 @@
   },
   "about": {
     "title": "Về chúng tôi",
-    "notification_label": "Nhắc nhở học tập (hàng ngày)"
+    "notification_label": "Nhắc nhở học tập (hàng ngày)",
+    "restore": "Khôi phục mua hàng trong ứng dụng của bạn",
+    "purchase_title": "Bạn hiện là người dùng cao cấp của chúng tôi",
+    "purchase_description": "Thích học tiếng Nhật"
   },
   "common": {
     "kana": "Kana",
