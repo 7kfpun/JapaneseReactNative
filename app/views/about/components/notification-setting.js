@@ -4,9 +4,9 @@ import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
 import { iOSColors } from 'react-native-typography';
 import OneSignal from 'react-native-onesignal';
 
-import { OneSignalGetTags } from '../../utils/onesignal';
-import I18n from '../../utils/i18n';
-import tracker from '../../utils/tracker';
+import { OneSignalGetTags } from '../../../utils/onesignal';
+import I18n from '../../../utils/i18n';
+import tracker from '../../../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {

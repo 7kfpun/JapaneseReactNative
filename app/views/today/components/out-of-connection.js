@@ -6,8 +6,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import I18n from '../../utils/i18n';
-import { noop } from '../../utils/helpers';
+import I18n from '../../../utils/i18n';
+import { noop } from '../../../utils/helpers';
 
 const styles = StyleSheet.create({
   container: {

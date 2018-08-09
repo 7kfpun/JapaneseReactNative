@@ -17,6 +17,7 @@ exports.config = {
     'japanese-android-today-banner': '',
     'japanese-android-search-banner': '',
   },
+  flurry: '',
   onesignal: '',
   segment: '',
 };

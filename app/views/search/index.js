@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
@@ -7,6 +6,7 @@ import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Search from 'react-native-search-box';
+import store from 'react-native-simple-store';
 
 import Fuse from 'fuse.js';
 
@@ -65,16 +65,15 @@ export default class SearchView extends Component<Props> {
     ),
   };
 
-  static propTypes = {
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
-  };
-
   state = {
     searchText: '',
     searchResult: [],
+    isPremium: false,
   };
+
+  componentDidMount() {
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+  }
 
   onChangeText = searchText => {
     const options = {
@@ -108,9 +107,7 @@ export default class SearchView extends Component<Props> {
   };
 
   render() {
-    const {
-      screenProps: { isPremium },
-    } = this.props;
+    const { isPremium } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

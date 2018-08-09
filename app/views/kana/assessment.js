@@ -12,6 +12,7 @@ import {
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Tts from 'react-native-tts';
+import store from 'react-native-simple-store';
 
 import { choice, randomInt } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
@@ -102,9 +103,6 @@ export default class KanaAssessment extends Component<Props> {
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
   };
 
   state = {
@@ -115,10 +113,13 @@ export default class KanaAssessment extends Component<Props> {
     modeOther: 'katakana',
     answerPosition: -1,
     isCorrect: null,
+    isPremium: false,
   };
 
   componentDidMount() {
     this.getNext();
+
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {
@@ -196,9 +197,7 @@ export default class KanaAssessment extends Component<Props> {
   };
 
   render() {
-    const {
-      screenProps: { isPremium },
-    } = this.props;
+    const { isPremium } = this.state;
 
     const { origin, choices, modeFrom, modeTo } = this.state;
     const { isCorrect, answerPosition } = this.state;

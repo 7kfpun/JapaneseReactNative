@@ -14,11 +14,10 @@ import { SafeAreaView } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 import firebase from 'react-native-firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 
 import AdMob from '../../elements/admob';
 import VocabItem from '../../elements/vocab-item';
-
-// import { checkAdRemoval } from '../../utils/products';
 
 import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
@@ -111,31 +110,26 @@ export default class VocabList extends Component<Props> {
         }).isRequired,
       }).isRequired,
     }).isRequired,
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
   };
 
   state = {
     vocabs: [],
+    isPremium: false,
   };
 
   async componentDidMount() {
-    const {
-      screenProps: { isPremium },
-    } = this.props;
+    store.get('isPremium').then(isPremium => {
+      this.setState({ isPremium });
+
+      setTimeout(() => {
+        if (!isPremium && advert.isLoaded() && Math.random() < 0.4) {
+          advert.show();
+          tracker.logEvent('app-action-vocab-list-popup');
+        }
+      }, 3000);
+    });
 
     this.getVocabs();
-
-    // const isAdRemoval = await checkAdRemoval();
-    // if (!isAdRemoval) {
-    setTimeout(() => {
-      if (!isPremium && advert.isLoaded() && Math.random() < 0.4) {
-        advert.show();
-        tracker.logEvent('app-action-vocab-list-popup');
-      }
-    }, 3000);
-    // }
   }
 
   getVocabs = () => {
@@ -157,10 +151,9 @@ export default class VocabList extends Component<Props> {
           params: { item: lesson },
         },
       },
-      screenProps: { isPremium },
     } = this.props;
 
-    const { vocabs } = this.state;
+    const { isPremium, vocabs } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

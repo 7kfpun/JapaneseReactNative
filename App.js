@@ -5,7 +5,6 @@ import { Platform, ToastAndroid } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
-import store from 'react-native-simple-store';
 
 import About from './app/views/about';
 import Assessment from './app/views/lessons/assessment';
@@ -179,13 +178,9 @@ function getCurrentRouteName(navigationState) {
   return route.routeName;
 }
 
-let isPremium;
-store.save('isPremium', true);
-store.get('isPremium').then(i => (isPremium = i));
-
 export default () => (
   <AppTab
-    screenProps={{ isPremium }}
+    // screenProps={{ isPremium }}
     onNavigationStateChange={(prevState, currentState) => {
       const currentScreen = getCurrentRouteName(currentState);
       const prevScreen = getCurrentRouteName(prevState);

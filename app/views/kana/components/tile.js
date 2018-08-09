@@ -12,7 +12,7 @@ import {
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
-import tracker from '../../utils/tracker';
+import tracker from '../../../utils/tracker';
 
 const { width } = Dimensions.get('window');
 

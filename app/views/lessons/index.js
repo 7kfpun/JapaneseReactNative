@@ -7,6 +7,7 @@ import { iOSColors } from 'react-native-typography';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 
 import AdMob from '../../elements/admob';
 import LessonItem from '../../elements/lesson-item';
@@ -70,9 +71,6 @@ type Props = {};
 export default class Main extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
   };
 
   static navigationOptions = {
@@ -87,13 +85,12 @@ export default class Main extends Component<Props> {
     ),
   };
 
-  state = {};
+  state = {
+    isPremium: false,
+  };
 
   componentDidMount() {
-    // TODO:
-    setTimeout(() => {
-      this.setState({ androidFix: Math.random() });
-    }, 1);
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   renderTabIndicator = () => (
@@ -105,14 +102,11 @@ export default class Main extends Component<Props> {
   );
 
   render() {
-    const {
-      screenProps: { isPremium },
-    } = this.props;
+    const { isPremium } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
         <IndicatorViewPager
-          key={this.state.androidFix}
           style={{ flex: 1 }}
           indicator={this.renderTabIndicator()}
         >

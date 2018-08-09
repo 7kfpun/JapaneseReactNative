@@ -165,9 +165,6 @@ export default class Assessment extends Component<Props> {
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
   };
 
   state = {
@@ -179,6 +176,7 @@ export default class Assessment extends Component<Props> {
     isOrdered: true,
     tiles: [],
     answers: [],
+    isPremium: false,
   };
 
   componentDidMount() {
@@ -199,6 +197,8 @@ export default class Assessment extends Component<Props> {
 
     this.getTotal();
     this.getTiles();
+
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {
@@ -342,8 +342,9 @@ export default class Assessment extends Component<Props> {
           params: { lesson },
         },
       },
-      screenProps: { isPremium },
     } = this.props;
+
+    const { isPremium } = this.state;
 
     const {
       isKanjiShown,

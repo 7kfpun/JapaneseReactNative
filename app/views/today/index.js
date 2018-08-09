@@ -11,13 +11,13 @@ import Tts from 'react-native-tts';
 
 import { cleanWord, shuffle } from '../../utils/helpers';
 
-import OutOfConnection from './out-of-connection';
+import OutOfConnection from './components/out-of-connection';
 
 import AdMob from '../../elements/admob';
 import Card from '../../elements/card';
+import CardOptionSelector from '../../elements/card-option-selector';
 import CustomButton from '../../elements/button';
 import SoundButton from '../../elements/sound-button';
-import CardOptionSelector from '../../elements/card-option-selector';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -78,9 +78,6 @@ export default class Today extends Component<Props> {
   };
 
   static propTypes = {
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
     navigation: PropTypes.shape({}).isRequired,
   };
 
@@ -95,6 +92,7 @@ export default class Today extends Component<Props> {
     outOfConnection: false,
 
     cardIndex: 0,
+    isPremium: false,
   };
 
   componentDidMount() {
@@ -128,6 +126,8 @@ export default class Today extends Component<Props> {
         }
       })
       .then(() => this.requestTodayItems());
+
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {
@@ -198,10 +198,11 @@ export default class Today extends Component<Props> {
   }
 
   render() {
-    const {
-      screenProps: { isPremium },
-      navigation,
-    } = this.props;
+    const { navigation } = this.props;
+
+    const { isPremium } = this.state;
+
+    console.log('isPremium', isPremium);
 
     const {
       todayItems,

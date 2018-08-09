@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 
 import {
   Platform,
@@ -16,7 +17,7 @@ import {
 
 import { SafeAreaView } from 'react-navigation';
 
-import Tile from './tile';
+import Tile from './components/tile';
 
 import AdMob from '../../elements/admob';
 
@@ -66,12 +67,6 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class Kana extends Component<Props> {
-  static propTypes = {
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
-  };
-
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || { position: 0 };
     const assessmentMode = [
@@ -131,6 +126,14 @@ export default class Kana extends Component<Props> {
     }).isRequired,
   };
 
+  state = {
+    isPremium: false,
+  };
+
+  componentDidMount() {
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+  }
+
   onPageSelected = position => {
     const { navigation } = this.props;
     navigation.setParams({ position });
@@ -156,9 +159,7 @@ export default class Kana extends Component<Props> {
   );
 
   render() {
-    const {
-      screenProps: { isPremium },
-    } = this.props;
+    const { isPremium } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

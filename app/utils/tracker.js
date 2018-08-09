@@ -1,27 +1,27 @@
-import {
-  Dimensions,
-  PixelRatio,
-} from 'react-native';
+import { Dimensions, PixelRatio } from 'react-native';
 
 import { Answers } from 'react-native-fabric';
 import Analytics from 'analytics-react-native';
 import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
+import FlurryAnalytics from 'react-native-flurry-analytics';
 
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
 const analytics = new Analytics(config.segment);
+FlurryAnalytics.setAppVersion(DeviceInfo.getReadableVersion());
+FlurryAnalytics.startSession(config.flurry);
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 
 const userId = DeviceInfo.getUniqueID();
 
 const isTracking = !(
-  __DEV__
-  || DeviceInfo.getDeviceName().includes('kf')
-  || DeviceInfo.getManufacturer() === 'Genymotion'
-  || DeviceInfo.isEmulator()
+  __DEV__ ||
+  DeviceInfo.getDeviceName().includes('kf') ||
+  DeviceInfo.getManufacturer() === 'Genymotion' ||
+  DeviceInfo.isEmulator()
 );
 
 const context = {
@@ -36,7 +36,7 @@ const context = {
     model: DeviceInfo.getModel(),
     name: DeviceInfo.getDeviceId(),
     type: DeviceInfo.getDeviceName(),
-    version: DeviceInfo.getBrand(),
+    version: DeviceInfo.getSystemVersion(),
     brand: DeviceInfo.getBrand(),
   },
   locale: DeviceInfo.getDeviceLocale(),
@@ -60,7 +60,8 @@ const context = {
   isTablet: DeviceInfo.isTablet(),
 };
 
-const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
+const capitalizeFirstLetter = string =>
+  string.charAt(0).toUpperCase() + string.slice(1);
 
 const firebaseContext = {};
 Object.entries(context).forEach(([key0, value0]) => {
@@ -90,6 +91,7 @@ const tracker = {
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
       CleverTap.profileSet({ Identity: userId, ...context });
+      FlurryAnalytics.setUserId(userId);
     }
   },
   logEvent: (event, properties) => {
@@ -105,6 +107,7 @@ const tracker = {
       firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
       CleverTap.recordEvent(event, properties);
+      FlurryAnalytics.logEvent(event, properties);
     }
   },
   view: (screen, properties) => {

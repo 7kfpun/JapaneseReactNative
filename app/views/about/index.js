@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Platform,
-  StyleSheet,
-  // RefreshControl,
-  ScrollView,
-  View,
-} from 'react-native';
+import { Alert, Platform, StyleSheet, ScrollView, View } from 'react-native';
 
-import OneSignal from 'react-native-onesignal';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import OneSignal from 'react-native-onesignal';
+import RNRestart from 'react-native-restart';
+import store from 'react-native-simple-store';
 
-import NotificationSetting from './notification-setting';
+import NotificationSetting from './components/notification-setting';
 import AdMob from '../../elements/admob';
 import Row from '../../elements/row';
 
@@ -39,9 +35,6 @@ type Props = {};
 export default class About extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({}).isRequired,
-    screenProps: PropTypes.shape({
-      isPremium: PropTypes.bool,
-    }).isRequired,
   };
 
   static navigationOptions = {
@@ -61,12 +54,15 @@ export default class About extends Component<Props> {
     // purchasedProduct: [],
     purchasedProductIds: [],
     refreshing: false,
+    isPremium: false,
   };
 
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
 
-    // this.requestProducts();
+    this.requestProducts();
+
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   getProducts = async () => {
@@ -102,50 +98,54 @@ export default class About extends Component<Props> {
     try {
       console.log('buySubscribeItem:', sku);
       const purchase = await RNIap.buySubscription(sku);
-      console.info(purchase);
-      this.requestProducts();
+      console.info('Purchase result', purchase);
+      if (purchase.productId === config.inAppProducts[0]) {
+        store.save('isPremium', true);
+
+        Alert.alert(
+          'Thanks for your purchase',
+          'You are our premium user now',
+          [{ text: 'OK', onPress: () => RNRestart.Restart() }],
+          { cancelable: false }
+        );
+      }
+
+      // this.requestProducts();
     } catch (err) {
-      console.warn(err.code, err.message);
+      console.warn('Purchase result error', err.code, err.message);
     }
   };
 
   requestProducts() {
     this.getProducts();
-    this.getAvailablePurchases();
+    // this.getAvailablePurchases();
   }
 
   render() {
-    const {
-      navigation,
-      screenProps: { isPremium },
-    } = this.props;
+    const { navigation } = this.props;
+
+    const { isPremium } = this.state;
 
     const { productList, purchasedProductIds } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView
-          style={{ alignSelf: 'stretch' }}
-          // refreshControl={
-          //   <RefreshControl
-          //     refreshing={this.state.refreshing}
-          //     onRefresh={() => this.requestProducts()}
-          //   />
-          // }
-        >
-          {/* <View style={{ marginTop: 10 }}>
-            {
-              productList.map((product, i) => (<Row
+        <ScrollView style={{ alignSelf: 'stretch' }}>
+          <View style={{ marginTop: 10 }}>
+            {productList.map((product, i) => (
+              <Row
                 key={product.productId}
-                text={`${purchasedProductIds.includes(product.productId) ? '✓' : ''}${product.title} (${product.localizedPrice})`}
+                text={`${
+                  purchasedProductIds.includes(product.productId) ? '✓' : ''
+                }${product.title} (${product.localizedPrice})`}
                 description={product.description}
                 first={i === 0}
                 last={i === productList.length - 1}
                 onPress={() => this.buySubscribeItem(product.productId)}
                 disabled={purchasedProductIds.includes(product.productId)}
-              />))
-            }
-          </View> */}
+              />
+            ))}
+          </View>
 
           <View style={{ marginTop: 15 }}>
             <Row
