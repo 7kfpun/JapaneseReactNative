@@ -1,1 +1,1 @@
-../../../../GoogleMobileAdsMediationFacebook/FacebookAdapter-4.28.1.1/FacebookAdapter.framework/Versions/A/Headers/FacebookAdapter.h
+../../../../GoogleMobileAdsMediationFacebook/FacebookAdapter-4.99.2.0/FacebookAdapter.framework/Versions/A/Headers/FacebookAdapter.h
