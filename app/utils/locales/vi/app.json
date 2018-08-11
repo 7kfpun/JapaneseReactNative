@@ -17,6 +17,10 @@
     "advanced_two": "Adv. II",
     "feedback": "Phản hồi"
   },
+  "read-all": {
+    "premium-required-title": "Chỉ khả dụng cho người dùng Premium",
+    "premium-required-description": "Hãy trở thành người dùng Premium của chúng tôi để tận hưởng nhiều tính năng hơn"
+  },
   "search": {
     "title": "Tìm kiếm",
     "cancel": "Hủy bỏ",

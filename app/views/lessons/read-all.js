@@ -63,18 +63,32 @@ export default class ReadAll extends Component<Props> {
       setParams: PropTypes.func.isRequired,
       goBack: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
-    const count = navigation.state && navigation.state.params && navigation.state.params.count;
-    const total = navigation.state && navigation.state.params && navigation.state.params.total;
+    const count =
+      navigation.state &&
+      navigation.state.params &&
+      navigation.state.params.count;
+    const total =
+      navigation.state &&
+      navigation.state.params &&
+      navigation.state.params.total;
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
-      headerRight: total && <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>,
+      headerRight: total && (
+        <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
+      ),
       tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
-      tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-list' : 'ios-list-outline'} size={20} color={tintColor} />,
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-list' : 'ios-list-outline'}
+          size={20}
+          color={tintColor}
+        />
+      ),
     };
   };
 
@@ -82,14 +96,13 @@ export default class ReadAll extends Component<Props> {
     speakTimes: 0,
     count: 0,
     isReading: true,
-  }
+    isPremium: false,
+  };
 
   componentDidMount() {
     const {
       state: {
-        params: {
-          lesson,
-        },
+        params: { lesson },
       },
       goBack,
     } = this.props.navigation;
@@ -103,10 +116,13 @@ export default class ReadAll extends Component<Props> {
 
     this.ttsEventListener = () => {
       if (this.state.count + 1 < this.state.total) {
-        this.setState({
-          count: parseInt((this.state.speakTimes + 1) / 2, 10),
-          speakTimes: this.state.speakTimes + 1,
-        }, () => this.setCount(this.state.count));
+        this.setState(
+          {
+            count: parseInt((this.state.speakTimes + 1) / 2, 10),
+            speakTimes: this.state.speakTimes + 1,
+          },
+          () => this.setCount(this.state.count)
+        );
       } else {
         setTimeout(() => goBack(), 3000);
       }
@@ -126,13 +142,11 @@ export default class ReadAll extends Component<Props> {
   }
 
   read() {
-    const {
-      lesson,
-    } = this.props.navigation.state.params;
+    const { lesson } = this.props.navigation.state.params;
 
     Tts.stop();
 
-    vocabs[lesson].data.forEach((i) => {
+    vocabs[lesson].data.forEach(i => {
       Tts.setDefaultLanguage('ja');
       Tts.speak(cleanWord(i.kana));
 
@@ -146,12 +160,16 @@ export default class ReadAll extends Component<Props> {
   }
 
   render() {
+    const { isPremium } = this.state;
+
     return (
       <SafeAreaView style={styles.container}>
         <TouchableOpacity
           style={styles.body}
           onPress={() => {
-            tracker.logEvent('user-action-read-all-press-button', { mode: this.state.isReading ? 'pause' : 'read' });
+            tracker.logEvent('user-action-read-all-press-button', {
+              mode: this.state.isReading ? 'pause' : 'read',
+            });
             this.setState({ isReading: !this.state.isReading }, () => {
               if (this.state.isReading) {
                 Tts.resume();
@@ -162,21 +180,29 @@ export default class ReadAll extends Component<Props> {
           }}
         >
           <View style={styles.body}>
-            <AdMob
-              unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
-              bannerSize="MEDIUM_RECTANGLE"
-            />
+            {!isPremium && (
+              <AdMob
+                unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
+                bannerSize="MEDIUM_RECTANGLE"
+              />
+            )}
 
             <Ionicons
               style={{ paddingTop: 40 }}
-              name={this.state.isReading ? 'ios-pause-outline' : 'ios-play-outline'}
+              name={
+                this.state.isReading ? 'ios-pause-outline' : 'ios-play-outline'
+              }
               size={80}
               color={iOSColors.black}
             />
           </View>
         </TouchableOpacity>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]} />
+        {!isPremium && (
+          <AdMob
+            unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
+          />
+        )}
       </SafeAreaView>
     );
   }

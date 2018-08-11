@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
+  Alert,
   FlatList,
   Platform,
   StyleSheet,
@@ -59,6 +60,8 @@ export default class VocabList extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
+    const isPremium = params && params.isPremium;
+
     return {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
@@ -72,31 +75,66 @@ export default class VocabList extends Component<Props> {
       ),
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          {/* <Animatable.View animation="tada" iterationCount={10}>
+          <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
               style={{ padding: 12 }}
               onPress={() => {
-                navigation.navigate('read-all', { lesson: params.item });
-                tracker.logEvent('user-action-read-all', { lesson: `${params.item}` });
+                if (isPremium || params.item <= 3) {
+                  navigation.navigate('read-all', { lesson: params.item });
+                  tracker.logEvent('user-action-goto-read-all', {
+                    lesson: `${params.item}`,
+                  });
+                } else {
+                  tracker.logEvent('app-action-read-all-premium-required', {
+                    lesson: `${params.item}`,
+                  });
+
+                  Alert.alert(
+                    I18n.t('app.read-all.premium-required-title'),
+                    I18n.t('app.read-all.premium-required-description'),
+                    [
+                      {
+                        text: 'Cancel',
+                        onPress: () => {
+                          console.log('Cancel Pressed');
+                          tracker.logEvent('user-action-read-all-premium', {
+                            lesson: `${params.item}`,
+                            interest: false,
+                          });
+                        },
+                        style: 'cancel',
+                      },
+                      {
+                        text: 'OK',
+                        onPress: () => {
+                          navigation.navigate('about');
+                          tracker.logEvent('user-action-read-all-premium', {
+                            lesson: `${params.item}`,
+                            interest: true,
+                          });
+                        },
+                      },
+                    ],
+                    { cancelable: false }
+                  );
+                }
               }}
             >
               <Ionicons name="ios-play" size={28} color="white" />
             </TouchableOpacity>
-          </Animatable.View> */}
-
-          <Animatable.View animation="tada" iterationCount={10}>
-            <TouchableOpacity
-              style={{ padding: 12, paddingRight: 15 }}
-              onPress={() => {
-                navigation.navigate('assessment', { lesson: params.item });
-                tracker.logEvent('user-action-goto-assessment', {
-                  lesson: `${params.item}`,
-                });
-              }}
-            >
-              <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
-            </TouchableOpacity>
           </Animatable.View>
+
+          <TouchableOpacity
+            style={{ padding: 12, paddingRight: 15 }}
+            onPress={() => {
+              navigation.navigate('assessment', { lesson: params.item });
+              tracker.logEvent('user-action-goto-assessment', {
+                lesson: `${params.item}`,
+              });
+            }}
+          >
+            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
+          </TouchableOpacity>
         </View>
       ),
     };

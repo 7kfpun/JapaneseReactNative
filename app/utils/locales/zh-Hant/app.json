@@ -20,6 +20,10 @@
     "advanced_two": "進階 II",
     "feedback": "反饋"
   },
+  "read-all": {
+    "premium-required-title": "只供高級用戶",
+    "premium-required-description": "成爲我們的高級用戶，享受更多功能"
+  },
   "search": {
     "title": "搜索",
     "cancel": "取消",

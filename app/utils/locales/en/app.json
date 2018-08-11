@@ -20,6 +20,10 @@
     "advanced_two": "Adv. II",
     "feedback": "Feedback"
   },
+  "read-all": {
+    "premium-required-title": "Available only for Premium users",
+    "premium-required-description": "Be our Premium user to enjoy more features"
+  },
   "search": {
     "title": "Search",
     "cancel": "Cancel",
