@@ -254,17 +254,19 @@ export default class Today extends Component<Props> {
           <CustomButton
             raised
             onPress={() => {
-              this.setState({ todayItems: shuffle([...todayItems]) }, () => {
-                if (isSoundOn && todayItems) {
-                  const { todayItems: newTodayItems } = this.state;
+              if (todayItems && todayItems.length > 0) {
+                this.setState({ todayItems: shuffle([...todayItems]) }, () => {
+                  if (isSoundOn) {
+                    const { todayItems: newTodayItems } = this.state;
 
-                  Tts.stop();
-                  Tts.setDefaultLanguage('ja');
-                  Tts.speak(cleanWord(newTodayItems[0].kana));
-                  tracker.logEvent('app-action-today-shuffle-read');
-                }
-              });
-              tracker.logEvent('user-action-today-shuffle');
+                    Tts.stop();
+                    Tts.setDefaultLanguage('ja');
+                    Tts.speak(cleanWord(newTodayItems[0].kana));
+                    tracker.logEvent('app-action-today-shuffle-read');
+                  }
+                });
+                tracker.logEvent('user-action-today-shuffle');
+              }
             }}
             title={I18n.t('app.today.shuffle')}
             titleStyles={{ fontSize: 20 }}
@@ -273,26 +275,30 @@ export default class Today extends Component<Props> {
           <SoundButton
             containerStyles={{ marginHorizontal: 15 }}
             onPress={() => {
-              Tts.setDefaultLanguage('ja');
-              Tts.speak(cleanWord(todayItems[cardIndex].kana));
-              tracker.logEvent('user-action-today-read');
+              if (todayItems && todayItems.length > 0) {
+                Tts.setDefaultLanguage('ja');
+                Tts.speak(cleanWord(todayItems[cardIndex].kana));
+                tracker.logEvent('user-action-today-read');
+              }
             }}
           />
 
           <CustomButton
             raised
             onPress={() => {
-              const isLast = cardIndex === todayItems.length - 1;
-              this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
-                if (isSoundOn) {
-                  Tts.setDefaultLanguage('ja');
-                  Tts.speak(
-                    cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana)
-                  );
-                  tracker.logEvent('app-action-today-next-read');
-                }
-              });
-              tracker.logEvent('user-action-today-next');
+              if (todayItems && todayItems.length > 0) {
+                const isLast = cardIndex === todayItems.length - 1;
+                this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
+                  if (isSoundOn) {
+                    Tts.setDefaultLanguage('ja');
+                    Tts.speak(
+                      cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana)
+                    );
+                    tracker.logEvent('app-action-today-next-read');
+                  }
+                });
+                tracker.logEvent('user-action-today-next');
+              }
             }}
             title={I18n.t('app.common.next')}
             titleStyles={{ fontSize: 20 }}
