@@ -12,6 +12,7 @@ import {
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { cleanWord } from '../../utils/helpers';
@@ -110,6 +111,8 @@ export default class ReadAll extends Component<Props> {
     setParams({ count: 0, total });
 
     this.read();
+
+    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
 
     this.ttsEventListener = () => {
       const {
