@@ -106,7 +106,7 @@ export default class KanaAssessment extends Component<Props> {
   };
 
   state = {
-    origin: '',
+    origin: [],
     choices: [],
     modeFrom: 'hiragana',
     modeTo: 'romaji',
@@ -176,7 +176,7 @@ export default class KanaAssessment extends Component<Props> {
     this.setState({ modeTo: modeOther, modeOther: tempModeTo });
   };
 
-  checkAnswer = (position, rightAnswer, userAnswer) => {
+  checkAnswer = (position, rightAnswer, userAnswer, origin) => {
     this.setState({ answerPosition: position });
     const { navigation } = this.props;
     const params = navigation.state.params || {};
@@ -190,10 +190,18 @@ export default class KanaAssessment extends Component<Props> {
         correctNumber: correctNumber + 1,
         total: total + 1,
       });
+      store.save(`kana.assessment.${origin[2]}`, true);
+      tracker.logEvent('user-action-kana-assessment-result-correct');
     } else {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total + 1 });
+      store.save(`kana.assessment.${origin[2]}`, false);
+      tracker.logEvent('user-action-kana-assessment-result-incorrect');
     }
+    store.save(
+      `kana.assessment.${origin[2]}.timestamp`,
+      parseInt(Date.now() / 1000, 10)
+    );
   };
 
   render() {
@@ -228,7 +236,7 @@ export default class KanaAssessment extends Component<Props> {
               alignItems: 'center',
               padding: 8,
             }}
-            onPress={() => this.swapModeFrom()}
+            onPress={this.swapModeFrom}
           >
             <Text style={{ color: iOSColors.tealBlue, fontSize: 18 }}>
               {I18n.t(`app.kana.${modeFrom}`)}
@@ -244,7 +252,7 @@ export default class KanaAssessment extends Component<Props> {
               alignItems: 'center',
               padding: 8,
             }}
-            onPress={() => this.swapModeTo()}
+            onPress={this.swapModeTo}
           >
             <Text style={{ color: iOSColors.tealBlue, fontSize: 18 }}>
               {I18n.t(`app.kana.${modeTo}`)}
@@ -291,7 +299,9 @@ export default class KanaAssessment extends Component<Props> {
                 },
               ]}
               underlayColor={iOSColors.gray}
-              onPress={() => this.checkAnswer(0, rightAnswer, answers[0])}
+              onPress={() =>
+                this.checkAnswer(0, rightAnswer, answers[0], origin)
+              }
             >
               <Text style={styles.tileText}>{answers[0]}</Text>
             </TouchableOpacity>
@@ -312,7 +322,9 @@ export default class KanaAssessment extends Component<Props> {
                 },
               ]}
               underlayColor={iOSColors.gray}
-              onPress={() => this.checkAnswer(1, rightAnswer, answers[1])}
+              onPress={() =>
+                this.checkAnswer(1, rightAnswer, answers[1], origin)
+              }
             >
               <Text style={styles.tileText}>{answers[1]}</Text>
             </TouchableOpacity>
@@ -334,7 +346,9 @@ export default class KanaAssessment extends Component<Props> {
                 },
               ]}
               underlayColor={iOSColors.gray}
-              onPress={() => this.checkAnswer(2, rightAnswer, answers[2])}
+              onPress={() =>
+                this.checkAnswer(2, rightAnswer, answers[2], origin)
+              }
             >
               <Text style={styles.tileText}>{answers[2]}</Text>
             </TouchableOpacity>
@@ -355,7 +369,9 @@ export default class KanaAssessment extends Component<Props> {
                 },
               ]}
               underlayColor={iOSColors.gray}
-              onPress={() => this.checkAnswer(3, rightAnswer, answers[3])}
+              onPress={() =>
+                this.checkAnswer(3, rightAnswer, answers[3], origin)
+              }
             >
               <Text style={styles.tileText}>{answers[3]}</Text>
             </TouchableOpacity>

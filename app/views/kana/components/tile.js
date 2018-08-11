@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import tracker from '../../../utils/tracker';
@@ -23,6 +25,14 @@ const styles = StyleSheet.create({
     borderRightWidth: 0.5,
     borderBottomColor: iOSColors.tealBlue,
     borderBottomWidth: 0.5,
+  },
+  upperDot: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  dotText: {
+    fontSize: 30,
+    lineHeight: 14,
   },
   upperRow: {
     flex: 1,
@@ -46,42 +56,70 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tile = ({ hiragana, katakana, romaji, itemsPerRow }) => (
-  <TouchableOpacity
-    style={[styles.container, { width: width / itemsPerRow }]}
-    onPress={() => {
-      Tts.setDefaultLanguage('ja');
-      Tts.speak(hiragana);
-      tracker.logEvent('user-action-press-kana-read', { text: hiragana });
-    }}
-  >
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'white',
-        padding: 5,
-      }}
-    >
-      <View style={styles.upperRow}>
-        <Text style={styles.upperText}>{hiragana}</Text>
-      </View>
-      <View style={styles.lowerRow}>
-        <Text style={styles.lowerText}>{katakana}</Text>
-        <Text style={styles.lowerText}>{romaji}</Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-);
+export default class Tile extends Component<Props> {
+  static propTypes = {
+    hiragana: PropTypes.string.isRequired,
+    katakana: PropTypes.string.isRequired,
+    romaji: PropTypes.string.isRequired,
+    itemsPerRow: PropTypes.number,
+  };
 
-Tile.propTypes = {
-  hiragana: PropTypes.string.isRequired,
-  katakana: PropTypes.string.isRequired,
-  romaji: PropTypes.string.isRequired,
-  itemsPerRow: PropTypes.number,
-};
+  static defaultProps = {
+    itemsPerRow: 5,
+  };
 
-Tile.defaultProps = {
-  itemsPerRow: 5,
-};
+  state = {
+    isCorrect: null,
+  };
 
-export default Tile;
+  componentDidMount() {
+    const { romaji } = this.props;
+
+    store
+      .get(`kana.assessment.${romaji}`)
+      .then(isCorrect => this.setState({ isCorrect }));
+  }
+
+  render() {
+    const { hiragana, katakana, romaji, itemsPerRow } = this.props;
+    const { isCorrect } = this.state;
+
+    return (
+      <TouchableOpacity
+        style={[styles.container, { width: width / itemsPerRow }]}
+        onPress={() => {
+          Tts.setDefaultLanguage('ja');
+          Tts.speak(hiragana);
+          tracker.logEvent('user-action-press-kana-read', { text: hiragana });
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'white',
+            padding: 4,
+          }}
+        >
+          <View style={styles.upperDot}>
+            {isCorrect && (
+              <Ionicons name={'ios-add-circle'} size={8} color={'green'} />
+            )}
+            {isCorrect === false && (
+              <Ionicons name={'ios-add-circle'} size={8} color={'red'} />
+            )}
+            {isCorrect === null && (
+              <Ionicons name={'ios-add-circle'} size={8} color={'white'} />
+            )}
+          </View>
+          <View style={styles.upperRow}>
+            <Text style={styles.upperText}>{hiragana}</Text>
+          </View>
+          <View style={styles.lowerRow}>
+            <Text style={styles.lowerText}>{katakana}</Text>
+            <Text style={styles.lowerText}>{romaji}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}

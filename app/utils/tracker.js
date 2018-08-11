@@ -5,14 +5,14 @@ import Analytics from 'analytics-react-native';
 import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
-import FlurryAnalytics from 'react-native-flurry-analytics';
+// import FlurryAnalytics from 'react-native-flurry-analytics';
 
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
 const analytics = new Analytics(config.segment);
-FlurryAnalytics.setAppVersion(DeviceInfo.getReadableVersion());
-FlurryAnalytics.startSession(config.flurry);
+// FlurryAnalytics.setAppVersion(DeviceInfo.getReadableVersion());
+// FlurryAnalytics.startSession(config.flurry);
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 
 const userId = DeviceInfo.getUniqueID();
@@ -91,7 +91,7 @@ const tracker = {
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
       CleverTap.profileSet({ Identity: userId, ...context });
-      FlurryAnalytics.setUserId(userId);
+      // FlurryAnalytics.setUserId(userId);
     }
   },
   logEvent: (event, properties) => {
@@ -107,7 +107,7 @@ const tracker = {
       firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
       CleverTap.recordEvent(event, properties);
-      FlurryAnalytics.logEvent(event, properties);
+      // FlurryAnalytics.logEvent(event, properties);
     }
   },
   view: (screen, properties) => {
