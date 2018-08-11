@@ -68,14 +68,8 @@ export default class ReadAll extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
-    const count =
-      navigation.state &&
-      navigation.state.params &&
-      navigation.state.params.count;
-    const total =
-      navigation.state &&
-      navigation.state.params &&
-      navigation.state.params.total;
+    const count = params && params.count;
+    const total = params && params.total;
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
       headerRight: total && (
@@ -101,27 +95,35 @@ export default class ReadAll extends Component<Props> {
 
   componentDidMount() {
     const {
-      state: {
-        params: { lesson },
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+        goBack,
+        setParams,
       },
-      goBack,
-    } = this.props.navigation;
+    } = this.props;
 
     const total = vocabs[lesson].data.length;
 
     this.setState({ total });
-    this.props.navigation.setParams({ count: 0, total });
+    setParams({ count: 0, total });
 
     this.read();
 
     this.ttsEventListener = () => {
-      if (this.state.count + 1 < this.state.total) {
+      const {
+        count: newCount,
+        total: newTotal,
+        speakTimes: newSpeakTimes,
+      } = this.state;
+      if (newCount + 1 < newTotal) {
         this.setState(
           {
-            count: parseInt((this.state.speakTimes + 1) / 2, 10),
-            speakTimes: this.state.speakTimes + 1,
+            count: parseInt((newSpeakTimes + 1) / 2, 10),
+            speakTimes: newSpeakTimes + 1,
           },
-          () => this.setCount(this.state.count)
+          () => this.setCount(newCount)
         );
       } else {
         setTimeout(() => goBack(), 3000);
@@ -142,7 +144,13 @@ export default class ReadAll extends Component<Props> {
   }
 
   read() {
-    const { lesson } = this.props.navigation.state.params;
+    const {
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+      },
+    } = this.props;
 
     Tts.stop();
 
@@ -160,7 +168,7 @@ export default class ReadAll extends Component<Props> {
   }
 
   render() {
-    const { isPremium } = this.state;
+    const { isPremium, isReading } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -168,15 +176,16 @@ export default class ReadAll extends Component<Props> {
           style={styles.body}
           onPress={() => {
             tracker.logEvent('user-action-read-all-press-button', {
-              mode: this.state.isReading ? 'pause' : 'read',
+              mode: isReading ? 'pause' : 'read',
             });
-            this.setState({ isReading: !this.state.isReading }, () => {
-              if (this.state.isReading) {
-                Tts.resume();
-              } else {
-                Tts.pause();
-              }
-            });
+
+            if (isReading) {
+              Tts.pause();
+            } else {
+              Tts.resume();
+            }
+
+            this.setState({ isReading: !isReading });
           }}
         >
           <View style={styles.body}>
@@ -189,9 +198,7 @@ export default class ReadAll extends Component<Props> {
 
             <Ionicons
               style={{ paddingTop: 40 }}
-              name={
-                this.state.isReading ? 'ios-pause-outline' : 'ios-play-outline'
-              }
+              name={isReading ? 'ios-pause-outline' : 'ios-play-outline'}
               size={80}
               color={iOSColors.black}
             />

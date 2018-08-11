@@ -147,6 +147,7 @@ export default class VocabList extends Component<Props> {
           item: PropTypes.number.isRequired,
         }).isRequired,
       }).isRequired,
+      setParams: PropTypes.func.isRequired,
     }).isRequired,
   };
 
@@ -158,6 +159,7 @@ export default class VocabList extends Component<Props> {
   async componentDidMount() {
     store.get('isPremium').then(isPremium => {
       this.setState({ isPremium });
+      this.props.navigation.setParams({ isPremium });
 
       setTimeout(() => {
         if (!isPremium && advert.isLoaded() && Math.random() < 0.4) {
