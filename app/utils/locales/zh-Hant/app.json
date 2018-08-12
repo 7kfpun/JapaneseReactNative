@@ -42,7 +42,9 @@
     "notification_label": "學習通知 (每日)",
     "restore": "恢復您的應用內購買",
     "purchase_title": "您現在是我們的高級用戶",
-    "purchase_description": "開心學習日語！"
+    "purchase_description": "開心學習日語！",
+    "purchase_item_title": "进阶版",
+    "purchase_item_description": "去除所有广告"
   },
   "common": {
     "kana": "日",

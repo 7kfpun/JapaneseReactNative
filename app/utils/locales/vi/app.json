@@ -39,7 +39,9 @@
     "notification_label": "Nhắc nhở học tập (hàng ngày)",
     "restore": "Khôi phục mua hàng trong ứng dụng của bạn",
     "purchase_title": "Bạn hiện là người dùng cao cấp của chúng tôi",
-    "purchase_description": "Thích học tiếng Nhật"
+    "purchase_description": "Thích học tiếng Nhật",
+    "purchase_item_title": "Premium",
+    "purchase_item_description": "Xóa tất cả quảng cáo biểu ngữ và quảng cáo bật lên"
   },
   "common": {
     "kana": "Kana",

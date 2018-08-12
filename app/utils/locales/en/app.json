@@ -42,7 +42,9 @@
     "notification_label": "Study Reminder (Daily)",
     "restore": "Restore your in-app purchases",
     "purchase_title": "You are our premium user now",
-    "purchase_description": "Enjoy learning Japanese"
+    "purchase_description": "Enjoy learning Japanese",
+    "purchase_item_title": "Premium",
+    "purchase_item_description": "Remove all banner and popup ads"
   },
   "common": {
     "kana": "Kana",

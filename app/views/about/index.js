@@ -134,10 +134,16 @@ export default class About extends Component<Props> {
               {productList.map((product, i) => (
                 <Row
                   key={product.productId}
+                  // text={`${
+                  //   purchasedProductIds.includes(product.productId) ? '✓' : ''
+                  // }${product.title} (${product.localizedPrice})`}
                   text={`${
                     purchasedProductIds.includes(product.productId) ? '✓' : ''
-                  }${product.title} (${product.localizedPrice})`}
-                  description={product.description}
+                  }${I18n.t('app.about.purchase_item_title')} (${
+                    product.localizedPrice
+                  })`}
+                  // description={product.description}
+                  description={I18n.t('app.about.purchase_item_description')}
                   first={i === 0}
                   last={i === productList.length - 1}
                   onPress={() => this.buySubscribeItem(product.productId)}
