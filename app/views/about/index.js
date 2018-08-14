@@ -129,37 +129,38 @@ export default class About extends Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
-          {!isPremium && (
-            <View style={{ marginTop: 10 }}>
-              {productList.map((product, i) => (
-                <Row
-                  key={product.productId}
-                  // text={`${
-                  //   purchasedProductIds.includes(product.productId) ? '✓' : ''
-                  // }${product.title} (${product.localizedPrice})`}
-                  text={`${
-                    purchasedProductIds.includes(product.productId) ? '✓' : ''
-                  }${I18n.t('app.about.purchase_item_title')} (${
-                    product.localizedPrice
-                  })`}
-                  // description={product.description}
-                  description={I18n.t('app.about.purchase_item_description')}
-                  first={i === 0}
-                  last={i === productList.length - 1}
-                  onPress={() => this.buySubscribeItem(product.productId)}
-                  disabled={purchasedProductIds.includes(product.productId)}
-                />
-              ))}
+          {Platform.OS === 'ios' &&
+            !isPremium && (
+              <View style={{ marginTop: 10 }}>
+                {productList.map((product, i) => (
+                  <Row
+                    key={product.productId}
+                    // text={`${
+                    //   purchasedProductIds.includes(product.productId) ? '✓' : ''
+                    // }${product.title} (${product.localizedPrice})`}
+                    text={`${
+                      purchasedProductIds.includes(product.productId) ? '✓' : ''
+                    }${I18n.t('app.about.purchase_item_title')} (${
+                      product.localizedPrice
+                    })`}
+                    // description={product.description}
+                    description={I18n.t('app.about.purchase_item_description')}
+                    first={i === 0}
+                    last={i === productList.length - 1}
+                    onPress={() => this.buySubscribeItem(product.productId)}
+                    disabled={purchasedProductIds.includes(product.productId)}
+                  />
+                ))}
 
-              <Row
-                text={I18n.t('app.about.restore')}
-                onPress={() => {
-                  this.getAvailablePurchases();
-                  tracker.logEvent('user-action-restore-purchase');
-                }}
-              />
-            </View>
-          )}
+                <Row
+                  text={I18n.t('app.about.restore')}
+                  onPress={() => {
+                    this.getAvailablePurchases();
+                    tracker.logEvent('user-action-restore-purchase');
+                  }}
+                />
+              </View>
+            )}
 
           <View style={{ marginTop: 15 }}>
             <Row
