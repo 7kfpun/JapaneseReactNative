@@ -98,16 +98,43 @@ export default class About extends Component<Props> {
     }
   };
 
-  buySubscribeItem = async sku => {
+  buySubscribeItem = async product => {
+    // {
+    //   productId: 'com.kfpun.japanese.ad',
+    //   price: '38',
+    //   title: 'Premium version',
+    //   type: 'Do not use this. It returned sub only before',
+    //   currency: 'HKD',
+    //   description: 'Remove all banner and popup ads',
+    //   localizedPrice: 'HK$38.00'
+    // }
+    tracker.logEvent('user-action-buy-subscription', product);
     try {
-      console.log('buySubscribeItem:', sku);
-      const purchase = await RNIap.buySubscription(sku);
+      console.log('buySubscribeItem:', product);
+      const purchase = await RNIap.buySubscription(product.productId);
       console.info('Purchase result', purchase);
       if (purchase.productId === config.inAppProducts[0]) {
+        tracker.logEvent('user-action-buy-subscription-done', purchase);
+        tracker.logPurchase(
+          product.price,
+          product.currency,
+          true,
+          product.title,
+          product.type,
+          product.productId
+        );
         this.refreshForApplyingPurchase();
       }
     } catch (err) {
       console.warn('Purchase result error', err.code, err.message);
+      tracker.logPurchase(
+        product.price,
+        product.currency,
+        false,
+        product.title,
+        product.type,
+        product.productId
+      );
     }
   };
 
@@ -147,7 +174,7 @@ export default class About extends Component<Props> {
                     description={I18n.t('app.about.purchase_item_description')}
                     first={i === 0}
                     last={i === productList.length - 1}
-                    onPress={() => this.buySubscribeItem(product.productId)}
+                    onPress={() => this.buySubscribeItem(product)}
                     disabled={purchasedProductIds.includes(product.productId)}
                   />
                 ))}

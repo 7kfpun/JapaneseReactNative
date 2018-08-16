@@ -110,6 +110,25 @@ const tracker = {
       // FlurryAnalytics.logEvent(event, properties);
     }
   },
+  logPurchase: (
+    itemPrice,
+    currency,
+    success,
+    itemName,
+    itemType,
+    itemId,
+    properties
+  ) => {
+    Answers.logPurchase(
+      itemPrice,
+      currency,
+      success,
+      itemName,
+      itemType,
+      itemId,
+      properties
+    );
+  },
   view: (screen, properties) => {
     if (isTracking) {
       const message = {

@@ -162,7 +162,7 @@ export default class VocabList extends Component<Props> {
       this.props.navigation.setParams({ isPremium });
 
       setTimeout(() => {
-        if (!isPremium && advert.isLoaded() && Math.random() < 0.4) {
+        if (!isPremium && advert.isLoaded() && Math.random() < 0.5) {
           advert.show();
           tracker.logEvent('app-action-vocab-list-popup');
         }
