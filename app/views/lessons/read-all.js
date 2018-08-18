@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '300',
     color: iOSColors.black,
     backgroundColor: 'transparent',
@@ -76,7 +76,7 @@ export default class ReadAll extends Component<Props> {
       headerRight: total && (
         <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
       ),
-      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
           name={focused ? 'ios-list' : 'ios-list-outline'}
@@ -91,6 +91,7 @@ export default class ReadAll extends Component<Props> {
     speakTimes: 0,
     count: 0,
     isReading: true,
+    readingText: '',
     isPremium: false,
   };
 
@@ -121,10 +122,12 @@ export default class ReadAll extends Component<Props> {
         speakTimes: newSpeakTimes,
       } = this.state;
       if (newCount + 1 < newTotal) {
+        const c = parseInt((newSpeakTimes + 1) / 2, 10);
         this.setState(
           {
-            count: parseInt((newSpeakTimes + 1) / 2, 10),
+            count: c,
             speakTimes: newSpeakTimes + 1,
+            readingText: vocabs[lesson].data[c].kana,
           },
           () => this.setCount(newCount)
         );
@@ -163,7 +166,8 @@ export default class ReadAll extends Component<Props> {
 
       if (I18n.voiceLocale) {
         Tts.setDefaultLanguage(I18n.voiceLocale);
-        Tts.speak(I18n.t(`minna.${lesson}.${i.romaji}`));
+        const translation = I18n.t(`minna.${lesson}.${i.romaji}`);
+        Tts.speak(translation);
       } else {
         Tts.speak(' ,,,,, '); // pause between word
       }
@@ -171,7 +175,7 @@ export default class ReadAll extends Component<Props> {
   }
 
   render() {
-    const { isPremium, isReading } = this.state;
+    const { isPremium, isReading, readingText } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -199,10 +203,12 @@ export default class ReadAll extends Component<Props> {
               />
             )}
 
+            <Text style={styles.text}>{readingText}</Text>
+
             <Ionicons
               style={{ paddingTop: 40 }}
               name={isReading ? 'ios-pause-outline' : 'ios-play-outline'}
-              size={80}
+              size={40}
               color={iOSColors.black}
             />
           </View>

@@ -145,7 +145,7 @@ export default class Assessment extends Component<Props> {
       headerRight: total && (
         <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
       ),
-      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
           name={focused ? 'ios-list' : 'ios-list-outline'}

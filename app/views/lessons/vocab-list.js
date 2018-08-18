@@ -65,7 +65,7 @@ export default class VocabList extends Component<Props> {
     return {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
-      tabBarLabel: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
           name={focused ? 'ios-list' : 'ios-list-outline'}
@@ -75,7 +75,7 @@ export default class VocabList extends Component<Props> {
       ),
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          {/* <Animatable.View animation="tada" iterationCount={10}>
+          <Animatable.View animation="tada" iterationCount={10}>
             <TouchableOpacity
               style={{ padding: 12 }}
               onPress={() => {
@@ -107,7 +107,10 @@ export default class VocabList extends Component<Props> {
                       {
                         text: 'OK',
                         onPress: () => {
-                          navigation.navigate('about');
+                          setTimeout(() => {
+                            navigation.navigate('about');
+                          }, 1000);
+
                           tracker.logEvent('user-action-read-all-premium', {
                             lesson: `${params.item}`,
                             interest: true,
@@ -122,7 +125,7 @@ export default class VocabList extends Component<Props> {
             >
               <Ionicons name="ios-play" size={28} color="white" />
             </TouchableOpacity>
-          </Animatable.View> */}
+          </Animatable.View>
 
           <TouchableOpacity
             style={{ padding: 12, paddingRight: 15 }}

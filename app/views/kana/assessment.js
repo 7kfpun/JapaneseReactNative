@@ -82,7 +82,7 @@ export default class KanaAssessment extends Component<Props> {
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
       ),
-      tabBarLabel: I18n.t(`app.kana.${params.mode}`),
+      tabBarLabel: I18n.t('app.kana.title'),
       tabBarIcon: ({ tintColor, focused }) => (
         <Text
           style={[

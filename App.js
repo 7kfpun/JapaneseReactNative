@@ -186,7 +186,10 @@ export default () => (
       const prevScreen = getCurrentRouteName(prevState);
 
       if (prevScreen !== currentScreen) {
-        console.log(currentScreen);
+        console.log('prevScreen', prevScreen, 'currentScreen', currentScreen);
+        if (prevScreen === 'read-all') {
+          Tts.pause();
+        }
         tracker.view(currentScreen);
       }
     }}
