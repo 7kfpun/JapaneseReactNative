@@ -6,19 +6,19 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
-import About from './app/views/about';
-import Assessment from './app/views/lessons/assessment';
-import Feedback from './app/views/feedback';
-import Kana from './app/views/kana';
-import KanaAssessment from './app/views/kana/assessment';
-import Lessons from './app/views/lessons';
-import ReadAll from './app/views/lessons/read-all';
-import Search from './app/views/search';
-import Today from './app/views/today';
-import VocabList from './app/views/lessons/vocab-list';
+import About from './views/about';
+import Assessment from './views/lessons/assessment';
+import Feedback from './views/feedback';
+import Kana from './views/kana';
+import KanaAssessment from './views/kana/assessment';
+import Lessons from './views/lessons';
+import ReadAll from './views/lessons/read-all';
+import Search from './views/search';
+import Today from './views/today';
+import VocabList from './views/lessons/vocab-list';
 
-import tracker from './app/utils/tracker';
-import I18n from './app/utils/i18n';
+import tracker from './utils/tracker';
+import I18n from './utils/i18n';
 
 if (!__DEV__) {
   console.log = () => {};
