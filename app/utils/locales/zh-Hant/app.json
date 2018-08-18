@@ -13,12 +13,12 @@
     "katakana": "片假名",
     "romaji": "羅馬字"
   },
-  "main": {
+  "lessons": {
+    "title": "みんなの日本語",
     "beginning_one": "初級 I",
     "beginning_two": "初級 II",
     "advanced_one": "進階 I",
-    "advanced_two": "進階 II",
-    "feedback": "反饋"
+    "advanced_two": "進階 II"
   },
   "read-all": {
     "premium-required-title": "只供高級用戶",
@@ -35,7 +35,8 @@
   "feedback": {
     "title": "反饋/建議",
     "url": "https://airtable.com/shrsfl03pU6HnE5Ar",
-    "issueUrl": "https://airtable.com/shroN1qoYaCZRsfEw?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}"
+    "issueUrl": "https://airtable.com/shroN1qoYaCZRsfEw?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+    "feedback": "反饋"
   },
   "about": {
     "title": "關於",
@@ -44,7 +45,8 @@
     "purchase_title": "您現在是我們的高級用戶",
     "purchase_description": "開心學習日語！",
     "purchase_item_title": "进阶版",
-    "purchase_item_description": "去除所有广告"
+    "purchase_item_description": "去除所有廣告",
+    "restore_failed_title": "您從未購買過我們的進階版"
   },
   "common": {
     "kana": "日",

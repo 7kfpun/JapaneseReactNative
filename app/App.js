@@ -180,16 +180,17 @@ function getCurrentRouteName(navigationState) {
 
 export default () => (
   <AppTab
-    // screenProps={{ isPremium }}
     onNavigationStateChange={(prevState, currentState) => {
       const currentScreen = getCurrentRouteName(currentState);
       const prevScreen = getCurrentRouteName(prevState);
 
+      console.log('prevScreen', prevScreen, 'currentScreen', currentScreen);
       if (prevScreen !== currentScreen) {
-        console.log('prevScreen', prevScreen, 'currentScreen', currentScreen);
+        // pause tts if changing from read-all view to others
         if (prevScreen === 'read-all') {
           Tts.pause();
         }
+
         tracker.view(currentScreen);
       }
     }}

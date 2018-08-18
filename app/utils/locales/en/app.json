@@ -13,15 +13,15 @@
     "katakana": "Katakana",
     "romaji": "Romaji"
   },
-  "main": {
+  "lessons": {
+    "title": "みんなの日本語",
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",
     "advanced_one": "Adv. I",
-    "advanced_two": "Adv. II",
-    "feedback": "Feedback"
+    "advanced_two": "Adv. II"
   },
   "read-all": {
-    "premium-required-title": "Available only for Premium users",
+    "premium-required-title": "Only available for Premium users",
     "premium-required-description": "Be our Premium user to enjoy more features"
   },
   "search": {
@@ -35,7 +35,8 @@
   "feedback": {
     "title": "Feedback",
     "url": "https://airtable.com/shr7xvYAyInUbJNif",
-    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}"
+    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+    "feedback": "Feedback"
   },
   "about": {
     "title": "About",
@@ -44,7 +45,8 @@
     "purchase_title": "You are our premium user now",
     "purchase_description": "Enjoy learning Japanese",
     "purchase_item_title": "Premium",
-    "purchase_item_description": "Remove all banner and popup ads"
+    "purchase_item_description": "Remove all banner and popup ads",
+    "restore_failed_title": "You never purchased our Premium before"
   },
   "common": {
     "kana": "Kana",

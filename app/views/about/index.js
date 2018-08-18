@@ -51,7 +51,6 @@ export default class About extends Component<Props> {
 
   state = {
     productList: [],
-    // purchasedProduct: [],
     purchasedProductIds: [],
     refreshing: false,
     isPremium: false,
@@ -81,7 +80,6 @@ export default class About extends Component<Props> {
       console.log('getAvailablePurchases', purchases);
       if (purchases && purchases.length > 0) {
         this.setState({
-          // purchasedProduct: purchases,
           purchasedProductIds: purchases.map(item => item.productId),
         });
 
@@ -90,6 +88,13 @@ export default class About extends Component<Props> {
             this.refreshForApplyingPurchase();
           }
         });
+      } else {
+        Alert.alert(
+          I18n.t('app.about.restore_failed_title'),
+          null,
+          [{ text: 'OK' }],
+          { cancelable: false }
+        );
       }
     } catch (err) {
       console.log('Get available error', err.code, err.message);
@@ -191,7 +196,7 @@ export default class About extends Component<Props> {
 
           <View style={{ marginTop: 15 }}>
             <Row
-              text={I18n.t('app.main.feedback')}
+              text={I18n.t('app.feedback.feedback')}
               onPress={() => {
                 navigation.navigate('feedback');
                 tracker.logEvent('user-action-feedback');

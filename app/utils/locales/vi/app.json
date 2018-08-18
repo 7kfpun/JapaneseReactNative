@@ -10,12 +10,12 @@
     "dakuon": "Dakuon",
     "youon": "Youon"
   },
-  "main": {
+  "lessons": {
+    "title": "みんなの日本語",
     "beginning_one": "Beg. I",
     "beginning_two": "Beg. II",
     "advanced_one": "Adv. I",
-    "advanced_two": "Adv. II",
-    "feedback": "Phản hồi"
+    "advanced_two": "Adv. II"
   },
   "read-all": {
     "premium-required-title": "Chỉ khả dụng cho người dùng Premium",
@@ -32,7 +32,8 @@
   "feedback": {
     "title": "Phản hồi",
     "url": "https://airtable.com/shr7xvYAyInUbJNif",
-    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}"
+    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+    "feedback": "Phản hồi"
   },
   "about": {
     "title": "Về chúng tôi",
@@ -41,7 +42,8 @@
     "purchase_title": "Bạn hiện là người dùng cao cấp của chúng tôi",
     "purchase_description": "Thích học tiếng Nhật",
     "purchase_item_title": "Premium",
-    "purchase_item_description": "Xóa tất cả quảng cáo biểu ngữ và quảng cáo bật lên"
+    "purchase_item_description": "Xóa tất cả quảng cáo biểu ngữ và quảng cáo bật lên",
+    "restore_failed_title": "Bạn chưa bao giờ mua Premium của chúng tôi trước đây"
   },
   "common": {
     "kana": "Kana",

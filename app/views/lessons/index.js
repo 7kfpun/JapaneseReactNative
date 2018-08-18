@@ -50,19 +50,19 @@ const styles = StyleSheet.create({
 
 const lessonGroup = [
   {
-    text: I18n.t('app.main.beginning_one'),
+    text: I18n.t('app.lessons.beginning_one'),
     list: range(1, 14), // [1, 13]
   },
   {
-    text: I18n.t('app.main.beginning_two'),
+    text: I18n.t('app.lessons.beginning_two'),
     list: range(14, 26), // [14, 25]
   },
   {
-    text: I18n.t('app.main.advanced_one'),
+    text: I18n.t('app.lessons.advanced_one'),
     list: range(26, 39), // [26, 38]
   },
   {
-    text: I18n.t('app.main.advanced_two'),
+    text: I18n.t('app.lessons.advanced_two'),
     list: range(39, 51), // [39, 50]
   },
 ];
@@ -75,7 +75,7 @@ export default class Main extends Component<Props> {
 
   static navigationOptions = {
     headerBackTitle: null,
-    title: 'みんなの日本語',
+    title: I18n.t('app.lessons.title'),
     tabBarIcon: ({ tintColor, focused }) => (
       <Ionicons
         name={focused ? 'ios-list' : 'ios-list-outline'}
