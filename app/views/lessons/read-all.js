@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '300',
     color: iOSColors.black,
     backgroundColor: 'transparent',
@@ -69,13 +69,8 @@ export default class ReadAll extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
-    const count = params && params.count;
-    const total = params && params.total;
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
-      headerRight: total && (
-        <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
-      ),
       tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons

@@ -405,16 +405,20 @@ export default class Assessment extends Component<Props> {
                     this.setState({ answers: [...answers, tile] }, () => {
                       tracker.logEvent('user-action-press-answer', { tile });
 
-                      if (answers.join('') === cleanWord(kana)) {
+                      const { answers: newAnswers } = this.state;
+
+                      if (newAnswers.join('') === cleanWord(kana)) {
                         tracker.logEvent('user-action-result-correct', {
                           vocab: kana,
                         });
+                        console.log('correct');
                       }
 
-                      if (!cleanWord(kana).startsWith(answers.join(''))) {
+                      if (!cleanWord(kana).startsWith(newAnswers.join(''))) {
                         tracker.logEvent('user-action-result-incorrect', {
                           vocab: kana,
                         });
+                        console.log('incorrect');
                       }
                     });
                   }
