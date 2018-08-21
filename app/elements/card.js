@@ -119,7 +119,7 @@ export default class Card extends Component {
         <View style={styles.container}>
           <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
             <TouchableOpacity
-              style={{ paddingTop: 10, paddingRight: 10 }}
+              style={{ paddingTop: 10, paddingHorizontal: 15 }}
               onPress={() => {
                 navigation.navigate('vocab-feedback', {
                   item: {
@@ -131,11 +131,7 @@ export default class Card extends Component {
                 });
               }}
             >
-              <Ionicons
-                name="ios-help-circle-outline"
-                size={24}
-                color="black"
-              />
+              <Ionicons name="ios-flag-outline" size={24} color="black" />
             </TouchableOpacity>
           </View>
 

@@ -69,6 +69,7 @@ const AppTab = TabNavigator(
       screen: StackNavigator(
         {
           today: { screen: Today },
+          'vocab-feedback': { screen: Feedback },
         },
         stackOptions
       ),
