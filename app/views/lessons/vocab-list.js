@@ -75,57 +75,59 @@ export default class VocabList extends Component<Props> {
       ),
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Animatable.View animation="tada" iterationCount={10}>
-            <TouchableOpacity
-              style={{ padding: 12 }}
-              onPress={() => {
-                if (isPremium || params.item <= 3) {
-                  navigation.navigate('read-all', { lesson: params.item });
-                  tracker.logEvent('user-action-goto-read-all', {
-                    lesson: `${params.item}`,
-                  });
-                } else {
-                  tracker.logEvent('app-action-read-all-premium-required', {
-                    lesson: `${params.item}`,
-                  });
+          {Platform.OS === 'ios' && (
+            <Animatable.View animation="tada" iterationCount={10}>
+              <TouchableOpacity
+                style={{ padding: 12 }}
+                onPress={() => {
+                  if (isPremium || params.item <= 3) {
+                    navigation.navigate('read-all', { lesson: params.item });
+                    tracker.logEvent('user-action-goto-read-all', {
+                      lesson: `${params.item}`,
+                    });
+                  } else {
+                    tracker.logEvent('app-action-read-all-premium-required', {
+                      lesson: `${params.item}`,
+                    });
 
-                  Alert.alert(
-                    I18n.t('app.read-all.premium-required-title'),
-                    I18n.t('app.read-all.premium-required-description'),
-                    [
-                      {
-                        text: 'Cancel',
-                        onPress: () => {
-                          console.log('Cancel Pressed');
-                          tracker.logEvent('user-action-read-all-premium', {
-                            lesson: `${params.item}`,
-                            interest: false,
-                          });
+                    Alert.alert(
+                      I18n.t('app.read-all.premium-required-title'),
+                      I18n.t('app.read-all.premium-required-description'),
+                      [
+                        {
+                          text: 'Cancel',
+                          onPress: () => {
+                            console.log('Cancel Pressed');
+                            tracker.logEvent('user-action-read-all-premium', {
+                              lesson: `${params.item}`,
+                              interest: false,
+                            });
+                          },
+                          style: 'cancel',
                         },
-                        style: 'cancel',
-                      },
-                      {
-                        text: 'OK',
-                        onPress: () => {
-                          setTimeout(() => {
-                            navigation.navigate('about');
-                          }, 1000);
+                        {
+                          text: 'OK',
+                          onPress: () => {
+                            setTimeout(() => {
+                              navigation.navigate('about');
+                            }, 1000);
 
-                          tracker.logEvent('user-action-read-all-premium', {
-                            lesson: `${params.item}`,
-                            interest: true,
-                          });
+                            tracker.logEvent('user-action-read-all-premium', {
+                              lesson: `${params.item}`,
+                              interest: true,
+                            });
+                          },
                         },
-                      },
-                    ],
-                    { cancelable: false }
-                  );
-                }
-              }}
-            >
-              <Ionicons name="ios-play" size={28} color="white" />
-            </TouchableOpacity>
-          </Animatable.View>
+                      ],
+                      { cancelable: false }
+                    );
+                  }
+                }}
+              >
+                <Ionicons name="ios-play" size={28} color="white" />
+              </TouchableOpacity>
+            </Animatable.View>
+          )}
 
           <TouchableOpacity
             style={{ padding: 12, paddingRight: 15 }}
