@@ -36,7 +36,9 @@
     "title": "反饋/建議",
     "url": "https://airtable.com/shrsfl03pU6HnE5Ar",
     "issueUrl": "https://airtable.com/shroN1qoYaCZRsfEw?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
-    "feedback": "反饋"
+    "feedback": "反饋",
+    "help-translation": "參與翻譯？",
+    "help-translation-description": "我們已經開放了社區的翻譯流程，因為您最了解 Minna no Nihongo 應該如何翻譯成您的語言。 請與您的翻譯同事一起參與翻譯，投票和討論。"
   },
   "about": {
     "title": "關於",
@@ -44,8 +46,8 @@
     "restore": "恢復您的應用內購買",
     "purchase_title": "您現在是我們的高級用戶",
     "purchase_description": "開心學習日語！",
-    "purchase_item_title": "进阶版",
-    "purchase_item_description": "去除所有廣告",
+    "purchase_item_title": "進階版",
+    "purchase_item_description": "進階功能、去除所有廣告",
     "restore_failed_title": "您從未購買過我們的進階版"
   },
   "common": {
@@ -63,5 +65,5 @@
     "title_description": "給我們 5 顆星以鼓勵我們吧",
     "feedback_description": "對哪裡不滿意？給我們點意見吧。",
     "feedback_url": "https://airtable.com/shrsfl03pU6HnE5Ar"
-  },
+  }
 }

@@ -101,6 +101,8 @@ export default class Card extends Component {
       navigation,
     } = this.props;
     const isTooLong = Platform.OS === 'android' || (kana && kana.length >= 8);
+    const isTooLongTranslation =
+      Platform.OS === 'android' || (translation && translation.length >= 16);
     const answerLength = answers.length;
 
     const isCorrect = answers.join('') === cleanWord(kana);
@@ -246,7 +248,7 @@ export default class Card extends Component {
                 <Text
                   style={[
                     styles.thinText,
-                    { marginTop: 20, fontSize: isTooLong ? 14 : 20 },
+                    { marginTop: 20, fontSize: isTooLongTranslation ? 14 : 20 },
                   ]}
                 >
                   {translation}

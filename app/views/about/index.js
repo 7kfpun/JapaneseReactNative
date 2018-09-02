@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Alert, Platform, StyleSheet, ScrollView, View } from 'react-native';
+import {
+  Alert,
+  Linking,
+  Platform,
+  StyleSheet,
+  ScrollView,
+  View,
+} from 'react-native';
 
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
@@ -52,7 +59,6 @@ export default class About extends Component<Props> {
   state = {
     productList: [],
     purchasedProductIds: [],
-    refreshing: false,
     isPremium: false,
   };
 
@@ -68,7 +74,7 @@ export default class About extends Component<Props> {
       await RNIap.prepare();
       const products = await RNIap.getProducts(itemSkus);
       console.log('getProducts', products);
-      this.setState({ productList: products, refreshing: false });
+      this.setState({ productList: products });
     } catch (err) {
       console.warn(err);
     }
@@ -161,38 +167,37 @@ export default class About extends Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
-          {Platform.OS === 'ios' &&
-            !isPremium && (
-              <View style={{ marginTop: 10 }}>
-                {productList.map((product, i) => (
-                  <Row
-                    key={product.productId}
-                    // text={`${
-                    //   purchasedProductIds.includes(product.productId) ? '✓' : ''
-                    // }${product.title} (${product.localizedPrice})`}
-                    text={`${
-                      purchasedProductIds.includes(product.productId) ? '✓' : ''
-                    }${I18n.t('app.about.purchase_item_title')} (${
-                      product.localizedPrice
-                    })`}
-                    // description={product.description}
-                    description={I18n.t('app.about.purchase_item_description')}
-                    first={i === 0}
-                    last={i === productList.length - 1}
-                    onPress={() => this.buySubscribeItem(product)}
-                    disabled={purchasedProductIds.includes(product.productId)}
-                  />
-                ))}
-
+          {!isPremium && (
+            <View style={{ marginTop: 10 }}>
+              {productList.map((product, i) => (
                 <Row
-                  text={I18n.t('app.about.restore')}
-                  onPress={() => {
-                    this.getAvailablePurchases();
-                    tracker.logEvent('user-action-restore-purchase');
-                  }}
+                  key={product.productId}
+                  // text={`${
+                  //   purchasedProductIds.includes(product.productId) ? '✓' : ''
+                  // }${product.title} (${product.localizedPrice})`}
+                  text={`${
+                    purchasedProductIds.includes(product.productId) ? '✓' : ''
+                  }${I18n.t('app.about.purchase_item_title')} (${
+                    product.localizedPrice
+                  })`}
+                  // description={product.description}
+                  description={I18n.t('app.about.purchase_item_description')}
+                  first={i === 0}
+                  last={i === productList.length - 1}
+                  onPress={() => this.buySubscribeItem(product)}
+                  disabled={purchasedProductIds.includes(product.productId)}
                 />
-              </View>
-            )}
+              ))}
+
+              <Row
+                text={I18n.t('app.about.restore')}
+                onPress={() => {
+                  this.getAvailablePurchases();
+                  tracker.logEvent('user-action-restore-purchase');
+                }}
+              />
+            </View>
+          )}
 
           <View style={{ marginTop: 15 }}>
             <Row
@@ -200,6 +205,17 @@ export default class About extends Component<Props> {
               onPress={() => {
                 navigation.navigate('feedback');
                 tracker.logEvent('user-action-feedback');
+              }}
+            />
+            <Row
+              first={false}
+              text={I18n.t('app.feedback.help-translation')}
+              description={I18n.t('app.feedback.help-translation-description')}
+              onPress={() => {
+                tracker.logEvent('user-action-help-translation');
+                Linking.openURL(
+                  'https://minna-app.oneskyapp.com/collaboration'
+                );
               }}
             />
           </View>
