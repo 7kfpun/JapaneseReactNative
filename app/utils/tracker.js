@@ -78,6 +78,9 @@ console.log('firebaseContext', firebaseContext);
 const tracker = {
   identify: async () => {
     if (isTracking) {
+      const isPremium = await store.get('isPremium');
+      context.isPremium = isPremium === true;
+
       const ip = await fetch('http://checkip.amazonaws.com/')
         .then(res => res.text())
         .then(ipText => ipText.replace('\n', ''))
@@ -87,6 +90,7 @@ const tracker = {
         console.log('IP address', ip);
         context.ip = ip;
       }
+
       analytics.identify({ userId, context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
@@ -102,7 +106,7 @@ const tracker = {
         properties,
         context,
       };
-      console.log(message);
+      console.log('logEvent', message);
       analytics.track(message);
       firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
@@ -133,11 +137,11 @@ const tracker = {
     if (isTracking) {
       const message = {
         userId,
-        screen,
+        name: screen,
         properties,
         context,
       };
-      console.log(message);
+      console.log('view', message);
       analytics.screen(message);
       firebase.analytics().setCurrentScreen(screen, screen);
       Answers.logContentView(screen, '', '', properties);
