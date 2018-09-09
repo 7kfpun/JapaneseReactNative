@@ -71,7 +71,7 @@ export default class About extends Component<Props> {
 
   getProducts = async () => {
     try {
-      await RNIap.prepare();
+      await RNIap.initConnection();
       const products = await RNIap.getProducts(itemSkus);
       console.log('getProducts', products);
       this.setState({ productList: products });
@@ -90,7 +90,8 @@ export default class About extends Component<Props> {
         });
 
         purchases.forEach(purchase => {
-          if (purchase.productId === config.inAppProducts[0]) {
+          // if (purchase.productId === config.inAppProducts[0]) {
+          if (purchase.transactionReceipt) {
             this.refreshForApplyingPurchase();
           }
         });
@@ -124,7 +125,16 @@ export default class About extends Component<Props> {
       console.log('buySubscribeItem:', product);
       const purchase = await RNIap.buySubscription(product.productId);
       console.info('Purchase result', purchase);
-      if (purchase.productId === config.inAppProducts[0]) {
+      // {
+      //   transactionId: '1000000441571637',
+      //   originalTransactionDate: 1529137617000,
+      //   originalTransactionIdentifier: '1000000408046196',
+      //   transactionDate: 1536500093000,
+      //   transactionReceipt: 'xxxxs=',
+      //   productId: 'io.dllm.japanese.ad'
+      // }
+      // if (purchase.productId === config.inAppProducts[0]) {
+      if (purchase.transactionReceipt) {
         tracker.logEvent('user-action-buy-subscription-done', purchase);
         tracker.logPurchase(
           product.price,

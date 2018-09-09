@@ -6154,9 +6154,9 @@ react-native-i18n@^2.0.12:
   dependencies:
     i18n-js "^3.0.3"
 
-react-native-iap@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-1.2.1.tgz#b18e32c1e3a17c7a9d46e6dcb5b6ecc49abc7274"
+react-native-iap@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-2.0.3.tgz#64b681007ff07f0a82fc68284672845fe4d27e48"
   dependencies:
     dooboolab-welcome "^1.0.5"
 

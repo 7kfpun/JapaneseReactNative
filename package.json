@@ -38,7 +38,7 @@
     "react-native-firebase": "^4.3.7",
     "react-native-flurry-analytics": "^3.0.2",
     "react-native-i18n": "^2.0.12",
-    "react-native-iap": "^1.2.1",
+    "react-native-iap": "^2.0.3",
     "react-native-onesignal": "^3.2.5",
     "react-native-restart": "^0.0.6",
     "react-native-search-box": "^0.0.19",
