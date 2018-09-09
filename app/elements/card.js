@@ -123,14 +123,16 @@ export default class Card extends Component {
             <TouchableOpacity
               style={{ paddingTop: 10, paddingHorizontal: 15 }}
               onPress={() => {
-                navigation.navigate('vocab-feedback', {
+                const data = {
                   item: {
                     kanji,
                     kana,
                     romaji,
                   },
                   lesson,
-                });
+                };
+                navigation.navigate('vocab-feedback', data);
+                tracker.logEvent('user-action-vocab-feedback', data);
               }}
             >
               <Ionicons name="ios-flag-outline" size={24} color="black" />

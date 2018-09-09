@@ -5,14 +5,12 @@ import Analytics from 'analytics-react-native';
 import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
-// import FlurryAnalytics from 'react-native-flurry-analytics';
 
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
 const analytics = new Analytics(config.segment);
-// FlurryAnalytics.setAppVersion(DeviceInfo.getReadableVersion());
-// FlurryAnalytics.startSession(config.flurry);
+
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 
 const userId = DeviceInfo.getUniqueID();
