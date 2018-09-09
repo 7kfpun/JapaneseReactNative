@@ -82,6 +82,7 @@ export default class About extends Component<Props> {
 
   getAvailablePurchases = async () => {
     try {
+      tracker.logEvent('user-action-restore-purchase');
       const purchases = await RNIap.getAvailablePurchases();
       console.log('getAvailablePurchases', purchases);
       if (purchases && purchases.length > 0) {
@@ -94,6 +95,7 @@ export default class About extends Component<Props> {
           if (purchase.transactionReceipt) {
             this.refreshForApplyingPurchase();
           }
+          tracker.logEvent('user-action-restore-purchase-done', purchase);
         });
       } else {
         Alert.alert(
@@ -203,7 +205,6 @@ export default class About extends Component<Props> {
                 text={I18n.t('app.about.restore')}
                 onPress={() => {
                   this.getAvailablePurchases();
-                  tracker.logEvent('user-action-restore-purchase');
                 }}
               />
             </View>
