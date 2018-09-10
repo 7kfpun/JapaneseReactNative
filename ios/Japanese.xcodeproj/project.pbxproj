@@ -38,7 +38,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* JapaneseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* JapaneseTests.m */; };
 		362F4E69DF9D4559A46FAF97 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1C2F1622A7E4C1B8436CC87 /* Foundation.ttf */; };
 		4B280F9853F84FFCBC3C91C4 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 654FC80478CE49D0A6D4C887 /* FontAwesome.ttf */; };
-		4BAB0CB0219E4E309BB13746 /* libRNFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC05A824464F417C8260E9CE /* libRNFlurryAnalytics.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		647C551CC10E42EC8EE2092F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FED696D21D1C45DBA6EB3014 /* SimpleLineIcons.ttf */; };
 		6FBE2B7153184F659A971713 /* libCleverTapReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E21A35B7E8B542C199F2E2ED /* libCleverTapReact.a */; };
@@ -297,13 +296,6 @@
 			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
 			remoteInfo = RCTRestart;
 		};
-		9E97AAC2211C1C3A009D7376 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A027F9ED82C64D649BF66E8E /* RNFlurryAnalytics.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNFlurryAnalytics;
-		};
 		9EAE853D20428CD000CFF07D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -428,14 +420,14 @@
 		9E099C822045B4A800FA69BC /* Japanese.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Japanese.entitlements; path = Japanese/Japanese.entitlements; sourceTree = "<group>"; };
 		9E950D0F205E5959002D3FEB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9E950D10205E5961002D3FEB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9E97AB02211DEC0D009D7376 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9E987AD32046F00400FAA69F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A027F9ED82C64D649BF66E8E /* RNFlurryAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFlurryAnalytics.xcodeproj; path = "../node_modules/react-native-flurry-analytics/ios/RNFlurryAnalytics.xcodeproj"; sourceTree = "<group>"; };
+		9EF605CF214011990067BE93 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A47EF9ED949A4436A651B6EC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A68C70E0768C49CF9990669F /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B009298FD4763A623E5B57FD /* libPods-Japanese.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Japanese.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C2F1622A7E4C1B8436CC87 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		CC05A824464F417C8260E9CE /* libRNFlurryAnalytics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFlurryAnalytics.a; sourceTree = "<group>"; };
 		CFB551B592F64E1EAA956066 /* CleverTapReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CleverTapReact.xcodeproj; path = "../node_modules/clevertap-react-native/ios/CleverTapReact.xcodeproj"; sourceTree = "<group>"; };
 		E21A35B7E8B542C199F2E2ED /* libCleverTapReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCleverTapReact.a; sourceTree = "<group>"; };
 		E2B93BA01B6746688CD75D3F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -475,7 +467,6 @@
 				B708FC48CD7844318CC15D73 /* libRNStoreReview.a in Frameworks */,
 				6FBE2B7153184F659A971713 /* libCleverTapReact.a in Frameworks */,
 				C970206DAC854D1D80B7F555 /* libRCTRestart.a in Frameworks */,
-				4BAB0CB0219E4E309BB13746 /* libRNFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +662,6 @@
 				1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */,
 				CFB551B592F64E1EAA956066 /* CleverTapReact.xcodeproj */,
 				20D1320532DC4489AC0510DE /* RCTRestart.xcodeproj */,
-				A027F9ED82C64D649BF66E8E /* RNFlurryAnalytics.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -738,14 +728,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9E97AABF211C1C39009D7376 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9E97AAC3211C1C3A009D7376 /* libRNFlurryAnalytics.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9EAE855A20429E0500CFF07D /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,7 +735,6 @@
 				2B37B3D0793A4CB8B79033EB /* libRNStoreReview.a */,
 				E21A35B7E8B542C199F2E2ED /* libCleverTapReact.a */,
 				6E11CACCEEF24B53A9ABCB5F /* libRCTRestart.a */,
-				CC05A824464F417C8260E9CE /* libRNFlurryAnalytics.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1001,10 +982,6 @@
 					ProjectRef = 36F692A45830427EB919B7DA /* RNFirebase.xcodeproj */;
 				},
 				{
-					ProductGroup = 9E97AABF211C1C39009D7376 /* Products */;
-					ProjectRef = A027F9ED82C64D649BF66E8E /* RNFlurryAnalytics.xcodeproj */;
-				},
-				{
 					ProductGroup = 9E950DBD2062B1C4002D3FEB /* Products */;
 					ProjectRef = 1FA0D7E4061C419986687174 /* RNStoreReview.xcodeproj */;
 				},
@@ -1246,13 +1223,6 @@
 			fileType = archive.ar;
 			path = libRCTRestart.a;
 			remoteRef = 9E97AA81211B5AD1009D7376 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9E97AAC3211C1C3A009D7376 /* libRNFlurryAnalytics.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNFlurryAnalytics.a;
-			remoteRef = 9E97AAC2211C1C3A009D7376 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9EAE853E20428CD000CFF07D /* libjsinspector.a */ = {
@@ -1524,6 +1494,8 @@
 				13B07FB21A68108700A75B9A /* Base */,
 				9E950D0F205E5959002D3FEB /* zh-Hans */,
 				9E950D10205E5961002D3FEB /* zh-Hant */,
+				9E97AB02211DEC0D009D7376 /* vi */,
+				9EF605CF214011990067BE93 /* de */,
 			);
 			name = LaunchScreen.xib;
 			path = Japanese;
@@ -1550,7 +1522,6 @@
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = JapaneseTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1587,7 +1558,6 @@
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = JapaneseTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1625,7 +1595,6 @@
 					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = Japanese/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1656,7 +1625,6 @@
 					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = Japanese/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1689,12 +1657,9 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
-					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact/**",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
-					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = "Japanese-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1735,12 +1700,9 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
-					"$(SRCROOT)/../node_modules/react-native-store-review/ios",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact/**",
 					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
-					"$(SRCROOT)/../node_modules/clevertap-react-native/ios/CleverTapReact",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-flurry-analytics/ios",
 				);
 				INFOPLIST_FILE = "Japanese-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -51,9 +51,6 @@ PODS:
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.5)
-  - Flurry-iOS-SDK/FlurryAds (9.0.0):
-    - Flurry-iOS-SDK/FlurrySDK (~> 9.0.0)
-  - Flurry-iOS-SDK/FlurrySDK (9.0.0)
   - Google-Mobile-Ads-SDK (7.31.0)
   - GoogleAppMeasurement (5.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
@@ -146,7 +143,7 @@ PODS:
     - React
   - RNI18n (2.0.12):
     - React
-  - RNIap (1.2.1):
+  - RNIap (2.0.3):
     - React
   - RNStoreReview (0.1.5):
     - React
@@ -165,8 +162,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crash
   - Firebase/Performance
-  - Flurry-iOS-SDK/FlurryAds
-  - Flurry-iOS-SDK/FlurrySDK
   - GoogleMobileAdsMediationFacebook
   - OneSignal (< 3.0, >= 2.8.5)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
@@ -204,7 +199,6 @@ SPEC REPOS:
     - FirebaseCrash
     - FirebaseInstanceID
     - FirebasePerformance
-    - Flurry-iOS-SDK
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleMobileAdsMediationFacebook
@@ -250,7 +244,6 @@ SPEC CHECKSUMS:
   FirebaseCrash: 5e4a61afd8d32cef37875c757602c00f6d1b8bc2
   FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
   FirebasePerformance: 1d3354c505dd54f3b4b4b42d681683c0cdad4311
-  Flurry-iOS-SDK: 58e48e417fee667154e4d240040b270b3734d28a
   Google-Mobile-Ads-SDK: 6e529e748b45507a2ca904e0b5a52669ba3920c4
   GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
   GoogleMobileAdsMediationFacebook: 5230ad05c74a99008f04747c4ac3ebbd60231ad8
@@ -266,12 +259,12 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNFirebase: 2b25fd2e60269f26bb0a76c71dcc942b35a77df0
   RNI18n: db9be06a40336f04d136f24dd5de3f5eb9f3207c
-  RNIap: 8bc4a94d49bdc32037efe605fe746a05c67c5f59
+  RNIap: ef7dbcbb0ad7bb2400c14797ef3fad4e02ff0681
   RNStoreReview: 628ef9b80e75cbd6a6f37a1bda14295c82022638
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   TextToSpeech: 9eb1620acaff9cc703896d5e05dc8024122a8e57
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 412d9cdaf958680c8f86e56cc838448fac890f67
+PODFILE CHECKSUM: c39aae8501107602ba29b070ad1a8a919d08d217
 
 COCOAPODS: 1.5.2

@@ -57,9 +57,6 @@ target 'Japanese' do
   pod 'RNIap', :path => '../node_modules/react-native-iap'
 
   pod 'CleverTap-iOS-SDK'
-
-  pod 'Flurry-iOS-SDK/FlurrySDK'
-  pod 'Flurry-iOS-SDK/FlurryAds'
 end
 
 post_install do |installer|
