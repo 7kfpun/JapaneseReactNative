@@ -133,7 +133,7 @@ export default class About extends Component<Props> {
       //   originalTransactionIdentifier: '1000000408046196',
       //   transactionDate: 1536500093000,
       //   transactionReceipt: 'xxxxs=',
-      //   productId: 'io.dllm.japanese.ad'
+      //   productId: 'com.kfpun.japanese.ad'
       // }
       // if (purchase.productId === config.inAppProducts[0]) {
       if (purchase.transactionReceipt) {

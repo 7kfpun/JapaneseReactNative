@@ -229,6 +229,7 @@ I18n.translations = {
     },
   },
   de: {
+    app: require('./locales/de/app'),
     minna: {
       1: require('./minna/de/1'),
       2: require('./minna/de/2'),
