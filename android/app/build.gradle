@@ -103,9 +103,9 @@ android {
     defaultConfig {
         applicationId "com.kfpun.japanese"
         minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0.0"
+        targetSdkVersion 26
+        versionCode 10
+        versionName "1.0.7"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -149,6 +149,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-restart')
     compile project(':clevertap-react-native')
     compile project(':react-native-device-info')
     compile project(':react-native-fabric')
