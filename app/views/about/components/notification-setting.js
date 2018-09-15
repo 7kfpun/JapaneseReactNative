@@ -81,7 +81,7 @@ export default class NotificationSetting extends Component {
         <Switch
           onValueChange={this.setNotification}
           value={this.state.isEnabled}
-          tintColor="#E0E0E0"
+          trackColor="#E0E0E0"
         />
       </View>
     );

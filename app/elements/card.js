@@ -16,6 +16,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
 import { cleanWord, noop } from '../utils/helpers';
+import tracker from '../utils/tracker';
 
 const { width } = Dimensions.get('window');
 
@@ -135,7 +136,7 @@ export default class Card extends Component {
                 tracker.logEvent('user-action-vocab-feedback', data);
               }}
             >
-              <Ionicons name="ios-flag-outline" size={24} color="black" />
+              <Ionicons name="ios-flag" size={24} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -194,7 +195,7 @@ export default class Card extends Component {
                   {answers.length > 0 ? (
                     <Animatable.View animation="fadeIn">
                       <Ionicons
-                        name="ios-backspace-outline"
+                        name="ios-backspace"
                         size={28}
                         color={
                           answers.length > 0 ? iOSColors.black : iOSColors.white
@@ -202,11 +203,7 @@ export default class Card extends Component {
                       />
                     </Animatable.View>
                   ) : (
-                    <Ionicons
-                      name="ios-backspace-outline"
-                      size={28}
-                      color="white"
-                    />
+                    <Ionicons name="ios-backspace" size={28} color="white" />
                   )}
                 </TouchableOpacity>
               </View>

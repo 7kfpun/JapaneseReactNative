@@ -40,7 +40,7 @@ export default class SoundButton extends Component {
           this.props.onPress();
         }}
       >
-        <Ionicons name="md-volume-up" color={iOSColors.white} size={24} />
+        <Ionicons name="ios-volume-low" color={iOSColors.white} size={24} />
       </TouchableHighlight>
     );
   }

@@ -1,7 +1,4 @@
 PODS:
-  - CleverTap-iOS-SDK (3.1.7):
-    - CleverTap-iOS-SDK/Main (= 3.1.7)
-  - CleverTap-iOS-SDK/Main (3.1.7)
   - Crashlytics (3.10.5):
     - Fabric (~> 1.7.9)
   - Fabric (1.7.9)
@@ -91,44 +88,36 @@ PODS:
   - nanopb/encode (0.3.8)
   - OneSignal (2.8.5)
   - Protobuf (3.6.1)
-  - React (0.53.3):
-    - React/Core (= 0.53.3)
+  - React (0.57.0):
+    - React/Core (= 0.57.0)
   - react-native-onesignal (3.2.5):
     - OneSignal (= 2.8.5)
     - React
-  - React/BatchedBridge (0.53.3):
+  - React/Core (0.57.0):
+    - yoga (= 0.57.0.React)
+  - React/fishhook (0.57.0)
+  - React/RCTActionSheet (0.57.0):
     - React/Core
-    - React/cxxreact_legacy
-  - React/Core (0.53.3):
-    - yoga (= 0.53.3.React)
-  - React/cxxreact_legacy (0.53.3):
-    - React/jschelpers_legacy
-    - React/jsinspector_legacy
-  - React/fishhook (0.53.3)
-  - React/jschelpers_legacy (0.53.3)
-  - React/jsinspector_legacy (0.53.3)
-  - React/RCTActionSheet (0.53.3):
+  - React/RCTAnimation (0.57.0):
     - React/Core
-  - React/RCTAnimation (0.53.3):
+  - React/RCTBlob (0.57.0):
     - React/Core
-  - React/RCTBlob (0.53.3):
+  - React/RCTGeolocation (0.57.0):
     - React/Core
-  - React/RCTGeolocation (0.53.3):
-    - React/Core
-  - React/RCTImage (0.53.3):
+  - React/RCTImage (0.57.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.53.3):
+  - React/RCTLinkingIOS (0.57.0):
     - React/Core
-  - React/RCTNetwork (0.53.3):
+  - React/RCTNetwork (0.57.0):
     - React/Core
-  - React/RCTSettings (0.53.3):
+  - React/RCTSettings (0.57.0):
     - React/Core
-  - React/RCTText (0.53.3):
+  - React/RCTText (0.57.0):
     - React/Core
-  - React/RCTVibration (0.53.3):
+  - React/RCTVibration (0.57.0):
     - React/Core
-  - React/RCTWebSocket (0.53.3):
+  - React/RCTWebSocket (0.57.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -147,14 +136,13 @@ PODS:
     - React
   - RNStoreReview (0.1.5):
     - React
-  - RNVectorIcons (4.6.0):
+  - RNVectorIcons (5.0.0):
     - React
   - TextToSpeech (1.4.1):
     - React
-  - yoga (0.53.3.React)
+  - yoga (0.57.0.React)
 
 DEPENDENCIES:
-  - CleverTap-iOS-SDK
   - Crashlytics
   - Fabric
   - Firebase/AdMob
@@ -165,7 +153,6 @@ DEPENDENCIES:
   - GoogleMobileAdsMediationFacebook
   - OneSignal (< 3.0, >= 2.8.5)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
-  - React/BatchedBridge (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
@@ -189,7 +176,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - CleverTap-iOS-SDK
     - Crashlytics
     - Fabric
     - FBAudienceNetwork
@@ -234,7 +220,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  CleverTap-iOS-SDK: 996a436d5acdc9dcfdb4f8ffb0fe5f4bb035ecc2
   Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   FBAudienceNetwork: 2c1d8fc39ad0056914b572a02130f053f53aa82d
@@ -253,7 +238,7 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OneSignal: 42dae269c7eca517aee34963820e1eb922390031
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
-  React: af66244a7d630be2aef03b4ddfe3570e4eff39fc
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-onesignal: 4f425b36d3edf595c93c1a8d3618a93b71a85a51
   ReactNativeFabric: 3912bf9c714d7cc98110eadf06ca6dedef219322
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
@@ -263,8 +248,8 @@ SPEC CHECKSUMS:
   RNStoreReview: 628ef9b80e75cbd6a6f37a1bda14295c82022638
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   TextToSpeech: 9eb1620acaff9cc703896d5e05dc8024122a8e57
-  yoga: 55da126afc384965b96bff46652464373b330add
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: c39aae8501107602ba29b070ad1a8a919d08d217
+PODFILE CHECKSUM: ff64f36cb13f4f3a9c3d76677f7ff48535b9e809
 
 COCOAPODS: 1.5.2

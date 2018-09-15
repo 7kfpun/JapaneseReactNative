@@ -1,10 +1,8 @@
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #import "AppDelegate.h"
@@ -15,9 +13,6 @@
 #import <Firebase.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
-#import <CleverTapSDK/CleverTap.h>
-#import <CleverTapReact/CleverTapReactManager.h>
 
 @implementation AppDelegate
 
@@ -41,9 +36,6 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   [Fabric with:@[[Crashlytics class]]];
-
-  [CleverTap autoIntegrate]; // integrate CleverTap SDK using the autoIntegrate option
-  [[CleverTapReactManager sharedInstance] applicationDidLaunchWithOptions:launchOptions];
 
   return YES;
 }

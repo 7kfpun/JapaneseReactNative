@@ -58,7 +58,7 @@ export default class SearchView extends Component<Props> {
     tabBarLabel: I18n.t('app.search.title'),
     tabBarIcon: ({ tintColor, focused }) => (
       <Ionicons
-        name={focused ? 'ios-search' : 'ios-search-outline'}
+        name={focused ? 'ios-search' : 'ios-search'}
         size={20}
         color={tintColor}
       />

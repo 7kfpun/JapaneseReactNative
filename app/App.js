@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Platform, ToastAndroid } from 'react-native';
+import { Platform, ToastAndroid, YellowBox } from 'react-native';
 
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
@@ -155,7 +155,7 @@ const AppTab = TabNavigator(
   }
 );
 
-console.ignoredYellowBox = [
+YellowBox.ignoreWarnings = [
   'NetInfo\'s "change" event is deprecated. Listen to the "connectionChange" event instead.',
   'Warning: Can only update a mounted or mounting component.',
   'Each ViewPager child must be a <View>. Was ScrollView',
@@ -163,7 +163,6 @@ console.ignoredYellowBox = [
   'Sending `tts-progress` with no listeners registered.',
   'Sending `tts-finish` with no listeners registered.',
   'Sending `tts-cancel` with no listeners registered.',
-  'Method `jumpToIndex` is deprecated.',
 ];
 
 // gets the current screen from navigation state

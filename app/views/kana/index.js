@@ -113,7 +113,7 @@ export default class Kana extends Component<Props> {
               // });
             }}
           >
-            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-list-box" size={22} color={iOSColors.white} />
           </TouchableOpacity>
         </View>
       ),

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  ActivityIndicator,
-  StyleSheet,
-  View,
-  WebView,
-} from 'react-native';
+import { ActivityIndicator, StyleSheet, View, WebView } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -39,36 +34,36 @@ export default class Feedback extends Component<Props> {
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
-  }
+  };
 
   static navigationOptions = {
     title: I18n.t('app.feedback.title'),
     tabBarLabel: I18n.t('app.feedback.title'),
-    tabBarIcon: ({ tintColor, focused }) => <Ionicons name={focused ? 'ios-chatboxes' : 'ios-chatboxes-outline'} size={20} color={tintColor} />,
+    tabBarIcon: ({ tintColor, focused }) => (
+      <Ionicons
+        name={focused ? 'ios-chatboxes' : 'ios-chatboxes'}
+        size={20}
+        color={tintColor}
+      />
+    ),
   };
 
   state = {
     isLoading: true,
-  }
+  };
 
   render() {
     let uri;
     const {
       navigation: {
-        state: {
-          params,
-        },
+        state: { params },
       },
     } = this.props;
 
     if (params) {
       const {
         lesson,
-        item: {
-          kana,
-          kanji,
-          romaji,
-        },
+        item: { kana, kanji, romaji },
       } = params;
 
       uri = I18n.t('app.feedback.issueUrl')
@@ -83,7 +78,9 @@ export default class Feedback extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        {this.state.isLoading && <ActivityIndicator style={styles.loading} size="small" />}
+        {this.state.isLoading && (
+          <ActivityIndicator style={styles.loading} size="small" />
+        )}
         <WebView
           source={{ uri }}
           onLoadEnd={() => this.setState({ isLoading: false })}

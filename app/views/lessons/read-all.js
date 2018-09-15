@@ -74,7 +74,7 @@ export default class ReadAll extends Component<Props> {
       tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
-          name={focused ? 'ios-list' : 'ios-list-outline'}
+          name={focused ? 'ios-list' : 'ios-list'}
           size={20}
           color={tintColor}
         />
@@ -202,7 +202,7 @@ export default class ReadAll extends Component<Props> {
 
             <Ionicons
               style={{ paddingTop: 40 }}
-              name={isReading ? 'ios-pause-outline' : 'ios-play-outline'}
+              name={isReading ? 'ios-pause' : 'ios-play'}
               size={40}
               color={iOSColors.black}
             />

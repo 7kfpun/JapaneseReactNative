@@ -68,7 +68,7 @@ export default class VocabList extends Component<Props> {
       tabBarLabel: 'みんなの日本語',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
-          name={focused ? 'ios-list' : 'ios-list-outline'}
+          name={focused ? 'ios-list' : 'ios-list'}
           size={20}
           color={tintColor}
         />

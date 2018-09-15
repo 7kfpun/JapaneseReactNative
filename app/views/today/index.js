@@ -70,7 +70,7 @@ export default class Today extends Component<Props> {
     tabBarLabel: I18n.t('app.today.title'),
     tabBarIcon: ({ tintColor, focused }) => (
       <Ionicons
-        name={focused ? 'ios-clipboard' : 'ios-clipboard-outline'}
+        name={focused ? 'ios-clipboard' : 'ios-clipboard'}
         size={19}
         color={tintColor}
       />

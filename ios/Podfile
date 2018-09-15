@@ -12,7 +12,7 @@ target 'Japanese' do
   #React Pods
   pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
-    'BatchedBridge',
+    # 'BatchedBridge',
     'Core',
     'RCTActionSheet',
     'RCTAnimation',
@@ -56,7 +56,6 @@ target 'Japanese' do
 
   pod 'RNIap', :path => '../node_modules/react-native-iap'
 
-  pod 'CleverTap-iOS-SDK'
 end
 
 post_install do |installer|

@@ -78,7 +78,7 @@ export default class Main extends Component<Props> {
     title: I18n.t('app.lessons.title'),
     tabBarIcon: ({ tintColor, focused }) => (
       <Ionicons
-        name={focused ? 'ios-list' : 'ios-list-outline'}
+        name={focused ? 'ios-list' : 'ios-list'}
         size={24}
         color={tintColor}
       />

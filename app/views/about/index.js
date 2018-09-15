@@ -49,7 +49,7 @@ export default class About extends Component<Props> {
     tabBarLabel: I18n.t('app.about.title'),
     tabBarIcon: ({ tintColor, focused }) => (
       <Ionicons
-        name={focused ? 'ios-chatboxes' : 'ios-chatboxes-outline'}
+        name={focused ? 'ios-chatboxes' : 'ios-chatboxes'}
         size={20}
         color={tintColor}
       />
