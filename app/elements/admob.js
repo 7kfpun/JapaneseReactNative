@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-} from 'react-native';
+import { Platform, View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
-// import { checkAdRemoval } from '../utils/products';
-
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();
+request
+  .addKeyword('japanese')
+  .addKeyword('study japanese')
+  .addKeyword('japanese school')
+  .addKeyword('日語')
+  .addKeyword('日語遊學')
+  .addKeyword('日語學校');
 
 export default class Admob extends Component {
   static propTypes = {
@@ -19,54 +22,44 @@ export default class Admob extends Component {
     margin: PropTypes.number,
     backgroundColor: PropTypes.string,
     alignItems: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     margin: 0,
     unitId: null,
-    bannerSize: 'SMART_BANNER',
+    bannerSize: 'BANNER',
     backgroundColor: 'rgba(0,0,0,0)',
     alignItems: 'center',
-  }
+  };
 
   state = {
     isReceived: false,
     isReceivedFailed: false,
-    isAdRemoval: false,
     isAdDelaying: true,
   };
 
   componentDidMount() {
-    this.checkAdRemoval();
-
     setTimeout(() => {
       this.setState({
         isAdDelaying: false,
       });
     }, 1500);
-
-    setInterval(() => {
-      this.checkAdRemoval();
-    }, 60000);
-  }
-
-  async checkAdRemoval() {
-    // const isAdRemoval = await checkAdRemoval();
-    // this.setState({ isAdRemoval });
   }
 
   render() {
-    if (this.state.isReceivedFailed || this.state.isAdRemoval || this.state.isAdDelaying) {
+    if (this.state.isReceivedFailed || this.state.isAdDelaying) {
       return null;
     }
 
+    let { bannerSize } = this.props;
     let height = 50;
-    if (this.props.bannerSize === 'LARGE_BANNER') {
+    if (bannerSize === 'LARGE_BANNER') {
       height = 100;
-    } else if (this.props.bannerSize === 'MEDIUM_RECTANGLE') {
+    } else if (bannerSize === 'MEDIUM_RECTANGLE') {
       height = 250;
     } else if (DeviceInfo.isTablet()) {
       height = 90;
+      bannerSize = 'SMART_BANNER';
     }
 
     return (
@@ -80,14 +73,14 @@ export default class Admob extends Component {
         }}
       >
         <Banner
-          size={this.props.bannerSize}
+          size={bannerSize}
           unitId={this.props.unitId}
           request={request.build()}
           onAdLoaded={() => {
             console.log('Ads received');
             this.setState({ isReceived: true });
           }}
-          onAdFailedToLoad={(error) => {
+          onAdFailedToLoad={error => {
             console.log('Ads error', error);
             this.setState({ isReceivedFailed: true });
           }}
