@@ -1,1 +1,1 @@
-../../../../GoogleMobileAdsMediationFacebook/FacebookAdapter-4.99.2.0/FacebookAdapter.framework/Versions/A/Headers/GADFBExtraAssets.h
+../../../../GoogleMobileAdsMediationFacebook/FacebookAdapter-4.99.3.0/FacebookAdapter.framework/Versions/A/Headers/GADFBExtraAssets.h

@@ -30,17 +30,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  dotText: {
-    fontSize: 30,
-    lineHeight: 14,
-  },
   upperRow: {
     flex: 1,
     alignItems: 'center',
   },
   upperText: {
-    fontSize: 30,
-    lineHeight: 34,
+    fontSize: 26,
     color: iOSColors.black,
   },
   lowerRow: {

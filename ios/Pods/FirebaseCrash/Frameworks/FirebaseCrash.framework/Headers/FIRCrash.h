@@ -8,7 +8,8 @@
  * To stop the periodic sync, call `[FIRInstanceID deleteIDWithHandler:]` and
  * either disable this SDK or set FIRCrash.crashCollectionEnabled to NO.
  */
-DEPRECATED_MSG_ATTRIBUTE("Use Crashlytics instead.")
+DEPRECATED_MSG_ATTRIBUTE
+    ("Use Crashlytics instead. https://firebase.google.com/docs/crashlytics/get-started")
 NS_SWIFT_NAME(Crash)
 @interface FIRCrash : NSObject
 
@@ -29,6 +30,7 @@ NS_SWIFT_NAME(Crash)
  * your application's Info.plist.
  */
 @property(nonatomic, assign, getter=isCrashCollectionEnabled) BOOL crashCollectionEnabled
-    DEPRECATED_MSG_ATTRIBUTE("Use Crashlytics instead.");
+    DEPRECATED_MSG_ATTRIBUTE
+        ("Use Crashlytics instead. https://firebase.google.com/docs/crashlytics/get-started");
 
 @end
