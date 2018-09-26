@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
+import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';

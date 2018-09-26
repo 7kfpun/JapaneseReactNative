@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Alert,
-  FlatList,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Alert, FlatList, Platform, StyleSheet } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import { SafeAreaView } from 'react-navigation';
-import * as Animatable from 'react-native-animatable';
+import ActionButton from 'react-native-action-button';
 import firebase from 'react-native-firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
@@ -60,8 +53,6 @@ export default class VocabList extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
-    const isPremium = params && params.isPremium;
-
     return {
       headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
@@ -72,75 +63,6 @@ export default class VocabList extends Component<Props> {
           size={20}
           color={tintColor}
         />
-      ),
-      headerRight: (
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          {Platform.OS === 'ios' && (
-            <Animatable.View animation="tada" iterationCount={10}>
-              <TouchableOpacity
-                style={{ padding: 12 }}
-                onPress={() => {
-                  if (isPremium || params.item <= 3) {
-                    navigation.navigate('read-all', { lesson: params.item });
-                    tracker.logEvent('user-action-goto-read-all', {
-                      lesson: `${params.item}`,
-                    });
-                  } else {
-                    tracker.logEvent('app-action-read-all-premium-required', {
-                      lesson: `${params.item}`,
-                    });
-
-                    Alert.alert(
-                      I18n.t('app.read-all.premium-required-title'),
-                      I18n.t('app.read-all.premium-required-description'),
-                      [
-                        {
-                          text: 'Cancel',
-                          onPress: () => {
-                            console.log('Cancel Pressed');
-                            tracker.logEvent('user-action-read-all-premium', {
-                              lesson: `${params.item}`,
-                              interest: false,
-                            });
-                          },
-                          style: 'cancel',
-                        },
-                        {
-                          text: 'OK',
-                          onPress: () => {
-                            setTimeout(() => {
-                              navigation.navigate('about');
-                            }, 1000);
-
-                            tracker.logEvent('user-action-read-all-premium', {
-                              lesson: `${params.item}`,
-                              interest: true,
-                            });
-                          },
-                        },
-                      ],
-                      { cancelable: false }
-                    );
-                  }
-                }}
-              >
-                <Ionicons name="ios-play" size={28} color="white" />
-              </TouchableOpacity>
-            </Animatable.View>
-          )}
-
-          <TouchableOpacity
-            style={{ padding: 12, paddingRight: 15 }}
-            onPress={() => {
-              navigation.navigate('assessment', { lesson: params.item });
-              tracker.logEvent('user-action-goto-assessment', {
-                lesson: `${params.item}`,
-              });
-            }}
-          >
-            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
-          </TouchableOpacity>
-        </View>
       ),
     };
   };
@@ -202,6 +124,77 @@ export default class VocabList extends Component<Props> {
     this.setState({ vocabs: vocabularies[item].data });
   };
 
+  gotoReadAll = () => {
+    const { isPremium } = this.state;
+
+    const {
+      navigation,
+      navigation: {
+        state: {
+          params: { item },
+        },
+      },
+    } = this.props;
+
+    if (isPremium || item <= 3) {
+      navigation.navigate('read-all', { lesson: item });
+      tracker.logEvent('user-action-goto-read-all', {
+        lesson: `${item}`,
+      });
+    } else {
+      tracker.logEvent('app-action-read-all-premium-required', {
+        lesson: `${item}`,
+      });
+
+      Alert.alert(
+        I18n.t('app.read-all.premium-required-title'),
+        I18n.t('app.read-all.premium-required-description'),
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {
+              console.log('Cancel Pressed');
+              tracker.logEvent('user-action-read-all-premium', {
+                lesson: `${item}`,
+                interest: false,
+              });
+            },
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              setTimeout(() => {
+                navigation.navigate('about');
+              }, 1000);
+
+              tracker.logEvent('user-action-read-all-premium', {
+                lesson: `${item}`,
+                interest: true,
+              });
+            },
+          },
+        ],
+        { cancelable: false }
+      );
+    }
+  };
+
+  gotoAssessment = () => {
+    const {
+      navigation,
+      navigation: {
+        state: {
+          params: { item },
+        },
+      },
+    } = this.props;
+    navigation.navigate('assessment', { lesson: item });
+    tracker.logEvent('user-action-goto-assessment', {
+      lesson: `${item}`,
+    });
+  };
+
   render() {
     const {
       navigation: {
@@ -223,6 +216,30 @@ export default class VocabList extends Component<Props> {
             <VocabItem index={index} item={item} lesson={lesson} />
           )}
         />
+
+        <ActionButton buttonColor="#2196F3" offsetX={20} offsetY={52}>
+          <ActionButton.Item
+            buttonColor="#9b59b6"
+            title={I18n.t('app.vocab-list.learn')}
+            onPress={() => console.log('notes tapped!')}
+          >
+            <Ionicons name="md-create" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item
+            buttonColor="#3498db"
+            title={I18n.t('app.vocab-list.learn')}
+            onPress={this.gotoReadAll}
+          >
+            <Ionicons name="ios-play" size={22} color={iOSColors.white} />
+          </ActionButton.Item>
+          <ActionButton.Item
+            buttonColor="#1abc9c"
+            title={I18n.t('app.vocab-list.learn')}
+            onPress={this.gotoAssessment}
+          >
+            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
+          </ActionButton.Item>
+        </ActionButton>
 
         {!isPremium && (
           <AdMob
