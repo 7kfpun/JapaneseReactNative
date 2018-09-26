@@ -101,7 +101,7 @@ export default class VocabList extends Component<Props> {
           !isPremium &&
           advert.isLoaded() &&
           item > 2 &&
-          Math.random() < 0.5
+          Math.random() < 0.6
         ) {
           advert.show();
           tracker.logEvent('app-action-vocab-list-popup');
@@ -122,6 +122,21 @@ export default class VocabList extends Component<Props> {
     } = this.props;
 
     this.setState({ vocabs: vocabularies[item].data });
+  };
+
+  gotoAssessmentMC = () => {
+    const {
+      navigation,
+      navigation: {
+        state: {
+          params: { item },
+        },
+      },
+    } = this.props;
+    navigation.navigate('assessment-mc', { lesson: item });
+    tracker.logEvent('user-action-goto-assessment-mc', {
+      lesson: `${item}`,
+    });
   };
 
   gotoReadAll = () => {
@@ -217,27 +232,27 @@ export default class VocabList extends Component<Props> {
           )}
         />
 
-        <ActionButton buttonColor="#2196F3" offsetX={20} offsetY={52}>
+        <ActionButton buttonColor="#2196F3" offsetX={15} offsetY={52}>
           <ActionButton.Item
-            buttonColor="#9b59b6"
-            title={I18n.t('app.vocab-list.learn')}
-            onPress={() => console.log('notes tapped!')}
+            buttonColor="#9B59B6"
+            title={I18n.t('app.vocab-list.quiz')}
+            onPress={this.gotoAssessmentMC}
           >
-            <Ionicons name="md-create" style={styles.actionButtonIcon} />
+            <Ionicons name="ios-list-box" size={22} color={iOSColors.white} />
           </ActionButton.Item>
           <ActionButton.Item
-            buttonColor="#3498db"
-            title={I18n.t('app.vocab-list.learn')}
+            buttonColor="#3498DB"
+            title={I18n.t('app.vocab-list.read-all')}
             onPress={this.gotoReadAll}
           >
             <Ionicons name="ios-play" size={22} color={iOSColors.white} />
           </ActionButton.Item>
           <ActionButton.Item
-            buttonColor="#1abc9c"
+            buttonColor="#1ABC9C"
             title={I18n.t('app.vocab-list.learn')}
             onPress={this.gotoAssessment}
           >
-            <Ionicons name="md-list-box" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-school" size={22} color={iOSColors.white} />
           </ActionButton.Item>
         </ActionButton>
 

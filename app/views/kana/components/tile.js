@@ -97,13 +97,13 @@ export default class Tile extends Component<Props> {
         >
           <View style={styles.upperDot}>
             {isCorrect && (
-              <Ionicons name={'ios-add-circle'} size={8} color={'green'} />
+              <Ionicons name="ios-add-circle" size={8} color="green" />
             )}
             {isCorrect === false && (
-              <Ionicons name={'ios-add-circle'} size={8} color={'red'} />
+              <Ionicons name="ios-add-circle" size={8} color="red" />
             )}
             {isCorrect === null && (
-              <Ionicons name={'ios-add-circle'} size={8} color={'white'} />
+              <Ionicons name="ios-add-circle" size={8} color="white" />
             )}
           </View>
           <View style={styles.upperRow}>

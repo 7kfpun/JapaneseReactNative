@@ -8,6 +8,7 @@ import Tts from 'react-native-tts';
 
 import About from './views/about';
 import Assessment from './views/lessons/assessment';
+import AssessmentMC from './views/lessons/assessment-mc';
 import Feedback from './views/feedback';
 import Kana from './views/kana';
 import KanaAssessment from './views/kana/assessment';
@@ -89,6 +90,7 @@ const AppTab = TabNavigator(
           lessons: { screen: Lessons },
           'vocab-list': { screen: VocabList },
           assessment: { screen: Assessment },
+          'assessment-mc': { screen: AssessmentMC },
           'read-all': { screen: ReadAll },
           'vocab-feedback': { screen: Feedback },
         },

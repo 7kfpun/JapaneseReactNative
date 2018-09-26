@@ -30,7 +30,9 @@
     "description": "You can find any word across all lessons."
   },
   "vocab-list": {
-    "learn": "Learn"
+    "learn": "Learn",
+    "quiz": "Quiz",
+    "read-all": "Read All"
   },
   "feedback": {
     "title": "Feedback",
@@ -54,6 +56,7 @@
     "kana": "Kana",
     "kanji": "Kanji",
     "romaji": "Romaji",
+    "translation": "Translation",
     "previous": "Previous",
     "next": "Next",
     "random": "Random",
