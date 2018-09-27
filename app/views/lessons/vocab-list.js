@@ -133,15 +133,51 @@ export default class VocabList extends Component<Props> {
         },
       },
     } = this.props;
-    navigation.navigate('assessment-mc', { lesson: item });
-    tracker.logEvent('user-action-goto-assessment-mc', {
-      lesson: `${item}`,
-    });
+
+    const { isPremium } = this.state;
+
+    if (isPremium || item <= 3) {
+      navigation.navigate('assessment-mc', { lesson: item });
+      tracker.logEvent('user-action-goto-assessment-mc', {
+        lesson: `${item}`,
+      });
+    } else {
+      tracker.logEvent('app-action-assessment-mc-premium-required', {
+        lesson: `${item}`,
+      });
+
+      Alert.alert(
+        I18n.t('app.read-all.premium-required-title'),
+        I18n.t('app.read-all.premium-required-description'),
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {
+              console.log('Cancel Pressed');
+              tracker.logEvent('user-action-assessment-mc-premium', {
+                lesson: `${item}`,
+                interest: false,
+              });
+            },
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.navigate('about');
+              tracker.logEvent('user-action-assessment-mc-premium', {
+                lesson: `${item}`,
+                interest: true,
+              });
+            },
+          },
+        ],
+        { cancelable: false }
+      );
+    }
   };
 
   gotoReadAll = () => {
-    const { isPremium } = this.state;
-
     const {
       navigation,
       navigation: {
@@ -150,6 +186,8 @@ export default class VocabList extends Component<Props> {
         },
       },
     } = this.props;
+
+    const { isPremium } = this.state;
 
     if (isPremium || item <= 3) {
       navigation.navigate('read-all', { lesson: item });
@@ -179,10 +217,7 @@ export default class VocabList extends Component<Props> {
           {
             text: 'OK',
             onPress: () => {
-              setTimeout(() => {
-                navigation.navigate('about');
-              }, 1000);
-
+              navigation.navigate('about');
               tracker.logEvent('user-action-read-all-premium', {
                 lesson: `${item}`,
                 interest: true,
@@ -234,25 +269,28 @@ export default class VocabList extends Component<Props> {
 
         <ActionButton buttonColor="#2196F3" offsetX={15} offsetY={52}>
           <ActionButton.Item
+            size={42}
             buttonColor="#9B59B6"
             title={I18n.t('app.vocab-list.quiz')}
             onPress={this.gotoAssessmentMC}
           >
-            <Ionicons name="ios-list-box" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-list-box" size={16} color={iOSColors.yellow} />
           </ActionButton.Item>
           <ActionButton.Item
+            size={42}
             buttonColor="#3498DB"
             title={I18n.t('app.vocab-list.read-all')}
             onPress={this.gotoReadAll}
           >
-            <Ionicons name="ios-play" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
           </ActionButton.Item>
           <ActionButton.Item
+            size={42}
             buttonColor="#1ABC9C"
             title={I18n.t('app.vocab-list.learn')}
             onPress={this.gotoAssessment}
           >
-            <Ionicons name="ios-school" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-school" size={16} color={iOSColors.white} />
           </ActionButton.Item>
         </ActionButton>
 

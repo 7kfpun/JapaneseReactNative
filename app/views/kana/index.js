@@ -23,6 +23,7 @@ import AdMob from '../../elements/admob';
 
 import { seion, dakuon, youon } from '../../utils/kana';
 import I18n from '../../utils/i18n';
+import tracker from '../../utils/tracker';
 
 import { config } from '../../config';
 
@@ -108,9 +109,9 @@ export default class Kana extends Component<Props> {
                 correctNumber: 0,
                 total: 0,
               });
-              // tracker.logEvent('user-action-goto-kana-assessment', {
-              //   mode: assessmentMode.mode,
-              // });
+              tracker.logEvent('user-action-goto-kana-assessment', {
+                mode: assessmentMode.mode,
+              });
             }}
           >
             <Ionicons name="ios-list-box" size={22} color={iOSColors.white} />
@@ -170,10 +171,10 @@ export default class Kana extends Component<Props> {
         >
           <ScrollView>
             {seion.map((row, i) => (
-              <View key={i} style={styles.row}>
+              <View key={`seion-${i}`} style={styles.row}>
                 {row.map((item, j) => (
                   <Tile
-                    key={j}
+                    key={`seion-${i}-${j}`}
                     itemsPerRow={5}
                     hiragana={item[0]}
                     katakana={item[1]}
@@ -186,10 +187,10 @@ export default class Kana extends Component<Props> {
 
           <ScrollView>
             {dakuon.map((row, i) => (
-              <View key={i} style={styles.row}>
+              <View key={`dakuon-${i}`} style={styles.row}>
                 {row.map((item, j) => (
                   <Tile
-                    key={j}
+                    key={`dakuon-${i}-${j}`}
                     itemsPerRow={5}
                     hiragana={item[0]}
                     katakana={item[1]}
@@ -202,10 +203,10 @@ export default class Kana extends Component<Props> {
 
           <ScrollView>
             {youon.map((row, i) => (
-              <View key={i} style={styles.row}>
+              <View key={`youon-${i}`} style={styles.row}>
                 {row.map((item, j) => (
                   <Tile
-                    key={j}
+                    key={`youon-${i}-${j}`}
                     itemsPerRow={3}
                     hiragana={item[0]}
                     katakana={item[1]}
