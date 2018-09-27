@@ -214,17 +214,25 @@ export default class AssessmentMC extends Component<Props> {
     const correctNumber = params && params.correctNumber;
     const total = params && params.total;
 
+    const { modeFrom, modeTo } = this.state;
+
     if (correctAnswer === userAnswer) {
       this.setState({ isCorrect: true });
       navigation.setParams({
         correctNumber: correctNumber ? correctNumber + 1 : 1,
         total: total ? total + 1 : 1,
       });
-      tracker.logEvent('user-action-assessment-mc-result-correct');
+      tracker.logEvent('user-action-assessment-mc-result-correct', {
+        answer: userAnswer,
+        mode: `${modeFrom} - ${modeTo}`,
+      });
     } else {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total ? total + 1 : 1 });
-      tracker.logEvent('user-action-assessment-mc-result-incorrect');
+      tracker.logEvent('user-action-assessment-mc-result-incorrect', {
+        answer: userAnswer,
+        mode: `${modeFrom} - ${modeTo}`,
+      });
     }
   };
 
@@ -286,7 +294,9 @@ export default class AssessmentMC extends Component<Props> {
           onPress={() => {
             Tts.setDefaultLanguage('ja');
             Tts.speak(question.kana);
-            tracker.logEvent('user-action-assessment-mc-read');
+            tracker.logEvent('user-action-assessment-mc-read', {
+              text: question.kanji,
+            });
           }}
         >
           <View style={styles.cardBody}>
@@ -407,7 +417,9 @@ export default class AssessmentMC extends Component<Props> {
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(question.kana);
-              tracker.logEvent('user-action-assessment-mc-read');
+              tracker.logEvent('user-action-assessment-mc-read', {
+                text: question.kanji,
+              });
             }}
           />
         </View>

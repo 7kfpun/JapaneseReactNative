@@ -183,6 +183,8 @@ export default class KanaAssessment extends Component<Props> {
     const correctNumber = params && params.correctNumber;
     const total = params && params.total;
 
+    const { modeFrom, modeTo } = this.state;
+
     if (rightAnswer === userAnswer) {
       this.setState({ isCorrect: true });
       navigation.setParams({
@@ -190,12 +192,18 @@ export default class KanaAssessment extends Component<Props> {
         total: total + 1,
       });
       store.save(`kana.assessment.${origin[2]}`, true);
-      tracker.logEvent('user-action-kana-assessment-result-correct');
+      tracker.logEvent('user-action-kana-assessment-result-correct', {
+        answer: userAnswer,
+        mode: `${modeFrom} - ${modeTo}`,
+      });
     } else {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total + 1 });
       store.save(`kana.assessment.${origin[2]}`, false);
-      tracker.logEvent('user-action-kana-assessment-result-incorrect');
+      tracker.logEvent('user-action-kana-assessment-result-incorrect', {
+        answer: userAnswer,
+        mode: `${modeFrom} - ${modeTo}`,
+      });
     }
     store.save(
       `kana.assessment.${origin[2]}.timestamp`,
@@ -264,7 +272,9 @@ export default class KanaAssessment extends Component<Props> {
           onPress={() => {
             Tts.setDefaultLanguage('ja');
             Tts.speak(origin[0]);
-            tracker.logEvent('user-action-kana-assessment-read');
+            tracker.logEvent('user-action-kana-assessment-read', {
+              text: origin[0],
+            });
           }}
         >
           <View
@@ -393,7 +403,9 @@ export default class KanaAssessment extends Component<Props> {
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(origin[0]);
-              tracker.logEvent('user-action-kana-assessment-read');
+              tracker.logEvent('user-action-kana-assessment-read', {
+                text: origin[0],
+              });
             }}
           />
         </View>
