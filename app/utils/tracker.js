@@ -5,6 +5,7 @@ import Analytics from 'analytics-react-native';
 import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
+import store from 'react-native-simple-store';
 
 import { config } from '../config';
 
