@@ -268,22 +268,30 @@ export default class VocabList extends Component<Props> {
         />
 
         <ActionButton buttonColor="#2196F3" offsetX={15} offsetY={52}>
-          <ActionButton.Item
-            size={42}
-            buttonColor="#9B59B6"
-            title={I18n.t('app.vocab-list.quiz')}
-            onPress={this.gotoAssessmentMC}
-          >
-            <Ionicons name="ios-list-box" size={16} color={iOSColors.yellow} />
-          </ActionButton.Item>
-          <ActionButton.Item
-            size={42}
-            buttonColor="#3498DB"
-            title={I18n.t('app.vocab-list.read-all')}
-            onPress={this.gotoReadAll}
-          >
-            <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
-          </ActionButton.Item>
+          {Platform.OS === 'ios' && (
+            <ActionButton.Item
+              size={42}
+              buttonColor="#9B59B6"
+              title={I18n.t('app.vocab-list.quiz')}
+              onPress={this.gotoAssessmentMC}
+            >
+              <Ionicons
+                name="ios-list-box"
+                size={16}
+                color={iOSColors.yellow}
+              />
+            </ActionButton.Item>
+          )}
+          {Platform.OS === 'ios' && (
+            <ActionButton.Item
+              size={42}
+              buttonColor="#3498DB"
+              title={I18n.t('app.vocab-list.read-all')}
+              onPress={this.gotoReadAll}
+            >
+              <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
+            </ActionButton.Item>
+          )}
           <ActionButton.Item
             size={42}
             buttonColor="#1ABC9C"
