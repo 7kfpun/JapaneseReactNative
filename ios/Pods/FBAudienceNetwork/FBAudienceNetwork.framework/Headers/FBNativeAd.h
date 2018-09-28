@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
   See the AdUnitsSample in the sample apps section of the Audience Network framework.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
-@interface FBNativeAd : FBNativeAdBase
+@interface FBNativeAd: FBNativeAdBase
 
 /**
  the delegate

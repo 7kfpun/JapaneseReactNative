@@ -1,5 +1,5 @@
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 FIRCore_VERSION=5.1.3 Firebase_VERSION=5.8.0
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 FIRCore_VERSION=5.1.4 Firebase_VERSION=5.9.0
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/FirebaseCore" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/FirebaseCore" "${PODS_ROOT}/Headers/Public/GoogleUtilities"
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities"
 OTHER_CFLAGS = $(inherited) -fno-autolink

@@ -1,34 +1,37 @@
 PODS:
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
-  - Fabric (1.7.11)
-  - FBAudienceNetwork (4.99.3)
-  - Firebase/AdMob (5.8.0):
+  - CleverTap-iOS-SDK (3.1.7):
+    - CleverTap-iOS-SDK/Main (= 3.1.7)
+  - CleverTap-iOS-SDK/Main (3.1.7)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Fabric (1.7.12)
+  - FBAudienceNetwork (5.0.0)
+  - Firebase/AdMob (5.9.0):
     - Firebase/Core
-    - Google-Mobile-Ads-SDK (~> 7.32)
-  - Firebase/Analytics (5.8.0):
+    - Google-Mobile-Ads-SDK (~> 7.33)
+  - Firebase/Analytics (5.9.0):
     - Firebase/Core
-  - Firebase/Core (5.8.0):
+  - Firebase/Core (5.9.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.1.2)
-  - Firebase/CoreOnly (5.8.0):
-    - FirebaseCore (= 5.1.3)
-  - Firebase/Crash (5.8.0):
+    - FirebaseAnalytics (= 5.2.0)
+  - Firebase/CoreOnly (5.9.0):
+    - FirebaseCore (= 5.1.4)
+  - Firebase/Crash (5.9.0):
     - Firebase/Core
     - FirebaseCrash (= 3.1.1)
-  - Firebase/Performance (5.8.0):
+  - Firebase/Performance (5.9.0):
     - Firebase/Core
-    - FirebasePerformance (= 2.1.1)
-  - FirebaseAnalytics (5.1.2):
+    - FirebasePerformance (= 2.1.2)
+  - FirebaseAnalytics (5.2.0):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
-    - GoogleAppMeasurement (~> 5.1)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
-    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleAppMeasurement (~> 5.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.1.3):
+  - FirebaseCore (5.1.4):
     - GoogleUtilities/Logger (~> 5.2)
   - FirebaseCrash (3.1.1):
     - FirebaseAnalytics (~> 5.1)
@@ -36,49 +39,52 @@ PODS:
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - Protobuf (~> 3.5)
-  - FirebaseInstanceID (3.2.1):
+  - FirebaseInstanceID (3.2.2):
     - FirebaseCore (~> 5.1)
-    - GoogleUtilities/Environment (~> 5.2)
-  - FirebasePerformance (2.1.1):
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebasePerformance (2.1.2):
     - FirebaseAnalytics (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GoogleUtilities/ISASwizzler (~> 5.2.0)
-    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/ISASwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.5)
-  - Google-Mobile-Ads-SDK (7.33.1)
-  - GoogleAppMeasurement (5.1.2):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
-    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+  - Google-Mobile-Ads-SDK (7.34.0)
+  - GoogleAppMeasurement (5.2.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleMobileAdsMediationFacebook (4.99.3.0):
-    - FBAudienceNetwork (= 4.99.3)
+  - GoogleMobileAdsMediationFacebook (5.0.0.0):
+    - FBAudienceNetwork (= 5.0.0)
     - Google-Mobile-Ads-SDK (>= 7.12.0)
   - GoogleToolboxForMac/Defines (2.1.4)
   - GoogleToolboxForMac/Logger (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - GoogleUtilities/AppDelegateSwizzler (5.2.3):
+  - GoogleUtilities/AppDelegateSwizzler (5.3.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.2.3)
-  - GoogleUtilities/ISASwizzler (5.2.3)
-  - GoogleUtilities/Logger (5.2.3):
+  - GoogleUtilities/Environment (5.3.0)
+  - GoogleUtilities/ISASwizzler (5.3.0)
+  - GoogleUtilities/Logger (5.3.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.2.3):
+  - GoogleUtilities/MethodSwizzler (5.3.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.2.3):
+  - GoogleUtilities/Network (5.3.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.2.3)"
-  - GoogleUtilities/Reachability (5.2.3):
+  - "GoogleUtilities/NSData+zlib (5.3.0)"
+  - GoogleUtilities/Reachability (5.3.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
   - nanopb (0.3.8):
@@ -143,6 +149,7 @@ PODS:
   - yoga (0.57.0.React)
 
 DEPENDENCIES:
+  - CleverTap-iOS-SDK
   - Crashlytics
   - Fabric
   - Firebase/AdMob
@@ -176,6 +183,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CleverTap-iOS-SDK
     - Crashlytics
     - Fabric
     - FBAudienceNetwork
@@ -220,20 +228,21 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
-  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
-  FBAudienceNetwork: 4db9db11614ea1a165c05233183b7fdf741db55e
-  Firebase: 25812f43e7a53b11ae2f0a5f4c6d12faeb1f7cd7
-  FirebaseAnalytics: df15839e9c6ca6bd14d2e8ab6b0c672e6c49097e
-  FirebaseCore: 27bd80e5bfaaf9552a1f5cacb4c7e8bb925bab22
+  CleverTap-iOS-SDK: 996a436d5acdc9dcfdb4f8ffb0fe5f4bb035ecc2
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
+  FBAudienceNetwork: 34b5ff6fa69ac7306aff6c25e8c3891adc88d446
+  Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
+  FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
+  FirebaseCore: 2a84b6b325792a4319ef71ee18819dcba08d2fd7
   FirebaseCrash: fd373fbf5f9d1e235a984f2c7e446a5f26b968e8
-  FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
-  FirebasePerformance: e732cd3fe9488c68bf2e9ae7a55672e873d0c55a
-  Google-Mobile-Ads-SDK: 71c6d3e8d8f52673fa5a83fc0d027623b11fde16
-  GoogleAppMeasurement: fc4a4c3fe0144db9313cbf443ffe62e6b1d6268c
-  GoogleMobileAdsMediationFacebook: 4f0d253e700cee038a8a8c2f852958f43567834e
+  FirebaseInstanceID: 78ba376fcd5b94c001f9999b2cbd3d1f1e56e78d
+  FirebasePerformance: 65f7eb943ef3cc118899f945065ff9fa2d924e52
+  Google-Mobile-Ads-SDK: a1cbce28c0c78ca1fb0b6c4f213485f55527c99f
+  GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
+  GoogleMobileAdsMediationFacebook: 9df047b086e487b88b46c543981ddee1c1f05b07
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
+  GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OneSignal: 7d2571e9fce1d961b882e1bd9f1f242802e9c8b1
@@ -250,6 +259,6 @@ SPEC CHECKSUMS:
   TextToSpeech: d68418db07e7d3ce39fd3360ccca8d8165cef859
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: ff64f36cb13f4f3a9c3d76677f7ff48535b9e809
+PODFILE CHECKSUM: 51d0fc7c18d0ce4b37102989a0336f8ee12de85b
 
 COCOAPODS: 1.5.2

@@ -20,6 +20,13 @@
 
 #import "FBAdSettings.h"
 
+typedef NS_ENUM(NSInteger, FBAdFormatType) {
+    FBAdFormatTypeUnknown = 0,
+    FBAdFormatTypeImage,
+    FBAdFormatTypeVideo,
+    FBAdFormatTypeCarousel,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class FBAdIconView;
@@ -108,7 +115,10 @@ typedef NS_ENUM(NSInteger, FBNativeAdsCachePolicy) {
  Typed access to the AdChoices text, usually a localized version of "AdChoices". See `FBAdChoicesView` for an included implementation.
  */
 @property (nonatomic, copy, readonly, nullable) NSString *adChoicesText;
-
+/**
+ Typed access to the ad format type. See `FBAdFormatType` enum for more details.
+ */
+@property (nonatomic, assign, readonly) FBAdFormatType adFormatType;
 /**
  Read only access to native ad caching policy, it is set in loadAWithMediaCachePolicy:
  */

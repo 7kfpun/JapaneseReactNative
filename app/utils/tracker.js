@@ -2,6 +2,7 @@ import { Dimensions, PixelRatio } from 'react-native';
 
 import { Answers } from 'react-native-fabric';
 import Analytics from 'analytics-react-native';
+import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 
@@ -89,6 +90,7 @@ const tracker = {
       }
 
       analytics.identify({ userId, context });
+      CleverTap.profileSet({ Identity: userId, ...context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
     }
@@ -103,8 +105,9 @@ const tracker = {
       };
       console.log('logEvent', message);
       analytics.track(message);
-      firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
       Answers.logCustom(event, properties);
+      CleverTap.recordEvent(event, properties);
+      firebase.analytics().logEvent(event.replace(/-/g, '_'), properties);
     }
   },
   logPurchase: (

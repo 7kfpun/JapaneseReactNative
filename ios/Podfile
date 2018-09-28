@@ -56,6 +56,8 @@ target 'Japanese' do
 
   pod 'RNIap', :path => '../node_modules/react-native-iap'
 
+  pod 'CleverTap-iOS-SDK'
+
 end
 
 post_install do |installer|

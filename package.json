@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "analytics-react-native": "^1.2.0",
+    "clevertap-react-native": "^0.2.4",
     "fuse.js": "^3.2.1",
     "prop-types": "15.6.2",
     "react": "16.5.0",

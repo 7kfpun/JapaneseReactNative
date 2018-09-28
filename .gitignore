@@ -64,3 +64,4 @@ main.jsbundle.meta
 index.android.bundle
 index.android.bundle.meta
 app/utils/minna
+ios/Pods/FBAudienceNetwork/FBAudienceNetwork.framework/FBAudienceNetwork
