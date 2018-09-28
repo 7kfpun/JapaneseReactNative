@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.clevertap.android.sdk.ActivityLifecycleCallback;
+import com.clevertap.react.CleverTapPackage;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.Crashlytics;
 import com.dooboolab.RNIap.RNIapPackage;
@@ -41,6 +43,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new CleverTapPackage(),
             new FabricPackage(),
             new ReactNativeOneSignalPackage(),
             new ReactNativeRestartPackage(),
@@ -73,6 +76,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     Fabric.with(this, new Crashlytics(), new Answers());
     SoLoader.init(this, /* native exopackage */ false);
+    ActivityLifecycleCallback.register(this);
     super.onCreate();
   }
 }
