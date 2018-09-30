@@ -1,0 +1,72 @@
+{
+  "today": {
+    "title": "ယနေ့တွင်",
+    "shuffle": "ရောသမမွှေ",
+    "out_of_connection": "အင်တာနက်ကော်နက်ရှင်ထဲက"
+  },
+  "kana": {
+    "title": "Kana",
+    "seion": "Seion",
+    "dakuon": "Dakuon",
+    "youon": "Youon",
+    "hiragana": "Hiragana",
+    "katakana": "Katakana",
+    "romaji": "Romaji"
+  },
+  "lessons": {
+    "title": "みんなの日本語",
+    "beginning_one": "အစပြုသူ I",
+    "beginning_two": "အစပြုသူ II",
+    "advanced_one": "ကြိုတင်မဲ I",
+    "advanced_two": "ကြိုတင်မဲ II"
+  },
+  "read-all": {
+    "premium-required-title": "ပရီမီယံအသုံးပြုသူများအတွက်သာရရှိနိုင်",
+    "premium-required-description": "ပိုပြီးပျော်မွေ့ဖို့ကျွန်တော်တို့ရဲ့ပရီမီယံအသုံးပြုသူဖြစ်လာ"
+  },
+  "search": {
+    "title": "ရှာဖှေ",
+    "cancel": "Cancel",
+    "description": "သင်တို့ရှိသမျှသည်သင်ခန်းစာတွေကိုဖြတ်ပြီးမဆိုစကားလုံးရှာတွေ့နိုင်ပါသည်။"
+  },
+  "vocab-list": {
+    "learn": "သင်ကြား",
+    "quiz": "စစ်ဆေးမေးမြန်းခြင်း",
+    "read-all": "အားလုံးဖတ်ပါ"
+  },
+  "feedback": {
+    "title": "တုံ့ပြန်ချက်",
+    "url": "https://airtable.com/shr7xvYAyInUbJNif",
+    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+    "feedback": "တုံ့ပြန်ချက်",
+    "help-translation": "သငျသညျအကြှနျုပျတို့ကို join ချင်ကြသနည်း",
+    "help-translation-description": "သငျသညျ Minna no Nihongo သင်၏ဘာသာစကားသို့ပြန်ဆိုရပါမည်အကောင်းဆုံးဘယ်လိုသိသောကြောင့်ကျနော်တို့အသိုင်းအဝုိင်းမှတက်ဘာသာပြန်ဖြစ်စဉ်ကိုဖွင့်လှစ်ခဲ့ပါတယ်။ သငျသညျ, ဘာသာပြန်ချက်, မဲပေး, သင်၏သူချင်းဘာသာပြန်များနှင့်အတူဆွေးနွေးမှုအတွက်ကြိုက်နှစ်သက်သလောက်ပါဝင်ပါ။"
+  },
+  "about": {
+    "title": "အကွောငျး",
+    "notification_label": "လေ့လာမှုသတိပေးချက် (နေ့စဉ်)",
+    "restore": "Restore your in-app purchases",
+    "purchase_title": "သငျသညျယခုကျွန်တော်တို့ရဲ့ပရီမီယံအသုံးပြုသူတွေဟာ",
+    "purchase_description": "ဂျပန်သင်ယူခံစားကြည့်ပါ",
+    "purchase_item_title": "Premium",
+    "purchase_item_description": "Premium features and ads removing",
+    "restore_failed_title": "You have never purchased our Premium before"
+  },
+  "common": {
+    "kana": "Kana",
+    "kanji": "Kanji",
+    "romaji": "Romaji",
+    "translation": "ဘာသာပြန်ချက်",
+    "previous": "လွန်ခဲ့သော",
+    "next": "နောက်တစ်ခု",
+    "random": "အမှတ်မဲ့ဖြစ်သော",
+    "lesson_no": "သင်ခန်းစာ {{lesson_no}}",
+    "tts_required": "Google Text-to-Speech လိုအပ်ပါသည်"
+  },
+  "rating": {
+    "title": "ကျွန်တော်တို့ရဲ့ APP ကိုခံစားကြည့်ပါ?",
+    "title_description": "သငျသညျဒီ APP ကိုကြိုက်နှစ်သက်ပါလျှင်ကျွန်တော်တက်အားပေးစရာကျွန်တော်တို့ကို 5 ကြယ်ပွပေးပါ။",
+    "feedback_description": "ကျွန်တော်တို့ရဲ့ APP ကိုကြိုက်နှစ်သက်သည်မဟုတ်လော ကျွန်တော်တို့ကိုအချို့သော feedbacks ပေးပါ။ ကျနော်တို့ကျိန်းသေတိုးတက်အောင်စောင့်ရှောက်မည်။",
+    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif"
+  }
+}
