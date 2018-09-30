@@ -4,8 +4,9 @@ import { Platform, Text, ToastAndroid, YellowBox } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import {
-  createMaterialTopTabNavigator,
+  createBottomTabNavigator,
   createStackNavigator,
+  // createMaterialTopTabNavigator,
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
@@ -116,7 +117,7 @@ const aboutNavigator = createStackNavigator(
   }
 );
 
-const AppTab = createMaterialTopTabNavigator(
+const AppTab = createBottomTabNavigator(
   {
     today: todayNavigator,
     kana: kanaNavigator,
@@ -168,7 +169,8 @@ const AppTab = createMaterialTopTabNavigator(
         paddingBottom: 2,
         paddingTop: 0,
       },
-      // showIcon and pressColor are for Android
+      // showIcon, pressColor, style and indicatorStyle are for Android
+      // (createMaterialTopTabNavigator)
       showIcon: true,
       pressColor: '#E0E0E0',
       style: {
