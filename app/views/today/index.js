@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -67,14 +65,6 @@ type Props = {};
 export default class Today extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.today.title'),
-    tabBarLabel: I18n.t('app.today.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Ionicons
-        name={focused ? 'ios-clipboard' : 'ios-clipboard'}
-        size={19}
-        color={tintColor}
-      />
-    ),
   };
 
   static propTypes = {
@@ -218,7 +208,7 @@ export default class Today extends Component<Props> {
     const card = todayItems.length > 0 ? todayItems[cardIndex] : null;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <CardOptionSelector
           isOrderedEnable={false}
           onUpdate={this.updateStates}
@@ -310,7 +300,7 @@ export default class Today extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-today-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
 import Tts from 'react-native-tts';
 import store from 'react-native-simple-store';
 
@@ -81,17 +80,6 @@ export default class KanaAssessment extends Component<Props> {
       headerTitle: I18n.t(`app.kana.${params.mode}`),
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
-      ),
-      tabBarLabel: I18n.t('app.kana.title'),
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Text
-          style={[
-            styles.tabText,
-            { color: focused ? tintColor : iOSColors.black },
-          ]}
-        >
-          {'あ'}
-        </Text>
       ),
     };
   };
@@ -228,7 +216,7 @@ export default class KanaAssessment extends Component<Props> {
     const answers = choices.map(item => item[l[modeTo]]);
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <View
           style={{
             flexDirection: 'row',
@@ -413,7 +401,7 @@ export default class KanaAssessment extends Component<Props> {
         {!isPremium && (
           <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

@@ -5,8 +5,6 @@ import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../elements/admob';
@@ -68,21 +66,13 @@ const lessonGroup = [
 ];
 
 type Props = {};
-export default class Main extends Component<Props> {
-  static propTypes = {
-    navigation: PropTypes.shape({}).isRequired,
+export default class Lessons extends Component<Props> {
+  static navigationOptions = {
+    headerTitle: I18n.t('app.lessons.title'),
   };
 
-  static navigationOptions = {
-    headerBackTitle: null,
-    title: I18n.t('app.lessons.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Ionicons
-        name={focused ? 'ios-list' : 'ios-list'}
-        size={24}
-        color={tintColor}
-      />
-    ),
+  static propTypes = {
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   state = {
@@ -105,7 +95,7 @@ export default class Main extends Component<Props> {
     const { isPremium } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <IndicatorViewPager
           style={{ flex: 1 }}
           indicator={this.renderTabIndicator()}
@@ -133,7 +123,7 @@ export default class Main extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

@@ -38,14 +38,6 @@ export default class Feedback extends Component<Props> {
 
   static navigationOptions = {
     title: I18n.t('app.feedback.title'),
-    tabBarLabel: I18n.t('app.feedback.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Ionicons
-        name={focused ? 'ios-chatboxes' : 'ios-chatboxes'}
-        size={20}
-        color={tintColor}
-      />
-    ),
   };
 
   state = {

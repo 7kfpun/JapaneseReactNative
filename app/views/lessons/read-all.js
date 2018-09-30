@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
@@ -71,14 +70,7 @@ export default class ReadAll extends Component<Props> {
 
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
-      tabBarLabel: 'みんなの日本語',
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-list' : 'ios-list'}
-          size={20}
-          color={tintColor}
-        />
-      ),
+      headerBackTitle: null,
     };
   };
 
@@ -173,7 +165,7 @@ export default class ReadAll extends Component<Props> {
     const { isPremium, isReading, readingText } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <TouchableOpacity
           style={styles.body}
           onPress={() => {
@@ -214,7 +206,7 @@ export default class ReadAll extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Alert, FlatList, Platform, StyleSheet } from 'react-native';
+import { Alert, FlatList, Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
 import ActionButton from 'react-native-action-button';
 import firebase from 'react-native-firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -54,16 +53,8 @@ export default class VocabList extends Component<Props> {
     const params = navigation.state.params || {};
 
     return {
+      title: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
       headerBackTitle: null,
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
-      tabBarLabel: 'みんなの日本語',
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-list' : 'ios-list'}
-          size={20}
-          color={tintColor}
-        />
-      ),
     };
   };
 
@@ -257,7 +248,7 @@ export default class VocabList extends Component<Props> {
     const { isPremium, vocabs } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <FlatList
           style={styles.list}
           data={vocabs}
@@ -267,7 +258,11 @@ export default class VocabList extends Component<Props> {
           )}
         />
 
-        <ActionButton buttonColor="#2196F3" offsetX={15} offsetY={52}>
+        <ActionButton
+          buttonColor="#2196F3"
+          offsetX={15}
+          offsetY={isPremium ? 30 : 52}
+        >
           {Platform.OS === 'ios' && (
             <ActionButton.Item
               size={42}
@@ -307,7 +302,7 @@ export default class VocabList extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

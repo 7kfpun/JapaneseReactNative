@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
-import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import store from 'react-native-simple-store';
-
 import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 
-import { SafeAreaView } from 'react-navigation';
+import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
+import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 
 import Tile from './components/tile';
 
@@ -86,18 +83,7 @@ export default class Kana extends Component<Props> {
     ][params.position];
 
     return {
-      title: I18n.t('app.kana.title'),
-      tabBarLabel: I18n.t('app.kana.title'),
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Text
-          style={[
-            styles.tabText,
-            { color: focused ? tintColor : iOSColors.black },
-          ]}
-        >
-          {'あ'}
-        </Text>
-      ),
+      headerTitle: I18n.t('app.kana.title'),
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity
@@ -163,65 +149,71 @@ export default class Kana extends Component<Props> {
     const { isPremium } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <IndicatorViewPager
           style={{ flex: 1 }}
           indicator={this.renderTabIndicator()}
           onPageSelected={({ position }) => this.onPageSelected(position)}
         >
-          <ScrollView>
-            {seion.map((row, i) => (
-              <View key={`seion-${i}`} style={styles.row}>
-                {row.map((item, j) => (
-                  <Tile
-                    key={`seion-${i}-${j}`}
-                    itemsPerRow={5}
-                    hiragana={item[0]}
-                    katakana={item[1]}
-                    romaji={item[2]}
-                  />
-                ))}
-              </View>
-            ))}
-          </ScrollView>
+          <View>
+            <ScrollView>
+              {seion.map((row, i) => (
+                <View key={`seion-${i}`} style={styles.row}>
+                  {row.map((item, j) => (
+                    <Tile
+                      key={`seion-${i}-${j}`}
+                      itemsPerRow={5}
+                      hiragana={item[0]}
+                      katakana={item[1]}
+                      romaji={item[2]}
+                    />
+                  ))}
+                </View>
+              ))}
+            </ScrollView>
+          </View>
 
-          <ScrollView>
-            {dakuon.map((row, i) => (
-              <View key={`dakuon-${i}`} style={styles.row}>
-                {row.map((item, j) => (
-                  <Tile
-                    key={`dakuon-${i}-${j}`}
-                    itemsPerRow={5}
-                    hiragana={item[0]}
-                    katakana={item[1]}
-                    romaji={item[2]}
-                  />
-                ))}
-              </View>
-            ))}
-          </ScrollView>
+          <View>
+            <ScrollView>
+              {dakuon.map((row, i) => (
+                <View key={`dakuon-${i}`} style={styles.row}>
+                  {row.map((item, j) => (
+                    <Tile
+                      key={`dakuon-${i}-${j}`}
+                      itemsPerRow={5}
+                      hiragana={item[0]}
+                      katakana={item[1]}
+                      romaji={item[2]}
+                    />
+                  ))}
+                </View>
+              ))}
+            </ScrollView>
+          </View>
 
-          <ScrollView>
-            {youon.map((row, i) => (
-              <View key={`youon-${i}`} style={styles.row}>
-                {row.map((item, j) => (
-                  <Tile
-                    key={`youon-${i}-${j}`}
-                    itemsPerRow={3}
-                    hiragana={item[0]}
-                    katakana={item[1]}
-                    romaji={item[2]}
-                  />
-                ))}
-              </View>
-            ))}
-          </ScrollView>
+          <View>
+            <ScrollView>
+              {youon.map((row, i) => (
+                <View key={`youon-${i}`} style={styles.row}>
+                  {row.map((item, j) => (
+                    <Tile
+                      key={`youon-${i}-${j}`}
+                      itemsPerRow={3}
+                      hiragana={item[0]}
+                      katakana={item[1]}
+                      romaji={item[2]}
+                    />
+                  ))}
+                </View>
+              ))}
+            </ScrollView>
+          </View>
         </IndicatorViewPager>
 
         {!isPremium && (
           <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

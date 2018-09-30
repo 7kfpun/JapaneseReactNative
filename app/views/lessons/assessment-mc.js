@@ -10,8 +10,6 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -120,18 +118,10 @@ export default class AssessmentMC extends Component<Props> {
     const correctNumber = (params && params.correctNumber) || 0;
     const total = (params && params.total) || 0;
     return {
-      headerBackTitle: null,
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerBackTitle: null,
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
-      ),
-      tabBarLabel: 'みんなの日本語',
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-list' : 'ios-list'}
-          size={20}
-          color={tintColor}
-        />
       ),
     };
   };
@@ -266,7 +256,7 @@ export default class AssessmentMC extends Component<Props> {
         : question[modeTo];
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <View
           style={{
             flexDirection: 'row',
@@ -431,7 +421,7 @@ export default class AssessmentMC extends Component<Props> {
             }
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

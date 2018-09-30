@@ -11,8 +11,6 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -142,16 +140,9 @@ export default class Assessment extends Component<Props> {
     const total = params && params.total;
     return {
       headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerBackTitle: null,
       headerRight: total && (
         <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
-      ),
-      tabBarLabel: 'みんなの日本語',
-      tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-list' : 'ios-list'}
-          size={20}
-          color={tintColor}
-        />
       ),
     };
   };
@@ -362,7 +353,7 @@ export default class Assessment extends Component<Props> {
     const { kanji, kana, romaji } = vocabularies[lesson].data[count];
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <CardOptionSelector onUpdate={this.updateStates} />
 
         <View
@@ -499,7 +490,7 @@ export default class Assessment extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

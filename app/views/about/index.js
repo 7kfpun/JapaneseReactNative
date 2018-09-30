@@ -12,7 +12,6 @@ import {
 
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import OneSignal from 'react-native-onesignal';
 import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
@@ -40,20 +39,12 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class About extends Component<Props> {
-  static propTypes = {
-    navigation: PropTypes.shape({}).isRequired,
+  static navigationOptions = {
+    headerTitle: I18n.t('app.about.title'),
   };
 
-  static navigationOptions = {
-    title: I18n.t('app.about.title'),
-    tabBarLabel: I18n.t('app.about.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Ionicons
-        name={focused ? 'ios-chatboxes' : 'ios-chatboxes'}
-        size={20}
-        color={tintColor}
-      />
-    ),
+  static propTypes = {
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   state = {

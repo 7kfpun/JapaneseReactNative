@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import { SafeAreaView } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Search from 'react-native-search-box';
 import store from 'react-native-simple-store';
@@ -55,14 +54,6 @@ type Props = {};
 export default class SearchView extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.search.title'),
-    tabBarLabel: I18n.t('app.search.title'),
-    tabBarIcon: ({ tintColor, focused }) => (
-      <Ionicons
-        name={focused ? 'ios-search' : 'ios-search'}
-        size={20}
-        color={tintColor}
-      />
-    ),
   };
 
   state = {
@@ -110,7 +101,7 @@ export default class SearchView extends Component<Props> {
     const { isPremium } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.searchBlock}>
           <Search
             backgroundColor={iOSColors.white}
@@ -155,7 +146,7 @@ export default class SearchView extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-search-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }

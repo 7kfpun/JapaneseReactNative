@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { Platform, ToastAndroid, YellowBox } from 'react-native';
+import { Platform, Text, ToastAndroid, YellowBox } from 'react-native';
 
-import { StackNavigator, TabNavigator } from 'react-navigation';
 import { iOSColors } from 'react-native-typography';
+import {
+  createMaterialTopTabNavigator,
+  createStackNavigator,
+} from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
 import About from './views/about';
@@ -48,112 +52,140 @@ Tts.getInitStatus().then(
   }
 );
 
-const stackOptions = {
-  swipeEnabled: false,
-  animationEnabled: true,
-  navigationOptions: {
-    headerStyle: {
-      backgroundColor: iOSColors.tealBlue,
-      // backgroundColor: '#F7F7F7',
-      // borderBottomWidth: 0,
-    },
-    headerTintColor: iOSColors.white,
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+const navigationOptions = {
+  headerStyle: {
+    backgroundColor: iOSColors.tealBlue,
+    // borderBottomWidth: 0,
+  },
+  headerTintColor: iOSColors.white,
+  headerTitleStyle: {
+    fontWeight: 'bold',
   },
 };
 
-const AppTab = TabNavigator(
+const todayNavigator = createStackNavigator(
   {
-    today: {
-      screen: StackNavigator(
-        {
-          today: { screen: Today },
-          'vocab-feedback': { screen: Feedback },
-        },
-        stackOptions
-      ),
-    },
-    kana: {
-      screen: StackNavigator(
-        {
-          kana: { screen: Kana },
-          'kana-assessment': { screen: KanaAssessment },
-        },
-        stackOptions
-      ),
-    },
-    lessons: {
-      screen: StackNavigator(
-        {
-          lessons: { screen: Lessons },
-          'vocab-list': { screen: VocabList },
-          assessment: { screen: Assessment },
-          'assessment-mc': { screen: AssessmentMC },
-          'read-all': { screen: ReadAll },
-          'vocab-feedback': { screen: Feedback },
-        },
-        stackOptions
-      ),
-    },
-    search: {
-      screen: StackNavigator(
-        {
-          search: { screen: Search },
-        },
-        stackOptions
-      ),
-    },
-    about: {
-      screen: StackNavigator(
-        {
-          about: { screen: About },
-          feedback: { screen: Feedback },
-        },
-        stackOptions
-      ),
-    },
+    today: Today,
+    'vocab-feedback': Feedback,
   },
   {
+    navigationOptions,
+  }
+);
+
+const kanaNavigator = createStackNavigator(
+  {
+    kana: Kana,
+    'kana-assessment': KanaAssessment,
+  },
+  {
+    navigationOptions,
+  }
+);
+
+const lessonNavigator = createStackNavigator(
+  {
+    lessons: Lessons,
+    'vocab-list': VocabList,
+    assessment: Assessment,
+    'assessment-mc': AssessmentMC,
+    'read-all': ReadAll,
+    'vocab-feedback': Feedback,
+  },
+  {
+    navigationOptions,
+  }
+);
+
+const searchNavigator = createStackNavigator(
+  {
+    search: Search,
+  },
+  {
+    navigationOptions,
+  }
+);
+
+const aboutNavigator = createStackNavigator(
+  {
+    about: About,
+    feedback: Feedback,
+  },
+  {
+    navigationOptions,
+  }
+);
+
+const AppTab = createMaterialTopTabNavigator(
+  {
+    today: todayNavigator,
+    kana: kanaNavigator,
+    lessons: lessonNavigator,
+    search: searchNavigator,
+    about: aboutNavigator,
+  },
+  {
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state;
+      return {
+        tabBarLabel: I18n.t(`app.${routeName}.title`),
+        tabBarIcon: ({ focused, tintColor }) => {
+          let iconName;
+          let size = 20;
+          if (routeName === 'today') {
+            iconName = 'ios-clipboard';
+            size = 19;
+          } else if (routeName === 'kana') {
+            return (
+              <Text
+                style={{
+                  fontWeight: '100',
+                  fontSize: 15,
+                  color: focused ? tintColor : iOSColors.black,
+                }}
+              >
+                {'あ'}
+              </Text>
+            );
+          } else if (routeName === 'lessons') {
+            iconName = 'ios-list';
+            size = 22;
+          } else if (routeName === 'search') {
+            iconName = 'ios-search';
+          } else if (routeName === 'about') {
+            iconName = 'ios-chatboxes';
+          }
+
+          return <Ionicons name={iconName} size={size} color={tintColor} />;
+        },
+      };
+    },
     tabBarOptions: {
       activeTintColor: iOSColors.tealBlue,
       inactiveTintColor: iOSColors.black,
+      labelStyle: {
+        fontSize: 10,
+        paddingBottom: 2,
+        paddingTop: 0,
+      },
       // showIcon and pressColor are for Android
       showIcon: true,
       pressColor: '#E0E0E0',
-      labelStyle: {
-        ...Platform.select({
-          ios: {
-            fontSize: 10,
-            paddingBottom: 2,
-            paddingTop: 2,
-          },
-          android: {
-            fontSize: 6,
-            paddingBottom: 0,
-            paddingTop: 0,
-          },
-        }),
-      },
-      indicatorStyle: {
-        backgroundColor: iOSColors.tealBlue,
-      },
       style: {
         backgroundColor: 'white',
       },
+      indicatorStyle: {
+        ...Platform.select({
+          ios: {
+            backgroundColor: iOSColors.white,
+          },
+          android: {
+            backgroundColor: iOSColors.tealBlue,
+          },
+        }),
+      },
     },
     tabBarPosition: 'bottom',
-
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: iOSColors.tealBlue,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
   }
 );
 
