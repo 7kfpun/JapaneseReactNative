@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     color: iOSColors.white,
   },
   card: {
-    flex: 2,
+    flex: 4,
     paddingHorizontal: 26,
     ...Platform.select({
       ios: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     }),
   },
   tileBlock: {
-    flex: 1,
+    flex: 3,
     paddingHorizontal: 40,
   },
   tile: {

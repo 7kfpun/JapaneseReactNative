@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   card: {
-    flex: 2,
+    flex: 4,
     paddingHorizontal: 26,
     ...Platform.select({
       ios: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   tileBlock: {
-    flex: 1,
+    flex: 3,
     paddingHorizontal: 40,
   },
   tile: {

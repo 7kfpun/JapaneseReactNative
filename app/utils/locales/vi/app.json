@@ -27,7 +27,9 @@
     "description": "Bạn có thể tìm thấy từ trên tất cả các bài học."
   },
   "vocab-list": {
-    "learn": "Học hỏi"
+    "learn": "Học hỏi",
+    "quiz": "Kiểm tra",
+    "read-all": "Đọc toàn bộ"
   },
   "feedback": {
     "title": "Phản hồi",

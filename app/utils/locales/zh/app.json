@@ -30,7 +30,9 @@
     "description": "你可以在所有课程中寻找单词。"
   },
   "vocab-list": {
-    "learn": "学习"
+    "learn": "学习",
+    "quiz": "测验",
+    "read-all": "全读"
   },
   "feedback": {
     "title": "反馈/建议",

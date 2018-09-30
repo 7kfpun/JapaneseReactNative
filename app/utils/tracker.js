@@ -5,6 +5,7 @@ import Analytics from 'analytics-react-native';
 import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
+import OneSignal from 'react-native-onesignal';
 import store from 'react-native-simple-store';
 
 import { config } from '../config';
@@ -74,11 +75,16 @@ Object.entries(context).forEach(([key0, value0]) => {
 });
 console.log('firebaseContext', firebaseContext);
 
+const getUserType = async () => {
+  const isPremium = await store.get('isPremium');
+  return isPremium ? 'Premium' : 'Normal';
+};
+
 const tracker = {
   identify: async () => {
     if (isTracking) {
-      const isPremium = await store.get('isPremium');
-      context.isPremium = isPremium === true;
+      const userType = await getUserType();
+      context.userType = userType;
 
       const ip = await fetch('http://checkip.amazonaws.com/')
         .then(res => res.text())
@@ -94,6 +100,7 @@ const tracker = {
       CleverTap.profileSet({ Identity: userId, ...context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
+      OneSignal.sendTags({ userType });
     }
   },
   logEvent: (event, properties) => {

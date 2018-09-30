@@ -38,7 +38,9 @@
         "description": "Hier finden Sie alle Vokabeln aus den Lektionen."
     },
     "vocab-list": {
-        "learn": "Lernen"
+        "learn": "Lernen",
+        "quiz": "Test",
+        "read-all": "Vollständige Lektüre"
     },
     "about": {
         "title": "\u00dcber uns",
