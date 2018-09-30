@@ -13,6 +13,7 @@ import Tts from 'react-native-tts';
 
 import About from './views/about';
 import Assessment from './views/lessons/assessment';
+import AssessmentListening from './views/lessons/assessment-listening';
 import AssessmentMC from './views/lessons/assessment-mc';
 import Feedback from './views/feedback';
 import Kana from './views/kana';
@@ -90,6 +91,7 @@ const lessonNavigator = createStackNavigator(
     'vocab-list': VocabList,
     assessment: Assessment,
     'assessment-mc': AssessmentMC,
+    'assessment-listening': AssessmentListening,
     'read-all': ReadAll,
     'vocab-feedback': Feedback,
   },

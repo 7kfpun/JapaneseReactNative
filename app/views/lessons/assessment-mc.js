@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -168,10 +169,11 @@ export default class AssessmentMC extends Component<Props> {
     const question = choice(vocabularies[lesson].data);
 
     choices = [question];
+    // TODO: use better algorithm
     while (choices.length < 4) {
       temp = choice(vocabularies[lesson].data);
 
-      if (question.kana !== temp.kana) {
+      if (choices.filter(item => item.kana === temp.kana).length === 0) {
         choices.push(temp);
       }
     }
@@ -270,7 +272,11 @@ export default class AssessmentMC extends Component<Props> {
             </Text>
           </TouchableOpacity>
 
-          <Text style={{ color: iOSColors.tealBlue }}>{'->'}</Text>
+          <Ionicons
+            name="ios-arrow-forward"
+            size={16}
+            color={iOSColors.tealBlue}
+          />
 
           <TouchableOpacity style={styles.mode} onPress={this.nextModeTo}>
             <Text style={{ color: iOSColors.tealBlue, fontSize: 18 }}>

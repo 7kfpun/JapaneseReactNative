@@ -11,10 +11,11 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Tts from 'react-native-tts';
 import store from 'react-native-simple-store';
+import Tts from 'react-native-tts';
 
-import { choice, randomInt } from '../../utils/helpers';
+import { choice, shuffle } from '../../utils/helpers';
+import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -33,6 +34,12 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     color: iOSColors.white,
   },
+  mode: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
+  },
   card: {
     flex: 4,
     paddingHorizontal: 26,
@@ -44,6 +51,18 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
       },
     }),
+  },
+  cardBody: {
+    flex: 1,
+    borderRadius: 16,
+    backgroundColor: iOSColors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
+  cardText: {
+    fontSize: 32,
+    textAlign: 'center',
   },
   tileBlock: {
     flex: 3,
@@ -57,10 +76,12 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 4,
   },
   tileText: {
-    fontSize: 20,
+    fontSize: 12,
     fontWeight: '300',
+    textAlign: 'center',
   },
   selectors: {
     flexDirection: 'row',
@@ -70,15 +91,36 @@ const styles = StyleSheet.create({
   },
 });
 
+const getNextMode = (modeAll, modeOriginal, modeOther) => {
+  const modeOriginalPosition = modeAll.indexOf(modeOriginal);
+  const modeOtherPosition = modeAll.indexOf(modeOther);
+
+  let position = modeOriginalPosition;
+  while (true) {
+    position += 1;
+
+    if (position >= modeAll.length) {
+      position = -1;
+    } else if (position !== modeOtherPosition) {
+      break;
+    }
+  }
+
+  return modeAll[position];
+};
+
+const modeAll = ['kana', 'kanji', 'romaji', 'translation'];
+
 type Props = {};
-export default class KanaAssessment extends Component<Props> {
+export default class AssessmentMC extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
     const correctNumber = (params && params.correctNumber) || 0;
-    const total = params && params.total;
+    const total = (params && params.total) || 0;
     return {
-      headerTitle: I18n.t(`app.kana.${params.mode}`),
+      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerBackTitle: null,
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
       ),
@@ -88,19 +130,20 @@ export default class KanaAssessment extends Component<Props> {
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
-        params: PropTypes.shape({}).isRequired,
+        params: PropTypes.shape({
+          lesson: PropTypes.number.isRequired,
+        }).isRequired,
       }).isRequired,
       setParams: PropTypes.func.isRequired,
     }).isRequired,
   };
 
   state = {
-    origin: [],
+    question: {},
     choices: [],
-    modeFrom: 'hiragana',
-    modeTo: 'romaji',
-    modeOther: 'katakana',
-    answerPosition: -1,
+    modeFrom: 'kana',
+    modeTo: 'translation',
+    selectedAnswer: -1,
     isCorrect: null,
     isPremium: false,
   };
@@ -118,54 +161,45 @@ export default class KanaAssessment extends Component<Props> {
     const {
       navigation: {
         state: {
-          params: { kana },
+          params: { lesson },
         },
       },
     } = this.props;
 
-    let origin;
-    while (true) {
-      origin = choice(choice(kana));
-      if (origin[0] !== '') {
-        break;
-      }
-    }
+    const question = choice(vocabularies[lesson].data);
 
-    choices = [];
-    while (true) {
-      temp = choice(choice(kana));
+    choices = [question];
+    // TODO: use better algorithm
+    while (choices.length < 4) {
+      temp = choice(vocabularies[lesson].data);
 
-      if (choices.length === 3) {
-        break;
-      }
-
-      if (origin[0] !== temp[0] && temp[0] !== '') {
+      if (choices.filter(item => item.kana === temp.kana).length === 0) {
         choices.push(temp);
       }
     }
 
-    choices.splice(randomInt(4), 0, origin);
+    shuffle(choices);
 
     this.setState({
-      origin,
+      question,
       choices,
       isCorrect: null,
-      answerPosition: -1,
+      selectedAnswer: -1,
     });
   };
 
-  swapModeFrom = () => {
-    const { modeFrom: tempModeFrom, modeOther } = this.state;
-    this.setState({ modeFrom: modeOther, modeOther: tempModeFrom });
+  nextModeFrom = () => {
+    const { modeFrom: modeOriginal, modeTo: modeOther } = this.state;
+    this.setState({ modeFrom: getNextMode(modeAll, modeOriginal, modeOther) });
   };
 
-  swapModeTo = () => {
-    const { modeTo: tempModeTo, modeOther } = this.state;
-    this.setState({ modeTo: modeOther, modeOther: tempModeTo });
+  nextModeTo = () => {
+    const { modeFrom: modeOther, modeTo: modeOriginal } = this.state;
+    this.setState({ modeTo: getNextMode(modeAll, modeOriginal, modeOther) });
   };
 
-  checkAnswer = (position, rightAnswer, userAnswer, origin) => {
-    this.setState({ answerPosition: position });
+  checkAnswer = (position, correctAnswer, userAnswer) => {
+    this.setState({ selectedAnswer: position });
     const { navigation } = this.props;
     const params = navigation.state.params || {};
 
@@ -174,47 +208,54 @@ export default class KanaAssessment extends Component<Props> {
 
     const { modeFrom, modeTo } = this.state;
 
-    if (rightAnswer === userAnswer) {
+    if (correctAnswer === userAnswer) {
       this.setState({ isCorrect: true });
       navigation.setParams({
-        correctNumber: correctNumber + 1,
-        total: total + 1,
+        correctNumber: correctNumber ? correctNumber + 1 : 1,
+        total: total ? total + 1 : 1,
       });
-      store.save(`kana.assessment.${origin[2]}`, true);
-      tracker.logEvent('user-action-kana-assessment-result-correct', {
+      tracker.logEvent('user-action-assessment-listening-result-correct', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
     } else {
       this.setState({ isCorrect: false });
-      navigation.setParams({ total: total + 1 });
-      store.save(`kana.assessment.${origin[2]}`, false);
-      tracker.logEvent('user-action-kana-assessment-result-incorrect', {
+      navigation.setParams({ total: total ? total + 1 : 1 });
+      tracker.logEvent('user-action-assessment-listening-result-incorrect', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
     }
-    store.save(
-      `kana.assessment.${origin[2]}.timestamp`,
-      parseInt(Date.now() / 1000, 10)
-    );
   };
 
   render() {
+    const {
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+      },
+    } = this.props;
+
     const { isPremium } = this.state;
 
-    const { origin, choices, modeFrom, modeTo } = this.state;
-    const { isCorrect, answerPosition } = this.state;
+    const { question, choices, modeFrom, modeTo } = this.state;
+    const { isCorrect, selectedAnswer } = this.state;
 
-    const l = {
-      hiragana: 0,
-      katakana: 1,
-      romaji: 2,
-    };
-    const question = origin[l[modeFrom]];
-    const rightAnswer = origin[l[modeTo]];
-
-    const answers = choices.map(item => item[l[modeTo]]);
+    // const displayQuestion =
+    //   modeFrom === 'translation'
+    //     ? I18n.t(`minna.${lesson}.${question.romaji}`)
+    //     : question[modeFrom];
+    const displayAnswers = choices.map(
+      item =>
+        modeTo === 'translation'
+          ? I18n.t(`minna.${lesson}.${item.romaji}`)
+          : item[modeTo]
+    );
+    const correctAnswer =
+      modeTo === 'translation'
+        ? I18n.t(`minna.${lesson}.${question.romaji}`)
+        : question[modeTo];
 
     return (
       <View style={styles.container}>
@@ -225,17 +266,9 @@ export default class KanaAssessment extends Component<Props> {
             alignItems: 'center',
           }}
         >
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: 8,
-            }}
-            onPress={this.swapModeFrom}
-          >
+          <TouchableOpacity style={styles.mode}>
             <Text style={{ color: iOSColors.tealBlue, fontSize: 18 }}>
-              {I18n.t(`app.kana.${modeFrom}`)}
+              {I18n.t('app.vocab-list.listening')}
             </Text>
           </TouchableOpacity>
 
@@ -245,17 +278,9 @@ export default class KanaAssessment extends Component<Props> {
             color={iOSColors.tealBlue}
           />
 
-          <TouchableOpacity
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: 8,
-            }}
-            onPress={this.swapModeTo}
-          >
+          <TouchableOpacity style={styles.mode} onPress={this.nextModeTo}>
             <Text style={{ color: iOSColors.tealBlue, fontSize: 18 }}>
-              {I18n.t(`app.kana.${modeTo}`)}
+              {I18n.t(`app.common.${modeTo}`)}
             </Text>
           </TouchableOpacity>
         </View>
@@ -264,118 +289,110 @@ export default class KanaAssessment extends Component<Props> {
           style={styles.card}
           onPress={() => {
             Tts.setDefaultLanguage('ja');
-            Tts.speak(origin[0]);
-            tracker.logEvent('user-action-kana-assessment-read', {
-              text: origin[0],
+            Tts.speak(question.kana);
+            tracker.logEvent('user-action-assessment-listening-read', {
+              text: question.kanji,
             });
           }}
         >
-          <View
-            style={{
-              flex: 1,
-              borderRadius: 16,
-              backgroundColor: iOSColors.white,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Text style={{ fontSize: 60 }}>{question}</Text>
+          <View style={styles.cardBody}>
+            <Ionicons name="ios-play" size={80} color={iOSColors.black} />
           </View>
         </TouchableOpacity>
 
         <View style={styles.tileBlock}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <TouchableOpacity
-              disabled={answerPosition !== -1}
+              disabled={selectedAnswer !== -1}
               style={[
                 styles.tile,
                 {
                   borderColor:
-                    answerPosition === -1
+                    selectedAnswer === -1
                       ? 'white'
-                      : answers[0] === rightAnswer
+                      : displayAnswers[0] === correctAnswer
                         ? '#2ECC40'
-                        : !isCorrect && answerPosition === 0
+                        : !isCorrect && selectedAnswer === 0
                           ? '#FF4136'
                           : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
               onPress={() =>
-                this.checkAnswer(0, rightAnswer, answers[0], origin)
+                this.checkAnswer(0, correctAnswer, displayAnswers[0], question)
               }
             >
-              <Text style={styles.tileText}>{answers[0]}</Text>
+              <Text style={styles.tileText}>{displayAnswers[0]}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              disabled={answerPosition !== -1}
+              disabled={selectedAnswer !== -1}
               style={[
                 styles.tile,
                 {
                   borderColor:
-                    answerPosition === -1
+                    selectedAnswer === -1
                       ? 'white'
-                      : answers[1] === rightAnswer
+                      : displayAnswers[1] === correctAnswer
                         ? '#2ECC40'
-                        : !isCorrect && answerPosition === 1
+                        : !isCorrect && selectedAnswer === 1
                           ? '#FF4136'
                           : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
               onPress={() =>
-                this.checkAnswer(1, rightAnswer, answers[1], origin)
+                this.checkAnswer(1, correctAnswer, displayAnswers[1], question)
               }
             >
-              <Text style={styles.tileText}>{answers[1]}</Text>
+              <Text style={styles.tileText}>{displayAnswers[1]}</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <TouchableOpacity
-              disabled={answerPosition !== -1}
+              disabled={selectedAnswer !== -1}
               style={[
                 styles.tile,
                 {
                   borderColor:
-                    answerPosition === -1
+                    selectedAnswer === -1
                       ? 'white'
-                      : answers[2] === rightAnswer
+                      : displayAnswers[2] === correctAnswer
                         ? '#2ECC40'
-                        : !isCorrect && answerPosition === 2
+                        : !isCorrect && selectedAnswer === 2
                           ? '#FF4136'
                           : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
               onPress={() =>
-                this.checkAnswer(2, rightAnswer, answers[2], origin)
+                this.checkAnswer(2, correctAnswer, displayAnswers[2], question)
               }
             >
-              <Text style={styles.tileText}>{answers[2]}</Text>
+              <Text style={styles.tileText}>{displayAnswers[2]}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              disabled={answerPosition !== -1}
+              disabled={selectedAnswer !== -1}
               style={[
                 styles.tile,
                 {
                   borderColor:
-                    answerPosition === -1
+                    selectedAnswer === -1
                       ? 'white'
-                      : answers[3] === rightAnswer
+                      : displayAnswers[3] === correctAnswer
                         ? '#2ECC40'
-                        : !isCorrect && answerPosition === 3
+                        : !isCorrect && selectedAnswer === 3
                           ? '#FF4136'
                           : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
               onPress={() =>
-                this.checkAnswer(3, rightAnswer, answers[3], origin)
+                this.checkAnswer(3, correctAnswer, displayAnswers[3], question)
               }
             >
-              <Text style={styles.tileText}>{answers[3]}</Text>
+              <Text style={styles.tileText}>{displayAnswers[3]}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -386,7 +403,7 @@ export default class KanaAssessment extends Component<Props> {
             title={I18n.t('app.common.next')}
             onPress={() => {
               this.getNext();
-              tracker.logEvent('user-action-press-kana-assessment-next');
+              tracker.logEvent('user-action-press-assessment-listening-next');
             }}
             titleStyles={{ fontSize: 20 }}
           />
@@ -395,16 +412,22 @@ export default class KanaAssessment extends Component<Props> {
             containerStyles={{ marginLeft: 10 }}
             onPress={() => {
               Tts.setDefaultLanguage('ja');
-              Tts.speak(origin[0]);
-              tracker.logEvent('user-action-kana-assessment-read', {
-                text: origin[0],
+              Tts.speak(question.kana);
+              tracker.logEvent('user-action-assessment-listening-read', {
+                text: question.kanji,
               });
             }}
           />
         </View>
 
         {!isPremium && (
-          <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+          <AdMob
+            unitId={
+              config.admob[
+                `japanese-${Platform.OS}-assessment-listening-banner`
+              ]
+            }
+          />
         )}
       </View>
     );
