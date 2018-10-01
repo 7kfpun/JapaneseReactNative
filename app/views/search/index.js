@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import Search from 'react-native-search-box';
 import store from 'react-native-simple-store';
 

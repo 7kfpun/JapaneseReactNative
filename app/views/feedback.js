@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { ActivityIndicator, StyleSheet, View, WebView } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import I18n from '../utils/i18n';
 

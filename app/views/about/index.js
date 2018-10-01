@@ -82,8 +82,7 @@ export default class About extends Component<Props> {
         });
 
         purchases.forEach(purchase => {
-          // if (purchase.productId === config.inAppProducts[0]) {
-          if (purchase.transactionReceipt) {
+          if (purchase.productId === config.inAppProducts[0]) {
             this.refreshForApplyingPurchase();
           }
           tracker.logEvent('user-action-restore-purchase-done', purchase);
@@ -97,8 +96,9 @@ export default class About extends Component<Props> {
         );
       }
     } catch (err) {
-      console.log('Get available error', err.code, err.message);
-      console.warn(err.code, err.message);
+      console.warn('Get available error', err.code, err.message);
+      tracker.logEvent('user-action-restore-purchase-error', err);
+
       return false;
     }
   };
@@ -116,8 +116,12 @@ export default class About extends Component<Props> {
     tracker.logEvent('user-action-buy-subscription', product);
     try {
       console.log('buySubscribeItem:', product);
-      const purchase = await RNIap.buySubscription(product.productId);
+      const purchase = await RNIap.buyProduct(product.productId);
       console.info('Purchase result', purchase);
+
+      if (Platform.OS === 'android') {
+        setTimeout(() => this.getAvailablePurchases(), 30000);
+      }
       // {
       //   transactionId: '1000000441571637',
       //   originalTransactionDate: 1529137617000,
@@ -126,8 +130,7 @@ export default class About extends Component<Props> {
       //   transactionReceipt: 'xxxxs=',
       //   productId: 'com.kfpun.japanese.ad'
       // }
-      // if (purchase.productId === config.inAppProducts[0]) {
-      if (purchase.transactionReceipt) {
+      if (purchase.productId === config.inAppProducts[0]) {
         tracker.logEvent('user-action-buy-subscription-done', purchase);
         tracker.logPurchase(
           product.price,
@@ -140,7 +143,12 @@ export default class About extends Component<Props> {
         this.refreshForApplyingPurchase();
       }
     } catch (err) {
+      if (err.code === 'E_ALREADY_OWNED') {
+        this.getAvailablePurchases();
+      }
+
       console.warn('Purchase result error', err.code, err.message);
+      tracker.logEvent('user-action-buy-subscription-error', err);
       tracker.logPurchase(
         product.price,
         product.currency,
