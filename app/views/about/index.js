@@ -82,7 +82,10 @@ export default class About extends Component<Props> {
         });
 
         purchases.forEach(purchase => {
-          if (purchase.productId === config.inAppProducts[0]) {
+          if (
+            purchase.productId === config.inAppProducts[0] ||
+            purchase.productId === config.inAppProducts[1]
+          ) {
             this.refreshForApplyingPurchase();
           }
           tracker.logEvent('user-action-restore-purchase-done', purchase);
@@ -130,10 +133,14 @@ export default class About extends Component<Props> {
       //   transactionReceipt: 'xxxxs=',
       //   productId: 'com.kfpun.japanese.ad'
       // }
-      if (purchase.productId === config.inAppProducts[0]) {
+      if (
+        purchase.productId === config.inAppProducts[0] ||
+        purchase.productId === config.inAppProducts[1]
+      ) {
         tracker.logEvent('user-action-buy-subscription-done', purchase);
+        this.refreshForApplyingPurchase();
         tracker.logPurchase(
-          product.price,
+          product.price.replace(',', '.'),
           product.currency,
           true,
           product.title,
@@ -150,7 +157,7 @@ export default class About extends Component<Props> {
       console.warn('Purchase result error', err.code, err.message);
       tracker.logEvent('user-action-buy-subscription-error', err);
       tracker.logPurchase(
-        product.price,
+        product.price.replace(',', '.'),
         product.currency,
         false,
         product.title,
