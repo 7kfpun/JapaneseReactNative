@@ -429,10 +429,8 @@ export default class Assessment extends Component<Props> {
                 title={I18n.t('app.common.previous')}
                 disabled={count <= 0}
                 onPress={() => {
-                  if (count > 0) {
-                    this.setCount(count - 1);
-                    tracker.logEvent('user-action-press-previous');
-                  }
+                  this.setCount(count - 1);
+                  tracker.logEvent('user-action-press-previous');
                 }}
                 titleStyles={{ fontSize: 20 }}
               />

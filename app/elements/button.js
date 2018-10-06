@@ -87,6 +87,7 @@ const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
       return (
         <TouchableNativeFeedback
           onPress={onPress}
+          disabled={disabled}
           background={TouchableNativeFeedback.Ripple('#F7F7F7')}
         >
           <View style={[styles.button, styles.buttonRaised]}>{children}</View>
@@ -98,6 +99,7 @@ const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
     return (
       <TouchableNativeFeedback
         onPress={onPress}
+        disabled={disabled}
         background={TouchableNativeFeedback.Ripple()}
       >
         <View style={[styles.button, styles.buttonFLat]}>{children}</View>
