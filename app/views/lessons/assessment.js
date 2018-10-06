@@ -131,6 +131,22 @@ const styles = StyleSheet.create({
   },
 });
 
+const getRandom = (arr, n) => {
+  const result = new Array(n);
+  let len = arr.length;
+  const taken = new Array(len);
+  if (n > len) {
+    throw new RangeError('getRandom: more elements taken than available');
+  }
+  while (n--) {
+    // eslint-disable-line no-plusplus, no-param-reassign
+    const x = Math.floor(Math.random() * len);
+    result[n] = arr[x in taken ? taken[x] : x];
+    taken[x] = --len in taken ? taken[len] : len; // eslint-disable-line no-plusplus
+  }
+  return result;
+};
+
 type Props = {};
 export default class Assessment extends Component<Props> {
   static navigationOptions = ({ navigation }) => {
@@ -209,22 +225,6 @@ export default class Assessment extends Component<Props> {
   }
 
   getTiles() {
-    const getRandom = (arr, n) => {
-      const result = new Array(n);
-      let len = arr.length;
-      const taken = new Array(len);
-      if (n > len) {
-        throw new RangeError('getRandom: more elements taken than available');
-      }
-      while (n--) {
-        // eslint-disable-line no-plusplus, no-param-reassign
-        const x = Math.floor(Math.random() * len);
-        result[n] = arr[x in taken ? taken[x] : x];
-        taken[x] = --len in taken ? taken[len] : len; // eslint-disable-line no-plusplus
-      }
-      return result;
-    };
-
     const {
       navigation: {
         state: {
@@ -255,9 +255,9 @@ export default class Assessment extends Component<Props> {
 
     let tiles;
     if (hiragana.includes(cleanKana[0])) {
-      tiles = [...getRandom(hiragana, length), ...cleanKana];
+      tiles = [...getRandom(hiragana, length), ...cleanKana.split('')];
     } else {
-      tiles = [...getRandom(katakana, length), ...cleanKana];
+      tiles = [...getRandom(katakana, length), ...cleanKana.split('')];
     }
 
     shuffle(tiles);
@@ -429,8 +429,10 @@ export default class Assessment extends Component<Props> {
                 title={I18n.t('app.common.previous')}
                 disabled={count <= 0}
                 onPress={() => {
-                  this.setCount(count - 1);
-                  tracker.logEvent('user-action-press-previous');
+                  if (count > 0) {
+                    this.setCount(count - 1);
+                    tracker.logEvent('user-action-press-previous');
+                  }
                 }}
                 titleStyles={{ fontSize: 20 }}
               />
