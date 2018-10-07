@@ -81,7 +81,10 @@ const styles = StyleSheet.create({
 
 const ButtonWrapper = ({ raised, disabled, onPress, children }) => {
   // All Android Buttons should have the ripple effect
-  if (Platform.OS === 'android') {
+  if (
+    Platform.OS === 'android' &&
+    TouchableNativeFeedback.canUseNativeForeground()
+  ) {
     // Raised Android buttons need a white ripple
     if (raised) {
       return (
