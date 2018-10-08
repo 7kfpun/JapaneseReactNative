@@ -1,72 +1,73 @@
 {
-  "today": {
-    "title": "今日の日本语",
-    "shuffle": "洗牌",
-    "out_of_connection": "互联网不给力"
-  },
-  "kana": {
-    "title": "五十音",
-    "seion": "清音",
-    "dakuon": "浊音",
-    "youon": "拗音",
-    "hiragana": "平假名",
-    "katakana": "片假名",
-    "romaji": "罗马字"
-  },
-  "lessons": {
-    "title": "みんなの日本語",
-    "beginning_one": "初级 I",
-    "beginning_two": "初级 II",
-    "advanced_one": "进阶 I",
-    "advanced_two": "进阶 II"
-  },
-  "read-all": {
-    "premium-required-title": "只供高级用户",
-    "premium-required-description": "成为我们的高级用户，享受更多功能"
-  },
-  "search": {
-    "title": "搜索",
-    "cancel": "取消",
-    "description": "你可以在所有课程中寻找单词。"
-  },
-  "vocab-list": {
-    "learn": "学习",
-    "quiz": "测验",
-    "read-all": "全读"
-  },
-  "feedback": {
-    "title": "反馈/建议",
-    "url": "https://airtable.com/shrsfl03pU6HnE5Ar",
-    "issueUrl": "https://airtable.com/shroN1qoYaCZRsfEw?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
-    "feedback": "反馈",
-    "help-translation": "参与翻译？",
-    "help-translation-description": "我们已经开放了社区的翻译流程，因为您最了解 Minna no Nihongo 应该如何翻译成您的语言。 请与您的翻译同事一起参与翻译，投票和讨论。"
-  },
-  "about": {
-    "title": "关于",
-    "notification_label": "学习通知 (每日)",
-    "restore": "恢复您的应用内购买",
-    "purchase_title": "您现在是我们的高级用户",
-    "purchase_description": "开心学习日语！",
-    "purchase_item_title": "进阶版",
-    "purchase_item_description": "进阶功能、去除所有广告",
-    "restore_failed_title": "您从未购买过我们的进阶版"
-  },
-  "common": {
-    "kana": "日",
-    "kanji": "汉",
-    "romaji": "注",
-    "translation": "翻译",
-    "previous": "上一个",
-    "next": "下一个",
-    "random": "随机",
-    "lesson_no": "第 {{lesson_no}} 课",
-    "tts_required": "请启用 Google 文字转语音引擎"
-  },
-  "rating": {
-    "title": "喜欢我们 APP 吗？",
-    "title_description": "给我们 5 颗星以鼓励我们吧",
-    "feedback_description": "对哪里不满意？給我们點意見吧。",
-    "feedback_url": "https://airtable.com/shrsfl03pU6HnE5Ar"
-  }
+    "today": {
+        "title": "\u4eca\u65e5\u306e\u65e5\u672c\u8bed",
+        "shuffle": "\u6d17\u724c",
+        "out_of_connection": "\u4e92\u8054\u7f51\u4e0d\u7ed9\u529b"
+    },
+    "kana": {
+        "title": "\u4e94\u5341\u97f3",
+        "seion": "\u6e05\u97f3",
+        "dakuon": "\u6d4a\u97f3",
+        "youon": "\u62d7\u97f3",
+        "hiragana": "\u5e73\u5047\u540d",
+        "katakana": "\u7247\u5047\u540d",
+        "romaji": "\u7f57\u9a6c\u5b57"
+    },
+    "lessons": {
+        "title": "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e",
+        "beginning_one": "\u521d\u7ea7 I",
+        "beginning_two": "\u521d\u7ea7 II",
+        "advanced_one": "\u8fdb\u9636 I",
+        "advanced_two": "\u8fdb\u9636 II"
+    },
+    "read-all": {
+        "premium-required-title": "\u53ea\u4f9b\u9ad8\u7ea7\u7528\u6237",
+        "premium-required-description": "\u6210\u4e3a\u6211\u4eec\u7684\u9ad8\u7ea7\u7528\u6237\uff0c\u4eab\u53d7\u66f4\u591a\u529f\u80fd"
+    },
+    "search": {
+        "title": "\u641c\u7d22",
+        "cancel": "\u53d6\u6d88",
+        "description": "\u4f60\u53ef\u4ee5\u5728\u6240\u6709\u8bfe\u7a0b\u4e2d\u5bfb\u627e\u5355\u8bcd\u3002"
+    },
+    "vocab-list": {
+        "learn": "\u5b66\u4e60",
+        "quiz": "\u6d4b\u9a8c",
+        "read-all": "\u5168\u8bfb",
+        "listening": "\u542c\u529b"
+    },
+    "feedback": {
+        "title": "\u53cd\u9988\/\u5efa\u8bae",
+        "url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "feedback": "\u53cd\u9988",
+        "help-translation": "\u53c2\u4e0e\u7ffb\u8bd1\uff1f",
+        "help-translation-description": "\u6211\u4eec\u5df2\u7ecf\u5f00\u653e\u4e86\u793e\u533a\u7684\u7ffb\u8bd1\u6d41\u7a0b\uff0c\u56e0\u4e3a\u60a8\u6700\u4e86\u89e3 Minna no Nihongo \u5e94\u8be5\u5982\u4f55\u7ffb\u8bd1\u6210\u60a8\u7684\u8bed\u8a00\u3002 \u8bf7\u4e0e\u60a8\u7684\u7ffb\u8bd1\u540c\u4e8b\u4e00\u8d77\u53c2\u4e0e\u7ffb\u8bd1\uff0c\u6295\u7968\u548c\u8ba8\u8bba\u3002"
+    },
+    "about": {
+        "title": "\u5173\u4e8e",
+        "notification_label": "\u5b66\u4e60\u901a\u77e5 (\u6bcf\u65e5)",
+        "restore": "\u6062\u590d\u60a8\u7684\u5e94\u7528\u5185\u8d2d\u4e70",
+        "purchase_title": "\u60a8\u73b0\u5728\u662f\u6211\u4eec\u7684\u9ad8\u7ea7\u7528\u6237",
+        "purchase_description": "\u5f00\u5fc3\u5b66\u4e60\u65e5\u8bed\uff01",
+        "purchase_item_title": "\u8fdb\u9636\u7248",
+        "purchase_item_description": "\u8fdb\u9636\u529f\u80fd\u3001\u53bb\u9664\u6240\u6709\u5e7f\u544a",
+        "restore_failed_title": "\u60a8\u4ece\u672a\u8d2d\u4e70\u8fc7\u6211\u4eec\u7684\u8fdb\u9636\u7248"
+    },
+    "common": {
+        "kana": "\u65e5",
+        "kanji": "\u6c49",
+        "romaji": "\u6ce8",
+        "translation": "\u7ffb\u8bd1",
+        "previous": "\u4e0a\u4e00\u4e2a",
+        "next": "\u4e0b\u4e00\u4e2a",
+        "random": "\u968f\u673a",
+        "lesson_no": "\u7b2c {{lesson_no}} \u8bfe",
+        "tts_required": "\u8bf7\u542f\u7528 Google \u6587\u5b57\u8f6c\u8bed\u97f3\u5f15\u64ce"
+    },
+    "rating": {
+        "title": "\u559c\u6b22\u6211\u4eec APP \u5417\uff1f",
+        "title_description": "\u7ed9\u6211\u4eec 5 \u9897\u661f\u4ee5\u9f13\u52b1\u6211\u4eec\u5427",
+        "feedback_description": "\u5bf9\u54ea\u91cc\u4e0d\u6ee1\u610f\uff1f\u7d66\u6211\u4eec\u9ede\u610f\u898b\u5427\u3002",
+        "feedback_url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}"
+    }
 }

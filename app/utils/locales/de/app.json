@@ -1,12 +1,4 @@
 {
-    "feedback": {
-        "help-translation": "Treten Sie uns bei.",
-        "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
-        "title": "Feedback",
-        "url": "https://airtable.com/shr7xvYAyInUbJNif",
-        "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
-        "feedback": "Feedback"
-    },
     "today": {
         "title": "Heute",
         "shuffle": "Mischen",
@@ -40,7 +32,16 @@
     "vocab-list": {
         "learn": "Lernen",
         "quiz": "Test",
-        "read-all": "Vollständige Lektüre"
+        "read-all": "Vollst\u00e4ndige Lekt\u00fcre",
+        "listening": "Listening"
+    },
+    "feedback": {
+        "title": "Feedback",
+        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "feedback": "Feedback",
+        "help-translation": "Treten Sie uns bei.",
+        "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen."
     },
     "about": {
         "title": "\u00dcber uns",
@@ -56,7 +57,7 @@
         "kana": "Kana",
         "kanji": "Kanji",
         "romaji": "Romaji",
-        "translation": "Übersetzung",
+        "translation": "\u00dcbersetzung",
         "previous": "Letzte",
         "next": "N\u00e4chste",
         "random": "Willk\u00fcrlich",
@@ -67,6 +68,6 @@
         "title": "Haben Sie Lust mit die App?",
         "title_description": "Wenn Ihnen diese App gef\u00e4llt, bewerten Sie uns bitte mit 5 Sternen.",
         "feedback_description": "Wenn Ihnen die App nicht gef\u00e4llt, geben Sie uns Feedback, damit wir uns in Zukunft noch weiter verbessern k\u00f6nnen.",
-        "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif"
+        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }

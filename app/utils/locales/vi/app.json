@@ -1,67 +1,73 @@
 {
-  "today": {
-    "title": "Hôm Nay",
-    "shuffle": "Trộn",
-    "out_of_connection": "Ra khỏi kết nối Internet"
-  },
-  "kana": {
-    "title": "Kana",
-    "seion": "Seion",
-    "dakuon": "Dakuon",
-    "youon": "Youon"
-  },
-  "lessons": {
-    "title": "みんなの日本語",
-    "beginning_one": "Beg. I",
-    "beginning_two": "Beg. II",
-    "advanced_one": "Adv. I",
-    "advanced_two": "Adv. II"
-  },
-  "read-all": {
-    "premium-required-title": "Chỉ khả dụng cho người dùng Premium",
-    "premium-required-description": "Hãy trở thành người dùng Premium của chúng tôi để tận hưởng nhiều tính năng hơn"
-  },
-  "search": {
-    "title": "Tìm kiếm",
-    "cancel": "Hủy bỏ",
-    "description": "Bạn có thể tìm thấy từ trên tất cả các bài học."
-  },
-  "vocab-list": {
-    "learn": "Học hỏi",
-    "quiz": "Kiểm tra",
-    "read-all": "Đọc toàn bộ"
-  },
-  "feedback": {
-    "title": "Phản hồi",
-    "url": "https://airtable.com/shr7xvYAyInUbJNif",
-    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
-    "feedback": "Phản hồi"
-  },
-  "about": {
-    "title": "Về chúng tôi",
-    "notification_label": "Nhắc nhở học tập (hàng ngày)",
-    "restore": "Khôi phục mua hàng trong ứng dụng của bạn",
-    "purchase_title": "Bạn hiện là người dùng cao cấp của chúng tôi",
-    "purchase_description": "Thích học tiếng Nhật",
-    "purchase_item_title": "Premium",
-    "purchase_item_description": "Xóa tất cả quảng cáo biểu ngữ và quảng cáo bật lên",
-    "restore_failed_title": "Bạn chưa bao giờ mua Premium của chúng tôi trước đây"
-  },
-  "common": {
-    "kana": "Kana",
-    "kanji": "Kanji",
-    "romaji": "Rōmaji",
-    "translation": "Dịch",
-    "previous": "Trước",
-    "next": "Kế tiếp",
-    "random": "Ngẫu nhiên",
-    "lesson_no": "Bài {{lesson_no}}",
-    "tts_required": "Vui lòng bật Google Text-to-Speech"
-  },
-  "rating": {
-    "title": "Thưởng thức?",
-    "title_description": "Hãy cho chúng tôi 5 sao để cổ vũ chúng tôi nếu bạn thích ứng dụng này.",
-    "feedback_description": "Không thích APP của chúng tôi? Hãy cho chúng tôi một số phản hồi. Chúng tôi chắc chắn sẽ tiếp tục cải thiện.",
-    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif"
-  }
+    "today": {
+        "title": "H\u00f4m Nay",
+        "shuffle": "Tr\u1ed9n",
+        "out_of_connection": "Ra kh\u1ecfi k\u1ebft n\u1ed1i Internet"
+    },
+    "kana": {
+        "title": "Kana",
+        "seion": "Seion",
+        "dakuon": "Dakuon",
+        "youon": "Youon",
+        "hiragana": "Hiragana",
+        "katakana": "Katakana",
+        "romaji": "Romaji"
+    },
+    "lessons": {
+        "title": "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e",
+        "beginning_one": "Beg. I",
+        "beginning_two": "Beg. II",
+        "advanced_one": "Adv. I",
+        "advanced_two": "Adv. II"
+    },
+    "read-all": {
+        "premium-required-title": "Ch\u1ec9 kh\u1ea3 d\u1ee5ng cho ng\u01b0\u1eddi d\u00f9ng Premium",
+        "premium-required-description": "H\u00e3y tr\u1edf th\u00e0nh ng\u01b0\u1eddi d\u00f9ng Premium c\u1ee7a ch\u00fang t\u00f4i \u0111\u1ec3 t\u1eadn h\u01b0\u1edfng nhi\u1ec1u t\u00ednh n\u0103ng h\u01a1n"
+    },
+    "search": {
+        "title": "Ti\u0300m ki\u00ea\u0301m",
+        "cancel": "H\u1ee7y b\u1ecf",
+        "description": "B\u1ea1n c\u00f3 th\u1ec3 t\u00ecm th\u1ea5y t\u1eeb tr\u00ean t\u1ea5t c\u1ea3 c\u00e1c b\u00e0i h\u1ecdc."
+    },
+    "vocab-list": {
+        "learn": "H\u1ecdc h\u1ecfi",
+        "quiz": "Ki\u1ec3m tra",
+        "read-all": "\u0110\u1ecdc to\u00e0n b\u1ed9",
+        "listening": "L\u1eafng nghe"
+    },
+    "feedback": {
+        "title": "Ph\u1ea3n h\u1ed3i",
+        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "feedback": "Ph\u1ea3n h\u1ed3i",
+        "help-translation": "Join the force?",
+        "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion with your fellow translators."
+    },
+    "about": {
+        "title": "V\u1ec1 ch\u00fang t\u00f4i",
+        "notification_label": "Nh\u1eafc nh\u1edf h\u1ecdc t\u1eadp (h\u00e0ng ng\u00e0y)",
+        "restore": "Kh\u00f4i ph\u1ee5c mua h\u00e0ng trong \u1ee9ng d\u1ee5ng c\u1ee7a b\u1ea1n",
+        "purchase_title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
+        "purchase_description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
+        "purchase_item_title": "Premium",
+        "purchase_item_description": "X\u00f3a t\u1ea5t c\u1ea3 qu\u1ea3ng c\u00e1o bi\u1ec3u ng\u1eef v\u00e0 qu\u1ea3ng c\u00e1o b\u1eadt l\u00ean",
+        "restore_failed_title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y"
+    },
+    "common": {
+        "kana": "Kana",
+        "kanji": "Kanji",
+        "romaji": "R\u014dmaji",
+        "translation": "D\u1ecbch",
+        "previous": "Tr\u01b0\u1edbc",
+        "next": "K\u1ebf ti\u1ebfp",
+        "random": "Ng\u1eabu nhi\u00ean",
+        "lesson_no": "B\u00e0i {{lesson_no}}",
+        "tts_required": "Vui l\u00f2ng b\u1eadt Google Text-to-Speech"
+    },
+    "rating": {
+        "title": "Th\u01b0\u1edfng th\u1ee9c?",
+        "title_description": "H\u00e3y cho ch\u00fang t\u00f4i 5 sao \u0111\u1ec3 c\u1ed5 v\u0169 ch\u00fang t\u00f4i n\u1ebfu b\u1ea1n th\u00edch \u1ee9ng d\u1ee5ng n\u00e0y.",
+        "feedback_description": "Kh\u00f4ng th\u00edch APP c\u1ee7a ch\u00fang t\u00f4i? H\u00e3y cho ch\u00fang t\u00f4i m\u1ed9t s\u1ed1 ph\u1ea3n h\u1ed3i. Ch\u00fang t\u00f4i ch\u1eafc ch\u1eafn s\u1ebd ti\u1ebfp t\u1ee5c c\u1ea3i thi\u1ec7n.",
+        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
+    }
 }

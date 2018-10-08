@@ -1,73 +1,73 @@
 {
-  "today": {
-    "title": "Today",
-    "shuffle": "Shuffle",
-    "out_of_connection": "Out of Internet Connection"
-  },
-  "kana": {
-    "title": "Kana",
-    "seion": "Seion",
-    "dakuon": "Dakuon",
-    "youon": "Youon",
-    "hiragana": "Hiragana",
-    "katakana": "Katakana",
-    "romaji": "Romaji"
-  },
-  "lessons": {
-    "title": "みんなの日本語",
-    "beginning_one": "Beg. I",
-    "beginning_two": "Beg. II",
-    "advanced_one": "Adv. I",
-    "advanced_two": "Adv. II"
-  },
-  "read-all": {
-    "premium-required-title": "Only available for Premium users",
-    "premium-required-description": "Be our Premium user to enjoy more features"
-  },
-  "search": {
-    "title": "Search",
-    "cancel": "Cancel",
-    "description": "You can find any word across all lessons."
-  },
-  "vocab-list": {
-    "learn": "Learn",
-    "quiz": "Quiz",
-    "read-all": "Read All",
-    "listening": "Listening"
-  },
-  "feedback": {
-    "title": "Feedback",
-    "url": "https://airtable.com/shr7xvYAyInUbJNif",
-    "issueUrl": "https://airtable.com/shrYPMku3tmLPiPLp?prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
-    "feedback": "Feedback",
-    "help-translation": "Join the force?",
-    "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion with your fellow translators."
-  },
-  "about": {
-    "title": "About",
-    "notification_label": "Study Reminder (Daily)",
-    "restore": "Restore your in-app purchases",
-    "purchase_title": "You are our premium user now",
-    "purchase_description": "Enjoy learning Japanese",
-    "purchase_item_title": "Premium",
-    "purchase_item_description": "Premium features and ads removing",
-    "restore_failed_title": "You have never purchased our Premium before"
-  },
-  "common": {
-    "kana": "Kana",
-    "kanji": "Kanji",
-    "romaji": "Romaji",
-    "translation": "Translation",
-    "previous": "Previous",
-    "next": "Next",
-    "random": "Random",
-    "lesson_no": "Lesson {{lesson_no}}",
-    "tts_required": "Google Text-to-Speech is required for using this app"
-  },
-  "rating": {
-    "title": "Enjoy our APP?",
-    "title_description": "Please give us 5 stars to cheer we up if you like this app.",
-    "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
-    "feedback_url": "https://airtable.com/shr7xvYAyInUbJNif"
-  }
+    "today": {
+        "title": "Today",
+        "shuffle": "Shuffle",
+        "out_of_connection": "Out of Internet Connection"
+    },
+    "kana": {
+        "title": "Kana",
+        "seion": "Seion",
+        "dakuon": "Dakuon",
+        "youon": "Youon",
+        "hiragana": "Hiragana",
+        "katakana": "Katakana",
+        "romaji": "Romaji"
+    },
+    "lessons": {
+        "title": "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e",
+        "beginning_one": "Beg. I",
+        "beginning_two": "Beg. II",
+        "advanced_one": "Adv. I",
+        "advanced_two": "Adv. II"
+    },
+    "read-all": {
+        "premium-required-title": "Only available for Premium users",
+        "premium-required-description": "Be our Premium user to enjoy more features"
+    },
+    "search": {
+        "title": "Search",
+        "cancel": "Cancel",
+        "description": "You can find any word across all lessons."
+    },
+    "vocab-list": {
+        "learn": "Learn",
+        "quiz": "Quiz",
+        "read-all": "Read All",
+        "listening": "Listening"
+    },
+    "feedback": {
+        "title": "Feedback",
+        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "feedback": "Feedback",
+        "help-translation": "Join the force?",
+        "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion with your fellow translators."
+    },
+    "about": {
+        "title": "About",
+        "notification_label": "Study Reminder (Daily)",
+        "restore": "Restore your in-app purchases",
+        "purchase_title": "You are our premium user now",
+        "purchase_description": "Enjoy learning Japanese",
+        "purchase_item_title": "Premium",
+        "purchase_item_description": "Premium features and ads removing",
+        "restore_failed_title": "You have never purchased our Premium before"
+    },
+    "common": {
+        "kana": "Kana",
+        "kanji": "Kanji",
+        "romaji": "Romaji",
+        "translation": "Translation",
+        "previous": "Previous",
+        "next": "Next",
+        "random": "Random",
+        "lesson_no": "Lesson {{lesson_no}}",
+        "tts_required": "Google Text-to-Speech is required for using this app"
+    },
+    "rating": {
+        "title": "Enjoy our APP?",
+        "title_description": "Please give us 5 stars to cheer we up if you like this app.",
+        "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
+        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
+    }
 }
