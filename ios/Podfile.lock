@@ -99,6 +99,8 @@ PODS:
   - react-native-onesignal (3.2.7):
     - OneSignal (= 2.8.8)
     - React
+  - react-native-safari-view (1.0.0):
+    - React
   - React/Core (0.57.0):
     - yoga (= 0.57.0.React)
   - React/fishhook (0.57.0)
@@ -150,8 +152,8 @@ PODS:
 
 DEPENDENCIES:
   - CleverTap-iOS-SDK
-  - Crashlytics
-  - Fabric
+  - Crashlytics (~> 3.10.7)
+  - Fabric (~> 1.7.11)
   - Firebase/AdMob
   - Firebase/Analytics
   - Firebase/Core
@@ -160,6 +162,7 @@ DEPENDENCIES:
   - GoogleMobileAdsMediationFacebook
   - OneSignal (< 3.0, >= 2.8.5)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
+  - react-native-safari-view (from `../node_modules/react-native-safari-view`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
@@ -208,6 +211,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-onesignal:
     :path: "../node_modules/react-native-onesignal"
+  react-native-safari-view:
+    :path: "../node_modules/react-native-safari-view"
   ReactNativeFabric:
     :path: "../node_modules/react-native-fabric"
   RNDeviceInfo:
@@ -249,6 +254,7 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-onesignal: f4300ef8272ef1d8d81b00f0207335f305bcaadb
+  react-native-safari-view: a20edf45cdf96f32649e66924ee04d725a170bff
   ReactNativeFabric: 3912bf9c714d7cc98110eadf06ca6dedef219322
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNFirebase: 2b25fd2e60269f26bb0a76c71dcc942b35a77df0
@@ -259,6 +265,6 @@ SPEC CHECKSUMS:
   TextToSpeech: d68418db07e7d3ce39fd3360ccca8d8165cef859
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 51d0fc7c18d0ce4b37102989a0336f8ee12de85b
+PODFILE CHECKSUM: 201a80f24d95ec9605a05d1b8ee118fc2fa2e7d0
 
 COCOAPODS: 1.5.2

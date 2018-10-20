@@ -4,6 +4,8 @@ const fs = require('fs');
 const md5 = require('md5');
 const queryString = require('querystring');
 
+const { config } = require('../app/config');
+
 const PROJECT_ID = 316516;
 const FILE_NAME = './app/utils/locales/en/app.json';
 

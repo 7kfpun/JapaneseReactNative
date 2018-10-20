@@ -40,8 +40,10 @@
         "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
         "feedback": "Feedback",
-        "help-translation": "Join the force?",
-        "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion with your fellow translators."
+        "help-translation": "Lost in translation?",
+        "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
+        "tts-instruction": "No sound?",
+        "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
         "title": "About",

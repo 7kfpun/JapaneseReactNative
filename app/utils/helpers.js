@@ -1,3 +1,26 @@
+import { Linking, Platform } from 'react-native';
+
+import SafariView from 'react-native-safari-view';
+
+// Open Safari browser on iOS, a new app browser on Android
+export const openURL = url => {
+  tempUrl = encodeURI(url);
+  if (Platform.OS === 'ios') {
+    SafariView.isAvailable()
+      .then(
+        SafariView.show({
+          url: tempUrl,
+        })
+      )
+      .catch(error => {
+        console.log(error);
+        Linking.openURL(tempUrl);
+      });
+  } else {
+    Linking.openURL(tempUrl);
+  }
+};
+
 // Returns a new list containing elements from the population while leaving the original population unchanged.
 export const shuffle = a => {
   let j;
@@ -42,6 +65,16 @@ export const choice = arr => arr[Math.floor(Math.random() * arr.length)];
 
 // Return a random integer N such that 0 <= N <= max.
 export const randomInt = max => Math.floor(Math.random() * Math.floor(max));
+
+// No operation function.
+export const prepareURL = (url, replacers) => {
+  let tempUrl = url;
+  Object.keys(replacers).forEach(key => {
+    value = replacers[key];
+    tempUrl = tempUrl.replace(`{${key}}`, value);
+  });
+  return tempUrl;
+};
 
 // No operation function.
 export const noop = () => {};

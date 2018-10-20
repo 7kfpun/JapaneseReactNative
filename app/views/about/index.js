@@ -12,6 +12,7 @@ import {
 
 import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
+import DeviceInfo from 'react-native-device-info';
 import OneSignal from 'react-native-onesignal';
 import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
@@ -20,6 +21,7 @@ import NotificationSetting from './components/notification-setting';
 import AdMob from '../../elements/admob';
 import Row from '../../elements/row';
 
+import { openURL, prepareURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -224,6 +226,28 @@ export default class About extends Component<Props> {
                 tracker.logEvent('user-action-feedback');
               }}
             />
+            {Platform.OS === 'android' && (
+              <Row
+                first={false}
+                text={I18n.t('app.feedback.tts-instruction')}
+                onPress={() => {
+                  const uri = prepareURL(
+                    I18n.t('app.feedback.tts-instruction-url'),
+                    {
+                      manufacturer: DeviceInfo.getManufacturer(),
+                      model: DeviceInfo.getModel(),
+                      name: DeviceInfo.getDeviceId(),
+                      type: DeviceInfo.getDeviceName(),
+                      version: DeviceInfo.getSystemVersion(),
+                      brand: DeviceInfo.getBrand(),
+                    }
+                  );
+
+                  openURL(uri);
+                  tracker.logEvent('user-action-tts-instruction');
+                }}
+              />
+            )}
             <Row
               first={false}
               text={I18n.t('app.feedback.help-translation')}

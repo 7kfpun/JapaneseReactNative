@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ActivityIndicator, StyleSheet, View, WebView } from 'react-native';
+import {
+  ActivityIndicator,
+  Platform,
+  StyleSheet,
+  View,
+  WebView,
+} from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 
+import { prepareURL } from '../utils/helpers';
 import I18n from '../utils/i18n';
 
 const styles = StyleSheet.create({
@@ -57,12 +64,14 @@ export default class Feedback extends Component<Props> {
         item: { kana, kanji, romaji },
       } = params;
 
-      uri = I18n.t('app.feedback.issueUrl')
-        .replace('{lesson}', lesson)
-        .replace('{kana}', kana)
-        .replace('{kanji}', kanji)
-        .replace('{romaji}', romaji)
-        .replace('{translation}', I18n.t(`minna.${lesson}.${romaji}`));
+      uri = prepareURL(I18n.t('app.feedback.issueUrl'), {
+        lesson,
+        kana,
+        kanji,
+        romaji,
+        platform: Platform.OS,
+        translation: I18n.t(`minna.${lesson}.${romaji}`),
+      });
     } else {
       uri = I18n.t('app.feedback.url');
     }
