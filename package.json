@@ -15,7 +15,8 @@
     "precommit": "lint-staged",
     "test": "jest",
     "upload-locale": "node ./scripts/upload.js",
-    "download-locales": "node ./scripts/download.js"
+    "download-locales": "node ./scripts/download.js",
+    "download-minna": "node ./scripts/download-minna.js"
   },
   "lint-staged": {
     "src/**/*.{js,json,css}": [
@@ -40,7 +41,7 @@
     "react-native-fabric": "corymsmith/react-native-fabric",
     "react-native-firebase": "^4.3.8",
     "react-native-i18n": "^2.0.12",
-    "react-native-iap": "^2.2.2",
+    "react-native-iap": "^2.3.17",
     "react-native-onesignal": "^3.2.7",
     "react-native-restart": "^0.0.7",
     "react-native-safari-view": "^2.1.0",
