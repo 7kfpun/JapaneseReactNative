@@ -53,7 +53,8 @@
         "purchase_description": "Enjoy learning Japanese",
         "purchase_item_title": "Premium",
         "purchase_item_description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
-        "restore_failed_title": "You have never purchased our Premium before"
+        "restore_failed_title": "You have never purchased our Premium before",
+        "version": "Version"
     },
     "common": {
         "kana": "Kana",

@@ -19,6 +19,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,6 +49,11 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
  Typed access to the id of the ad placement.
  */
 @property (nonatomic, copy, readonly) NSString *placementID;
+
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 /**
  Initializes and returns a newly allocated FBInstreamAdView object with the

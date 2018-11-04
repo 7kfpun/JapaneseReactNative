@@ -21,6 +21,7 @@
 #import <StoreKit/StoreKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -50,11 +51,14 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 
 /**
   Returns true if the rewarded video ad has been successfully loaded.
-
-
  You should check `isAdValid` before trying to show the ad.
  */
 @property (nonatomic, getter=isAdValid, readonly) BOOL adValid;
+
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 /**
   This is a method to initialize an FBRewardedVideoAd matching the given placement id.

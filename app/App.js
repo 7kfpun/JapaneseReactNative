@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Platform, Text, ToastAndroid, YellowBox } from 'react-native';
 
+import firebase from 'react-native-firebase';
 import { iOSColors } from 'react-native-typography';
 import {
   createBottomTabNavigator,
@@ -29,6 +30,10 @@ import I18n from './utils/i18n';
 
 if (!__DEV__) {
   console.log = () => {};
+}
+
+if (__DEV__) {
+  firebase.config().enableDeveloperMode();
 }
 
 Tts.getInitStatus().then(

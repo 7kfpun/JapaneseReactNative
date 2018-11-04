@@ -18,6 +18,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdExtraHint.h>
+
 #import "FBAdSettings.h"
 
 typedef NS_ENUM(NSInteger, FBAdFormatType) {
@@ -133,7 +135,10 @@ typedef NS_ENUM(NSInteger, FBNativeAdsCachePolicy) {
 @property (nonatomic, copy, readonly, nullable, getter=getAdNetwork) NSString *adNetwork;
 
 @property (nonatomic, getter=isRegistered, readonly) BOOL registered;
-
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 /**
  This is a method to disconnect a FBNativeAd with the UIView you used to display the native ads.
  */

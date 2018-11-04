@@ -19,6 +19,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBNativeAd.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -69,6 +70,11 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
   Returns YES after nativeAdsLoaded: message has been sent.
  */
 @property (nonatomic, assign, getter=isValid, readonly) BOOL valid;
+
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 /**
   Initialize the native ads manager.

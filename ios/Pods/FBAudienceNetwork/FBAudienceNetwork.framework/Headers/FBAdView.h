@@ -20,6 +20,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBAdSize.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -84,6 +85,10 @@ FB_CLASS_EXPORT
   the delegate
  */
 @property (nonatomic, weak, nullable) id<FBAdViewDelegate> delegate;
+/**
+  FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 @end
 

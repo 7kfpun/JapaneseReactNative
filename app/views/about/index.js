@@ -16,6 +16,7 @@ import OneSignal from 'react-native-onesignal';
 import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
 
+import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';
 import AdMob from '../../elements/admob';
 import Row from '../../elements/row';
@@ -261,6 +262,8 @@ export default class About extends Component<Props> {
           </View>
 
           <NotificationSetting />
+
+          <Backdoor />
         </ScrollView>
 
         {!isPremium && (

@@ -20,6 +20,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBNativeAd.h>
 #import <FBAudienceNetwork/FBNativeAdsManager.h>
 
@@ -35,6 +36,11 @@ FB_CLASS_EXPORT
   Passes delegate methods from FBNativeAd. Separate delegate calls will be made for each native ad contained.
  */
 @property (nonatomic, weak, nullable) id<FBNativeAdDelegate> delegate;
+
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 /**
   Create a FBNativeAdCollectionViewAdProvider.

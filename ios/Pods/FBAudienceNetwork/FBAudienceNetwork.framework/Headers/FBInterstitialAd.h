@@ -20,6 +20,7 @@
 #import <StoreKit/StoreKit.h>
 
 #import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBAdView.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -41,6 +42,10 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
   the delegate
  */
 @property (nonatomic, weak, nullable) id<FBInterstitialAdDelegate> delegate;
+/**
+ FBAdExtraHint to provide extra info
+ */
+@property (nonatomic, strong, nullable) FBAdExtraHint *extraHint;
 
 /**
   This is a method to initialize an FBInterstitialAd matching the given placement id.
