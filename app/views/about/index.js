@@ -10,7 +10,6 @@ import {
   View,
 } from 'react-native';
 
-import { SafeAreaView } from 'react-navigation';
 import * as RNIap from 'react-native-iap';
 import DeviceInfo from 'react-native-device-info';
 import OneSignal from 'react-native-onesignal';
@@ -185,7 +184,7 @@ export default class About extends Component<Props> {
     const { isPremium, productList, purchasedProductIds } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
           {!isPremium && (
             <View style={{ marginTop: 10 }}>
@@ -269,7 +268,7 @@ export default class About extends Component<Props> {
             unitId={config.admob[`japanese-${Platform.OS}-about-banner`]}
           />
         )}
-      </SafeAreaView>
+      </View>
     );
   }
 }
