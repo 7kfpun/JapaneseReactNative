@@ -187,6 +187,8 @@ export default class About extends Component<Props> {
     return (
       <View style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
+          <Backdoor />
+
           {!isPremium && (
             <View style={{ marginTop: 10 }}>
               {productList.map((product, i) => (
@@ -262,8 +264,6 @@ export default class About extends Component<Props> {
           </View>
 
           <NotificationSetting />
-
-          <Backdoor />
         </ScrollView>
 
         {!isPremium && (

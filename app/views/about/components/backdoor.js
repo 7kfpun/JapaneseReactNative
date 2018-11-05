@@ -20,7 +20,7 @@ import tracker from '../../../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 50,
+    marginVertical: 20,
   },
   row: {
     paddingHorizontal: 10,
