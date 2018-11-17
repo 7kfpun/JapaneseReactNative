@@ -43,6 +43,7 @@
         "help-translation": "Lost in translation?",
         "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
         "tts-instruction": "No sound?",
+        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
@@ -53,6 +54,7 @@
         "purchase_description": "Enjoy learning Japanese",
         "purchase_item_title": "Premium",
         "purchase_item_description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
+        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
         "restore_failed_title": "You have never purchased our Premium before",
         "version": "Version"
     },

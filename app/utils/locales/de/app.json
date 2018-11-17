@@ -43,6 +43,7 @@
         "help-translation": "Treten Sie uns bei.",
         "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
         "tts-instruction": "No sound?",
+        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a \"Japanese\" language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
@@ -53,7 +54,9 @@
         "purchase_description": "Viel Spa\u00df zum Japanisch lernen",
         "purchase_item_title": "Premium",
         "purchase_item_description": "Premium-Funktionen deaktivieren und Anzeigen blockieren",
-        "restore_failed_title": "Sie haben die Premium noch nie gekauft"
+        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+        "restore_failed_title": "Sie haben die Premium noch nie gekauft",
+        "version": "Version"
     },
     "common": {
         "kana": "Kana",

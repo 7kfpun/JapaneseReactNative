@@ -238,16 +238,14 @@ export default class VocabList extends Component<Props> {
           >
             <Ionicons name="ios-list-box" size={16} color={iOSColors.yellow} />
           </ActionButton.Item>
-          {Platform.OS === 'ios' && (
-            <ActionButton.Item
-              size={42}
-              buttonColor="#3498DB"
-              title={I18n.t('app.vocab-list.read-all')}
-              onPress={() => this.gotoLockFeature('read-all')}
-            >
-              <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
-            </ActionButton.Item>
-          )}
+          <ActionButton.Item
+            size={42}
+            buttonColor="#3498DB"
+            title={I18n.t('app.vocab-list.read-all')}
+            onPress={() => this.gotoLockFeature('read-all')}
+          >
+            <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
+          </ActionButton.Item>
           <ActionButton.Item
             size={42}
             buttonColor="#1ABC9C"

@@ -189,6 +189,8 @@ export default class About extends Component<Props> {
         <ScrollView style={{ alignSelf: 'stretch' }}>
           <Backdoor />
 
+          <NotificationSetting />
+
           {!isPremium && (
             <View style={{ marginTop: 10 }}>
               {productList.map((product, i) => (
@@ -203,7 +205,11 @@ export default class About extends Component<Props> {
                     product.localizedPrice
                   })`}
                   // description={product.description}
-                  description={I18n.t('app.about.purchase_item_description')}
+                  description={
+                    Platform.OS === 'android'
+                      ? I18n.t('app.about.purchase-item-description-android')
+                      : I18n.t('app.about.purchase_item_description')
+                  }
                   first={i === 0}
                   last={i === productList.length - 1}
                   onPress={() => this.buySubscribeItem(product)}
@@ -232,6 +238,7 @@ export default class About extends Component<Props> {
               <Row
                 first={false}
                 text={I18n.t('app.feedback.tts-instruction')}
+                description={I18n.t('app.feedback.tts-instruction-description')}
                 onPress={() => {
                   const uri = prepareURL(
                     I18n.t('app.feedback.tts-instruction-url'),
@@ -262,8 +269,6 @@ export default class About extends Component<Props> {
               }}
             />
           </View>
-
-          <NotificationSetting />
         </ScrollView>
 
         {!isPremium && (

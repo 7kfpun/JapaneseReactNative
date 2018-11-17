@@ -43,6 +43,7 @@
         "help-translation": "Lost in translation?",
         "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
         "tts-instruction": "No sound?",
+        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a \"Japanese\" language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
@@ -53,7 +54,9 @@
         "purchase_description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
         "purchase_item_title": "Premium",
         "purchase_item_description": "X\u00f3a t\u1ea5t c\u1ea3 qu\u1ea3ng c\u00e1o bi\u1ec3u ng\u1eef v\u00e0 qu\u1ea3ng c\u00e1o b\u1eadt l\u00ean",
-        "restore_failed_title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y"
+        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+        "restore_failed_title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
+        "version": "Version"
     },
     "common": {
         "kana": "Kana",
