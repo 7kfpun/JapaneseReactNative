@@ -15,9 +15,10 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.smixx.fabric.FabricPackage;
 import io.fabric.sdk.android.Fabric;
 import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
+import io.invertase.firebase.config.RNFirebaseRemoteConfigPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
-import io.invertase.firebase.crash.RNFirebaseCrashPackage;
 import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.perf.RNFirebasePerformancePackage;
 import io.invertase.firebase.RNFirebasePackage;
 import net.no_mad.tts.TextToSpeechPackage;
@@ -51,9 +52,10 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebaseAdMobPackage(),
             new RNFirebaseAnalyticsPackage(),
             new RNFirebaseCrashlyticsPackage(),
-            new RNFirebaseCrashPackage(),
+            new RNFirebaseMessagingPackage(),
             new RNFirebasePackage(),
             new RNFirebasePerformancePackage(),
+            new RNFirebaseRemoteConfigPackage(),
             new RNI18nPackage(),
             new RNIapPackage(),
             new TextToSpeechPackage(),

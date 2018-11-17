@@ -107,11 +107,12 @@ android {
         applicationId "com.kfpun.japanese"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "1.0.11"
+        versionCode 21
+        versionName "1.0.15"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -152,7 +153,6 @@ android {
 }
 
 dependencies {
-    compile project(':clevertap-react-native')
     implementation project(':react-native-restart')
     implementation project(':react-native-fabric')
     implementation project(':react-native-i18n')
@@ -168,16 +168,31 @@ dependencies {
     }
 
     // Firebase dependencies
-    implementation 'com.google.firebase:firebase-core:15.0.+'
-    implementation 'com.google.firebase:firebase-ads:15.0.+'
-    implementation 'com.google.firebase:firebase-analytics:15.0.+'
-    implementation 'com.google.firebase:firebase-crash:15.0.+'
-    implementation 'com.google.firebase:firebase-perf:15.0.+'
-    implementation 'com.google.firebase:firebase-messaging:15.0.+'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-ads:17.0.0'
+    implementation 'com.google.firebase:firebase-perf:16.2.0'  // need multidex
+    implementation 'com.google.firebase:firebase-config:16.1.0'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'  // need multidex
 
-    implementation(project(':react-native-firebase')) {
+    implementation (project(':react-native-firebase')) {
         exclude group: 'com.google.android.gms', module: 'play-services-base'
-        transitive = false
+        exclude group: 'com.google.android.gms', module: 'play-services-ads'
+        exclude group: 'com.google.android.gms', module: 'play-services-analytics'
+        exclude group: 'com.google.android.gms', module: 'play-services-gcm'
+        exclude group: 'com.google.android.gms', module: 'play-services-location'
+        exclude group: 'com.google.android.gms', module: 'play-services-maps'
+
+        exclude group: 'com.google.firebase', module: 'firebase-core'
+        exclude group: 'com.google.firebase', module: 'firebase-config'
+        exclude group: 'com.google.firebase', module: 'firebase-auth'
+        exclude group: 'com.google.firebase', module: 'firebase-database'
+        exclude group: 'com.google.firebase', module: 'firebase-storage'
+        exclude group: 'com.google.firebase', module: 'firebase-messaging'
+        exclude group: 'com.google.firebase', module: 'firebase-crash'
+        exclude group: 'com.google.firebase', module: 'firebase-perf'
+        exclude group: 'com.google.firebase', module: 'firebase-ads'
+        exclude group: 'com.google.firebase', module: 'firebase-firestore'
+        exclude group: 'com.google.firebase', module: 'firebase-invites'
     }
 
     implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') {
@@ -194,6 +209,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 // Run this once to be able to run the application with BUCK
