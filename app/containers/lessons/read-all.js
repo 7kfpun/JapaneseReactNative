@@ -19,7 +19,7 @@ import { items as vocabs } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
-import AdMob from '../../elements/admob';
+import AdMob from '../../components/admob';
 
 import { config } from '../../config';
 

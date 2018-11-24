@@ -6,8 +6,8 @@ import { FlatList, Platform, StyleSheet, View } from 'react-native';
 import firebase from 'react-native-firebase';
 import store from 'react-native-simple-store';
 
-import AdMob from '../../elements/admob';
-import VocabItem from '../../elements/vocab-item';
+import AdMob from '../../components/admob';
+import VocabItem from '../../components/vocab-item';
 
 import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';

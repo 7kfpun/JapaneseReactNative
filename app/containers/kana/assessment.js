@@ -18,9 +18,9 @@ import { choice, randomInt } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
-import AdMob from '../../elements/admob';
-import CustomButton from '../../elements/button';
-import SoundButton from '../../elements/sound-button';
+import AdMob from '../../components/admob';
+import CustomButton from '../../components/button';
+import SoundButton from '../../components/sound-button';
 
 import { config } from '../../config';
 

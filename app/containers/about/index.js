@@ -18,8 +18,8 @@ import store from 'react-native-simple-store';
 
 import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';
-import AdMob from '../../elements/admob';
-import Row from '../../elements/row';
+import AdMob from '../../components/admob';
+import Row from '../../components/row';
 
 import { openURL, prepareURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';

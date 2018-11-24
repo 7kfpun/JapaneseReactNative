@@ -8,8 +8,8 @@ import store from 'react-native-simple-store';
 
 import Fuse from 'fuse.js';
 
-import AdMob from '../../elements/admob';
-import VocabItem from '../../elements/vocab-item';
+import AdMob from '../../components/admob';
+import VocabItem from '../../components/vocab-item';
 
 import { flatten } from '../../utils/helpers';
 import { items } from '../../utils/items';

@@ -16,7 +16,7 @@ import store from 'react-native-simple-store';
 
 import Tile from './components/tile';
 
-import AdMob from '../../elements/admob';
+import AdMob from '../../components/admob';
 
 import { seion, dakuon, youon } from '../../utils/kana';
 import I18n from '../../utils/i18n';

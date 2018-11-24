@@ -12,19 +12,19 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
-import About from './views/about';
-import Assessment from './views/lessons/assessment';
-import AssessmentListening from './views/lessons/assessment-listening';
-import AssessmentMC from './views/lessons/assessment-mc';
-import Feedback from './views/feedback';
-import Kana from './views/kana';
-import KanaAssessment from './views/kana/assessment';
-import Lessons from './views/lessons';
-import ReadAll from './views/lessons/read-all';
-import Search from './views/search';
-import SelectMode from './views/lessons/select-mode';
-import Today from './views/today';
-import VocabList from './views/lessons/vocab-list';
+import About from './containers/about';
+import Assessment from './containers/lessons/assessment';
+import AssessmentListening from './containers/lessons/assessment-listening';
+import AssessmentMC from './containers/lessons/assessment-mc';
+import Feedback from './containers/feedback';
+import Kana from './containers/kana';
+import KanaAssessment from './containers/kana/assessment';
+import Lessons from './containers/lessons';
+import ReadAll from './containers/lessons/read-all';
+import Search from './containers/search';
+import SelectMode from './containers/lessons/select-mode';
+import Today from './containers/today';
+import VocabList from './containers/lessons/vocab-list';
 
 import tracker from './utils/tracker';
 import I18n from './utils/i18n';

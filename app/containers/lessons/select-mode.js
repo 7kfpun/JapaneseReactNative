@@ -6,7 +6,7 @@ import { Alert, ScrollView, Platform, StyleSheet, View } from 'react-native';
 import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 
-import AdMob from '../../elements/admob';
+import AdMob from '../../components/admob';
 import ModeItem from './components/mode-item';
 
 import I18n from '../../utils/i18n';

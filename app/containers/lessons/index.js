@@ -7,7 +7,7 @@ import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 
-import AdMob from '../../elements/admob';
+import AdMob from '../../components/admob';
 import LessonItem from './components/lesson-item';
 
 import { range } from '../../utils/helpers';

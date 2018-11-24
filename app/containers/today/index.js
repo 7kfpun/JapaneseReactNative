@@ -11,11 +11,11 @@ import { cleanWord, shuffle } from '../../utils/helpers';
 
 import OutOfConnection from './components/out-of-connection';
 
-import AdMob from '../../elements/admob';
-import Card from '../../elements/card';
-import CardOptionSelector from '../../elements/card-option-selector';
-import CustomButton from '../../elements/button';
-import SoundButton from '../../elements/sound-button';
+import AdMob from '../../components/admob';
+import Card from '../../components/card';
+import CardOptionSelector from '../../components/card-option-selector';
+import CustomButton from '../../components/button';
+import SoundButton from '../../components/sound-button';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
