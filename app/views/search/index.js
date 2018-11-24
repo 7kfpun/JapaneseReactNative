@@ -45,7 +45,11 @@ const styles = StyleSheet.create({
 
 const vocabs = flatten(
   Object.keys(items).map(key =>
-    items[key].data.map(i => Object.assign({ lesson: key }, i))
+    items[key].data.map(i => ({
+      lesson: key,
+      translation: I18n.t(`minna.${key}.${i.romaji}`),
+      ...i,
+    }))
   )
 );
 
@@ -73,7 +77,7 @@ export default class SearchView extends Component<Props> {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['kanji', 'kana', 'romaji'],
+      keys: ['kanji', 'kana', 'romaji', 'translation'],
     };
     const fuse = new Fuse(vocabs, options);
     const searchResult = fuse.search(searchText);
