@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import firebase from 'react-native-firebase';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -28,6 +29,23 @@ import Rating from '../../components/rating';
 import SoundButton from '../../components/sound-button';
 
 import { config } from '../../config';
+
+const advert = firebase
+  .admob()
+  .interstitial(config.admob[`japanese-${Platform.OS}-assessment-popup`]);
+
+const { AdRequest } = firebase.admob;
+const request = new AdRequest();
+request
+  .addKeyword('study')
+  .addKeyword('japanese')
+  .addKeyword('travel');
+
+advert.loadAd(request.build());
+
+advert.on('onAdLoaded', () => {
+  console.log('Advert ready to show.');
+});
 
 const { width } = Dimensions.get('window');
 
@@ -209,7 +227,22 @@ export default class Assessment extends Component<Props> {
 
     store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
 
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+    store.get('isPremium').then(isPremium => {
+      this.setState({ isPremium });
+
+      setTimeout(() => {
+        if (
+          !__DEV__ &&
+          !isPremium &&
+          advert.isLoaded() &&
+          item > 3 &&
+          Math.random() < 0.7
+        ) {
+          advert.show();
+          tracker.logEvent('app-action-assessment-popup');
+        }
+      }, 3000);
+    });
   }
 
   componentWillUnmount() {

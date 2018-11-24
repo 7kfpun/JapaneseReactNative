@@ -17,7 +17,7 @@ import { config } from '../../config';
 
 const advert = firebase
   .admob()
-  .interstitial(config.admob[`japanese-${Platform.OS}-popup`]);
+  .interstitial(config.admob[`japanese-${Platform.OS}-vocab-list-popup`]);
 
 const { AdRequest } = firebase.admob;
 const request = new AdRequest();
@@ -89,8 +89,8 @@ export default class VocabList extends Component<Props> {
           !__DEV__ &&
           !isPremium &&
           advert.isLoaded() &&
-          item > 2 &&
-          Math.random() < 0.6
+          item > 3 &&
+          Math.random() < 0.7
         ) {
           advert.show();
           tracker.logEvent('app-action-vocab-list-popup');
