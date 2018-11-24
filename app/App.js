@@ -231,10 +231,7 @@ export default () => (
 
       console.log('prevScreen', prevScreen, 'currentScreen', currentScreen);
       if (prevScreen !== currentScreen) {
-        // pause tts if changing from read-all view to others
-        if (prevScreen === 'read-all') {
-          Tts.pause();
-        }
+        Tts.pause();
 
         tracker.view(currentScreen);
       }
