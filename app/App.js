@@ -22,6 +22,7 @@ import KanaAssessment from './views/kana/assessment';
 import Lessons from './views/lessons';
 import ReadAll from './views/lessons/read-all';
 import Search from './views/search';
+import SelectMode from './views/lessons/select-mode';
 import Today from './views/today';
 import VocabList from './views/lessons/vocab-list';
 
@@ -94,6 +95,7 @@ const lessonNavigator = createStackNavigator(
   {
     lessons: Lessons,
     'vocab-list': VocabList,
+    'select-mode': SelectMode,
     assessment: Assessment,
     'assessment-mc': AssessmentMC,
     'assessment-listening': AssessmentListening,

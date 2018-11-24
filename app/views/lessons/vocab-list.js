@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Alert, FlatList, Platform, StyleSheet, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
-import ActionButton from 'react-native-action-button';
 import firebase from 'react-native-firebase';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../elements/admob';
@@ -89,6 +86,7 @@ export default class VocabList extends Component<Props> {
 
       setTimeout(() => {
         if (
+          !__DEV__ &&
           !isPremium &&
           advert.isLoaded() &&
           item > 2 &&
@@ -115,83 +113,6 @@ export default class VocabList extends Component<Props> {
     this.setState({ vocabs: vocabularies[item].data });
   };
 
-  gotoLockFeature = lockFeature => {
-    // lockFeature: assessment-listening, assessment-mc, read-all
-    if (
-      ['assessment-listening', 'assessment-mc', 'read-all'].indexOf(
-        lockFeature
-      ) === -1
-    ) {
-      return false;
-    }
-
-    const {
-      navigation,
-      navigation: {
-        state: {
-          params: { item },
-        },
-      },
-    } = this.props;
-
-    const { isPremium } = this.state;
-
-    if (isPremium || item <= 3) {
-      navigation.navigate(lockFeature, { lesson: item });
-      tracker.logEvent(`user-action-goto-${lockFeature}`, {
-        lesson: `${item}`,
-      });
-    } else {
-      tracker.logEvent(`app-action-${lockFeature}-premium-required`, {
-        lesson: `${item}`,
-      });
-
-      Alert.alert(
-        I18n.t('app.read-all.premium-required-title'),
-        I18n.t('app.read-all.premium-required-description'),
-        [
-          {
-            text: 'Cancel',
-            onPress: () => {
-              console.log('Cancel Pressed');
-              tracker.logEvent(`user-action-${lockFeature}-premium`, {
-                lesson: `${item}`,
-                interest: false,
-              });
-            },
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => {
-              navigation.navigate('about');
-              tracker.logEvent(`user-action-${lockFeature}-premium`, {
-                lesson: `${item}`,
-                interest: true,
-              });
-            },
-          },
-        ],
-        { cancelable: false }
-      );
-    }
-  };
-
-  gotoAssessment = () => {
-    const {
-      navigation,
-      navigation: {
-        state: {
-          params: { item },
-        },
-      },
-    } = this.props;
-    navigation.navigate('assessment', { lesson: item });
-    tracker.logEvent('user-action-goto-assessment', {
-      lesson: `${item}`,
-    });
-  };
-
   render() {
     const {
       navigation: {
@@ -213,48 +134,6 @@ export default class VocabList extends Component<Props> {
             <VocabItem index={index} item={item} lesson={lesson} />
           )}
         />
-
-        <ActionButton
-          buttonColor="#2196F3"
-          offsetX={15}
-          offsetY={isPremium ? 30 : 52}
-          spacing={18}
-        >
-          {Platform.OS === 'ios' && (
-            <ActionButton.Item
-              size={42}
-              buttonColor="#9B59B6"
-              title={I18n.t('app.vocab-list.listening')}
-              onPress={() => this.gotoLockFeature('assessment-listening')}
-            >
-              <Ionicons name="ios-headset" size={16} color={iOSColors.yellow} />
-            </ActionButton.Item>
-          )}
-          <ActionButton.Item
-            size={42}
-            buttonColor="#9B59B6"
-            title={I18n.t('app.vocab-list.quiz')}
-            onPress={() => this.gotoLockFeature('assessment-mc')}
-          >
-            <Ionicons name="ios-list-box" size={16} color={iOSColors.yellow} />
-          </ActionButton.Item>
-          <ActionButton.Item
-            size={42}
-            buttonColor="#3498DB"
-            title={I18n.t('app.vocab-list.read-all')}
-            onPress={() => this.gotoLockFeature('read-all')}
-          >
-            <Ionicons name="ios-play" size={16} color={iOSColors.yellow} />
-          </ActionButton.Item>
-          <ActionButton.Item
-            size={42}
-            buttonColor="#1ABC9C"
-            title={I18n.t('app.vocab-list.learn')}
-            onPress={this.gotoAssessment}
-          >
-            <Ionicons name="ios-school" size={16} color={iOSColors.white} />
-          </ActionButton.Item>
-        </ActionButton>
 
         {!isPremium && (
           <AdMob

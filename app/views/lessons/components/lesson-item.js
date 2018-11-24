@@ -5,8 +5,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 
-import I18n from '../utils/i18n';
-import tracker from '../utils/tracker';
+import I18n from '../../../utils/i18n';
+import tracker from '../../../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,8 +36,8 @@ export default class LessonItem extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('vocab-list', { item });
-          tracker.logEvent('user-action-goto-vocab-list', {
+          navigation.navigate('select-mode', { item, navigation });
+          tracker.logEvent('user-action-goto-select-mode', {
             lesson: `${item}`,
           });
         }}

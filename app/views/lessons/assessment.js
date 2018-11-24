@@ -199,11 +199,15 @@ export default class Assessment extends Component<Props> {
     store
       .get('isTranslationShown')
       .then(isTranslationShown => this.setState({ isTranslationShown }));
-    store.get('isSoundOn').then(isSoundOn => this.setState({ isSoundOn }));
-    store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
+    store
+      .get('isSoundOn')
+      .then(isSoundOn => this.setState({ isSoundOn }))
+      .then(() => {
+        this.getTotal();
+        this.getTiles();
+      });
 
-    this.getTotal();
-    this.getTiles();
+    store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
 
     store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }

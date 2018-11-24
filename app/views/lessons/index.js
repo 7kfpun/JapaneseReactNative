@@ -8,7 +8,7 @@ import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../elements/admob';
-import LessonItem from '../../elements/lesson-item';
+import LessonItem from './components/lesson-item';
 
 import { range } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
