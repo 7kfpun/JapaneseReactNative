@@ -107,8 +107,8 @@ android {
         applicationId "com.kfpun.japanese"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 21
-        versionName "1.0.15"
+        versionCode 24
+        versionName "1.0.18"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -205,6 +205,8 @@ dependencies {
     implementation project(':clevertap-react-native')
 
     implementation 'com.clevertap.android:clevertap-android-sdk:3.2.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0' // Remove after upgrading React Native version from 0.57.0
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
