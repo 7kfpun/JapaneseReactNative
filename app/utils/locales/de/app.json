@@ -30,6 +30,7 @@
         "description": "Hier finden Sie alle Vokabeln aus den Lektionen."
     },
     "vocab-list": {
+        "vocab": "Vocabularies",
         "learn": "Lernen",
         "quiz": "Test",
         "read-all": "Vollst\u00e4ndige Lekt\u00fcre",
@@ -43,7 +44,7 @@
         "help-translation": "Treten Sie uns bei.",
         "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
         "tts-instruction": "No sound?",
-        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a \"Japanese\" language pack. We recommend using Google text to speech engine.",
+        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {

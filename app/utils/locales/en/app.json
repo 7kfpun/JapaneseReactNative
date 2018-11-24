@@ -30,6 +30,7 @@
         "description": "You can find any word across all lessons."
     },
     "vocab-list": {
+        "vocab": "Vocabularies",
         "learn": "Learn",
         "quiz": "Quiz",
         "read-all": "Read All",

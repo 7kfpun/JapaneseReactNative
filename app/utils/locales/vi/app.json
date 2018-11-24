@@ -30,6 +30,7 @@
         "description": "B\u1ea1n c\u00f3 th\u1ec3 t\u00ecm th\u1ea5y t\u1eeb tr\u00ean t\u1ea5t c\u1ea3 c\u00e1c b\u00e0i h\u1ecdc."
     },
     "vocab-list": {
+        "vocab": "Vocabularies",
         "learn": "H\u1ecdc h\u1ecfi",
         "quiz": "Ki\u1ec3m tra",
         "read-all": "\u0110\u1ecdc to\u00e0n b\u1ed9",
@@ -43,7 +44,7 @@
         "help-translation": "Lost in translation?",
         "help-translation-description": "We've opened the translation process up to the community because you know best how Minna no Nihongo should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
         "tts-instruction": "No sound?",
-        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a \"Japanese\" language pack. We recommend using Google text to speech engine.",
+        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
