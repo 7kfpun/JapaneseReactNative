@@ -205,6 +205,14 @@ export default class Assessment extends Component<Props> {
   };
 
   componentDidMount() {
+    const {
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+      },
+    } = this.props;
+
     store
       .get('isKanjiShown')
       .then(isKanjiShown => this.setState({ isKanjiShown }));
@@ -235,7 +243,7 @@ export default class Assessment extends Component<Props> {
           !__DEV__ &&
           !isPremium &&
           advert.isLoaded() &&
-          item > 3 &&
+          lesson > 3 &&
           Math.random() < 0.7
         ) {
           advert.show();
