@@ -110,14 +110,18 @@ export default class ReadAll extends Component<Props> {
       } = this.state;
       if (newCount + 1 < newTotal) {
         const c = parseInt((newSpeakTimes + 1) / 2, 10);
-        this.setState(
-          {
-            count: c,
-            speakTimes: newSpeakTimes + 1,
-            readingText: vocabs[lesson].data[c].kana,
-          },
-          () => this.setCount(newCount)
-        );
+        if (c < total) {
+          this.setState(
+            {
+              count: c,
+              speakTimes: newSpeakTimes + 1,
+              readingText: vocabs[lesson].data[c].kana,
+            },
+            () => this.setCount(newCount)
+          );
+        } else {
+          // TODO: read done
+        }
       } else {
         setTimeout(() => goBack(), 3000);
       }
