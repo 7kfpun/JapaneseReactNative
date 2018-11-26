@@ -32,6 +32,8 @@ target 'Japanese' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crash'
   pod 'Firebase/Performance'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/RemoteConfig'
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
@@ -54,21 +56,16 @@ target 'Japanese' do
   pod 'OneSignal', '>= 2.8.5', '< 3.0'
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
-  pod 'RNIap', :path => '../node_modules/react-native-iap'
-
-  pod 'CleverTap-iOS-SDK'
+  # pod 'CleverTap-iOS-SDK'
 
   pod 'react-native-safari-view', :path => '../node_modules/react-native-safari-view'
+
+  pod 'RNIap', :path => '../node_modules/react-native-iap'
 
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.name == 'react-native-google-maps'
-      target.build_configurations.each do |config|
-        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
-      end
-    end
     if target.name == 'React'
       target.remove_from_project
     end
