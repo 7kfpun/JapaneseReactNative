@@ -107,8 +107,8 @@ android {
         applicationId "com.kfpun.japanese"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 24
-        versionName "1.0.18"
+        versionCode 27
+        versionName "1.0.21"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
