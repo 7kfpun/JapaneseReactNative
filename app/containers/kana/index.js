@@ -94,7 +94,7 @@ export default class Kana extends Component<Props> {
                 correctNumber: 0,
                 total: 0,
               });
-              tracker.logEvent('user-action-goto-kana-assessment', {
+              tracker.logEvent('goto-kana-assessment', {
                 mode: assessmentMode.mode,
               });
             }}

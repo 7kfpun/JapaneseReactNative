@@ -86,11 +86,11 @@ export default class SelectMode extends Component<Props> {
 
     if (isPremium || item <= FIRST_FREE_LESSONS) {
       navigation.navigate(lockFeature, { lesson: item });
-      tracker.logEvent(`user-action-goto-${lockFeature}`, {
+      tracker.logEvent(`goto-${lockFeature}`, {
         lesson: `${item}`,
       });
     } else {
-      tracker.logEvent(`app-action-${lockFeature}-premium-required`, {
+      tracker.logEvent(`app-${lockFeature}-premium-required`, {
         lesson: `${item}`,
       });
 
@@ -102,7 +102,7 @@ export default class SelectMode extends Component<Props> {
             text: 'Cancel',
             onPress: () => {
               console.log('Cancel Pressed');
-              tracker.logEvent(`user-action-${lockFeature}-premium`, {
+              tracker.logEvent(`${lockFeature}-premium`, {
                 lesson: `${item}`,
                 interest: false,
               });
@@ -113,7 +113,7 @@ export default class SelectMode extends Component<Props> {
             text: 'OK',
             onPress: () => {
               navigation.navigate('about');
-              tracker.logEvent(`user-action-${lockFeature}-premium`, {
+              tracker.logEvent(`${lockFeature}-premium`, {
                 lesson: `${item}`,
                 interest: true,
               });
@@ -128,7 +128,7 @@ export default class SelectMode extends Component<Props> {
   gotoAssessment = item => {
     const { navigation } = this.props;
     navigation.navigate('assessment', { lesson: item });
-    tracker.logEvent('user-action-goto-assessment', {
+    tracker.logEvent('goto-assessment', {
       lesson: `${item}`,
     });
   };
@@ -152,7 +152,7 @@ export default class SelectMode extends Component<Props> {
             title={I18n.t('app.vocab-list.vocab')}
             onPress={() => {
               navigation.navigate('vocab-list', { item });
-              tracker.logEvent('user-action-goto-vocab-list', {
+              tracker.logEvent('goto-vocab-list', {
                 lesson: `${item}`,
               });
             }}

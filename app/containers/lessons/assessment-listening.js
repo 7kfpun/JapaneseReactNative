@@ -215,14 +215,14 @@ export default class AssessmentMC extends Component<Props> {
         correctNumber: correctNumber ? correctNumber + 1 : 1,
         total: total ? total + 1 : 1,
       });
-      tracker.logEvent('user-action-assessment-listening-result-correct', {
+      tracker.logEvent('assessment-listening-result-correct', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
     } else {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total ? total + 1 : 1 });
-      tracker.logEvent('user-action-assessment-listening-result-incorrect', {
+      tracker.logEvent('assessment-listening-result-incorrect', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -289,7 +289,7 @@ export default class AssessmentMC extends Component<Props> {
           onPress={() => {
             Tts.setDefaultLanguage('ja');
             Tts.speak(question.kana);
-            tracker.logEvent('user-action-assessment-listening-read', {
+            tracker.logEvent('assessment-listening-read', {
               text: question.kanji,
             });
           }}
@@ -402,7 +402,7 @@ export default class AssessmentMC extends Component<Props> {
             title={I18n.t('app.common.next')}
             onPress={() => {
               this.getNext();
-              tracker.logEvent('user-action-press-assessment-listening-next');
+              tracker.logEvent('press-assessment-listening-next');
             }}
             titleStyles={{ fontSize: 20 }}
           />
@@ -412,7 +412,7 @@ export default class AssessmentMC extends Component<Props> {
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(question.kana);
-              tracker.logEvent('user-action-assessment-listening-read', {
+              tracker.logEvent('assessment-listening-read', {
                 text: question.kanji,
               });
             }}

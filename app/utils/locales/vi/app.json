@@ -2,7 +2,7 @@
     "today": {
         "title": "H\u00f4m Nay",
         "shuffle": "Tr\u1ed9n",
-        "out_of_connection": "Ra kh\u1ecfi k\u1ebft n\u1ed1i Internet"
+        "out-of-connection": "Ra kh\u1ecfi k\u1ebft n\u1ed1i Internet"
     },
     "kana": {
         "title": "Kana",
@@ -53,11 +53,22 @@
         "restore": "Kh\u00f4i ph\u1ee5c mua h\u00e0ng trong \u1ee9ng d\u1ee5ng c\u1ee7a b\u1ea1n",
         "purchase_title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
         "purchase_description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
-        "purchase_item_title": "Premium",
-        "purchase_item_description": "X\u00f3a t\u1ea5t c\u1ea3 qu\u1ea3ng c\u00e1o bi\u1ec3u ng\u1eef v\u00e0 qu\u1ea3ng c\u00e1o b\u1eadt l\u00ean",
-        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
         "restore_failed_title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
-        "version": "Version"
+        "version": "Version",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium": {
+            "title": "Get Premium",
+            "title-month": "month Premium",
+            "title-months": "months Premium",
+            "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
+            "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue"
+        }
     },
     "common": {
         "kana": "Kana",

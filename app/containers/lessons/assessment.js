@@ -251,7 +251,7 @@ export default class Assessment extends Component<Props> {
           Math.random() < 0.7
         ) {
           advert.show();
-          tracker.logEvent('app-action-assessment-popup');
+          tracker.logEvent('app-assessment-popup');
         }
       }, 3000);
     });
@@ -429,7 +429,7 @@ export default class Assessment extends Component<Props> {
                 const tempAnswers = [...answers];
                 tempAnswers.pop();
                 this.setState({ answers: tempAnswers });
-                tracker.logEvent('user-action-press-backspace');
+                tracker.logEvent('press-backspace');
               }}
             />
           </View>
@@ -443,19 +443,19 @@ export default class Assessment extends Component<Props> {
                 onPress={() => {
                   if (answers.length < cleanWord(kana).length) {
                     this.setState({ answers: [...answers, tile] }, () => {
-                      tracker.logEvent('user-action-press-answer', { tile });
+                      tracker.logEvent('press-answer', { tile });
 
                       const { answers: newAnswers } = this.state;
 
                       if (newAnswers.join('') === cleanWord(kana)) {
-                        tracker.logEvent('user-action-result-correct', {
+                        tracker.logEvent('result-correct', {
                           vocab: kana,
                         });
                         console.log('correct');
                       }
 
                       if (!cleanWord(kana).startsWith(newAnswers.join(''))) {
-                        tracker.logEvent('user-action-result-incorrect', {
+                        tracker.logEvent('result-incorrect', {
                           vocab: kana,
                         });
                         console.log('incorrect');
@@ -479,7 +479,7 @@ export default class Assessment extends Component<Props> {
                 disabled={count <= 0}
                 onPress={() => {
                   this.setCount(count - 1);
-                  tracker.logEvent('user-action-press-previous');
+                  tracker.logEvent('press-previous');
                 }}
                 titleStyles={{ fontSize: 20 }}
               />
@@ -489,7 +489,7 @@ export default class Assessment extends Component<Props> {
                 onPress={() => {
                   Tts.setDefaultLanguage('ja');
                   Tts.speak(cleanWord(kana));
-                  tracker.logEvent('user-action-assessment-read');
+                  tracker.logEvent('assessment-read');
                 }}
               />
 
@@ -499,7 +499,7 @@ export default class Assessment extends Component<Props> {
                 disabled={count >= total - 1}
                 onPress={() => {
                   this.setCount(count + 1);
-                  tracker.logEvent('user-action-press-next', {
+                  tracker.logEvent('press-next', {
                     lesson: `${lesson}`,
                   });
                 }}
@@ -515,7 +515,7 @@ export default class Assessment extends Component<Props> {
                 title={I18n.t('app.common.random')}
                 onPress={() => {
                   this.getNext();
-                  tracker.logEvent('user-action-press-random');
+                  tracker.logEvent('press-random');
                 }}
                 titleStyles={{ fontSize: 20 }}
               />
@@ -525,7 +525,7 @@ export default class Assessment extends Component<Props> {
                 onPress={() => {
                   Tts.setDefaultLanguage('ja');
                   Tts.speak(cleanWord(kana));
-                  tracker.logEvent('user-action-assessment-read');
+                  tracker.logEvent('assessment-read');
                 }}
               />
             </Fragment>

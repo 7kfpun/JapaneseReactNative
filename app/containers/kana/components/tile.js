@@ -86,7 +86,7 @@ export default class Tile extends Component<Props> {
         onPress={() => {
           Tts.setDefaultLanguage('ja');
           Tts.speak(hiragana);
-          tracker.logEvent('user-action-press-kana-read', { text: hiragana });
+          tracker.logEvent('press-kana-read', { text: hiragana });
         }}
       >
         <View

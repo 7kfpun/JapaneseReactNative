@@ -37,7 +37,7 @@ export default class LessonItem extends Component {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('select-mode', { item, navigation });
-          tracker.logEvent('user-action-goto-select-mode', {
+          tracker.logEvent('goto-select-mode', {
             lesson: `${item}`,
           });
         }}

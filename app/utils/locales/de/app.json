@@ -2,7 +2,7 @@
     "today": {
         "title": "Heute",
         "shuffle": "Mischen",
-        "out_of_connection": "Ohne Internetverbindung"
+        "out-of-connection": "Ohne Internetverbindung"
     },
     "kana": {
         "title": "Kana",
@@ -53,11 +53,22 @@
         "restore": "Stellen Sie Ihre In-App-K\u00e4ufe wieder her",
         "purchase_title": "Jetzt Premium-Mitglied werden",
         "purchase_description": "Viel Spa\u00df zum Japanisch lernen",
-        "purchase_item_title": "Premium",
-        "purchase_item_description": "Premium-Funktionen deaktivieren und Anzeigen blockieren",
-        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
         "restore_failed_title": "Sie haben die Premium noch nie gekauft",
-        "version": "Version"
+        "version": "Version",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium": {
+            "title": "Get Premium",
+            "title-month": "month Premium",
+            "title-months": "months Premium",
+            "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
+            "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue"
+        }
     },
     "common": {
         "kana": "Kana",

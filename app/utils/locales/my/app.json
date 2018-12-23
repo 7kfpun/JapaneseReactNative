@@ -2,7 +2,7 @@
     "today": {
         "title": "\u1012\u102e\u1031\u1014\u1094",
         "shuffle": "\u1031\u101b\u102c\u1031\u1019\u103c\u1011\u102c\u1038\u101e\u100a\u1039",
-        "out_of_connection": "\u1021\u1004\u1039\u1010\u102c\u1014\u1000\u1039\u101c\u102d\u102f\u1004\u1039\u1038\u1019\u1019\u102d\u103b\u1001\u1004\u1039\u1038"
+        "out-of-connection": "\u1021\u1004\u1039\u1010\u102c\u1014\u1000\u1039\u101c\u102d\u102f\u1004\u1039\u1038\u1019\u1019\u102d\u103b\u1001\u1004\u1039\u1038"
     },
     "kana": {
         "title": "Kana",
@@ -53,11 +53,22 @@
         "restore": "Restore your in-app purchases",
         "purchase_title": "\u101e\u1004\u103b\u101e\u100a\u103b\u101a\u1001\u102f\u1000\u103b\u103d\u1014\u103a\u1010\u1031\u102c\u103a\u1010\u102d\u102f\u1037\u101b\u1032\u1037\u1015\u101b\u102e\u1019\u102e\u101a\u1036\u1021\u101e\u102f\u1036\u1038\u1015\u103c\u102f\u101e\u1030\u1010\u103d\u1031\u101f\u102c",
         "purchase_description": "\u1002\u103b\u1015\u1014\u103a\u101e\u1004\u103a\u101a\u1030\u1001\u1036\u1005\u102c\u1038\u1000\u103c\u100a\u103a\u1037\u1015\u102b",
-        "purchase_item_title": "Premium",
-        "purchase_item_description": "Premium features and ads removing",
-        "purchase-item-description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
         "restore_failed_title": "You have never purchased our Premium before",
-        "version": "Version"
+        "version": "Version",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium": {
+            "title": "Get Premium",
+            "title-month": "month Premium",
+            "title-months": "months Premium",
+            "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
+            "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue"
+        }
     },
     "common": {
         "kana": "Kana",

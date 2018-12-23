@@ -89,7 +89,7 @@ export default class About extends Component<Props> {
               text={I18n.t('app.feedback.feedback')}
               onPress={() => {
                 navigation.navigate('feedback');
-                tracker.logEvent('user-action-feedback');
+                tracker.logEvent('feedback');
               }}
             />
             {Platform.OS === 'android' && (
@@ -111,7 +111,7 @@ export default class About extends Component<Props> {
                   );
 
                   openURL(uri);
-                  tracker.logEvent('user-action-tts-instruction');
+                  tracker.logEvent('tts-instruction');
                 }}
               />
             )}
@@ -123,7 +123,7 @@ export default class About extends Component<Props> {
                 Linking.openURL(
                   'https://minna-app.oneskyapp.com/collaboration'
                 );
-                tracker.logEvent('user-action-help-translation');
+                tracker.logEvent('help-translation');
               }}
             />
           </View>

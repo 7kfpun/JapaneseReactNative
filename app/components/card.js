@@ -133,7 +133,7 @@ export default class Card extends Component {
                   lesson,
                 };
                 navigation.navigate('vocab-feedback', data);
-                tracker.logEvent('user-action-vocab-feedback', data);
+                tracker.logEvent('vocab-feedback', data);
               }}
             >
               <Ionicons name="ios-flag" size={24} color="black" />

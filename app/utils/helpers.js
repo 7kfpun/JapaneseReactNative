@@ -1,6 +1,7 @@
 import { Linking, Platform } from 'react-native';
 
 import SafariView from 'react-native-safari-view';
+import Tts from 'react-native-tts';
 
 // Open Safari browser on iOS, a new app browser on Android
 export const openURL = url => {
@@ -78,3 +79,11 @@ export const prepareURL = (url, replacers) => {
 
 // No operation function.
 export const noop = () => {};
+
+export const ttsSpeak = item => {
+  if (item.kanji && item.kana) {
+    // Tts.stop();
+    Tts.setDefaultLanguage('ja');
+    Tts.speak(cleanWord(item.useKana ? item.kana : item.kanji));
+  }
+};

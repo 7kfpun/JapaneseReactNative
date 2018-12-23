@@ -56,7 +56,7 @@ export default class Backdoor extends Component {
     console.log('Send tags', tags);
     OneSignal.sendTags(tags);
 
-    tracker.logEvent('user-action-set-premium-backdoor', { code: value });
+    tracker.logEvent('set-premium-backdoor', { code: value });
   }
 
   state = {

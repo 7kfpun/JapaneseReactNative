@@ -55,7 +55,7 @@ export default class Premium extends Component<Props> {
 
   getAvailablePurchases = async () => {
     try {
-      tracker.logEvent('user-action-restore-purchase');
+      tracker.logEvent('restore-purchase');
       const purchases = await RNIap.getAvailablePurchases();
       console.log('getAvailablePurchases', purchases);
       if (purchases && purchases.length > 0) {
@@ -65,7 +65,7 @@ export default class Premium extends Component<Props> {
 
         purchases.forEach(purchase => {
           this.checkProduct(purchase);
-          tracker.logEvent('user-action-restore-purchase-done', purchase);
+          tracker.logEvent('restore-purchase-done', purchase);
         });
       } else {
         Alert.alert(
@@ -77,7 +77,7 @@ export default class Premium extends Component<Props> {
       }
     } catch (err) {
       console.warn('Get available error', err.code, err.message);
-      tracker.logEvent('user-action-restore-purchase-error', err);
+      tracker.logEvent('restore-purchase-error', err);
 
       return false;
     }
@@ -111,7 +111,7 @@ export default class Premium extends Component<Props> {
     //   currency: 'HKD'
     // }
     console.log(product);
-    tracker.logEvent('user-action-buy-subscription-start', product);
+    tracker.logEvent('buy-subscription-start', product);
     try {
       console.log('buySubscribeItem:', product);
       let purchase;
@@ -138,7 +138,7 @@ export default class Premium extends Component<Props> {
         purchase.productId === config.inAppProducts[0] ||
         purchase.productId === config.inAppProducts[1]
       ) {
-        tracker.logEvent('user-action-buy-subscription-done', purchase);
+        tracker.logEvent('buy-subscription-done', purchase);
         this.refreshForApplyingPurchase();
         tracker.logPurchase(
           product.price.replace(',', '.'),
@@ -159,7 +159,7 @@ export default class Premium extends Component<Props> {
       }
 
       console.warn('Purchase result error', err.code, err.message);
-      tracker.logEvent('user-action-buy-subscription-error', err);
+      tracker.logEvent('buy-subscription-error', err);
       tracker.logPurchase(
         product.price.replace(',', '.'),
         product.currency,

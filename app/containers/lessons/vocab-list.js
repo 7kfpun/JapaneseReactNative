@@ -93,7 +93,7 @@ export default class VocabList extends Component<Props> {
           Math.random() < 0.7
         ) {
           advert.show();
-          tracker.logEvent('app-action-vocab-list-popup');
+          tracker.logEvent('app-vocab-list-popup');
         }
       }, 3000);
     });

@@ -38,7 +38,7 @@ export default class NotificationSetting extends Component {
     console.log('Send tags', tags);
     OneSignal.sendTags(tags);
 
-    tracker.logEvent('user-action-set-notification', {
+    tracker.logEvent('set-notification', {
       label: value ? 'on' : 'off',
     });
   }

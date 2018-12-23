@@ -7,7 +7,7 @@ import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
-import { cleanWord, shuffle } from '../../utils/helpers';
+import { ttsSpeak, shuffle } from '../../utils/helpers';
 
 import OutOfConnection from './components/out-of-connection';
 
@@ -168,10 +168,8 @@ export default class Today extends Component<Props> {
           });
 
           if (isSoundOn) {
-            Tts.stop();
-            Tts.setDefaultLanguage('ja');
-            Tts.speak(cleanWord(todayItems[0].kana));
-            tracker.logEvent('app-action-today-read');
+            ttsSpeak(todayItems[0]);
+            tracker.logEvent('app-today-read');
           }
         } else {
           this.setState({
@@ -184,7 +182,7 @@ export default class Today extends Component<Props> {
         this.setState({
           outOfConnection: true,
         });
-        tracker.logEvent('app-action-today-out-of-connection');
+        tracker.logEvent('app-today-out-of-connection');
       });
   }
 
@@ -216,7 +214,7 @@ export default class Today extends Component<Props> {
             <OutOfConnection
               onPress={() => {
                 this.requestTodayItems();
-                tracker.logEvent('user-action-today-reconnect');
+                tracker.logEvent('today-reconnect');
               }}
             />
           )}
@@ -246,13 +244,11 @@ export default class Today extends Component<Props> {
                   if (isSoundOn) {
                     const { todayItems: newTodayItems } = this.state;
 
-                    Tts.stop();
-                    Tts.setDefaultLanguage('ja');
-                    Tts.speak(cleanWord(newTodayItems[0].kana));
-                    tracker.logEvent('app-action-today-shuffle-read');
+                    ttsSpeak(newTodayItems[0]);
+                    tracker.logEvent('app-today-shuffle-read');
                   }
                 });
-                tracker.logEvent('user-action-today-shuffle');
+                tracker.logEvent('today-shuffle');
               }
             }}
             title={I18n.t('app.today.shuffle')}
@@ -263,9 +259,8 @@ export default class Today extends Component<Props> {
             containerStyles={{ marginHorizontal: 15 }}
             onPress={() => {
               if (todayItems && todayItems.length > 0) {
-                Tts.setDefaultLanguage('ja');
-                Tts.speak(cleanWord(todayItems[cardIndex].kana));
-                tracker.logEvent('user-action-today-read');
+                ttsSpeak(todayItems[cardIndex]);
+                tracker.logEvent('today-read');
               }
             }}
           />
@@ -277,14 +272,11 @@ export default class Today extends Component<Props> {
                 const isLast = cardIndex === todayItems.length - 1;
                 this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
                   if (isSoundOn) {
-                    Tts.setDefaultLanguage('ja');
-                    Tts.speak(
-                      cleanWord(todayItems[isLast ? 0 : cardIndex + 1].kana)
-                    );
-                    tracker.logEvent('app-action-today-next-read');
+                    ttsSpeak(todayItems[isLast ? 0 : cardIndex + 1]);
+                    tracker.logEvent('app-today-next-read');
                   }
                 });
-                tracker.logEvent('user-action-today-next');
+                tracker.logEvent('today-next');
               }
             }}
             title={I18n.t('app.common.next')}

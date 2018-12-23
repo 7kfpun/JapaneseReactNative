@@ -2,10 +2,10 @@
     "today": {
         "title": "\u4eca\u65e5\u306e\u65e5\u672c\u8bed",
         "shuffle": "\u6d17\u724c",
-        "out_of_connection": "\u4e92\u8054\u7f51\u4e0d\u7ed9\u529b"
+        "out-of-connection": "\u4e92\u8054\u7f51\u4e0d\u7ed9\u529b"
     },
     "kana": {
-        "title": "\u4e94\u5341\u97f3",
+        "title": "\u4e94\u5341\u97f3\u56fe",
         "seion": "\u6e05\u97f3",
         "dakuon": "\u6d4a\u97f3",
         "youon": "\u62d7\u97f3",
@@ -53,11 +53,22 @@
         "restore": "\u6062\u590d\u60a8\u7684\u5e94\u7528\u5185\u8d2d\u4e70",
         "purchase_title": "\u60a8\u73b0\u5728\u662f\u6211\u4eec\u7684\u9ad8\u7ea7\u7528\u6237",
         "purchase_description": "\u5f00\u5fc3\u5b66\u4e60\u65e5\u8bed\uff01",
-        "purchase_item_title": "\u8fdb\u9636\u7248",
-        "purchase_item_description": "- \u53bb\u9664\u5e7f\u544a\n- \u5347\u7ea7\u529f\u80fd, \u7b2c 3 - 50 \u8bfe:\n  -\u300c\u8046\u542c Listening\u300d: \u542c\u5b8c\u6717\u8bfb\u540e\uff0c\u7528\u5bb6\u9700\u9009\u62e9\u6b63\u786e\u7b54\u6848\u3002\u7528\u5bb6\u53ef\u9009\u62e9\u5c06\u7b54\u6848\u663e\u793a\u4e3a\u6c49\u5b57\u3001\u7f57\u9a6c\u62fc\u97f3\u6216\u82f1\u6587\u3002\n  - \u300c\u6d4b\u9a8c Quiz\u300d: \u900f\u8fc7\u9009\u62e9\u9898\u8bad\u7ec3\u81ea\u5df1\u5bf9\u5e73\u5047\u540d\u3001\u7247\u5047\u540d\u3001\u6c49\u5b57\u548c\u7f57\u9a6c\u62fc\u97f3\u4e92\u76f8\u8f6c\u6362\u7684\u719f\u7ec3\u7a0b\u5ea6\u3002\n  - \u300c\u6717\u8bfb Read All\u300d: \u5c06\u8bfe\u5802\u91cc\u9010\u4e2a\u8bcd\u6c47\u6717\u8bfb\u53ca\u5176\u610f\u601d\u4e00\u904d\u3002",
-        "purchase-item-description-android": "- \u53bb\u9664\u5e7f\u544a\n- \u5347\u7ea7\u529f\u80fd, \u7b2c 3 - 50 \u8bfe:\n   -\u300c\u8046\u542c Listening\u300d: \u542c\u5b8c\u6717\u8bfb\u540e\uff0c\u7528\u5bb6\u9700\u9009\u62e9\u6b63\u786e\u7b54\u6848\u3002\u7528\u5bb6\u53ef\u9009\u62e9\u5c06\u7b54\u6848\u663e\u793a\u4e3a\u6c49\u5b57\u3001\u7f57\u9a6c\u62fc\u97f3\u6216\u82f1\u6587\u3002\n   - \u300c\u6d4b\u9a8c Quiz\u300d: \u900f\u8fc7\u9009\u62e9\u9898\u8bad\u7ec3\u81ea\u5df1\u5bf9\u5e73\u5047\u540d\u3001\u7247\u5047\u540d\u3001\u6c49\u5b57\u548c\u7f57\u9a6c\u62fc\u97f3\u4e92\u76f8\u8f6c\u6362\u7684\u719f\u7ec3\u7a0b\u5ea6\u3002\n   - \u300c\u6717\u8bfb Read All\u300d: \u5c06\u8bfe\u5802\u91cc\u9010\u4e2a\u8bcd\u6c47\u6717\u8bfb\u53ca\u5176\u610f\u601d\u4e00\u904d\uff08\u8d2d\u4e70\u524d\uff0c\u8bf7\u786e\u4fdd\u6587\u5b57\u8f6c\u8bed\u97f3\u529f\u80fd\u6b63\u5e38\u4f7f\u7528\uff09\u3002",
         "restore_failed_title": "\u60a8\u4ece\u672a\u8d2d\u4e70\u8fc7\u6211\u4eec\u7684\u8fdb\u9636\u7248",
-        "version": "\u7248\u672c"
+        "version": "\u7248\u672c",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium": {
+            "title": "Get Premium",
+            "title-month": "month Premium",
+            "title-months": "months Premium",
+            "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
+            "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue"
+        }
     },
     "common": {
         "kana": "\u65e5",

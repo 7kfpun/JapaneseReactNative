@@ -183,7 +183,7 @@ export default class KanaAssessment extends Component<Props> {
         total: total + 1,
       });
       store.save(`kana.assessment.${origin[2]}`, true);
-      tracker.logEvent('user-action-kana-assessment-result-correct', {
+      tracker.logEvent('kana-assessment-result-correct', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -191,7 +191,7 @@ export default class KanaAssessment extends Component<Props> {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total + 1 });
       store.save(`kana.assessment.${origin[2]}`, false);
-      tracker.logEvent('user-action-kana-assessment-result-incorrect', {
+      tracker.logEvent('kana-assessment-result-incorrect', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -267,7 +267,7 @@ export default class KanaAssessment extends Component<Props> {
           onPress={() => {
             Tts.setDefaultLanguage('ja');
             Tts.speak(origin[0]);
-            tracker.logEvent('user-action-kana-assessment-read', {
+            tracker.logEvent('kana-assessment-read', {
               text: origin[0],
             });
           }}
@@ -388,7 +388,7 @@ export default class KanaAssessment extends Component<Props> {
             title={I18n.t('app.common.next')}
             onPress={() => {
               this.getNext();
-              tracker.logEvent('user-action-press-kana-assessment-next');
+              tracker.logEvent('press-kana-assessment-next');
             }}
             titleStyles={{ fontSize: 20 }}
           />
@@ -398,7 +398,7 @@ export default class KanaAssessment extends Component<Props> {
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(origin[0]);
-              tracker.logEvent('user-action-kana-assessment-read', {
+              tracker.logEvent('kana-assessment-read', {
                 text: origin[0],
               });
             }}

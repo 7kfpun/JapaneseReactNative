@@ -4,7 +4,6 @@ import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Search from 'react-native-search-box';
-import store from 'react-native-simple-store';
 
 import Fuse from 'fuse.js';
 
@@ -78,26 +77,24 @@ export default class SearchView extends Component<Props> {
     const searchResult = fuse.search(searchText);
 
     this.setState({ searchText, searchResult });
-    tracker.logEvent('user-action-search-vocab', { text: searchText });
+    tracker.logEvent('search-vocab', { text: searchText });
   };
 
   onFocus = () => {
-    tracker.logEvent('user-action-search-on-focus');
+    tracker.logEvent('search-on-focus');
   };
 
   onCancel = () => {
     this.setState({ searchText: '' });
-    tracker.logEvent('user-action-search-on-cancel');
+    tracker.logEvent('search-on-cancel');
   };
 
   onDelete = () => {
     this.setState({ searchText: '' });
-    tracker.logEvent('user-action-search-on-delete');
+    tracker.logEvent('search-on-delete');
   };
 
   render() {
-    const { isPremium } = this.state;
-
     return (
       <View style={styles.container}>
         <View style={styles.searchBlock}>

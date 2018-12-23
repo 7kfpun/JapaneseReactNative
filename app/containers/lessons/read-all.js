@@ -178,7 +178,7 @@ export default class ReadAll extends Component<Props> {
         <TouchableOpacity
           style={styles.body}
           onPress={() => {
-            tracker.logEvent('user-action-read-all-press-button', {
+            tracker.logEvent('read-all-press-button', {
               mode: isReading ? 'pause' : 'read',
             });
 

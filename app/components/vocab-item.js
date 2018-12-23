@@ -72,7 +72,7 @@ export default class VocabItem extends Component {
           // Tts.stop();
           Tts.setDefaultLanguage('ja');
           Tts.speak(cleanWord(kana));
-          tracker.logEvent('user-action-press-speak', { item });
+          tracker.logEvent('press-speak', { item });
         }}
       >
         <View

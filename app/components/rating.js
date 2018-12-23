@@ -103,7 +103,7 @@ export default class Rating extends Component {
       }, 2000);
     }
 
-    tracker.logEvent('user-action-rating', {
+    tracker.logEvent('rating', {
       method,
       starCount: `${starCount}`,
     });

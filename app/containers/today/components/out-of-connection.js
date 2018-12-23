@@ -29,7 +29,7 @@ const OutOfConnection = props => (
   <TouchableOpacity style={{ flex: 1 }} onPress={() => props.onPress()}>
     <View style={styles.container}>
       <Ionicons name="ios-construct" size={30} color={iOSColors.black} />
-      <Text style={styles.text}>{I18n.t('app.today.out_of_connection')}</Text>
+      <Text style={styles.text}>{I18n.t('app.today.out-of-connection')}</Text>
     </View>
   </TouchableOpacity>
 );
