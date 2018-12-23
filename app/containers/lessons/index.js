@@ -5,7 +5,6 @@ import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
-import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import LessonItem from './components/lesson-item';
@@ -75,14 +74,6 @@ export default class Lessons extends Component<Props> {
     navigation: PropTypes.shape({}).isRequired,
   };
 
-  state = {
-    isPremium: false,
-  };
-
-  componentDidMount() {
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
-  }
-
   renderTabIndicator = () => (
     <PagerTabIndicator
       tabs={lessonGroup}
@@ -92,8 +83,6 @@ export default class Lessons extends Component<Props> {
   );
 
   render() {
-    const { isPremium } = this.state;
-
     return (
       <View style={styles.container}>
         <IndicatorViewPager
@@ -118,11 +107,9 @@ export default class Lessons extends Component<Props> {
           ))}
         </IndicatorViewPager>
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
-          />
-        )}
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
+        />
       </View>
     );
   }

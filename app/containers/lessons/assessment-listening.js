@@ -11,7 +11,6 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { choice, shuffle } from '../../utils/helpers';
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: iOSColors.white,
+    color: iOSColors.gray,
   },
   mode: {
     flex: 1,
@@ -124,6 +123,10 @@ export default class AssessmentMC extends Component<Props> {
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
       ),
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 
@@ -145,12 +148,10 @@ export default class AssessmentMC extends Component<Props> {
     modeTo: 'translation',
     selectedAnswer: -1,
     isCorrect: null,
-    isPremium: false,
   };
 
   componentDidMount() {
     this.getNext();
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {
@@ -236,8 +237,6 @@ export default class AssessmentMC extends Component<Props> {
         },
       },
     } = this.props;
-
-    const { isPremium } = this.state;
 
     const { question, choices, modeFrom, modeTo } = this.state;
     const { isCorrect, selectedAnswer } = this.state;
@@ -420,15 +419,11 @@ export default class AssessmentMC extends Component<Props> {
           />
         </View>
 
-        {!isPremium && (
-          <AdMob
-            unitId={
-              config.admob[
-                `japanese-${Platform.OS}-assessment-listening-banner`
-              ]
-            }
-          />
-        )}
+        <AdMob
+          unitId={
+            config.admob[`japanese-${Platform.OS}-assessment-listening-banner`]
+          }
+        />
       </View>
     );
   }

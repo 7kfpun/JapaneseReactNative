@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: iOSColors.white,
+    color: iOSColors.gray,
   },
   card: {
     flex: 4,
@@ -82,6 +82,10 @@ export default class KanaAssessment extends Component<Props> {
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>
       ),
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 
@@ -102,12 +106,10 @@ export default class KanaAssessment extends Component<Props> {
     modeOther: 'katakana',
     answerPosition: -1,
     isCorrect: null,
-    isPremium: false,
   };
 
   componentDidMount() {
     this.getNext();
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {

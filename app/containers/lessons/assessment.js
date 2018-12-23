@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: iOSColors.white,
+    color: iOSColors.gray,
   },
   selectors: {
     flexDirection: 'row',
@@ -178,6 +178,10 @@ export default class Assessment extends Component<Props> {
       headerRight: total && (
         <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>
       ),
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 
@@ -528,13 +532,11 @@ export default class Assessment extends Component<Props> {
           )}
         </View>
 
-        {answers.length > 2 && <Rating />}
+        {answers.length > 3 && <Rating />}
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
-          />
-        )}
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
+        />
       </View>
     );
   }

@@ -63,8 +63,8 @@ const Row = ({
         first && !last ? styles.borderBottom : {},
       ]}
     >
-      <Text style={styles.text}>{text}</Text>
-      {!!description && (
+      {text !== '' && <Text style={styles.text}>{text}</Text>}
+      {description !== '' && (
         <Text style={styles.descriptionText}>{description}</Text>
       )}
     </View>
@@ -73,7 +73,7 @@ const Row = ({
 
 Row.propTypes = {
   containerStyle: PropTypes.shape({}),
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   description: PropTypes.string,
   onPress: PropTypes.func,
   first: PropTypes.bool,
@@ -84,7 +84,8 @@ Row.propTypes = {
 Row.defaultProps = {
   containerStyle: {},
   onPress: () => {},
-  description: null,
+  text: '',
+  description: '',
   first: true,
   last: true,
   disabled: false,

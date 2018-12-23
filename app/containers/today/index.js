@@ -65,6 +65,10 @@ type Props = {};
 export default class Today extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.today.title'),
+    headerStyle: {
+      backgroundColor: '#F7F7F7',
+      borderBottomWidth: 0,
+    },
   };
 
   static propTypes = {
@@ -82,7 +86,6 @@ export default class Today extends Component<Props> {
     outOfConnection: false,
 
     cardIndex: 0,
-    isPremium: false,
   };
 
   componentDidMount() {
@@ -116,8 +119,6 @@ export default class Today extends Component<Props> {
         }
       })
       .then(() => this.requestTodayItems());
-
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
   }
 
   componentWillUnmount() {
@@ -189,10 +190,6 @@ export default class Today extends Component<Props> {
 
   render() {
     const { navigation } = this.props;
-
-    const { isPremium } = this.state;
-
-    console.log('isPremium', isPremium);
 
     const {
       todayItems,
@@ -295,11 +292,7 @@ export default class Today extends Component<Props> {
           />
         </View>
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-today-banner`]}
-          />
-        )}
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-today-banner`]} />
       </View>
     );
   }

@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
+import store from 'react-native-simple-store';
 
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();
@@ -39,6 +40,8 @@ export default class Admob extends Component {
   };
 
   componentDidMount() {
+    store.get('isAdfree').then(isAdfree => this.setState({ isAdfree }));
+
     setTimeout(() => {
       this.setState({
         isAdDelaying: false,
@@ -47,7 +50,11 @@ export default class Admob extends Component {
   }
 
   render() {
-    if (this.state.isReceivedFailed || this.state.isAdDelaying) {
+    if (
+      this.state.isAdfree ||
+      this.state.isReceivedFailed ||
+      this.state.isAdDelaying
+    ) {
       return null;
     }
 

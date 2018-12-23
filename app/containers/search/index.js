@@ -21,7 +21,7 @@ import { config } from '../../config';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: 'white',
   },
   empty: {
     flex: 1,
@@ -62,12 +62,7 @@ export default class SearchView extends Component<Props> {
   state = {
     searchText: '',
     searchResult: [],
-    isPremium: false,
   };
-
-  componentDidMount() {
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
-  }
 
   onChangeText = searchText => {
     const options = {
@@ -144,11 +139,7 @@ export default class SearchView extends Component<Props> {
           )}
         </View>
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-search-banner`]}
-          />
-        )}
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-search-banner`]} />
       </View>
     );
   }

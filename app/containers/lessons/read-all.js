@@ -11,7 +11,6 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { cleanWord } from '../../utils/helpers';
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     paddingRight: 10,
-    color: 'white',
+    color: iOSColors.gray,
   },
   body: {
     flex: 1,
@@ -46,8 +45,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '300',
     color: iOSColors.black,
-    backgroundColor: 'transparent',
     lineHeight: 50,
+  },
+  translationText: {
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: '300',
+    color: iOSColors.black,
   },
 });
 
@@ -79,7 +83,6 @@ export default class ReadAll extends Component<Props> {
     count: 0,
     isReading: true,
     readingText: '',
-    isPremium: false,
   };
 
   componentDidMount() {
@@ -100,8 +103,6 @@ export default class ReadAll extends Component<Props> {
 
     this.read();
 
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
-
     this.ttsEventListener = () => {
       const {
         count: newCount,
@@ -116,6 +117,10 @@ export default class ReadAll extends Component<Props> {
               count: c,
               speakTimes: newSpeakTimes + 1,
               readingText: vocabs[lesson].data[c].kana,
+              romaji: vocabs[lesson].data[c].romaji,
+              translation: I18n.t(
+                `minna.${lesson}.${vocabs[lesson].data[c].romaji}`
+              ),
             },
             () => this.setCount(newCount)
           );
@@ -166,7 +171,7 @@ export default class ReadAll extends Component<Props> {
   }
 
   render() {
-    const { isPremium, isReading, readingText } = this.state;
+    const { isReading, readingText, romaji, translation } = this.state;
 
     return (
       <View style={styles.container}>
@@ -187,14 +192,9 @@ export default class ReadAll extends Component<Props> {
           }}
         >
           <View style={styles.body}>
-            {!isPremium && (
-              <AdMob
-                unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
-                bannerSize="MEDIUM_RECTANGLE"
-              />
-            )}
-
             <Text style={styles.text}>{readingText}</Text>
+            <Text style={styles.translationText}>{romaji}</Text>
+            <Text style={styles.translationText}>{translation}</Text>
 
             <Ionicons
               style={{ paddingTop: 40 }}
@@ -205,11 +205,9 @@ export default class ReadAll extends Component<Props> {
           </View>
         </TouchableOpacity>
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
-          />
-        )}
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
+        />
       </View>
     );
   }

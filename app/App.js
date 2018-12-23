@@ -13,6 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
 import About from './containers/about';
+import Adfree from './containers/about/adfree';
 import Assessment from './containers/lessons/assessment';
 import AssessmentListening from './containers/lessons/assessment-listening';
 import AssessmentMC from './containers/lessons/assessment-mc';
@@ -20,6 +21,7 @@ import Feedback from './containers/feedback';
 import Kana from './containers/kana';
 import KanaAssessment from './containers/kana/assessment';
 import Lessons from './containers/lessons';
+import Premium from './containers/about/premium';
 import ReadAll from './containers/lessons/read-all';
 import Search from './containers/search';
 import SelectMode from './containers/lessons/select-mode';
@@ -62,12 +64,12 @@ Tts.getInitStatus().then(
 
 const navigationOptions = {
   headerStyle: {
-    backgroundColor: iOSColors.tealBlue,
+    backgroundColor: '#F7F7F7',
     // borderBottomWidth: 0,
   },
-  headerTintColor: iOSColors.white,
+  headerTintColor: iOSColors.gray,
   headerTitleStyle: {
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
 };
 
@@ -120,6 +122,8 @@ const aboutNavigator = createStackNavigator(
   {
     about: About,
     feedback: Feedback,
+    adfree: Adfree,
+    premium: Premium,
   },
   {
     navigationOptions,

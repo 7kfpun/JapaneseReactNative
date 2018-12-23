@@ -12,7 +12,6 @@ import {
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import store from 'react-native-simple-store';
 
 import Tile from './components/tile';
 
@@ -100,7 +99,7 @@ export default class Kana extends Component<Props> {
               });
             }}
           >
-            <Ionicons name="ios-list-box" size={22} color={iOSColors.white} />
+            <Ionicons name="ios-list-box" size={22} color={iOSColors.gray} />
           </TouchableOpacity>
         </View>
       ),
@@ -112,14 +111,6 @@ export default class Kana extends Component<Props> {
       setParams: PropTypes.func,
     }).isRequired,
   };
-
-  state = {
-    isPremium: false,
-  };
-
-  componentDidMount() {
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
-  }
 
   onPageSelected = position => {
     const { navigation } = this.props;
@@ -146,8 +137,6 @@ export default class Kana extends Component<Props> {
   );
 
   render() {
-    const { isPremium } = this.state;
-
     return (
       <View style={styles.container}>
         <IndicatorViewPager
@@ -210,9 +199,7 @@ export default class Kana extends Component<Props> {
           </View>
         </IndicatorViewPager>
 
-        {!isPremium && (
-          <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
-        )}
+        <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
       </View>
     );
   }

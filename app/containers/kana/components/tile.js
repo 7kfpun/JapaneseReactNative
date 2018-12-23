@@ -21,9 +21,9 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     height: width / 5,
-    borderRightColor: iOSColors.tealBlue,
+    borderRightColor: iOSColors.lightGray,
     borderRightWidth: 0.5,
-    borderBottomColor: iOSColors.tealBlue,
+    borderBottomColor: iOSColors.lightGray,
     borderBottomWidth: 0.5,
   },
   upperDot: {
@@ -35,19 +35,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   upperText: {
-    fontSize: 26,
     color: iOSColors.black,
+    fontSize: 26,
+    fontWeight: '300',
   },
   lowerRow: {
+    alignItems: 'flex-end',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
   },
   lowerText: {
     fontSize: 16,
     fontWeight: '300',
-    color: iOSColors.midGray,
+    color: iOSColors.gray,
   },
 });
 
