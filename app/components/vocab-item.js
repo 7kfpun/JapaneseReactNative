@@ -6,9 +6,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
 
+import { ttsSpeak } from '../utils/helpers';
 import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
-import { cleanWord } from '../utils/helpers';
 
 Tts.setDefaultLanguage('ja');
 
@@ -69,10 +69,8 @@ export default class VocabItem extends Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          // Tts.stop();
-          Tts.setDefaultLanguage('ja');
-          Tts.speak(cleanWord(kana));
-          tracker.logEvent('press-speak', { item });
+          ttsSpeak(item);
+          tracker.logEvent('press-speak', item);
         }}
       >
         <View

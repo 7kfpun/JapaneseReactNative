@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -36,49 +36,45 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ModeItem extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    isRequirePremium: PropTypes.bool,
-    isUnlocked: PropTypes.bool,
-    onPress: PropTypes.func,
-  };
+const ModeItem = ({
+  title,
+  description,
+  isUnlocked,
+  isRequirePremium,
+  onPress,
+}) => (
+  <TouchableOpacity style={styles.container} onPress={onPress}>
+    <View>
+      {isRequirePremium && (
+        <Ionicons
+          style={styles.lock}
+          name={isUnlocked ? 'ios-star' : 'ios-lock'}
+          size={20}
+          color={iOSColors.yellow}
+        />
+      )}
 
-  static defaultProps = {
-    description: '',
-    isRequirePremium: false,
-    isUnlocked: false,
-    onPress: noop,
-  };
+      <Text style={styles.text}>{title}</Text>
+      {description !== '' && (
+        <Text style={styles.descriptionText}>{description}</Text>
+      )}
+    </View>
+  </TouchableOpacity>
+);
 
-  render() {
-    const {
-      title,
-      description,
-      isUnlocked,
-      isRequirePremium,
-      onPress,
-    } = this.props;
+ModeItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  isRequirePremium: PropTypes.bool,
+  isUnlocked: PropTypes.bool,
+  onPress: PropTypes.func,
+};
 
-    return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
-        <View>
-          {isRequirePremium && (
-            <Ionicons
-              style={styles.lock}
-              name={isUnlocked ? 'ios-star' : 'ios-lock'}
-              size={20}
-              color={iOSColors.yellow}
-            />
-          )}
+ModeItem.defaultProps = {
+  description: '',
+  isRequirePremium: false,
+  isUnlocked: false,
+  onPress: noop,
+};
 
-          <Text style={styles.text}>{title}</Text>
-          {description !== '' && (
-            <Text style={styles.descriptionText}>{description}</Text>
-          )}
-        </View>
-      </TouchableOpacity>
-    );
-  }
-}
+export default ModeItem;

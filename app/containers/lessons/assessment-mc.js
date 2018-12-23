@@ -13,7 +13,7 @@ import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
-import { choice, shuffle } from '../../utils/helpers';
+import { choice, shuffle, ttsSpeak } from '../../utils/helpers';
 import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -287,8 +287,7 @@ export default class AssessmentMC extends Component<Props> {
         <TouchableOpacity
           style={styles.card}
           onPress={() => {
-            Tts.setDefaultLanguage('ja');
-            Tts.speak(question.kana);
+            ttsSpeak(question);
             tracker.logEvent('assessment-mc-read', {
               text: question.kanji,
             });
@@ -410,8 +409,7 @@ export default class AssessmentMC extends Component<Props> {
           <SoundButton
             containerStyles={{ marginLeft: 10 }}
             onPress={() => {
-              Tts.setDefaultLanguage('ja');
-              Tts.speak(question.kana);
+              ttsSpeak(question);
               tracker.logEvent('assessment-mc-read', {
                 text: question.kanji,
               });

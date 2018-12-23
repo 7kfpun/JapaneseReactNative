@@ -76,6 +76,10 @@ export default class Tile extends Component<Props> {
       .then(isCorrect => this.setState({ isCorrect }));
   }
 
+  componentWillUnmount() {
+    Tts.stop();
+  }
+
   render() {
     const { hiragana, katakana, romaji, itemsPerRow } = this.props;
     const { isCorrect } = this.state;

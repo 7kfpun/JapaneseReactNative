@@ -15,7 +15,7 @@ import firebase from 'react-native-firebase';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
-import { cleanWord, shuffle } from '../../utils/helpers';
+import { cleanWord, shuffle, ttsSpeak } from '../../utils/helpers';
 import { items as vocabularies } from '../../utils/items';
 import { hiragana, katakana } from '../../utils/kana';
 import I18n from '../../utils/i18n';
@@ -205,7 +205,6 @@ export default class Assessment extends Component<Props> {
     isOrdered: true,
     tiles: [],
     answers: [],
-    isPremium: false,
   };
 
   componentDidMount() {
@@ -240,12 +239,11 @@ export default class Assessment extends Component<Props> {
     store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
 
     store.get('isPremium').then(isPremium => {
-      this.setState({ isPremium });
-
-      setTimeout(() => {
+      store.get('isAdfree').then(isAdfree => {
         if (
           !__DEV__ &&
           !isPremium &&
+          !isAdfree &&
           advert.isLoaded() &&
           lesson > 3 &&
           Math.random() < 0.7
@@ -253,7 +251,7 @@ export default class Assessment extends Component<Props> {
           advert.show();
           tracker.logEvent('app-assessment-popup');
         }
-      }, 3000);
+      });
     });
   }
 
@@ -284,13 +282,13 @@ export default class Assessment extends Component<Props> {
 
     const { isSoundOn, count } = this.state;
 
-    const { kana } = vocabularies[lesson].data[count];
+    const vocabulary = vocabularies[lesson].data[count];
+    const { kana } = vocabulary;
 
     const cleanKana = cleanWord(kana);
 
     if (isSoundOn) {
-      Tts.stop();
-      Tts.speak(cleanWord(kana));
+      ttsSpeak(vocabulary);
     }
 
     let length = NO_OF_TILES * 2 - cleanKana.length;
@@ -367,11 +365,7 @@ export default class Assessment extends Component<Props> {
 
     const { count } = this.state;
 
-    const { kana } = vocabularies[lesson].data[count];
-
-    Tts.stop();
-    Tts.setDefaultLanguage('ja');
-    Tts.speak(cleanWord(kana));
+    ttsSpeak(vocabularies[lesson].data[count]);
   }
 
   render() {
@@ -383,8 +377,6 @@ export default class Assessment extends Component<Props> {
         },
       },
     } = this.props;
-
-    const { isPremium } = this.state;
 
     const {
       isKanjiShown,
@@ -399,7 +391,8 @@ export default class Assessment extends Component<Props> {
       tiles,
     } = this.state;
 
-    const { kanji, kana, romaji } = vocabularies[lesson].data[count];
+    const vocabulary = vocabularies[lesson].data[count];
+    const { kanji, kana, romaji } = vocabulary;
 
     return (
       <View style={styles.container}>
@@ -487,8 +480,7 @@ export default class Assessment extends Component<Props> {
               <SoundButton
                 containerStyles={{ marginHorizontal: 15 }}
                 onPress={() => {
-                  Tts.setDefaultLanguage('ja');
-                  Tts.speak(cleanWord(kana));
+                  ttsSpeak(vocabulary);
                   tracker.logEvent('assessment-read');
                 }}
               />
@@ -523,8 +515,7 @@ export default class Assessment extends Component<Props> {
               <SoundButton
                 containerStyles={{ marginLeft: 10 }}
                 onPress={() => {
-                  Tts.setDefaultLanguage('ja');
-                  Tts.speak(cleanWord(kana));
+                  ttsSpeak(vocabulary);
                   tracker.logEvent('assessment-read');
                 }}
               />
