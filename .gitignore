@@ -56,13 +56,13 @@ buck-out/
 *.jsbundle
 
 # App
-android/app/google-services.json
+google-services.json
+GoogleService-Info.plist
 android/app/src/main/res/values/keys.xml
 app/config.js
 app/utils/minna
 index.android.bundle
 index.android.bundle.meta
-ios/Japanese/GoogleService-Info.plist
 ios/Pods/FBAudienceNetwork/FBAudienceNetwork.framework/FBAudienceNetwork
 main.jsbundle
 main.jsbundle.meta

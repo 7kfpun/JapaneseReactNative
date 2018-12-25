@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  Alert,
-  Text,
-  Platform,
-  StyleSheet,
-  ScrollView,
-  View,
-} from 'react-native';
+import { Alert, Text, Platform, StyleSheet, View } from 'react-native';
 
 import * as RNIap from 'react-native-iap';
 import RNRestart from 'react-native-restart';
