@@ -30,18 +30,16 @@ target 'Japanese' do
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
   pod 'Firebase/Analytics'
-  pod 'Firebase/Crash'
   pod 'Firebase/Performance'
   pod 'Firebase/Messaging'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/InAppMessagingDisplay'
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
   pod 'Fabric', '~> 1.7.11'
   pod 'Crashlytics', '~> 3.10.7'
   pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'
-
-  pod 'GoogleMobileAdsMediationFacebook'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
@@ -54,13 +52,14 @@ target 'Japanese' do
   pod 'RNStoreReview', :path => '../node_modules/react-native-store-review/ios'
 
   pod 'OneSignal', '>= 2.8.5', '< 3.0'
-  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
   # pod 'CleverTap-iOS-SDK'
 
   pod 'react-native-safari-view', :path => '../node_modules/react-native-safari-view'
 
   pod 'RNIap', :path => '../node_modules/react-native-iap'
+
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
 end
 
