@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
   container: {
@@ -45,6 +46,8 @@ const Row = ({
   onPress,
   containerStyle,
   disabled,
+  selected,
+  selectedIcon,
 }) => (
   <TouchableOpacity
     style={[
@@ -63,7 +66,22 @@ const Row = ({
         first && !last ? styles.borderBottom : {},
       ]}
     >
-      {text !== '' && <Text style={styles.text}>{text}</Text>}
+      {text !== '' && (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Text style={styles.text}>{text}</Text>
+          <Ionicons
+            name={selectedIcon}
+            size={20}
+            color={selected ? iOSColors.black : iOSColors.white}
+          />
+        </View>
+      )}
       {description !== '' && (
         <Text style={styles.descriptionText}>{description}</Text>
       )}
@@ -79,6 +97,8 @@ Row.propTypes = {
   first: PropTypes.bool,
   last: PropTypes.bool,
   disabled: PropTypes.bool,
+  selected: PropTypes.bool,
+  selectedIcon: PropTypes.string,
 };
 
 Row.defaultProps = {
@@ -89,6 +109,8 @@ Row.defaultProps = {
   first: true,
   last: true,
   disabled: false,
+  selected: false,
+  selectedIcon: 'ios-checkmark',
 };
 
 export default Row;

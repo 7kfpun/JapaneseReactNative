@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
-import { Alert, Platform, StyleSheet, ScrollView, View } from 'react-native';
+import {
+  Alert,
+  Text,
+  Platform,
+  StyleSheet,
+  ScrollView,
+  View,
+} from 'react-native';
 
 import * as RNIap from 'react-native-iap';
 import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
+import CustomButton from '../../components/button';
 import Row from '../../components/row';
 
 import I18n from '../../utils/i18n';
@@ -21,6 +29,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
+  description: {
+    flex: 1,
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  descriptionText: {
+    fontSize: 12,
+    fontWeight: '300',
+  },
+  noteText: {
+    fontSize: 12,
+    fontWeight: '300',
+    lineHeight: 24,
+  },
+  noteDescriptionText: {
+    fontSize: 12,
+    fontWeight: '300',
+  },
 });
 
 type Props = {};
@@ -32,6 +58,7 @@ export default class Premium extends Component<Props> {
   state = {
     productList: [],
     purchasedProductIds: [],
+    selectedProductIndex: 0,
   };
 
   componentDidMount() {
@@ -98,7 +125,7 @@ export default class Premium extends Component<Props> {
     // {
     //   description: '',
     //   introductoryPrice: '',
-    //   subscriptionPeriodNumberIOS: '0',
+    //   subscriptionPeriodNumberIOS: '1',
     //   introductoryPriceNumberOfPeriodsIOS: '',
     //   introductoryPriceSubscriptionPeriodIOS: '',
     //   productId: 'com.kfpun.nihongo.premium.1m',
@@ -106,7 +133,7 @@ export default class Premium extends Component<Props> {
     //   introductoryPricePaymentModeIOS: '',
     //   type: 'Do not use this. It returned sub only before',
     //   title: '',
-    //   subscriptionPeriodUnitIOS: 'DAY',
+    //   subscriptionPeriodUnitIOS: 'MONTH',
     //   localizedPrice: 'HK$38.00',
     //   currency: 'HKD'
     // }
@@ -154,7 +181,6 @@ export default class Premium extends Component<Props> {
       if (err.code === 'E_ALREADY_OWNED') {
         this.getAvailablePurchases();
       } else if (err.code === 'E_UNKNOWN') {
-        alert(err.message);
         Alert.alert(err.code, err.message);
       }
 
@@ -181,53 +207,73 @@ export default class Premium extends Component<Props> {
   };
 
   render() {
-    const { isPremium, productList, purchasedProductIds } = this.state;
+    const {
+      productList,
+      purchasedProductIds,
+      selectedProductIndex,
+    } = this.state;
 
     return (
       <View style={styles.container}>
-        <ScrollView style={{ alignSelf: 'stretch' }}>
-          {!isPremium && (
-            <View style={{ marginTop: 10 }}>
-              {productList.map((product, i) => (
-                <Row
-                  key={product.productId}
-                  // text={`${
-                  //   purchasedProductIds.includes(product.productId) ? '✓' : ''
-                  // }${product.title} (${product.localizedPrice})`}
-                  text={`${
-                    purchasedProductIds.includes(product.productId) ? '✓' : ''
-                  }${
-                    product.productId.match(/\d+/g)
-                      ? product.productId.match(/\d+/g)[0] === '1'
-                        ? `${product.productId.match(/\d+/g)[0]} ${I18n.t(
-                            'app.about.premium.title-month'
-                          )}`
-                        : `${product.productId.match(/\d+/g)[0]} ${I18n.t(
-                            'app.about.premium.title-months'
-                          )}`
-                      : ''
-                  } (${product.localizedPrice})`}
-                  // description={product.description}
-                  first={i === 0}
-                  last={i === productList.length - 1}
-                  onPress={() => this.buySubscribeItem(product)}
-                  disabled={purchasedProductIds.includes(product.productId)}
-                />
-              ))}
+        <View style={{ flex: 1, marginTop: 10 }}>
+          {productList.map((product, i) => (
+            <Row
+              key={product.productId}
+              // text={`${
+              //   purchasedProductIds.includes(product.productId) ? '✓' : ''
+              // }${product.title} (${product.localizedPrice})`}
+              text={`${product.subscriptionPeriodNumberIOS} ${
+                product.subscriptionPeriodNumberIOS === '1'
+                  ? I18n.t('app.about.premium.title-month')
+                  : I18n.t('app.about.premium.title-months')
+              } (${product.localizedPrice})`}
+              // description={product.description}
+              first={i === 0}
+              last={i === productList.length - 1}
+              onPress={() => this.setState({ selectedProductIndex: i })}
+              disabled={purchasedProductIds.includes(product.productId)}
+              selected={selectedProductIndex === i}
+            />
+          ))}
 
-              {productList.length > 0 && (
-                <Row
-                  description={
-                    Platform.OS === 'android'
-                      ? I18n.t('app.about.premium.description-android')
-                      : I18n.t('app.about.premium.description')
-                  }
-                  disabled
-                />
-              )}
-            </View>
-          )}
-        </ScrollView>
+          <View style={styles.description}>
+            {productList.length > 0 && (
+              <Text style={styles.descriptionText}>
+                {Platform.OS === 'android'
+                  ? I18n.t('app.about.premium.description-android')
+                  : I18n.t('app.about.premium.description')}
+              </Text>
+            )}
+
+            {productList.length > 0 && (
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    paddingVertical: 10,
+                    alignItems: 'center',
+                  }}
+                >
+                  <CustomButton
+                    raised
+                    onPress={() => {
+                      this.buySubscribeItem(productList[selectedProductIndex]);
+                    }}
+                    title={I18n.t('app.about.premium.continue')}
+                    titleStyles={{ fontSize: 20 }}
+                  />
+                </View>
+
+                <Text style={styles.noteText}>
+                  {I18n.t('app.about.premium.note')}
+                </Text>
+                <Text style={styles.noteDescriptionText}>
+                  {I18n.t('app.about.premium.note-description')}
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>
 
         <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />
       </View>
