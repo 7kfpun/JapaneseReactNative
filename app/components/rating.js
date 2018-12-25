@@ -13,9 +13,12 @@ import * as Animatable from 'react-native-animatable';
 import * as StoreReview from 'react-native-store-review';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import store from 'react-native-simple-store';
-import tracker from '../utils/tracker';
 
+import { config } from '../config';
+
+import { range } from '../utils/helpers';
 import I18n from '../utils/i18n';
+import tracker from '../utils/tracker';
 
 const STARS_TO_APP_STORE = 4;
 // const SHOW_RATING_AFTER = 30 * 60 * 1000;
@@ -89,12 +92,9 @@ export default class Rating extends Component {
       if (StoreReview.isAvailable) {
         StoreReview.requestReview();
         method = 'inapp-store-review';
-      } else if (Platform.OS === 'ios') {
-        Linking.openURL('itms-apps://itunes.apple.com/app/id1352780398');
-        method = 'apple-store';
-      } else if (Platform.OS === 'android') {
-        Linking.openURL('market://details?id=com.kfpun.japanese');
-        method = 'google-play';
+      } else {
+        Linking.openURL(config.store[Platform.OS]);
+        method = Platform.OS;
       }
 
       const that = this;
@@ -140,36 +140,14 @@ export default class Rating extends Component {
         </Text>
         {this.state.starCount === 0 && (
           <View style={{ flexDirection: 'row' }}>
-            <Icon
-              name={this.state.starCount >= 1 ? 'star' : 'star-border'}
-              size={26}
-              color="#616161"
-              onPress={() => this.onStarRatingPress(1)}
-            />
-            <Icon
-              name={this.state.starCount >= 2 ? 'star' : 'star-border'}
-              size={26}
-              color="#616161"
-              onPress={() => this.onStarRatingPress(2)}
-            />
-            <Icon
-              name={this.state.starCount >= 3 ? 'star' : 'star-border'}
-              size={26}
-              color="#616161"
-              onPress={() => this.onStarRatingPress(3)}
-            />
-            <Icon
-              name={this.state.starCount >= 4 ? 'star' : 'star-border'}
-              size={26}
-              color="#616161"
-              onPress={() => this.onStarRatingPress(4)}
-            />
-            <Icon
-              name={this.state.starCount >= 5 ? 'star' : 'star-border'}
-              size={26}
-              color="#616161"
-              onPress={() => this.onStarRatingPress(5)}
-            />
+            {range(1, 6).map(i => (
+              <Icon
+                name={this.state.starCount >= i ? 'star' : 'star-border'}
+                size={26}
+                color="#616161"
+                onPress={() => this.onStarRatingPress(i)}
+              />
+            ))}
           </View>
         )}
         {this.state.starCount > 0 &&

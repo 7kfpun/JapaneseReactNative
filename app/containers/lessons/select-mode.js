@@ -184,11 +184,9 @@ export default class SelectMode extends Component<Props> {
           />
         </ScrollView>
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
-          />
-        )}
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
+        />
       </View>
     );
   }
