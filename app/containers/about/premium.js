@@ -4,7 +4,6 @@ import { Alert, Text, Platform, StyleSheet, View } from 'react-native';
 
 import * as RNIap from 'react-native-iap';
 import RNRestart from 'react-native-restart';
-import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import CustomButton from '../../components/button';
@@ -12,6 +11,7 @@ import Row from '../../components/row';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
+import { checkPurchaseHistory, validateReceipt } from '../../utils/payment';
 
 import { config } from '../../config';
 
@@ -54,9 +54,12 @@ export default class Premium extends Component<Props> {
     selectedProductIndex: 0,
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
+    await RNIap.initConnection();
+
     this.getSubscriptions();
-  }
+    checkPurchaseHistory();
+  };
 
   componentWillUnmount() {
     RNIap.endConnection();
@@ -64,7 +67,6 @@ export default class Premium extends Component<Props> {
 
   getSubscriptions = async () => {
     try {
-      await RNIap.initConnection();
       const products = await RNIap.getSubscriptions(itemSkus);
       console.log('getSubscriptions', products);
       this.setState({ productList: products });
@@ -100,17 +102,6 @@ export default class Premium extends Component<Props> {
       tracker.logEvent('restore-purchase-error', err);
 
       return false;
-    }
-  };
-
-  checkProduct = purchase => {
-    if (purchase.productId) {
-      if (config.inApp.adfree.includes(purchase.productId)) {
-        store.save('isAdfree', true);
-      } else if (config.inApp.premium.includes(purchase.productId)) {
-        store.save('isAdfree', true);
-        store.save('isPremium', true);
-      }
     }
   };
 
@@ -154,25 +145,31 @@ export default class Premium extends Component<Props> {
       //   transactionReceipt: 'xxxxs=',
       //   productId: 'com.kfpun.japanese.ad'
       // }
-      if (
-        purchase.productId === config.inAppProducts[0] ||
-        purchase.productId === config.inAppProducts[1]
-      ) {
-        tracker.logEvent('buy-subscription-done', purchase);
-        this.refreshForApplyingPurchase();
-        tracker.logPurchase(
-          product.price.replace(',', '.'),
-          product.currency,
-          true,
-          product.title,
-          product.type,
-          product.productId
-        );
-        this.refreshForApplyingPurchase();
-      }
+
+      // {
+      //   transactionReceipt: 'xxx',
+      //   transactionDate: 1545732911000,
+      //   productId: 'com.kfpun.nihongo.premium.1m',
+      //   transactionId: '1000000489738811'
+      // }
+      const result = await validateReceipt(purchase);
+      console.log('validateReceipt', result);
+
+      // tracker.logEvent('buy-subscription-done', purchase);
+      // this.refreshForApplyingPurchase(purchase);
+      // tracker.logPurchase(
+      //   product.price.replace(',', '.'),
+      //   product.currency,
+      //   true,
+      //   product.title,
+      //   product.type,
+      //   product.productId
+      // );
     } catch (err) {
       if (err.code === 'E_ALREADY_OWNED') {
         this.getAvailablePurchases();
+      } else if (err.code === 'E_USER_CANCELLED') {
+        // You are currently subscribed || cancelled
       } else if (err.code === 'E_UNKNOWN') {
         Alert.alert(err.code, err.message);
       }

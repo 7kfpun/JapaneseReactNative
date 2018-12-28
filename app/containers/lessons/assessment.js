@@ -208,51 +208,8 @@ export default class Assessment extends Component<Props> {
   };
 
   componentDidMount() {
-    const {
-      navigation: {
-        state: {
-          params: { lesson },
-        },
-      },
-    } = this.props;
-
-    store
-      .get('isKanjiShown')
-      .then(isKanjiShown => this.setState({ isKanjiShown }));
-    store
-      .get('isKanaShown')
-      .then(isKanaShown => this.setState({ isKanaShown }));
-    store
-      .get('isRomajiShown')
-      .then(isRomajiShown => this.setState({ isRomajiShown }));
-    store
-      .get('isTranslationShown')
-      .then(isTranslationShown => this.setState({ isTranslationShown }));
-    store
-      .get('isSoundOn')
-      .then(isSoundOn => this.setState({ isSoundOn }))
-      .then(() => {
-        this.getTotal();
-        this.getTiles();
-      });
-
-    store.get('isOrdered').then(isOrdered => this.setState({ isOrdered }));
-
-    store.get('isPremium').then(isPremium => {
-      store.get('isAdfree').then(isAdfree => {
-        if (
-          !__DEV__ &&
-          !isPremium &&
-          !isAdfree &&
-          advert.isLoaded() &&
-          lesson > 3 &&
-          Math.random() < 0.7
-        ) {
-          advert.show();
-          tracker.logEvent('app-assessment-popup');
-        }
-      });
-    });
+    this.loadSettings();
+    this.loadPopupAd();
   }
 
   componentWillUnmount() {
@@ -325,6 +282,50 @@ export default class Assessment extends Component<Props> {
 
     this.setState({ total });
     navigation.setParams({ count: 0, total });
+  }
+
+  loadSettings = async () => {
+    const isKanjiShown = await store.get('isKanjiShown');
+    const isKanaShown = await store.get('isKanaShown');
+    const isRomajiShown = await store.get('isRomajiShown');
+    const isTranslationShown = await store.get('isTranslationShown');
+    const isSoundOn = await store.get('isSoundOn');
+    const isOrdered = await store.get('isOrdered');
+
+    this.setState({
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+      isOrdered,
+    });
+
+    this.getTotal();
+    this.getTiles();
+  };
+
+  loadPopupAd() {
+    const {
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+      },
+    } = this.props;
+
+    store.get('adFreeUntil').then(adFreeUntil => {
+      if (
+        !__DEV__ &&
+        !(adFreeUntil && adFreeUntil > getTimestamp()) &&
+        advert.isLoaded() &&
+        lesson > 3 &&
+        Math.random() < 0.7
+      ) {
+        advert.show();
+        tracker.logEvent('app-assessment-popup');
+      }
+    });
   }
 
   updateStates = (

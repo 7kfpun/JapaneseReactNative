@@ -67,7 +67,6 @@ export const choice = arr => arr[Math.floor(Math.random() * arr.length)];
 // Return a random integer N such that 0 <= N <= max.
 export const randomInt = max => Math.floor(Math.random() * Math.floor(max));
 
-// No operation function.
 export const prepareURL = (url, replacers) => {
   let tempUrl = url;
   Object.keys(replacers).forEach(key => {
@@ -80,10 +79,14 @@ export const prepareURL = (url, replacers) => {
 // No operation function.
 export const noop = () => {};
 
-export const ttsSpeak = item => {
+// TTS speaking
+export const ttsSpeak = (item, lang = 'ja') => {
   if (item.kanji && item.kana) {
     // Tts.stop();
-    Tts.setDefaultLanguage('ja');
+    Tts.setDefaultLanguage(lang);
     Tts.speak(cleanWord(item.useKana ? item.kana : item.kanji));
   }
 };
+
+// Get timestamp
+export const getTimestamp = () => new Date().getTime();

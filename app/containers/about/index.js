@@ -7,12 +7,14 @@ import DeviceInfo from 'react-native-device-info';
 import OneSignal from 'react-native-onesignal';
 import store from 'react-native-simple-store';
 
+import moment from 'moment';
+
 import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';
 import AdMob from '../../components/admob';
 import Row from '../../components/row';
 
-import { openURL, prepareURL } from '../../utils/helpers';
+import { openURL, prepareURL, getTimestamp } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -36,19 +38,32 @@ export default class About extends Component<Props> {
   };
 
   state = {
-    isAdfree: false,
     isPremium: false,
+    premiumUntil: '',
+    currentPremiumSubscription: '',
   };
 
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
-    store.get('isAdfree').then(isAdfree => this.setState({ isAdfree }));
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+
+    this.getStoreSubscription();
   }
 
+  getStoreSubscription = async () => {
+    const premiumUntil = await store.get('premiumUntil');
+    const currentPremiumSubscription = await store.get(
+      'currentPremiumSubscription'
+    );
+
+    this.setState({
+      premiumUntil,
+      currentPremiumSubscription,
+      isPremium: premiumUntil > getTimestamp(),
+    });
+  };
   render() {
     const { navigation } = this.props;
-    const { isAdfree, isPremium } = this.state;
+    const { isPremium, currentPremiumSubscription, premiumUntil } = this.state;
 
     return (
       <View style={styles.container}>
@@ -57,32 +72,38 @@ export default class About extends Component<Props> {
 
           <NotificationSetting />
 
-          {!isPremium && (
-            <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 10 }}>
+            {isPremium && (
               <Row
-                text={I18n.t('app.about.premium.title')}
-                onPress={() => {
-                  navigation.navigate('premium');
-                }}
+                text={currentPremiumSubscription}
+                description={moment.unix(premiumUntil / 1000).format('LLL')}
               />
+            )}
 
-              {/* {!isAdfree && <Row
-                first={false}
-                text={I18n.t('app.about.adfree.title')}
-                onPress={() => {
-                  navigation.navigate('adfree');
-                }}
-              />} */}
+            <Row
+              first={!isPremium}
+              text={I18n.t('app.about.premium.title')}
+              onPress={() => {
+                navigation.navigate('premium');
+              }}
+            />
 
-              <Row
-                first={false}
-                text={I18n.t('app.about.restore')}
-                onPress={() => {
-                  this.getAvailablePurchases();
-                }}
-              />
-            </View>
-          )}
+            {/* {!isAdfree && <Row
+              first={false}
+              text={I18n.t('app.about.adfree.title')}
+              onPress={() => {
+                navigation.navigate('adfree');
+              }}
+            />} */}
+
+            <Row
+              first={false}
+              text={I18n.t('app.about.restore')}
+              onPress={() => {
+                this.getAvailablePurchases();
+              }}
+            />
+          </View>
 
           <View style={{ marginVertical: 15 }}>
             <Row

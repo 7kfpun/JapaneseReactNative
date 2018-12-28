@@ -89,41 +89,40 @@ export default class Today extends Component<Props> {
   };
 
   componentDidMount() {
-    store
-      .get('notFirstStart')
-      .then(notFirstStart => {
-        if (notFirstStart) {
-          store
-            .get('isKanaShown')
-            .then(isKanaShown => this.setState({ isKanaShown }));
-          store
-            .get('isKanjiShown')
-            .then(isKanjiShown => this.setState({ isKanjiShown }));
-          store
-            .get('isRomajiShown')
-            .then(isRomajiShown => this.setState({ isRomajiShown }));
-          store
-            .get('isTranslationShown')
-            .then(isTranslationShown => this.setState({ isTranslationShown }));
-          store
-            .get('isSoundOn')
-            .then(isSoundOn => this.setState({ isSoundOn }));
-        } else {
-          this.setState({
-            isKanaShown: true,
-            isKanjiShown: true,
-            isRomajiShown: true,
-            isTranslationShown: true,
-            isSoundOn: true,
-          });
-        }
-      })
-      .then(() => this.requestTodayItems());
+    this.loadSettings();
+    this.requestTodayItems();
   }
 
   componentWillUnmount() {
     Tts.stop();
   }
+
+  loadSettings = async () => {
+    const isNotFirstStart = await store.get('isNotFirstStart');
+    if (!isNotFirstStart) {
+      await store.save('isNotFirstStart', true);
+      await store.save('isKanjiShown', true);
+      await store.save('isKanaShown', true);
+      await store.save('isRomajiShown', true);
+      await store.save('isTranslationShown', true);
+      await store.save('isSoundOn', true);
+      await store.save('isOrdered', true);
+    }
+
+    const isKanjiShown = await store.get('isKanjiShown');
+    const isKanaShown = await store.get('isKanaShown');
+    const isRomajiShown = await store.get('isRomajiShown');
+    const isTranslationShown = await store.get('isTranslationShown');
+    const isSoundOn = await store.get('isSoundOn');
+
+    this.setState({
+      isKanjiShown,
+      isKanaShown,
+      isRomajiShown,
+      isTranslationShown,
+      isSoundOn,
+    });
+  };
 
   updateStates = (
     isKanjiShown,
@@ -218,21 +217,20 @@ export default class Today extends Component<Props> {
               }}
             />
           )}
-          {!outOfConnection &&
-            card && (
-              <Card
-                navigation={navigation}
-                lesson={card.lesson}
-                kanji={card.kanji}
-                kana={card.kana}
-                romaji={card.romaji}
-                translation={I18n.t(`minna.${card.lesson}.${card.romaji}`)}
-                isKanjiShown={isKanjiShown}
-                isKanaShown={isKanaShown}
-                isRomajiShown={isRomajiShown}
-                isTranslationShown={isTranslationShown}
-              />
-            )}
+          {!outOfConnection && card && (
+            <Card
+              navigation={navigation}
+              lesson={card.lesson}
+              kanji={card.kanji}
+              kana={card.kana}
+              romaji={card.romaji}
+              translation={I18n.t(`minna.${card.lesson}.${card.romaji}`)}
+              isKanjiShown={isKanjiShown}
+              isKanaShown={isKanaShown}
+              isRomajiShown={isRomajiShown}
+              isTranslationShown={isTranslationShown}
+            />
+          )}
         </View>
 
         <View style={styles.footer}>

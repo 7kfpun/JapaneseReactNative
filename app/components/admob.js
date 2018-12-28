@@ -6,6 +6,8 @@ import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 import store from 'react-native-simple-store';
 
+import { getTimestamp } from '../utils/helpers';
+
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();
 request
@@ -40,7 +42,11 @@ export default class Admob extends Component {
   };
 
   componentDidMount() {
-    store.get('isAdfree').then(isAdfree => this.setState({ isAdfree }));
+    store
+      .get('adFreeUntil')
+      .then(adFreeUntil =>
+        this.setState({ isAdfree: adFreeUntil > getTimestamp() })
+      );
 
     setTimeout(() => {
       this.setState({
