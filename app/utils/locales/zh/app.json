@@ -42,7 +42,7 @@
         "issueUrl": "https:\/\/airtable.com\/shroN1qoYaCZRsfEw?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
         "feedback": "\u53cd\u9988",
         "help-translation": "\u53c2\u4e0e\u6211\u4eec\uff1f",
-        "help-translation-description": "\u6211\u4eec\u5df2\u7ecf\u5f00\u653e\u4e86\u793e\u533a\u7684\u7ffb\u8bd1\u6d41\u7a0b\uff0c\u56e0\u4e3a\u60a8\u6700\u4e86\u89e3 Minna no Nihongo \u5e94\u8be5\u5982\u4f55\u7ffb\u8bd1\u6210\u60a8\u7684\u8bed\u8a00\u3002 \u8bf7\u4e0e\u6211\u4eec\u4e00\u8d77\u53c2\u4e0e\u7ffb\u8bd1\uff0c\u6295\u7968\u548c\u8ba8\u8bba\u3002",
+        "help-translation-description": "\u6211\u4eec\u5df2\u7ecf\u5f00\u653e\u4e86\u793e\u533a\u7684\u7ffb\u8bd1\u6d41\u7a0b\uff0c\u56e0\u4e3a\u60a8\u6700\u4e86\u89e3 Mainichi no Nihongo \u5e94\u8be5\u5982\u4f55\u7ffb\u8bd1\u6210\u60a8\u7684\u8bed\u8a00\u3002 \u8bf7\u4e0e\u6211\u4eec\u4e00\u8d77\u53c2\u4e0e\u7ffb\u8bd1\uff0c\u6295\u7968\u548c\u8ba8\u8bba\u3002",
         "tts-instruction": "\u6ca1\u6709\u58f0\u97f3\u5417\uff1f",
         "tts-instruction-description": "\u4f60\u8981\u786e\u4fdd\u6587\u5b57\u8f6c\u8bed\u97f3\uff08text-to-speech\uff09\u529f\u80fd\u6709\u6b63\u786e\u5730\u6253\u5f00\uff0c\u5e76\u5b89\u88c5\u65e5\u8bed\u8bed\u8a00\u5305\u3002\u6700\u597d\u4f7f\u7528\u8c37\u6b4c\u7684\u5f15\u64ce\u3002",
         "tts-instruction-url": "https:\/\/airtable.com\/shr3vXSdVmOiLxUiz?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
@@ -56,18 +56,18 @@
         "restore_failed_title": "\u60a8\u4ece\u672a\u8d2d\u4e70\u8fc7\u6211\u4eec\u7684\u8fdb\u9636\u7248",
         "version": "\u7248\u672c",
         "adfree": {
-            "title": "Remove Ads",
+            "title": "\u53bb\u9664\u5e7f\u544a",
             "description": "- Remove all popup and banner ads"
         },
         "premium": {
-            "title": "Get Premium",
+            "title": "\u6210\u4e3a\u8fdb\u9636\u7528\u6237",
             "title-month": "month Premium",
             "title-months": "months Premium",
             "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
             "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
             "note": "Recurring billing, cancel anytime.",
             "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
-            "continue": "Continue"
+            "continue": "\u7ee7\u7eed"
         }
     },
     "common": {
