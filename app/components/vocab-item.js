@@ -70,7 +70,7 @@ export default class VocabItem extends Component {
       <TouchableOpacity
         onPress={() => {
           ttsSpeak(item);
-          tracker.logEvent('press-speak', item);
+          tracker.logEvent('user-vocab-item-press-read', item);
         }}
       >
         <View

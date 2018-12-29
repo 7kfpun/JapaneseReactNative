@@ -133,7 +133,7 @@ export default class Card extends Component {
                   lesson,
                 };
                 navigation.navigate('vocab-feedback', data);
-                tracker.logEvent('vocab-feedback', data);
+                tracker.logEvent('user-vocab-card-feedback', data);
               }}
             >
               <Ionicons name="ios-flag" size={24} color="black" />
@@ -151,10 +151,9 @@ export default class Card extends Component {
                 }}
               >
                 <Fragment>
-                  {!isCorrect &&
-                    !isWrong && (
-                      <Ionicons name="md-checkmark" size={28} color="white" />
-                    )}
+                  {!isCorrect && !isWrong && (
+                    <Ionicons name="md-checkmark" size={28} color="white" />
+                  )}
 
                   {isCorrect && (
                     <Animatable.View animation="fadeIn">
@@ -175,8 +174,8 @@ export default class Card extends Component {
                       color: !isKanaShown
                         ? iOSColors.white
                         : answers.length > 0
-                          ? iOSColors.customGray
-                          : iOSColors.black,
+                        ? iOSColors.customGray
+                        : iOSColors.black,
                       fontSize: isTooLong ? 20 : 28,
                     },
                   ]}
@@ -222,17 +221,16 @@ export default class Card extends Component {
                 paddingHorizontal: 30,
               }}
             >
-              {isKanjiShown &&
-                kana !== kanji && (
-                  <Text
-                    style={[
-                      styles.text,
-                      { marginTop: 20, fontSize: isTooLong ? 14 : 24 },
-                    ]}
-                  >
-                    {kanji}
-                  </Text>
-                )}
+              {isKanjiShown && kana !== kanji && (
+                <Text
+                  style={[
+                    styles.text,
+                    { marginTop: 20, fontSize: isTooLong ? 14 : 24 },
+                  ]}
+                >
+                  {kanji}
+                </Text>
+              )}
               {isRomajiShown && (
                 <Text
                   style={[

@@ -140,7 +140,9 @@ export default class CardOptionSelector extends Component {
           isOrdered
         );
 
-        tracker.logEvent(`set-${name}`, { value: newNameState });
+        tracker.logEvent(`user-card-option-set-${name}`, {
+          value: newNameState,
+        });
       }
     );
   }

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Alert, ScrollView, Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import ModeItem from './components/mode-item';
@@ -67,8 +66,13 @@ export default class SelectMode extends Component<Props> {
   };
 
   componentDidMount() {
-    store.get('isPremium').then(isPremium => this.setState({ isPremium }));
+    this.getStoreSubscription();
   }
+
+  getStoreSubscription = async () => {
+    const premiumInfo = await getPremiumInfo();
+    this.setState(premiumInfo);
+  };
 
   gotoLockFeature = (lockFeature, item) => {
     // lockFeature: assessment-listening, assessment-mc, read-all
@@ -86,11 +90,11 @@ export default class SelectMode extends Component<Props> {
 
     if (isPremium || item <= FIRST_FREE_LESSONS) {
       navigation.navigate(lockFeature, { lesson: item });
-      tracker.logEvent(`goto-${lockFeature}`, {
+      tracker.logEvent(`user-select-mode-goto-${lockFeature}`, {
         lesson: `${item}`,
       });
     } else {
-      tracker.logEvent(`app-${lockFeature}-premium-required`, {
+      tracker.logEvent(`app-select-mode-${lockFeature}-premium-required`, {
         lesson: `${item}`,
       });
 
@@ -102,10 +106,12 @@ export default class SelectMode extends Component<Props> {
             text: 'Cancel',
             onPress: () => {
               console.log('Cancel Pressed');
-              tracker.logEvent(`${lockFeature}-premium`, {
-                lesson: `${item}`,
-                interest: false,
-              });
+              tracker.logEvent(
+                `user-select-mode-${lockFeature}-cancel-premium`,
+                {
+                  lesson: `${item}`,
+                }
+              );
             },
             style: 'cancel',
           },
@@ -113,10 +119,12 @@ export default class SelectMode extends Component<Props> {
             text: 'OK',
             onPress: () => {
               navigation.navigate('about');
-              tracker.logEvent(`${lockFeature}-premium`, {
-                lesson: `${item}`,
-                interest: true,
-              });
+              tracker.logEvent(
+                `user-select-mode-${lockFeature}-interest-premium`,
+                {
+                  lesson: `${item}`,
+                }
+              );
             },
           },
         ],
@@ -128,7 +136,7 @@ export default class SelectMode extends Component<Props> {
   gotoAssessment = item => {
     const { navigation } = this.props;
     navigation.navigate('assessment', { lesson: item });
-    tracker.logEvent('goto-assessment', {
+    tracker.logEvent('user-select-mode-goto-assessment', {
       lesson: `${item}`,
     });
   };
@@ -152,7 +160,7 @@ export default class SelectMode extends Component<Props> {
             title={I18n.t('app.vocab-list.vocab')}
             onPress={() => {
               navigation.navigate('vocab-list', { item });
-              tracker.logEvent('goto-vocab-list', {
+              tracker.logEvent('user-select-mode-goto-vocab-list', {
                 lesson: `${item}`,
               });
             }}

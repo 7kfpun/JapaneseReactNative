@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { FlatList, Platform, StyleSheet, View } from 'react-native';
 
 import firebase from 'react-native-firebase';
-import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import VocabItem from '../../components/vocab-item';
 
+import { getPremiumInfo } from '../../utils/payment';
 import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -68,36 +68,10 @@ export default class VocabList extends Component<Props> {
 
   state = {
     vocabs: [],
-    isPremium: false,
   };
 
-  async componentDidMount() {
-    const {
-      navigation: {
-        state: {
-          params: { item },
-        },
-      },
-    } = this.props;
-
-    store.get('isPremium').then(isPremium => {
-      this.setState({ isPremium });
-      this.props.navigation.setParams({ isPremium });
-
-      setTimeout(() => {
-        if (
-          !__DEV__ &&
-          !isPremium &&
-          advert.isLoaded() &&
-          item > 3 &&
-          Math.random() < 0.7
-        ) {
-          advert.show();
-          tracker.logEvent('app-vocab-list-popup');
-        }
-      }, 3000);
-    });
-
+  componentDidMount() {
+    this.loadPopupAd();
     this.getVocabs();
   }
 
@@ -113,6 +87,29 @@ export default class VocabList extends Component<Props> {
     this.setState({ vocabs: vocabularies[item].data });
   };
 
+  loadPopupAd = async () => {
+    const premiumInfo = await getPremiumInfo();
+
+    const {
+      navigation: {
+        state: {
+          params: { lesson },
+        },
+      },
+    } = this.props;
+
+    if (
+      !__DEV__ &&
+      !premiumInfo.isAdFree &&
+      advert.isLoaded() &&
+      lesson > 3 &&
+      Math.random() < 0.4
+    ) {
+      advert.show();
+      tracker.logEvent('app-ads-popup', { view: 'vocab-list' });
+    }
+  };
+
   render() {
     const {
       navigation: {
@@ -122,7 +119,7 @@ export default class VocabList extends Component<Props> {
       },
     } = this.props;
 
-    const { isPremium, vocabs } = this.state;
+    const { vocabs } = this.state;
 
     return (
       <View style={styles.container}>
@@ -135,11 +132,9 @@ export default class VocabList extends Component<Props> {
           )}
         />
 
-        {!isPremium && (
-          <AdMob
-            unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
-          />
-        )}
+        <AdMob
+          unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
+        />
       </View>
     );
   }

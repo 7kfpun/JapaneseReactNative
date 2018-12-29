@@ -42,6 +42,7 @@ export default class Admob extends Component {
 
   componentDidMount() {
     this.getStoreSubscription();
+
     setTimeout(() => {
       this.setState({
         isAdDelaying: false,

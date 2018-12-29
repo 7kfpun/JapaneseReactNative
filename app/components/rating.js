@@ -103,7 +103,7 @@ export default class Rating extends Component {
       }, 2000);
     }
 
-    tracker.logEvent('rating', {
+    tracker.logEvent('user-rating', {
       method,
       starCount: `${starCount}`,
     });
@@ -150,16 +150,15 @@ export default class Rating extends Component {
             ))}
           </View>
         )}
-        {this.state.starCount > 0 &&
-          this.state.starCount < STARS_TO_APP_STORE && (
-            <TouchableOpacity onPress={this.openFeedbackUrl}>
-              <Animatable.View style={styles.button} animation="fadeIn">
-                <Text style={styles.feedbackDescriptionText}>
-                  {I18n.t('app.rating.feedback_description')}
-                </Text>
-              </Animatable.View>
-            </TouchableOpacity>
-          )}
+        {this.state.starCount > 0 && this.state.starCount < STARS_TO_APP_STORE && (
+          <TouchableOpacity onPress={this.openFeedbackUrl}>
+            <Animatable.View style={styles.button} animation="fadeIn">
+              <Text style={styles.feedbackDescriptionText}>
+                {I18n.t('app.rating.feedback_description')}
+              </Text>
+            </Animatable.View>
+          </TouchableOpacity>
+        )}
       </Animatable.View>
     );
   }

@@ -24,7 +24,7 @@ const LessonItem = ({ index, item, navigation }) => (
   <TouchableOpacity
     onPress={() => {
       navigation.navigate('select-mode', { item, navigation });
-      tracker.logEvent('goto-select-mode', {
+      tracker.logEvent('user-lessons-goto-select-mode', {
         lesson: `${item}`,
       });
     }}

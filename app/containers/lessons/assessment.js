@@ -16,8 +16,9 @@ import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
 import { cleanWord, shuffle, ttsSpeak } from '../../utils/helpers';
-import { items as vocabularies } from '../../utils/items';
+import { getPremiumInfo } from '../../utils/payment';
 import { hiragana, katakana } from '../../utils/kana';
+import { items as vocabularies } from '../../utils/items';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -305,7 +306,9 @@ export default class Assessment extends Component<Props> {
     this.getTiles();
   };
 
-  loadPopupAd() {
+  loadPopupAd = async () => {
+    const premiumInfo = await getPremiumInfo();
+
     const {
       navigation: {
         state: {
@@ -314,19 +317,17 @@ export default class Assessment extends Component<Props> {
       },
     } = this.props;
 
-    store.get('adFreeUntil').then(adFreeUntil => {
-      if (
-        !__DEV__ &&
-        !(adFreeUntil && adFreeUntil > getTimestamp()) &&
-        advert.isLoaded() &&
-        lesson > 3 &&
-        Math.random() < 0.7
-      ) {
-        advert.show();
-        tracker.logEvent('app-assessment-popup');
-      }
-    });
-  }
+    if (
+      !__DEV__ &&
+      !premiumInfo.isAdFree &&
+      advert.isLoaded() &&
+      lesson > 3 &&
+      Math.random() < 0.4
+    ) {
+      advert.show();
+      tracker.logEvent('app-ads-popup', { view: 'assessment' });
+    }
+  };
 
   updateStates = (
     isKanjiShown,
@@ -423,7 +424,7 @@ export default class Assessment extends Component<Props> {
                 const tempAnswers = [...answers];
                 tempAnswers.pop();
                 this.setState({ answers: tempAnswers });
-                tracker.logEvent('press-backspace');
+                tracker.logEvent('user-assessment-remove-answer');
               }}
             />
           </View>
@@ -437,19 +438,19 @@ export default class Assessment extends Component<Props> {
                 onPress={() => {
                   if (answers.length < cleanWord(kana).length) {
                     this.setState({ answers: [...answers, tile] }, () => {
-                      tracker.logEvent('press-answer', { tile });
+                      tracker.logEvent('user-assessment-answer', { tile });
 
                       const { answers: newAnswers } = this.state;
 
                       if (newAnswers.join('') === cleanWord(kana)) {
-                        tracker.logEvent('result-correct', {
+                        tracker.logEvent('user-assessment-answer-correct', {
                           vocab: kana,
                         });
                         console.log('correct');
                       }
 
                       if (!cleanWord(kana).startsWith(newAnswers.join(''))) {
-                        tracker.logEvent('result-incorrect', {
+                        tracker.logEvent('user-assessment-answer-incorrect', {
                           vocab: kana,
                         });
                         console.log('incorrect');
@@ -473,7 +474,7 @@ export default class Assessment extends Component<Props> {
                 disabled={count <= 0}
                 onPress={() => {
                   this.setCount(count - 1);
-                  tracker.logEvent('press-previous');
+                  tracker.logEvent('user-assessment-press-previous');
                 }}
                 titleStyles={{ fontSize: 20 }}
               />
@@ -482,7 +483,7 @@ export default class Assessment extends Component<Props> {
                 containerStyles={{ marginHorizontal: 15 }}
                 onPress={() => {
                   ttsSpeak(vocabulary);
-                  tracker.logEvent('assessment-read');
+                  tracker.logEvent('user-assessment-press-read');
                 }}
               />
 
@@ -492,7 +493,7 @@ export default class Assessment extends Component<Props> {
                 disabled={count >= total - 1}
                 onPress={() => {
                   this.setCount(count + 1);
-                  tracker.logEvent('press-next', {
+                  tracker.logEvent('user-assessment-press-next', {
                     lesson: `${lesson}`,
                   });
                 }}
@@ -508,7 +509,7 @@ export default class Assessment extends Component<Props> {
                 title={I18n.t('app.common.random')}
                 onPress={() => {
                   this.getNext();
-                  tracker.logEvent('press-random');
+                  tracker.logEvent('user-assessment-press-random');
                 }}
                 titleStyles={{ fontSize: 20 }}
               />
@@ -517,7 +518,7 @@ export default class Assessment extends Component<Props> {
                 containerStyles={{ marginLeft: 10 }}
                 onPress={() => {
                   ttsSpeak(vocabulary);
-                  tracker.logEvent('assessment-read');
+                  tracker.logEvent('user-assessment-press-read');
                 }}
               />
             </Fragment>

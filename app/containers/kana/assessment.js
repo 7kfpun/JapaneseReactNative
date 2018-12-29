@@ -183,7 +183,7 @@ export default class KanaAssessment extends Component<Props> {
         total: total + 1,
       });
       store.save(`kana.assessment.${origin[2]}`, true);
-      tracker.logEvent('kana-assessment-result-correct', {
+      tracker.logEvent('user-kana-assessment-answer-correct', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -191,7 +191,7 @@ export default class KanaAssessment extends Component<Props> {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total + 1 });
       store.save(`kana.assessment.${origin[2]}`, false);
-      tracker.logEvent('kana-assessment-result-incorrect', {
+      tracker.logEvent('user-kana-assessment-answer-incorrect', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -267,7 +267,7 @@ export default class KanaAssessment extends Component<Props> {
           onPress={() => {
             Tts.setDefaultLanguage('ja');
             Tts.speak(origin[0]);
-            tracker.logEvent('kana-assessment-read', {
+            tracker.logEvent('user-kana-assessment-press-read', {
               text: origin[0],
             });
           }}
@@ -296,10 +296,10 @@ export default class KanaAssessment extends Component<Props> {
                     answerPosition === -1
                       ? 'white'
                       : answers[0] === rightAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && answerPosition === 0
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && answerPosition === 0
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -319,10 +319,10 @@ export default class KanaAssessment extends Component<Props> {
                     answerPosition === -1
                       ? 'white'
                       : answers[1] === rightAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && answerPosition === 1
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && answerPosition === 1
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -343,10 +343,10 @@ export default class KanaAssessment extends Component<Props> {
                     answerPosition === -1
                       ? 'white'
                       : answers[2] === rightAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && answerPosition === 2
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && answerPosition === 2
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -366,10 +366,10 @@ export default class KanaAssessment extends Component<Props> {
                     answerPosition === -1
                       ? 'white'
                       : answers[3] === rightAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && answerPosition === 3
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && answerPosition === 3
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -388,7 +388,7 @@ export default class KanaAssessment extends Component<Props> {
             title={I18n.t('app.common.next')}
             onPress={() => {
               this.getNext();
-              tracker.logEvent('press-kana-assessment-next');
+              tracker.logEvent('user-kana-assessment-press-next');
             }}
             titleStyles={{ fontSize: 20 }}
           />
@@ -398,7 +398,7 @@ export default class KanaAssessment extends Component<Props> {
             onPress={() => {
               Tts.setDefaultLanguage('ja');
               Tts.speak(origin[0]);
-              tracker.logEvent('kana-assessment-read', {
+              tracker.logEvent('user-kana-assessment-press-read', {
                 text: origin[0],
               });
             }}

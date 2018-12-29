@@ -77,21 +77,21 @@ export default class SearchView extends Component<Props> {
     const searchResult = fuse.search(searchText);
 
     this.setState({ searchText, searchResult });
-    tracker.logEvent('search-vocab', { text: searchText });
+    tracker.logEvent('user-search-vocab', { text: searchText });
   };
 
   onFocus = () => {
-    tracker.logEvent('search-on-focus');
+    tracker.logEvent('user-search-on-focus');
   };
 
   onCancel = () => {
     this.setState({ searchText: '' });
-    tracker.logEvent('search-on-cancel');
+    tracker.logEvent('user-search-on-cancel');
   };
 
   onDelete = () => {
     this.setState({ searchText: '' });
-    tracker.logEvent('search-on-delete');
+    tracker.logEvent('user-search-on-delete');
   };
 
   render() {

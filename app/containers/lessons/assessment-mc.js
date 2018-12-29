@@ -215,14 +215,14 @@ export default class AssessmentMC extends Component<Props> {
         correctNumber: correctNumber ? correctNumber + 1 : 1,
         total: total ? total + 1 : 1,
       });
-      tracker.logEvent('assessment-mc-result-correct', {
+      tracker.logEvent('user-assessment-mc-answer-correct', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
     } else {
       this.setState({ isCorrect: false });
       navigation.setParams({ total: total ? total + 1 : 1 });
-      tracker.logEvent('assessment-mc-result-incorrect', {
+      tracker.logEvent('user-assessment-mc-answer-incorrect', {
         answer: userAnswer,
         mode: `${modeFrom} - ${modeTo}`,
       });
@@ -245,11 +245,10 @@ export default class AssessmentMC extends Component<Props> {
       modeFrom === 'translation'
         ? I18n.t(`minna.${lesson}.${question.romaji}`)
         : question[modeFrom];
-    const displayAnswers = choices.map(
-      item =>
-        modeTo === 'translation'
-          ? I18n.t(`minna.${lesson}.${item.romaji}`)
-          : item[modeTo]
+    const displayAnswers = choices.map(item =>
+      modeTo === 'translation'
+        ? I18n.t(`minna.${lesson}.${item.romaji}`)
+        : item[modeTo]
     );
     const correctAnswer =
       modeTo === 'translation'
@@ -288,7 +287,7 @@ export default class AssessmentMC extends Component<Props> {
           style={styles.card}
           onPress={() => {
             ttsSpeak(question);
-            tracker.logEvent('assessment-mc-read', {
+            tracker.logEvent('user-assessment-mc-press-read', {
               text: question.kanji,
             });
           }}
@@ -309,10 +308,10 @@ export default class AssessmentMC extends Component<Props> {
                     selectedAnswer === -1
                       ? 'white'
                       : displayAnswers[0] === correctAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && selectedAnswer === 0
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && selectedAnswer === 0
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -332,10 +331,10 @@ export default class AssessmentMC extends Component<Props> {
                     selectedAnswer === -1
                       ? 'white'
                       : displayAnswers[1] === correctAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && selectedAnswer === 1
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && selectedAnswer === 1
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -356,10 +355,10 @@ export default class AssessmentMC extends Component<Props> {
                     selectedAnswer === -1
                       ? 'white'
                       : displayAnswers[2] === correctAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && selectedAnswer === 2
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && selectedAnswer === 2
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -379,10 +378,10 @@ export default class AssessmentMC extends Component<Props> {
                     selectedAnswer === -1
                       ? 'white'
                       : displayAnswers[3] === correctAnswer
-                        ? '#2ECC40'
-                        : !isCorrect && selectedAnswer === 3
-                          ? '#FF4136'
-                          : iOSColors.white,
+                      ? '#2ECC40'
+                      : !isCorrect && selectedAnswer === 3
+                      ? '#FF4136'
+                      : iOSColors.white,
                 },
               ]}
               underlayColor={iOSColors.gray}
@@ -401,7 +400,7 @@ export default class AssessmentMC extends Component<Props> {
             title={I18n.t('app.common.next')}
             onPress={() => {
               this.getNext();
-              tracker.logEvent('press-assessment-mc-next');
+              tracker.logEvent('user-assessment-mc-press-next');
             }}
             titleStyles={{ fontSize: 20 }}
           />
@@ -410,7 +409,7 @@ export default class AssessmentMC extends Component<Props> {
             containerStyles={{ marginLeft: 10 }}
             onPress={() => {
               ttsSpeak(question);
-              tracker.logEvent('assessment-mc-read', {
+              tracker.logEvent('user-assessment-mc-press-read', {
                 text: question.kanji,
               });
             }}

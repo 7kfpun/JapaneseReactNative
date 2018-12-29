@@ -213,7 +213,7 @@ export default class Today extends Component<Props> {
             <OutOfConnection
               onPress={() => {
                 this.requestTodayItems();
-                tracker.logEvent('today-reconnect');
+                tracker.logEvent('user-today-reconnect');
               }}
             />
           )}
@@ -241,12 +241,10 @@ export default class Today extends Component<Props> {
                 this.setState({ todayItems: shuffle([...todayItems]) }, () => {
                   if (isSoundOn) {
                     const { todayItems: newTodayItems } = this.state;
-
                     ttsSpeak(newTodayItems[0]);
-                    tracker.logEvent('app-today-shuffle-read');
                   }
                 });
-                tracker.logEvent('today-shuffle');
+                tracker.logEvent('user-today-press-shuffle');
               }
             }}
             title={I18n.t('app.today.shuffle')}
@@ -258,7 +256,7 @@ export default class Today extends Component<Props> {
             onPress={() => {
               if (todayItems && todayItems.length > 0) {
                 ttsSpeak(todayItems[cardIndex]);
-                tracker.logEvent('today-read');
+                tracker.logEvent('user-today-press-read');
               }
             }}
           />
@@ -271,10 +269,9 @@ export default class Today extends Component<Props> {
                 this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
                   if (isSoundOn) {
                     ttsSpeak(todayItems[isLast ? 0 : cardIndex + 1]);
-                    tracker.logEvent('app-today-next-read');
                   }
                 });
-                tracker.logEvent('today-next');
+                tracker.logEvent('user-today-press-next');
               }
             }}
             title={I18n.t('app.common.next')}

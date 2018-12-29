@@ -12,7 +12,7 @@ import Row from '../../components/row';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 import {
-  checkPurchaseHistory,
+  // checkPurchaseHistory,
   getPremiumInfo,
   validateReceipt,
 } from '../../utils/payment';
@@ -63,7 +63,7 @@ export default class Premium extends Component<Props> {
 
     this.getStoreSubscription();
     this.getSubscriptions();
-    checkPurchaseHistory();
+    // checkPurchaseHistory();
   };
 
   componentWillUnmount() {
@@ -85,36 +85,6 @@ export default class Premium extends Component<Props> {
     }
   };
 
-  getAvailablePurchases = async () => {
-    try {
-      tracker.logEvent('restore-purchase');
-      const purchases = await RNIap.getAvailablePurchases();
-      console.log('getAvailablePurchases', purchases);
-      if (purchases && purchases.length > 0) {
-        this.setState({
-          purchasedProductIds: purchases.map(item => item.productId),
-        });
-
-        purchases.forEach(purchase => {
-          this.checkProduct(purchase);
-          tracker.logEvent('restore-purchase-done', purchase);
-        });
-      } else {
-        Alert.alert(
-          I18n.t('app.about.restore_failed_title'),
-          null,
-          [{ text: 'OK' }],
-          { cancelable: false }
-        );
-      }
-    } catch (err) {
-      console.warn('Get available error', err.code, err.message);
-      tracker.logEvent('restore-purchase-error', err);
-
-      return false;
-    }
-  };
-
   buySubscribeItem = async product => {
     // {
     //   description: '',
@@ -131,7 +101,7 @@ export default class Premium extends Component<Props> {
     //   localizedPrice: 'HK$38.00',
     //   currency: 'HKD'
     // }
-    tracker.logEvent('buy-subscription-start', product);
+    tracker.logEvent('user-premium-subscription-start', product);
     try {
       console.log('buySubscribeItem:', product);
       let purchase;
@@ -143,9 +113,6 @@ export default class Premium extends Component<Props> {
 
       console.info('Purchase result', purchase);
 
-      if (Platform.OS === 'android') {
-        setTimeout(() => this.getAvailablePurchases(), 30000);
-      }
       // {
       //   transactionId: '1000000441571637',
       //   originalTransactionDate: 1529137617000,
@@ -161,22 +128,23 @@ export default class Premium extends Component<Props> {
       //   productId: 'com.kfpun.nihongo.premium.1m',
       //   transactionId: '1000000489738811'
       // }
+      tracker.logEvent('user-premium-subscription-validate', purchase);
       const result = await validateReceipt(purchase);
       console.log('validateReceipt', result);
+      tracker.logEvent('user-premium-subscription-done', result);
 
-      // tracker.logEvent('buy-subscription-done', purchase);
-      // this.refreshForApplyingPurchase(purchase);
-      // tracker.logPurchase(
-      //   product.price.replace(',', '.'),
-      //   product.currency,
-      //   true,
-      //   product.title,
-      //   product.type,
-      //   product.productId
-      // );
+      this.refreshForApplyingPurchase();
+      tracker.logPurchase(
+        product.price.replace(',', '.'),
+        product.currency,
+        true,
+        product.title,
+        product.type,
+        product.productId
+      );
     } catch (err) {
       if (err.code === 'E_ALREADY_OWNED') {
-        this.getAvailablePurchases();
+        checkPurchaseHistory(isNewConnection);
       } else if (err.code === 'E_USER_CANCELLED') {
         // You are currently subscribed || cancelled
       } else if (err.code === 'E_UNKNOWN') {
@@ -184,7 +152,7 @@ export default class Premium extends Component<Props> {
       }
 
       console.warn('Purchase result error', err.code, err.message);
-      tracker.logEvent('buy-subscription-error', err);
+      tracker.logEvent('user-premium-subscription-error', err);
       tracker.logPurchase(
         product.price.replace(',', '.'),
         product.currency,
@@ -200,7 +168,15 @@ export default class Premium extends Component<Props> {
     Alert.alert(
       I18n.t('app.about.purchase_title'),
       I18n.t('app.about.purchase_description'),
-      [{ text: 'OK', onPress: () => RNRestart.Restart() }],
+      [
+        {
+          text: 'OK',
+          onPress: () => {
+            RNRestart.Restart();
+            tracker.logEvent('user-premium-subscription-restart');
+          },
+        },
+      ],
       { cancelable: false }
     );
   };
@@ -210,7 +186,6 @@ export default class Premium extends Component<Props> {
       productList,
       purchasedProductIds,
       selectedProductIndex,
-      currentPremiumSubscription,
     } = this.state;
 
     return (
@@ -232,10 +207,7 @@ export default class Premium extends Component<Props> {
               last={i === productList.length - 1}
               onPress={() => this.setState({ selectedProductIndex: i })}
               disabled={purchasedProductIds.includes(product.productId)}
-              selected={
-                selectedProductIndex === i ||
-                product.productId === currentPremiumSubscription
-              }
+              selected={selectedProductIndex === i}
             />
           ))}
 

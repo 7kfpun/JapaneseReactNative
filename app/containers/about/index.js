@@ -14,7 +14,7 @@ import NotificationSetting from './components/notification-setting';
 import Row from '../../components/row';
 
 import { openURL, prepareURL } from '../../utils/helpers';
-import { getPremiumInfo } from '../../utils/payment';
+import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -92,7 +92,15 @@ export default class About extends Component<Props> {
               first={false}
               text={I18n.t('app.about.restore')}
               onPress={() => {
-                this.getAvailablePurchases();
+                const history = checkPurchaseHistory();
+                if (!history) {
+                  Alert.alert(
+                    I18n.t('app.about.restore_failed_title'),
+                    null,
+                    [{ text: 'OK' }],
+                    { cancelable: false }
+                  );
+                }
               }}
             />
           </View>
@@ -102,7 +110,7 @@ export default class About extends Component<Props> {
               text={I18n.t('app.feedback.feedback')}
               onPress={() => {
                 navigation.navigate('feedback');
-                tracker.logEvent('feedback');
+                tracker.logEvent('user-about-goto-feedback');
               }}
             />
             {Platform.OS === 'android' && (
@@ -124,7 +132,7 @@ export default class About extends Component<Props> {
                   );
 
                   openURL(uri);
-                  tracker.logEvent('tts-instruction');
+                  tracker.logEvent('user-about-goto-tts-instruction');
                 }}
               />
             )}
@@ -136,7 +144,7 @@ export default class About extends Component<Props> {
                 Linking.openURL(
                   'https://minna-app.oneskyapp.com/collaboration'
                 );
-                tracker.logEvent('help-translation');
+                tracker.logEvent('user-about-goto-help-translation');
               }}
             />
           </View>
