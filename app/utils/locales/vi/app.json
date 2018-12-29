@@ -79,7 +79,9 @@
         "next": "K\u1ebf ti\u1ebfp",
         "random": "Ng\u1eabu nhi\u00ean",
         "lesson_no": "B\u00e0i {{lesson_no}}",
-        "tts_required": "Vui l\u00f2ng b\u1eadt Google Text-to-Speech"
+        "tts_required": "Vui l\u00f2ng b\u1eadt Google Text-to-Speech",
+        "coming-soon": "Coming soon",
+        "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Th\u01b0\u1edfng th\u1ee9c?",

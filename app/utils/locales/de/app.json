@@ -79,7 +79,9 @@
         "next": "N\u00e4chste",
         "random": "Willk\u00fcrlich",
         "lesson_no": "Lektion {{lesson_no}}",
-        "tts_required": "Google Text-to-Speech ist f\u00fcr die App erforderlich"
+        "tts_required": "Google Text-to-Speech ist f\u00fcr die App erforderlich",
+        "coming-soon": "Coming soon",
+        "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Haben Sie Lust mit die App?",

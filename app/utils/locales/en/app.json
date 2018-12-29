@@ -79,7 +79,9 @@
         "next": "Next",
         "random": "Random",
         "lesson_no": "Lesson {{lesson_no}}",
-        "tts_required": "Google Text-to-Speech is required for using this app"
+        "tts_required": "Google Text-to-Speech is required for using this app",
+        "coming-soon": "Coming soon",
+        "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Enjoy our APP?",

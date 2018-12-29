@@ -57,16 +57,16 @@
         "version": "\u7248\u672c",
         "adfree": {
             "title": "\u53bb\u9664\u5e7f\u544a",
-            "description": "- Remove all popup and banner ads"
+            "description": "- \u53bb\u9664\u6240\u6709\u5f39\u51fa\u4ee5\u53ca\u6a2a\u5e45\u5e7f\u544a"
         },
         "premium": {
             "title": "\u6210\u4e3a\u8fdb\u9636\u7528\u6237",
-            "title-month": "month Premium",
-            "title-months": "months Premium",
+            "title-month": "\u6708",
+            "title-months": "\u6708",
             "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
             "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
-            "note": "Recurring billing, cancel anytime.",
-            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "note": "\u4e0b\u671f\u81ea\u52a8\u7ed3\u7b97\uff0c\u968f\u65f6\u53ef\u4ee5\u53d6\u6d88\u3002",
+            "note-description": "\u900f\u8fc7\u70b9\u51fb\u201c\u7ee7\u7eed\u201d\uff0c\u8d39\u7528\u5c06\u81ea\u4f60\u7684 iTunes \u5e10\u6237\u6263\u6b3e\uff0c\u4f60\u7684\u8ba2\u8d2d\u5c06\u4f9d\u540c\u6837\u7684\u5957\u88c5\u4f7f\u7528\u671f\u9650\u548c\u76f8\u540c\u7684\u4ef7\u683c\u81ea\u52a8\u7eed\u8ba2\uff0c\u76f4\u5230\u4f60\u4e8e\u76ee\u524d\u671f\u9650\u7ed3\u675f\u524d\u81f3\u5c11 24 \u5c0f\u65f6\u5230 iTunes \u5546\u5e97\u8bbe\u5b9a\u4e2d\u53d6\u6d88\u4e3a\u6b62\u3002\u900f\u8fc7\u70b9\u51fb\u201c\u7ee7\u7eed\u201d\u8868\u793a\u4f60\u540c\u610f\u6211\u4eec\u7684\u9690\u79c1\u653f\u7b56\u4e0e\u6761\u6b3e\u3002",
             "continue": "\u7ee7\u7eed"
         }
     },
@@ -79,7 +79,9 @@
         "next": "\u4e0b\u4e00\u4e2a",
         "random": "\u968f\u673a",
         "lesson_no": "\u7b2c {{lesson_no}} \u8bfe",
-        "tts_required": "\u8bf7\u542f\u7528 Google \u6587\u5b57\u8f6c\u8bed\u97f3\u5f15\u64ce"
+        "tts_required": "\u8bf7\u542f\u7528 Google \u6587\u5b57\u8f6c\u8bed\u97f3\u5f15\u64ce",
+        "coming-soon": "\u5373\u5c07\u63a8\u51fa",
+        "coming-soon-description": "\u8bf7\u7ee7\u7eed\u5173\u6ce8\uff0c\u6211\u4eec\u5c06\u5e26\u6765\u8d8a\u6765\u8d8a\u591a\u7684\u529f\u80fd"
     },
     "rating": {
         "title": "\u559c\u6b22\u6211\u4eec APP \u5417\uff1f",
