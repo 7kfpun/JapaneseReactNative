@@ -1,5 +1,6 @@
 import * as RNIap from 'react-native-iap';
 
+import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
 
 import { getTimestamp } from './helpers';
@@ -31,8 +32,8 @@ const validateReceipt = async purchase => {
       const lastPremiumUntil = await store.get('premiumUntil');
       const lastAdFreeUntil = await store.get('adFreeUntil');
 
-      let premiumUntil;
-      let adFreeUntil;
+      let premiumUntil = 0;
+      let adFreeUntil = 0;
       let currentPremiumSubscription;
 
       const result = await RNIap.validateReceiptIos(
@@ -40,7 +41,7 @@ const validateReceipt = async purchase => {
           'receipt-data': purchase.transactionReceipt,
           password: config.itunesSharedSecret,
         },
-        true
+        __DEV__
       );
       console.log('validateReceiptIos', result);
       if (
@@ -51,13 +52,13 @@ const validateReceipt = async purchase => {
         result.latest_receipt_info.forEach(receiptInfo => {
           premiumUntil = Math.max(premiumUntil, receiptInfo.expires_date_ms);
           adFreeUntil = Math.max(adFreeUntil, receiptInfo.expires_date_ms);
-          currentPremiumSubscription = receiptInfo.expires_date_ms;
+          currentPremiumSubscription = receiptInfo.product_id;
         });
 
-        if (premiumUntil > lastPremiumUntil) {
+        if (premiumUntil > lastPremiumUntil || !lastPremiumUntil) {
           store.save('premiumUntil', premiumUntil);
         }
-        if (adFreeUntil > lastAdFreeUntil) {
+        if (adFreeUntil > lastAdFreeUntil || !lastAdFreeUntil) {
           store.save('adFreeUntil', adFreeUntil);
         }
         store.save('currentPremiumSubscription', currentPremiumSubscription);
@@ -76,35 +77,53 @@ const validateReceipt = async purchase => {
   return {};
 };
 
-// Check purchase history
+// Check purchase history (restore purchase)
 const checkPurchaseHistory = async (isNewConnection = true) => {
   try {
     if (isNewConnection) {
       await RNIap.initConnection();
     }
 
+    tracker.logEvent('user-premium-restore-purchase-start');
     const purchaseHistory = await RNIap.getAvailablePurchases();
     console.log('getPurchaseHistory', purchaseHistory);
     if (purchaseHistory.length > 0) {
       let isRenewPremium = false;
       let isRenewAdFree = false;
-      purchaseHistory.forEach(purchase => {
-        const result = validateReceipt(purchase);
-        isRenewPremium = result.isRenewPremium;
-        isRenewAdFree = result.isRenewAdFree;
-      });
+
+      for (const purchase of purchaseHistory) {
+        const result = await validateReceipt(purchase);
+        ({ isRenewPremium, isRenewAdFree } = result);
+      }
 
       if (isRenewPremium || isRenewAdFree) {
+        tracker.logEvent('user-premium-restore-purchase-done');
+
+        Alert.alert(
+          I18n.t('app.about.purchase_title'),
+          I18n.t('app.about.purchase_description'),
+          [
+            {
+              text: 'OK',
+              onPress: () => {
+                tracker.logEvent('user-premium-restore-purchase-restart');
+                RNRestart.Restart();
+              },
+            },
+          ],
+          { cancelable: false }
+        );
       }
 
       return true;
     }
   } catch (err) {
+    tracker.logEvent('user-premium-restore-purchase-error', err);
     console.warn(err);
     return false;
   } finally {
     if (isNewConnection) {
-      RNIap.isNewConnection();
+      RNIap.endConnection();
     }
   }
 };

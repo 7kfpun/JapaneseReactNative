@@ -17,6 +17,7 @@ import CardOptionSelector from '../../components/card-option-selector';
 import CustomButton from '../../components/button';
 import SoundButton from '../../components/sound-button';
 
+import { checkPurchaseHistory } from '../../utils/payment';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -175,6 +176,13 @@ export default class Today extends Component<Props> {
             outOfConnection: true,
           });
         }
+
+        // Check only if there is purchase before
+        store.get('premiumUntil').then(premiumUntil => {
+          if (premiumUntil) {
+            checkPurchaseHistory();
+          }
+        });
       })
       .catch(err => {
         console.log('Request for aqi failed', err);

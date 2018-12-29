@@ -8,6 +8,7 @@ import { iOSColors } from 'react-native-typography';
 import AdMob from '../../components/admob';
 import ModeItem from './components/mode-item';
 
+import { getPremiumInfo } from '../../utils/payment';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -94,42 +95,57 @@ export default class SelectMode extends Component<Props> {
         lesson: `${item}`,
       });
     } else {
-      tracker.logEvent(`app-select-mode-${lockFeature}-premium-required`, {
+      tracker.logEvent(`app-select-mode-${lockFeature}-coming-soon`, {
         lesson: `${item}`,
       });
 
       Alert.alert(
-        I18n.t('app.read-all.premium-required-title'),
-        I18n.t('app.read-all.premium-required-description'),
+        I18n.t('app.common.coming-soon'),
+        I18n.t('app.common.coming-soon-description'),
         [
           {
-            text: 'Cancel',
-            onPress: () => {
-              console.log('Cancel Pressed');
-              tracker.logEvent(
-                `user-select-mode-${lockFeature}-cancel-premium`,
-                {
-                  lesson: `${item}`,
-                }
-              );
-            },
-            style: 'cancel',
-          },
-          {
             text: 'OK',
-            onPress: () => {
-              navigation.navigate('about');
-              tracker.logEvent(
-                `user-select-mode-${lockFeature}-interest-premium`,
-                {
-                  lesson: `${item}`,
-                }
-              );
-            },
           },
         ],
         { cancelable: false }
       );
+
+      // tracker.logEvent(`app-select-mode-${lockFeature}-premium-required`, {
+      //   lesson: `${item}`,
+      // });
+      //
+      // Alert.alert(
+      //   I18n.t('app.read-all.premium-required-title'),
+      //   I18n.t('app.read-all.premium-required-description'),
+      //   [
+      //     {
+      //       text: 'Cancel',
+      //       onPress: () => {
+      //         console.log('Cancel Pressed');
+      //         tracker.logEvent(
+      //           `user-select-mode-${lockFeature}-cancel-premium`,
+      //           {
+      //             lesson: `${item}`,
+      //           }
+      //         );
+      //       },
+      //       style: 'cancel',
+      //     },
+      //     {
+      //       text: 'OK',
+      //       onPress: () => {
+      //         navigation.navigate('about');
+      //         tracker.logEvent(
+      //           `user-select-mode-${lockFeature}-interest-premium`,
+      //           {
+      //             lesson: `${item}`,
+      //           }
+      //         );
+      //       },
+      //     },
+      //   ],
+      //   { cancelable: false }
+      // );
     }
   };
 

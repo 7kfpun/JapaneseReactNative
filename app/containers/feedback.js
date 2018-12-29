@@ -73,7 +73,9 @@ export default class Feedback extends Component<Props> {
         translation: I18n.t(`minna.${lesson}.${romaji}`),
       });
     } else {
-      uri = I18n.t('app.feedback.url');
+      uri = prepareURL(I18n.t('app.feedback.url'), {
+        platform: Platform.OS,
+      });
     }
 
     return (

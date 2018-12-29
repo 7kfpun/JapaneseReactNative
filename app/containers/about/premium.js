@@ -12,7 +12,7 @@ import Row from '../../components/row';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 import {
-  // checkPurchaseHistory,
+  checkPurchaseHistory,
   getPremiumInfo,
   validateReceipt,
 } from '../../utils/payment';
@@ -63,7 +63,6 @@ export default class Premium extends Component<Props> {
 
     this.getStoreSubscription();
     this.getSubscriptions();
-    // checkPurchaseHistory();
   };
 
   componentWillUnmount() {
@@ -144,7 +143,7 @@ export default class Premium extends Component<Props> {
       );
     } catch (err) {
       if (err.code === 'E_ALREADY_OWNED') {
-        checkPurchaseHistory(isNewConnection);
+        checkPurchaseHistory(false);
       } else if (err.code === 'E_USER_CANCELLED') {
         // You are currently subscribed || cancelled
       } else if (err.code === 'E_UNKNOWN') {
@@ -172,8 +171,8 @@ export default class Premium extends Component<Props> {
         {
           text: 'OK',
           onPress: () => {
-            RNRestart.Restart();
             tracker.logEvent('user-premium-subscription-restart');
+            RNRestart.Restart();
           },
         },
       ],
