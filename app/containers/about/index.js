@@ -5,16 +5,16 @@ import { Linking, Platform, StyleSheet, ScrollView, View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
 import OneSignal from 'react-native-onesignal';
-import store from 'react-native-simple-store';
 
 import moment from 'moment';
 
+import AdMob from '../../components/admob';
 import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';
-import AdMob from '../../components/admob';
 import Row from '../../components/row';
 
-import { openURL, prepareURL, getTimestamp } from '../../utils/helpers';
+import { openURL, prepareURL } from '../../utils/helpers';
+import { getPremiumInfo } from '../../utils/payment';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -45,22 +45,14 @@ export default class About extends Component<Props> {
 
   componentDidMount() {
     OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
-
     this.getStoreSubscription();
   }
 
   getStoreSubscription = async () => {
-    const premiumUntil = await store.get('premiumUntil');
-    const currentPremiumSubscription = await store.get(
-      'currentPremiumSubscription'
-    );
-
-    this.setState({
-      premiumUntil,
-      currentPremiumSubscription,
-      isPremium: premiumUntil > getTimestamp(),
-    });
+    const premiumInfo = await getPremiumInfo();
+    this.setState(premiumInfo);
   };
+
   render() {
     const { navigation } = this.props;
     const { isPremium, currentPremiumSubscription, premiumUntil } = this.state;

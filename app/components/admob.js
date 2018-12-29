@@ -4,9 +4,8 @@ import { View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
-import store from 'react-native-simple-store';
 
-import { getTimestamp } from '../utils/helpers';
+import { getPremiumInfo } from '../utils/payment';
 
 const { AdRequest, Banner } = firebase.admob;
 const request = new AdRequest();
@@ -42,12 +41,7 @@ export default class Admob extends Component {
   };
 
   componentDidMount() {
-    store
-      .get('adFreeUntil')
-      .then(adFreeUntil =>
-        this.setState({ isAdfree: adFreeUntil > getTimestamp() })
-      );
-
+    this.getStoreSubscription();
     setTimeout(() => {
       this.setState({
         isAdDelaying: false,
@@ -55,9 +49,14 @@ export default class Admob extends Component {
     }, 1500);
   }
 
+  getStoreSubscription = async () => {
+    const premiumInfo = await getPremiumInfo();
+    this.setState(premiumInfo);
+  };
+
   render() {
     if (
-      this.state.isAdfree ||
+      this.state.isAdFree ||
       this.state.isReceivedFailed ||
       this.state.isAdDelaying
     ) {

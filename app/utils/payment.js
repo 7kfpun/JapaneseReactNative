@@ -2,7 +2,25 @@ import * as RNIap from 'react-native-iap';
 
 import store from 'react-native-simple-store';
 
+import { getTimestamp } from './helpers';
+
 import { config } from '../config';
+
+const getPremiumInfo = async () => {
+  const premiumUntil = await store.get('premiumUntil');
+  const adFreeUntil = await store.get('adFreeUntil');
+  const currentPremiumSubscription = await store.get(
+    'currentPremiumSubscription'
+  );
+
+  return {
+    isPremium: premiumUntil > getTimestamp(),
+    isAdFree: adFreeUntil > getTimestamp(),
+    premiumUntil,
+    adFreeUntil,
+    currentPremiumSubscription,
+  };
+};
 
 const validateReceipt = async purchase => {
   if (purchase.productId && purchase.transactionReceipt) {
@@ -19,14 +37,13 @@ const validateReceipt = async purchase => {
       console.log('validateReceiptIos', result);
       if (
         result.status === 0 &&
-        result.receipt &&
-        result.receipt.in_app &&
-        result.receipt.in_app.length > 0
+        result.latest_receipt_info &&
+        result.latest_receipt_info.length > 0
       ) {
-        result.receipt.in_app.forEach(inApp => {
-          store.save('premiumUntil', inApp.expires_date_ms);
-          store.save('adFreeUntil', inApp.expires_date_ms);
-          store.save('currentPremiumSubscription', inApp.product_id);
+        result.latest_receipt_info.forEach(receiptInfo => {
+          store.save('premiumUntil', receiptInfo.expires_date_ms);
+          store.save('adFreeUntil', receiptInfo.expires_date_ms);
+          store.save('currentPremiumSubscription', receiptInfo.product_id);
         });
 
         const premiumUntil = await store.get('premiumUntil');
@@ -64,5 +81,6 @@ const checkPurchaseHistory = async () => {
   }
 };
 
+exports.getPremiumInfo = getPremiumInfo;
 exports.validateReceipt = validateReceipt;
 exports.checkPurchaseHistory = checkPurchaseHistory;

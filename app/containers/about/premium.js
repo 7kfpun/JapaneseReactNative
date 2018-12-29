@@ -11,7 +11,11 @@ import Row from '../../components/row';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
-import { checkPurchaseHistory, validateReceipt } from '../../utils/payment';
+import {
+  checkPurchaseHistory,
+  getPremiumInfo,
+  validateReceipt,
+} from '../../utils/payment';
 
 import { config } from '../../config';
 
@@ -51,12 +55,13 @@ export default class Premium extends Component<Props> {
   state = {
     productList: [],
     purchasedProductIds: [],
-    selectedProductIndex: 0,
+    selectedProductIndex: null,
   };
 
   componentDidMount = async () => {
     await RNIap.initConnection();
 
+    this.getStoreSubscription();
     this.getSubscriptions();
     checkPurchaseHistory();
   };
@@ -64,6 +69,11 @@ export default class Premium extends Component<Props> {
   componentWillUnmount() {
     RNIap.endConnection();
   }
+
+  getStoreSubscription = async () => {
+    const premiumInfo = await getPremiumInfo();
+    this.setState(premiumInfo);
+  };
 
   getSubscriptions = async () => {
     try {
@@ -121,7 +131,6 @@ export default class Premium extends Component<Props> {
     //   localizedPrice: 'HK$38.00',
     //   currency: 'HKD'
     // }
-    console.log(product);
     tracker.logEvent('buy-subscription-start', product);
     try {
       console.log('buySubscribeItem:', product);
@@ -201,6 +210,7 @@ export default class Premium extends Component<Props> {
       productList,
       purchasedProductIds,
       selectedProductIndex,
+      currentPremiumSubscription,
     } = this.state;
 
     return (
@@ -222,7 +232,10 @@ export default class Premium extends Component<Props> {
               last={i === productList.length - 1}
               onPress={() => this.setState({ selectedProductIndex: i })}
               disabled={purchasedProductIds.includes(product.productId)}
-              selected={selectedProductIndex === i}
+              selected={
+                selectedProductIndex === i ||
+                product.productId === currentPremiumSubscription
+              }
             />
           ))}
 
@@ -249,6 +262,7 @@ export default class Premium extends Component<Props> {
                     onPress={() => {
                       this.buySubscribeItem(productList[selectedProductIndex]);
                     }}
+                    disabled={selectedProductIndex === null}
                     title={I18n.t('app.about.premium.continue')}
                     titleStyles={{ fontSize: 20 }}
                   />
