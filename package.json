@@ -12,6 +12,7 @@
     "install-android": "adb install android/app/build/outputs/apk/release/app-release.apk",
     "uninstall-android": "adb uninstall com.kfpun.japanese",
     "capture-android": "adb shell screencap /sdcard/temp.png && adb pull /sdcard/temp.png screenshot.png",
+    "clean": "cd android && ./gradlew clean && cd ..",
     "precommit": "lint-staged",
     "test": "jest",
     "upload-locale": "node ./scripts/upload.js",

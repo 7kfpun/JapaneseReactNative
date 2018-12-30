@@ -1,4 +1,4 @@
-package com.kfpun.japanese;
+package com.kfpun.nihongo;
 
 import android.app.Application;
 

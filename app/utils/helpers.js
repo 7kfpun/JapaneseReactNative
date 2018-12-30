@@ -84,7 +84,11 @@ export const ttsSpeak = (item, lang = 'ja') => {
   if (item.kanji && item.kana) {
     // Tts.stop();
     Tts.setDefaultLanguage(lang);
-    Tts.speak(cleanWord(item.useKana ? item.kana : item.kanji));
+    Tts.speak(
+      cleanWord(
+        item.useKana || Platform.OS === 'android' ? item.kana : item.kanji
+      )
+    );
   }
 };
 

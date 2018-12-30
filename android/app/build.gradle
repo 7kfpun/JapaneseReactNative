@@ -104,11 +104,11 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.kfpun.japanese"
+        applicationId "com.kfpun.nihongo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 27
-        versionName "1.0.21"
+        versionCode 1
+        versionName "2.0.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -124,10 +124,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(JAPANESE_RELEASE_STORE_FILE)
-            storePassword JAPANESE_RELEASE_STORE_PASSWORD
-            keyAlias JAPANESE_RELEASE_KEY_ALIAS
-            keyPassword JAPANESE_RELEASE_KEY_PASSWORD
+            storeFile file(NIHONGO_RELEASE_STORE_FILE)
+            storePassword NIHONGO_RELEASE_STORE_PASSWORD
+            keyAlias NIHONGO_RELEASE_KEY_ALIAS
+            keyPassword NIHONGO_RELEASE_KEY_PASSWORD
         }
     }
     buildTypes {
@@ -168,10 +168,10 @@ dependencies {
     }
 
     // Firebase dependencies
-    implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.google.firebase:firebase-ads:17.0.0'
-    implementation 'com.google.firebase:firebase-perf:16.2.0'  // need multidex
-    implementation 'com.google.firebase:firebase-config:16.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-ads:17.1.2'
+    implementation 'com.google.firebase:firebase-perf:16.2.3'  // need multidex
+    implementation 'com.google.firebase:firebase-config:16.1.2'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'  // need multidex
 
     implementation (project(':react-native-firebase')) {
@@ -193,6 +193,8 @@ dependencies {
         exclude group: 'com.google.firebase', module: 'firebase-ads'
         exclude group: 'com.google.firebase', module: 'firebase-firestore'
         exclude group: 'com.google.firebase', module: 'firebase-invites'
+
+        transitive = false
     }
 
     implementation('com.crashlytics.sdk.android:answers:1.4.3@aar') {

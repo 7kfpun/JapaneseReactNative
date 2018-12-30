@@ -1,4 +1,4 @@
-package com.kfpun.japanese;
+package com.kfpun.nihongo;
 
 import com.facebook.react.ReactActivity;
 
