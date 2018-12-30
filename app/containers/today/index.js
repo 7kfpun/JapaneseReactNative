@@ -249,7 +249,7 @@ export default class Today extends Component<Props> {
                 this.setState({ todayItems: shuffle([...todayItems]) }, () => {
                   if (isSoundOn) {
                     const { todayItems: newTodayItems } = this.state;
-                    ttsSpeak(newTodayItems[0]);
+                    ttsSpeak(newTodayItems[cardIndex]); // TODO: improve shuffle
                   }
                 });
                 tracker.logEvent('user-today-press-shuffle');
