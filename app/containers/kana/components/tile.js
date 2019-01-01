@@ -88,6 +88,7 @@ export default class Tile extends Component<Props> {
       <TouchableOpacity
         style={[styles.container, { width: width / itemsPerRow }]}
         onPress={() => {
+          Tts.setDefaultRate(0.1);
           Tts.setDefaultLanguage('ja');
           Tts.speak(hiragana);
           tracker.logEvent('user-kana-tile-press-read', { text: hiragana });

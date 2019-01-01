@@ -168,7 +168,7 @@ export default class Today extends Component<Props> {
           });
 
           if (isSoundOn) {
-            ttsSpeak(todayItems[0]);
+            ttsSpeak(todayItems[0], { useKana: true });
             tracker.logEvent('app-today-read');
           }
         } else {
@@ -249,7 +249,7 @@ export default class Today extends Component<Props> {
                 this.setState({ todayItems: shuffle([...todayItems]) }, () => {
                   if (isSoundOn) {
                     const { todayItems: newTodayItems } = this.state;
-                    ttsSpeak(newTodayItems[cardIndex]); // TODO: improve shuffle
+                    ttsSpeak(newTodayItems[cardIndex], { useKana: true }); // TODO: improve shuffle
                   }
                 });
                 tracker.logEvent('user-today-press-shuffle');
@@ -263,7 +263,7 @@ export default class Today extends Component<Props> {
             containerStyles={{ marginHorizontal: 15 }}
             onPress={() => {
               if (todayItems && todayItems.length > 0) {
-                ttsSpeak(todayItems[cardIndex]);
+                ttsSpeak(todayItems[cardIndex], { useKana: true });
                 tracker.logEvent('user-today-press-read');
               }
             }}
@@ -276,7 +276,9 @@ export default class Today extends Component<Props> {
                 const isLast = cardIndex === todayItems.length - 1;
                 this.setState({ cardIndex: isLast ? 0 : cardIndex + 1 }, () => {
                   if (isSoundOn) {
-                    ttsSpeak(todayItems[isLast ? 0 : cardIndex + 1]);
+                    ttsSpeak(todayItems[isLast ? 0 : cardIndex + 1], {
+                      useKana: true,
+                    });
                   }
                 });
                 tracker.logEvent('user-today-press-next');

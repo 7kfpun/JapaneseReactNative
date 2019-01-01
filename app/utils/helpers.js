@@ -80,13 +80,19 @@ export const prepareURL = (url, replacers) => {
 export const noop = () => {};
 
 // TTS speaking
-export const ttsSpeak = (item, lang = 'ja') => {
+export const ttsSpeak = (item, options = {}) => {
+  options.lang = options.lang || 'ja';
+  options.useKana = options.useKana || false;
+
   if (item.kanji && item.kana) {
     // Tts.stop();
-    Tts.setDefaultLanguage(lang);
+    Tts.setDefaultRate(0.4);
+    Tts.setDefaultLanguage(options.lang);
     Tts.speak(
       cleanWord(
-        item.useKana || Platform.OS === 'android' ? item.kana : item.kanji
+        options.useKana || item.useKana || Platform.OS === 'android'
+          ? item.kana
+          : item.kanji
       )
     );
   }
