@@ -107,9 +107,7 @@ export default class Lessons extends Component<Props> {
           ))}
         </IndicatorViewPager>
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-lessons-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-lessons-banner`]} />
       </View>
     );
   }

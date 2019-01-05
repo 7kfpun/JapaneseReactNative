@@ -289,7 +289,7 @@ export default class Today extends Component<Props> {
           />
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-today-banner`]} />
+        <AdMob unitId={config.admob[`${Platform.OS}-today-banner`]} />
       </View>
     );
   }

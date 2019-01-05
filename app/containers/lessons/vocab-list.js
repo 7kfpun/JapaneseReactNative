@@ -17,7 +17,7 @@ import { config } from '../../config';
 
 const advert = firebase
   .admob()
-  .interstitial(config.admob[`japanese-${Platform.OS}-vocab-list-popup`]);
+  .interstitial(config.admob[`${Platform.OS}-vocab-list-popup`]);
 
 const { AdRequest } = firebase.admob;
 const request = new AdRequest();
@@ -132,9 +132,7 @@ export default class VocabList extends Component<Props> {
           )}
         />
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-vocab-list-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-vocab-list-banner`]} />
       </View>
     );
   }

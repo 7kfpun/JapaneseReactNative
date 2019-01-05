@@ -406,7 +406,7 @@ export default class KanaAssessment extends Component<Props> {
         </View>
 
         {!isPremium && (
-          <AdMob unitId={config.admob[`japanese-${Platform.OS}-kana-banner`]} />
+          <AdMob unitId={config.admob[`${Platform.OS}-kana-banner`]} />
         )}
       </View>
     );

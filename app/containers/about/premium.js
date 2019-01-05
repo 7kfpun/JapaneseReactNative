@@ -250,7 +250,7 @@ export default class Premium extends Component<Props> {
           </View>
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />
+        <AdMob unitId={config.admob[`${Platform.OS}-about-banner`]} />
       </View>
     );
   }

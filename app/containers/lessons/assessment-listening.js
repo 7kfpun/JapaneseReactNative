@@ -417,9 +417,7 @@ export default class AssessmentMC extends Component<Props> {
         </View>
 
         <AdMob
-          unitId={
-            config.admob[`japanese-${Platform.OS}-assessment-listening-banner`]
-          }
+          unitId={config.admob[`${Platform.OS}-assessment-listening-banner`]}
         />
       </View>
     );

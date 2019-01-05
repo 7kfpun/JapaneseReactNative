@@ -150,7 +150,7 @@ export default class About extends Component<Props> {
           </View>
         </ScrollView>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-about-banner`]} />
+        <AdMob unitId={config.admob[`${Platform.OS}-about-banner`]} />
       </View>
     );
   }

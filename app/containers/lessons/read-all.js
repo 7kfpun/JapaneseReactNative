@@ -205,9 +205,7 @@ export default class ReadAll extends Component<Props> {
           </View>
         </TouchableOpacity>
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-read-all-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-read-all-banner`]} />
       </View>
     );
   }

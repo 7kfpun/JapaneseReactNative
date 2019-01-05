@@ -108,9 +108,7 @@ export default class BookmarkList extends Component<Props> {
           />
         </ScrollView>
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-bookmark-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-bookmark-banner`]} />
       </View>
     );
   }

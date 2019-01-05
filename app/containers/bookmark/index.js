@@ -122,9 +122,7 @@ export default class Bookmark extends Component<Props> {
           </TouchableOpacity>
         </ScrollView>
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-bookmark-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-bookmark-banner`]} />
       </View>
     );
   }

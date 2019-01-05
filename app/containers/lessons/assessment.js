@@ -33,7 +33,7 @@ import { config } from '../../config';
 
 const advert = firebase
   .admob()
-  .interstitial(config.admob[`japanese-${Platform.OS}-assessment-popup`]);
+  .interstitial(config.admob[`${Platform.OS}-assessment-popup`]);
 
 const { AdRequest } = firebase.admob;
 const request = new AdRequest();
@@ -527,9 +527,7 @@ export default class Assessment extends Component<Props> {
 
         {answers.length > 3 && <Rating />}
 
-        <AdMob
-          unitId={config.admob[`japanese-${Platform.OS}-assessment-banner`]}
-        />
+        <AdMob unitId={config.admob[`${Platform.OS}-assessment-banner`]} />
       </View>
     );
   }

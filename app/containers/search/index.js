@@ -126,7 +126,7 @@ export default class SearchView extends Component<Props> {
           )}
         </View>
 
-        <AdMob unitId={config.admob[`japanese-${Platform.OS}-search-banner`]} />
+        <AdMob unitId={config.admob[`${Platform.OS}-search-banner`]} />
       </View>
     );
   }
