@@ -15,6 +15,8 @@ import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 
+import SaveVocab from './save-vocab';
+
 import { cleanWord, noop } from '../utils/helpers';
 import tracker from '../utils/tracker';
 
@@ -252,6 +254,8 @@ export default class Card extends Component {
                 </Text>
               )}
             </View>
+
+            <SaveVocab romaji={romaji} />
           </View>
         </View>
       </TouchableOpacity>
