@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
+import DeviceInfo from 'react-native-device-info';
 
 import { prepareURL } from '../utils/helpers';
 import I18n from '../utils/i18n';
@@ -69,12 +70,14 @@ export default class Feedback extends Component<Props> {
         kana,
         kanji,
         romaji,
-        platform: Platform.OS,
         translation: I18n.t(`minna.${lesson}.${romaji}`),
+        platform: Platform.OS,
+        version: DeviceInfo.getReadableVersion(),
       });
     } else {
       uri = prepareURL(I18n.t('app.feedback.url'), {
         platform: Platform.OS,
+        version: DeviceInfo.getReadableVersion(),
       });
     }
 

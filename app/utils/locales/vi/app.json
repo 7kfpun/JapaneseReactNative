@@ -38,8 +38,8 @@
     },
     "feedback": {
         "title": "Ph\u1ea3n h\u1ed3i",
-        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
-        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}&prefill_Version={version}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Ph\u1ea3n h\u1ed3i",
         "help-translation": "Join us?",
         "help-translation-description": "We've opened the translation process up to the community because you know best how \"Mainichi no Nihongo\" should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",

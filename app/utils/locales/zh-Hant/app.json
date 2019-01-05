@@ -38,8 +38,8 @@
     },
     "feedback": {
         "title": "\u53cd\u994b\/\u5efa\u8b70",
-        "url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}",
-        "issueUrl": "https:\/\/airtable.com\/shroN1qoYaCZRsfEw?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}&prefill_Version={version}",
+        "issueUrl": "https:\/\/airtable.com\/shroN1qoYaCZRsfEw?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "\u53cd\u994b",
         "help-translation": "\u53c3\u8207\u6211\u5011\uff1f",
         "help-translation-description": "\u6211\u5011\u5df2\u7d93\u958b\u653e\u4e86\u793e\u5340\u7684\u7ffb\u8b6f\u6d41\u7a0b\uff0c\u56e0\u70ba\u60a8\u6700\u4e86\u89e3 Mainichi no Nihongo \u61c9\u8a72\u5982\u4f55\u7ffb\u8b6f\u6210\u60a8\u7684\u8a9e\u8a00\u3002 \u8acb\u8207\u6211\u5011\u4e00\u8d77\u53c3\u8207\u7ffb\u8b6f\uff0c\u6295\u7968\u548c\u8a0e\u8ad6\u3002",

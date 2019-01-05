@@ -38,8 +38,8 @@
     },
     "feedback": {
         "title": "Feedback",
-        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}",
-        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}",
+        "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}&prefill_Version={version}",
+        "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Feedback",
         "help-translation": "Treten Sie uns bei.",
         "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
