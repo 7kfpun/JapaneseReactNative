@@ -17,6 +17,8 @@ import Adfree from './containers/about/adfree';
 import Assessment from './containers/lessons/assessment';
 import AssessmentListening from './containers/lessons/assessment-listening';
 import AssessmentMC from './containers/lessons/assessment-mc';
+import Bookmark from './containers/bookmark';
+import BookmarkList from './containers/bookmark/list';
 import Feedback from './containers/feedback';
 import Kana from './containers/kana';
 import KanaAssessment from './containers/kana/assessment';
@@ -118,6 +120,16 @@ const searchNavigator = createStackNavigator(
   }
 );
 
+const bookmarkNavigator = createStackNavigator(
+  {
+    bookmark: Bookmark,
+    'bookmark-list': BookmarkList,
+  },
+  {
+    navigationOptions,
+  }
+);
+
 const aboutNavigator = createStackNavigator(
   {
     about: About,
@@ -135,6 +147,7 @@ const AppTab = createBottomTabNavigator(
     today: todayNavigator,
     kana: kanaNavigator,
     lessons: lessonNavigator,
+    bookmark: bookmarkNavigator,
     search: searchNavigator,
     about: aboutNavigator,
   },
@@ -148,13 +161,13 @@ const AppTab = createBottomTabNavigator(
           let size = 20;
           if (routeName === 'today') {
             iconName = 'ios-clipboard';
-            size = 19;
+            size = 18;
           } else if (routeName === 'kana') {
             return (
               <Text
                 style={{
                   fontWeight: '100',
-                  fontSize: 15,
+                  fontSize: 16,
                   color: focused ? tintColor : iOSColors.black,
                 }}
               >
@@ -163,7 +176,9 @@ const AppTab = createBottomTabNavigator(
             );
           } else if (routeName === 'lessons') {
             iconName = 'ios-list';
-            size = 22;
+          } else if (routeName === 'bookmark') {
+            iconName = 'ios-bookmark';
+            size = 18;
           } else if (routeName === 'search') {
             iconName = 'ios-search';
           } else if (routeName === 'about') {
@@ -178,7 +193,7 @@ const AppTab = createBottomTabNavigator(
       activeTintColor: iOSColors.tealBlue,
       inactiveTintColor: iOSColors.black,
       labelStyle: {
-        fontSize: 10,
+        fontSize: 8,
         paddingBottom: 2,
         paddingTop: 0,
       },

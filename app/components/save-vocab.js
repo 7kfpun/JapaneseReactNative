@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { string } from 'prop-types';
 
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import store from 'react-native-simple-store';
 
 import { iOSColors } from 'react-native-typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from 'react-native-simple-store';
 
 import { range } from '../utils/helpers';
 
@@ -52,10 +52,14 @@ export default class SaveVocab extends Component {
   };
 
   save(i, count) {
-    // reset to 0 if set the same amount as previous
-    this.setState({ count: count === i ? 0 : i }, () => {
-      store.save(`lessons.assessment.${this.props.romaji}`, this.state.count);
-    });
+    if (count !== i) {
+      this.setState({ count: i });
+      store.save(`lessons.assessment.${this.props.romaji}`, i);
+    } else {
+      // reset to 0 if set the same amount as previous
+      this.setState({ count: 0 });
+      store.delete(`lessons.assessment.${this.props.romaji}`);
+    }
   }
 
   render() {

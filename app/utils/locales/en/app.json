@@ -14,7 +14,7 @@
         "romaji": "Romaji"
     },
     "lessons": {
-        "title": "lessons",
+        "title": "Lessons",
         "beginning_one": "Beg. I",
         "beginning_two": "Beg. II",
         "advanced_one": "Adv. I",
@@ -23,6 +23,11 @@
     "read-all": {
         "premium-required-title": "Only available for Premium users",
         "premium-required-description": "Be our Premium user to enjoy more features"
+    },
+    "bookmark": {
+        "title": "Bookmark",
+        "star": "star",
+        "stars": "stars"
     },
     "search": {
         "title": "Search",

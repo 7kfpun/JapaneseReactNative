@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -25,8 +24,17 @@ const styles = StyleSheet.create({
     borderRightWidth: 0.5,
     borderBottomColor: iOSColors.lightGray,
     borderBottomWidth: 0.5,
+    backgroundColor: 'white',
+  },
+  body: {
+    flex: 1,
+    padding: 4,
+    paddingTop: 10,
   },
   upperDot: {
+    position: 'absolute',
+    top: 0,
+    right: 3,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
@@ -94,30 +102,22 @@ export default class Tile extends Component<Props> {
           tracker.logEvent('user-kana-tile-press-read', { text: hiragana });
         }}
       >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-            padding: 4,
-          }}
-        >
-          <View style={styles.upperDot}>
-            {isCorrect && (
-              <Ionicons name="ios-add-circle" size={8} color="green" />
-            )}
-            {isCorrect === false && (
-              <Ionicons name="ios-add-circle" size={8} color="red" />
-            )}
-            {isCorrect === null && (
-              <Ionicons name="ios-add-circle" size={8} color="white" />
-            )}
-          </View>
+        <View style={styles.body}>
           <View style={styles.upperRow}>
             <Text style={styles.upperText}>{hiragana}</Text>
           </View>
           <View style={styles.lowerRow}>
             <Text style={styles.lowerText}>{katakana}</Text>
             <Text style={styles.lowerText}>{romaji}</Text>
+          </View>
+          <View style={styles.upperDot}>
+            {isCorrect !== null && (
+              <Text
+                style={{ color: isCorrect ? 'green' : 'red', fontSize: 12 }}
+              >
+                •
+              </Text>
+            )}
           </View>
         </View>
       </TouchableOpacity>

@@ -10,8 +10,8 @@ import Fuse from 'fuse.js';
 import AdMob from '../../components/admob';
 import VocabItem from '../../components/vocab-item';
 
-import { flatten } from '../../utils/helpers';
-import { items } from '../../utils/items';
+import { vocabs } from '../../utils/vocab-helpers';
+
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -41,16 +41,6 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
 });
-
-const vocabs = flatten(
-  Object.keys(items).map(key =>
-    items[key].data.map(i => ({
-      lesson: key,
-      translation: I18n.t(`minna.${key}.${i.romaji}`),
-      ...i,
-    }))
-  )
-);
 
 type Props = {};
 export default class SearchView extends Component<Props> {
