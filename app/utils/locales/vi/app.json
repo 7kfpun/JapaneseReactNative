@@ -24,6 +24,11 @@
         "premium-required-title": "Ch\u1ec9 kh\u1ea3 d\u1ee5ng cho ng\u01b0\u1eddi d\u00f9ng Premium",
         "premium-required-description": "H\u00e3y tr\u1edf th\u00e0nh ng\u01b0\u1eddi d\u00f9ng Premium c\u1ee7a ch\u00fang t\u00f4i \u0111\u1ec3 t\u1eadn h\u01b0\u1edfng nhi\u1ec1u t\u00ednh n\u0103ng h\u01a1n"
     },
+    "bookmark": {
+        "title": "Bookmark",
+        "star": "star",
+        "stars": "stars"
+    },
     "search": {
         "title": "Ti\u0300m ki\u00ea\u0301m",
         "cancel": "H\u1ee7y b\u1ecf",

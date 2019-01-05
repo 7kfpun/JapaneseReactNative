@@ -24,6 +24,11 @@
         "premium-required-title": "Nur f\u00fcr Premium-Mitglieder",
         "premium-required-description": "Mit der Premium-Mitgliedschaft stehen Ihnen alle Features"
     },
+    "bookmark": {
+        "title": "Lesezeichen",
+        "star": "star",
+        "stars": "stars"
+    },
     "search": {
         "title": "Suchen",
         "cancel": "Abbrechen",
@@ -34,7 +39,7 @@
         "learn": "Lernen",
         "quiz": "Test",
         "read-all": "Vollst\u00e4ndige Lekt\u00fcre",
-        "listening": "Listening"
+        "listening": "H\u00f6ren"
     },
     "feedback": {
         "title": "Feedback",
@@ -43,7 +48,7 @@
         "feedback": "Feedback",
         "help-translation": "Treten Sie uns bei.",
         "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
-        "tts-instruction": "No sound?",
+        "tts-instruction": "Keinen Ton?",
         "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
@@ -54,7 +59,7 @@
         "purchase_title": "Jetzt Premium-Mitglied werden",
         "purchase_description": "Viel Spa\u00df zum Japanisch lernen",
         "restore_failed_title": "Sie haben die Premium noch nie gekauft",
-        "version": "Version",
+        "version": "Ausf\u00fchrung",
         "adfree": {
             "title": "Remove Ads",
             "description": "- Remove all popup and banner ads"

@@ -1,8 +1,8 @@
 {
     "today": {
-        "title": "\u6bcf\u65e5\u306e\u65e5\u672c\u8a9e",
+        "title": "\u6bcf\u65e5\u65e5\u672c\u8a9e",
         "shuffle": "\u6d17\u724c",
-        "out-of-connection": "Out of Internet Connection"
+        "out-of-connection": "\u7db2\u8def\u9023\u7d50\u6709\u554f\u984c"
     },
     "kana": {
         "title": "\u4e94\u5341\u97f3\u5716",
@@ -23,6 +23,11 @@
     "read-all": {
         "premium-required-title": "\u53ea\u4f9b\u9ad8\u7d1a\u7528\u6236",
         "premium-required-description": "\u6210\u7232\u6211\u5011\u7684\u9ad8\u7d1a\u7528\u6236\uff0c\u4eab\u53d7\u66f4\u591a\u529f\u80fd"
+    },
+    "bookmark": {
+        "title": "\u66f8\u7c64",
+        "star": "\u9846\u661f",
+        "stars": "\u9846\u661f"
     },
     "search": {
         "title": "\u641c\u7d22",
