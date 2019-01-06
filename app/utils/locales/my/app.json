@@ -68,13 +68,28 @@
         },
         "premium": {
             "title": "Get Premium",
-            "title-month": "month Premium",
-            "title-months": "months Premium",
-            "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
-            "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "month": "month",
+            "months": "months",
+            "year": "year",
+            "years": "years",
             "note": "Recurring billing, cancel anytime.",
             "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
-            "continue": "Continue"
+            "continue": "Continue",
+            "lifetime": "LIFETIME",
+            "lifetime-description": "ONE-TIME PAYMENT"
+        },
+        "premium-banner": {
+            "adfree": "Remove Ads",
+            "adfree-description": "No more ad banners and topup ads",
+            "listening": "Listening: lesson 3 - 50",
+            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
+            "quiz": "Quiz: lesson 3 - 50",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another",
+            "read-all": "Read All: lesson 3 - 50",
+            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
+            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "bookmark": "Unlimited bookmark",
+            "bookmark-description": "Have your own vocabularies list"
         }
     },
     "common": {

@@ -27,6 +27,7 @@ function updateFile() {
   const form = new FormData();
   form.append('file', fs.createReadStream(FILE_NAME));
   form.append('file_format', 'HIERARCHICAL_JSON');
+  form.append('is_keeping_all_strings', 'false');
   form.append('locale', 'en');
 
   console.log(url);
