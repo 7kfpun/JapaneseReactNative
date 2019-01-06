@@ -174,7 +174,7 @@ I18n.translations = {
     },
   },
   vi: {
-    app: require('./locales/vi/app'),
+    // app: require('./locales/vi/app'),
     minna: {
       1: require('./minna/vi/1'),
       2: require('./minna/vi/2'),
@@ -229,7 +229,7 @@ I18n.translations = {
     },
   },
   de: {
-    app: require('./locales/de/app'),
+    // app: require('./locales/de/app'),
     minna: {
       1: require('./minna/de/1'),
       2: require('./minna/de/2'),
@@ -284,7 +284,7 @@ I18n.translations = {
     },
   },
   my: {
-    app: require('./locales/my/app'),
+    // app: require('./locales/my/app'),
     minna: {
       1: require('./minna/my/1'),
       2: require('./minna/my/2'),
