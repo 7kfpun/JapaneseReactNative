@@ -27,7 +27,8 @@
     "bookmark": {
         "title": "Bookmark",
         "star": "star",
-        "stars": "stars"
+        "stars": "stars",
+        "remove": "Remove"
     },
     "search": {
         "title": "Search",

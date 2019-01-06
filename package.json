@@ -16,7 +16,7 @@
     "precommit": "lint-staged",
     "test": "jest",
     "upload-locale": "node ./scripts/upload.js",
-    "download-locales": "node ./scripts/download.js",
+    "download-locale": "node ./scripts/download.js",
     "download-minna": "node ./scripts/download-minna.js"
   },
   "lint-staged": {

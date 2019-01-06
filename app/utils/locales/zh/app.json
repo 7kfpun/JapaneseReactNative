@@ -27,7 +27,8 @@
     "bookmark": {
         "title": "\u4e66\u7b7e",
         "star": "\u9897\u661f",
-        "stars": "\u9897\u661f"
+        "stars": "\u9897\u661f",
+        "remove": "\u5220\u9664"
     },
     "search": {
         "title": "\u641c\u7d22",

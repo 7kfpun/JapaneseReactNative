@@ -27,7 +27,8 @@
     "bookmark": {
         "title": "\u66f8\u7c64",
         "star": "\u9846\u661f",
-        "stars": "\u9846\u661f"
+        "stars": "\u9846\u661f",
+        "remove": "\u522a\u9664"
     },
     "search": {
         "title": "\u641c\u7d22",
@@ -66,8 +67,8 @@
         },
         "premium": {
             "title": "\u6210\u70ba\u9032\u968e\u7528\u6236",
-            "title-month": "month Premium",
-            "title-months": "months Premium",
+            "title-month": "\u6708",
+            "title-months": "\u6708",
             "description": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning",
             "description-android": "- Remove Ads\n- Premium features for lesson 3 - 50:\n  - Listening: listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or English\n  - Quiz: test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another\n  - Read All: pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
             "note": "\u5b9a\u671f\u7d50\u5e33\uff0c\u53ef\u96a8\u6642\u53d6\u6d88\u3002",
