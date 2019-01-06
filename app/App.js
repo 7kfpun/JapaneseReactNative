@@ -178,7 +178,7 @@ const AppTab = createBottomTabNavigator(
             iconName = 'ios-list';
           } else if (routeName === 'bookmark') {
             iconName = 'ios-bookmark';
-            size = 18;
+            size = 17;
           } else if (routeName === 'search') {
             iconName = 'ios-search';
           } else if (routeName === 'about') {
@@ -193,7 +193,7 @@ const AppTab = createBottomTabNavigator(
       activeTintColor: iOSColors.tealBlue,
       inactiveTintColor: iOSColors.black,
       labelStyle: {
-        fontSize: 8,
+        fontSize: 9,
         paddingBottom: 2,
         paddingTop: 0,
       },

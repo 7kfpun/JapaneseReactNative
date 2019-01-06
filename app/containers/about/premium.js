@@ -12,6 +12,7 @@ import {
 
 import * as RNIap from 'react-native-iap';
 import RNRestart from 'react-native-restart';
+import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import CustomButton from '../../components/button';

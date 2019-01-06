@@ -62,7 +62,7 @@ export default class Backdoor extends Component {
   state = {
     clicks: 0,
     isInputShown: false,
-    invitationCodes: [],
+    invitationCodes: {},
     text: '',
   };
 
@@ -77,24 +77,32 @@ export default class Backdoor extends Component {
           this.setState({
             isInputShown: true,
           });
-          tracker.logEvent('user-about-open-backdoor', { code: value });
+          tracker.logEvent('user-about-open-backdoor');
         }
       }
     );
   };
 
   getConfig() {
+    const prefix = 'invitation_code_';
     firebase
       .config()
       .fetch(60) // cache for 60 seconds
       .then(() => firebase.config().activateFetched())
-      .then(() => firebase.config().getKeysByPrefix(`invitation_code_`))
+      .then(() => firebase.config().getKeysByPrefix(prefix))
       .then(arr => firebase.config().getValues(arr))
       .then(objects => {
-        const data = [];
+        const data = {};
         // Retrieve values
+        // {
+        //   "codeA": 1546782730998, // timestamp
+        //   "codeB": 1546782749469 // timestamp
+        // }
         Object.keys(objects).forEach(key => {
-          data.push(objects[key].val());
+          if (!key.endsWith('_timestamp')) {
+            data[objects[key].val()] =
+              objects[`${key}_timestamp`] && objects[`${key}_timestamp`].val();
+          }
         });
 
         console.log('firebase config values', data);
@@ -104,7 +112,7 @@ export default class Backdoor extends Component {
   }
 
   render() {
-    const { isInputShown } = this.state;
+    const { isInputShown, invitationCodes } = this.state;
 
     return (
       <View style={styles.container}>
@@ -139,19 +147,31 @@ export default class Backdoor extends Component {
               }}
               onChangeText={text => {
                 this.setState({ text });
-                this.state.invitationCodes.forEach(invitationCode => {
-                  if (text.toLowerCase() === invitationCode.toLowerCase()) {
-                    Backdoor.sendTags(invitationCode);
-                    store.save('isPremium', true);
 
-                    Alert.alert(
-                      I18n.t('app.about.purchase.title'),
-                      null,
-                      [{ text: 'OK', onPress: () => RNRestart.Restart() }],
-                      { cancelable: false }
-                    );
-                  }
-                });
+                const lowerText = text.toLowerCase();
+
+                if (
+                  invitationCodes[lowerText] &&
+                  !Number.isNaN(invitationCodes[lowerText])
+                ) {
+                  Backdoor.sendTags(lowerText);
+                  store.save(
+                    'adFreeUntil',
+                    parseInt(invitationCodes[`${lowerText}_timestamp`], 10)
+                  );
+                  store.save(
+                    'premiumUntil',
+                    parseInt(invitationCodes[`${lowerText}_timestamp`], 10)
+                  );
+                  store.save('currentPremiumSubscription', 'backdoor');
+
+                  Alert.alert(
+                    I18n.t('app.about.purchase_title'),
+                    null,
+                    [{ text: 'OK', onPress: () => RNRestart.Restart() }],
+                    { cancelable: false }
+                  );
+                }
               }}
               value={this.state.text}
             />
