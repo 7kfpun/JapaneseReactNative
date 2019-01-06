@@ -8,7 +8,7 @@ import tracker from './tracker';
 
 import { config } from '../config';
 
-const getPremiumInfo = async () => {
+export const getPremiumInfo = async () => {
   const premiumUntil = await store.get('premiumUntil');
   const adFreeUntil = await store.get('adFreeUntil');
   const currentPremiumSubscription = await store.get(
@@ -24,7 +24,7 @@ const getPremiumInfo = async () => {
   };
 };
 
-const validateReceipt = async purchase => {
+export const validateReceipt = async purchase => {
   if (purchase.productId && purchase.transactionReceipt) {
     if (config.inApp.adfree.includes(purchase.productId)) {
       // store.save('isAdfree', true);
@@ -78,7 +78,7 @@ const validateReceipt = async purchase => {
 };
 
 // Check purchase history (restore purchase)
-const checkPurchaseHistory = async (isNewConnection = true) => {
+export const checkPurchaseHistory = async (isNewConnection = true) => {
   try {
     if (isNewConnection) {
       await RNIap.initConnection();
@@ -128,6 +128,37 @@ const checkPurchaseHistory = async (isNewConnection = true) => {
   }
 };
 
-exports.getPremiumInfo = getPremiumInfo;
-exports.validateReceipt = validateReceipt;
-exports.checkPurchaseHistory = checkPurchaseHistory;
+export const getPeriod = productId => {
+  const splited = productId.split('.');
+  const period = splited[splited.length - 1]; // get last part, "3m", "6m", "12m"
+  const periodNumber = period.replace('m', '');
+
+  if (Number.isNaN(periodNumber)) {
+    return {
+      periodNumber: '0',
+      periodUnit: 'DAY',
+    };
+  }
+
+  if (period.endsWith('d')) {
+    return {
+      periodNumber,
+      periodUnit: 'DAY',
+    };
+  } else if (period.endsWith('m')) {
+    return {
+      periodNumber,
+      periodUnit: 'MONTH',
+    };
+  } else if (period.endsWith('y')) {
+    return {
+      periodNumber,
+      periodUnit: 'YEAR',
+    };
+  }
+
+  return {
+    periodNumber: '0',
+    periodUnit: 'DAY',
+  };
+};

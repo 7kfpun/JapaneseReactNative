@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 
-import { Alert, Text, Platform, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  FlatList,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import * as RNIap from 'react-native-iap';
 import RNRestart from 'react-native-restart';
 
 import AdMob from '../../components/admob';
 import CustomButton from '../../components/button';
-import Row from '../../components/row';
+
+import LifetimeButton from './components/lifetime-button';
+import PremiumBanner from './components/premium-banner';
+import SubscriptionItem from './components/subscription-item';
 
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -15,25 +26,22 @@ import {
   checkPurchaseHistory,
   getPremiumInfo,
   validateReceipt,
+  getPeriod,
 } from '../../utils/payment';
 
 import { config } from '../../config';
 
-const itemSkus = config.inApp.premium;
+const subscriptionSkus = config.inApp.premium;
+const productSkus = config.inApp.premiumLifetime;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
-  description: {
+  purchaseBlock: {
     flex: 1,
-    justifyContent: 'space-between',
     padding: 10,
-  },
-  descriptionText: {
-    fontSize: 12,
-    fontWeight: '300',
   },
   noteText: {
     fontSize: 12,
@@ -53,8 +61,8 @@ export default class Premium extends Component<Props> {
   };
 
   state = {
+    subscriptionList: [],
     productList: [],
-    purchasedProductIds: [],
     selectedProductIndex: null,
   };
 
@@ -62,7 +70,9 @@ export default class Premium extends Component<Props> {
     await RNIap.initConnection();
 
     this.getStoreSubscription();
+
     this.getSubscriptions();
+    this.getProducts();
   };
 
   componentWillUnmount() {
@@ -76,9 +86,26 @@ export default class Premium extends Component<Props> {
 
   getSubscriptions = async () => {
     try {
-      const products = await RNIap.getSubscriptions(itemSkus);
-      console.log('getSubscriptions', products);
-      this.setState({ productList: products });
+      const subscriptions = await RNIap.getSubscriptions(subscriptionSkus);
+      console.log('getSubscriptions', subscriptions);
+      subscriptions.sort((a, b) => a.price - b.price);
+      this.setState({
+        subscriptionList: subscriptions.filter(i =>
+          subscriptionSkus.includes(i.productId)
+        ),
+      });
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  getProducts = async () => {
+    try {
+      const products = await RNIap.getProducts(productSkus);
+      console.log('getProducts', products);
+      this.setState({
+        productList: products.filter(i => productSkus.includes(i.productId)),
+      });
     } catch (err) {
       console.warn(err);
     }
@@ -132,7 +159,7 @@ export default class Premium extends Component<Props> {
       console.log('validateReceipt', result);
       tracker.logEvent('user-premium-subscription-done', result);
 
-      this.refreshForApplyingPurchase();
+      this.restartForApplyingPurchase();
       tracker.logPurchase(
         product.price.replace(',', '.'),
         product.currency,
@@ -144,6 +171,7 @@ export default class Premium extends Component<Props> {
     } catch (err) {
       if (err.code === 'E_ALREADY_OWNED') {
         checkPurchaseHistory(false);
+        this.restartForApplyingPurchase();
       } else if (err.code === 'E_USER_CANCELLED') {
         // You are currently subscribed || cancelled
       } else if (err.code === 'E_UNKNOWN') {
@@ -163,7 +191,80 @@ export default class Premium extends Component<Props> {
     }
   };
 
-  refreshForApplyingPurchase = () => {
+  buyProductItem = async product => {
+    // {
+    //   description: '',
+    //   introductoryPrice: '',
+    //   subscriptionPeriodNumberIOS: '0',
+    //   introductoryPriceNumberOfPeriodsIOS: '',
+    //   introductoryPriceSubscriptionPeriodIOS: '',
+    //   productId: '1m',
+    //   price: '1000',
+    //   introductoryPricePaymentModeIOS: '',
+    //   type: 'Do not use this. It returned sub only before',
+    //   title: '',
+    //   subscriptionPeriodUnitIOS: 'DAY',
+    //   localizedPrice: 'HK$1000.00',
+    //   currency: 'HKD'
+    // }
+    tracker.logEvent('user-premium-buy-product-start', product);
+    try {
+      console.log('buyProductItem:', product);
+      let purchase;
+      if (config.inApp.premiumLifetime.includes(product.productId)) {
+        purchase = await RNIap.buyProduct(product.productId);
+      }
+
+      console.info('Purchase result', purchase);
+      // {
+      //   transactionReceipt: 'xxx',
+      //   transactionDate: 1545732911000,
+      //   productId: '',
+      //   transactionId: '1000000489738811'
+      // }
+      if (config.inApp.premiumLifetime.includes(purchase.productId)) {
+        tracker.logEvent('user-premium-buy-product-done', purchase);
+        this.applyLifetimePurchase(purchase);
+        this.restartForApplyingPurchase();
+      }
+
+      tracker.logPurchase(
+        product.price.replace(',', '.'),
+        product.currency,
+        true,
+        product.title,
+        product.type,
+        product.productId
+      );
+    } catch (err) {
+      if (err.code === 'E_ALREADY_OWNED') {
+        this.applyLifetimePurchase();
+        this.restartForApplyingPurchase();
+      } else if (err.code === 'E_USER_CANCELLED') {
+        // You are currently subscribed || cancelled
+      } else if (err.code === 'E_UNKNOWN') {
+        Alert.alert(err.code, err.message);
+      }
+
+      tracker.logEvent('user-premium-buy-product-error', err);
+      tracker.logPurchase(
+        product.price.replace(',', '.'),
+        product.currency,
+        false,
+        product.title,
+        product.type,
+        product.productId
+      );
+    }
+  };
+
+  applyLifetimePurchase = purchase => {
+    store.save('adFreeUntil', Number.POSITIVE_INFINITY);
+    store.save('premiumUntil', Number.POSITIVE_INFINITY);
+    store.save('currentPremiumSubscription', purchase.productId);
+  };
+
+  restartForApplyingPurchase = () => {
     Alert.alert(
       I18n.t('app.about.purchase_title'),
       I18n.t('app.about.purchase_description'),
@@ -171,7 +272,7 @@ export default class Premium extends Component<Props> {
         {
           text: 'OK',
           onPress: () => {
-            tracker.logEvent('user-premium-subscription-restart');
+            tracker.logEvent('user-premium-restart');
             RNRestart.Restart();
           },
         },
@@ -181,74 +282,80 @@ export default class Premium extends Component<Props> {
   };
 
   render() {
-    const {
-      productList,
-      purchasedProductIds,
-      selectedProductIndex,
-    } = this.state;
+    const { subscriptionList, productList, selectedProductIndex } = this.state;
 
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1, marginTop: 10 }}>
-          {productList.map((product, i) => (
-            <Row
-              key={product.productId}
-              // text={`${
-              //   purchasedProductIds.includes(product.productId) ? '✓' : ''
-              // }${product.title} (${product.localizedPrice})`}
-              text={`${product.subscriptionPeriodNumberIOS} ${
-                product.subscriptionPeriodNumberIOS === '1'
-                  ? I18n.t('app.about.premium.title-month')
-                  : I18n.t('app.about.premium.title-months')
-              } (${product.localizedPrice})`}
-              // description={product.description}
-              first={i === 0}
-              last={i === productList.length - 1}
-              onPress={() => this.setState({ selectedProductIndex: i })}
-              disabled={purchasedProductIds.includes(product.productId)}
-              selected={selectedProductIndex === i}
-            />
-          ))}
+        <ScrollView>
+          <PremiumBanner />
 
-          <View style={styles.description}>
-            {productList.length > 0 && (
-              <Text style={styles.descriptionText}>
-                {Platform.OS === 'android'
-                  ? I18n.t('app.about.premium.description-android')
-                  : I18n.t('app.about.premium.description')}
-              </Text>
+          <FlatList
+            key={selectedProductIndex}
+            data={subscriptionList}
+            renderItem={({ item, index }) => (
+              <SubscriptionItem
+                onPress={() => this.setState({ selectedProductIndex: index })}
+                periodNumber={getPeriod(item.productId).periodNumber}
+                periodUnit={
+                  getPeriod(item.productId).periodNumber === '1'
+                    ? I18n.t(
+                        `app.about.premium.${getPeriod(
+                          item.productId
+                        ).periodUnit.toLowerCase()}`
+                      )
+                    : I18n.t(
+                        `app.about.premium.${getPeriod(
+                          item.productId
+                        ).periodUnit.toLowerCase()}s`
+                      )
+                }
+                localizedPrice={item.localizedPrice}
+                isSelected={selectedProductIndex === index}
+              />
             )}
+            keyExtractor={item => item.productId}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
 
-            {productList.length > 0 && (
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    paddingVertical: 10,
-                    alignItems: 'center',
+          <View style={styles.purchaseBlock}>
+            {productList.length > 0 &&
+              productList.map(product => (
+                <LifetimeButton
+                  key={product.productId}
+                  price={product.localizedPrice}
+                  currency={product.currency}
+                  onPress={() => this.buyProductItem(product)}
+                />
+              ))}
+
+            {subscriptionList.length > 0 && (
+              <View style={{ marginTop: 20 }}>
+                <CustomButton
+                  raised
+                  onPress={() => {
+                    this.buySubscribeItem(
+                      subscriptionList[selectedProductIndex]
+                    );
                   }}
-                >
-                  <CustomButton
-                    raised
-                    onPress={() => {
-                      this.buySubscribeItem(productList[selectedProductIndex]);
-                    }}
-                    disabled={selectedProductIndex === null}
-                    title={I18n.t('app.about.premium.continue')}
-                    titleStyles={{ fontSize: 20 }}
-                  />
-                </View>
-
-                <Text style={styles.noteText}>
-                  {I18n.t('app.about.premium.note')}
-                </Text>
-                <Text style={styles.noteDescriptionText}>
-                  {I18n.t('app.about.premium.note-description')}
-                </Text>
+                  disabled={selectedProductIndex === null}
+                  title={I18n.t('app.about.premium.continue')}
+                  titleStyles={{ fontSize: 20 }}
+                />
+                {subscriptionList.length > 0 && (
+                  <View>
+                    <Text style={styles.noteText}>
+                      {I18n.t('app.about.premium.note')}
+                    </Text>
+                    <Text style={styles.noteDescriptionText}>
+                      {I18n.t('app.about.premium.note-description')}
+                    </Text>
+                  </View>
+                )}
               </View>
             )}
           </View>
-        </View>
+        </ScrollView>
 
         <AdMob unitId={config.admob[`${Platform.OS}-about-banner`]} />
       </View>

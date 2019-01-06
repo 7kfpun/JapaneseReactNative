@@ -72,13 +72,13 @@ export default class About extends Component<Props> {
               />
             )}
 
-            {/* <Row
+            <Row
               first={!isPremium}
               text={I18n.t('app.about.premium.title')}
               onPress={() => {
                 navigation.navigate('premium');
               }}
-            /> */}
+            />
 
             {/* {!isAdfree && <Row
               first={false}
@@ -88,7 +88,7 @@ export default class About extends Component<Props> {
               }}
             />} */}
 
-            {/* <Row
+            <Row
               first={false}
               text={I18n.t('app.about.restore')}
               onPress={() => {
@@ -102,7 +102,7 @@ export default class About extends Component<Props> {
                   );
                 }
               }}
-            /> */}
+            />
           </View>
 
           <View style={{ marginVertical: 15 }}>
