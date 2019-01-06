@@ -1,9 +1,12 @@
+import { Alert } from 'react-native';
+
 import * as RNIap from 'react-native-iap';
 
 import RNRestart from 'react-native-restart';
 import store from 'react-native-simple-store';
 
 import { getTimestamp } from './helpers';
+import I18n from './i18n';
 import tracker from './tracker';
 
 import { config } from '../config';
@@ -15,6 +18,12 @@ export const getPremiumInfo = async () => {
     'currentPremiumSubscription'
   );
 
+  console.log(
+    'getPremiumInfo',
+    premiumUntil,
+    adFreeUntil,
+    currentPremiumSubscription
+  );
   return {
     isPremium: premiumUntil > getTimestamp(),
     isAdFree: adFreeUntil > getTimestamp(),
@@ -28,6 +37,18 @@ export const validateReceipt = async purchase => {
   if (purchase.productId && purchase.transactionReceipt) {
     if (config.inApp.adfree.includes(purchase.productId)) {
       // store.save('isAdfree', true);
+    } else if (config.inApp.premiumLifetime.includes(purchase.productId)) {
+      store.save('premiumUntil', Number.MAX_SAFE_INTEGER);
+      store.save('adFreeUntil', Number.MAX_SAFE_INTEGER);
+      store.save('currentPremiumSubscription', purchase.productId);
+
+      return {
+        isRenewPremium: true,
+        isRenewAdFree: true,
+        premiumUntil: Number.MAX_SAFE_INTEGER,
+        adFreeUntil: Number.MAX_SAFE_INTEGER,
+        currentPremiumSubscription: purchase.productId,
+      };
     } else if (purchase.productId.includes(config.inApp.premiumGroup)) {
       const lastPremiumUntil = await store.get('premiumUntil');
       const lastAdFreeUntil = await store.get('adFreeUntil');
@@ -88,15 +109,17 @@ export const checkPurchaseHistory = async (isNewConnection = true) => {
     const purchaseHistory = await RNIap.getAvailablePurchases();
     console.log('getPurchaseHistory', purchaseHistory);
     if (purchaseHistory.length > 0) {
-      let isRenewPremium = false;
-      let isRenewAdFree = false;
+      let isRenewPremiumLast = false;
+      let isRenewAdFreeLast = false;
 
       for (const purchase of purchaseHistory) {
         const result = await validateReceipt(purchase);
         ({ isRenewPremium, isRenewAdFree } = result);
+        if (isRenewPremium) isRenewPremiumLast = true;
+        if (isRenewAdFree) isRenewAdFreeLast = true;
       }
 
-      if (isRenewPremium || isRenewAdFree) {
+      if (isRenewPremiumLast || isRenewAdFreeLast) {
         tracker.logEvent('user-premium-restore-purchase-done');
 
         Alert.alert(

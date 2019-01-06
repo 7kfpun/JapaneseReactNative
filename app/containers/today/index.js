@@ -17,7 +17,7 @@ import CardOptionSelector from '../../components/card-option-selector';
 import CustomButton from '../../components/button';
 import SoundButton from '../../components/sound-button';
 
-import { checkPurchaseHistory } from '../../utils/payment';
+import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -92,11 +92,24 @@ export default class Today extends Component<Props> {
   componentDidMount() {
     this.loadSettings();
     this.requestTodayItems();
+    this.checkPurchaseHistory();
   }
 
   componentWillUnmount() {
     Tts.stop();
   }
+
+  checkPurchaseHistory = async () => {
+    const premiumInfo = await getPremiumInfo();
+    if (
+      // Check only if there is purchase before
+      (premiumInfo.premiumUntil || premiumInfo.adFreeUntil) &&
+      // Check only if it's expired
+      (!premiumInfo.isPremium || !premiumInfo.isAdFree)
+    ) {
+      checkPurchaseHistory();
+    }
+  };
 
   loadSettings = async () => {
     const isNotFirstStart = await store.get('isNotFirstStart');
@@ -176,13 +189,6 @@ export default class Today extends Component<Props> {
             outOfConnection: true,
           });
         }
-
-        // Check only if there is purchase before
-        store.get('premiumUntil').then(premiumUntil => {
-          if (premiumUntil) {
-            checkPurchaseHistory();
-          }
-        });
       })
       .catch(err => {
         console.log('Request for aqi failed', err);

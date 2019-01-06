@@ -260,8 +260,8 @@ export default class Premium extends Component<Props> {
   };
 
   applyLifetimePurchase = purchase => {
-    store.save('adFreeUntil', Number.POSITIVE_INFINITY);
-    store.save('premiumUntil', Number.POSITIVE_INFINITY);
+    store.save('adFreeUntil', Number.MAX_SAFE_INTEGER);
+    store.save('premiumUntil', Number.MAX_SAFE_INTEGER);
     store.save('currentPremiumSubscription', purchase.productId);
   };
 
