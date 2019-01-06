@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 
 import {
   AsyncStorage,
-  FlatList,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
+import { SwipeListView } from 'react-native-swipe-list-view';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
 import VocabItem from '../../components/vocab-item';
 
 import { vocabsMapper } from '../../utils/vocab-helpers';
+import I18n from '../../utils/i18n';
 
 import { config } from '../../config';
 
@@ -23,6 +26,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F7F7F7',
+  },
+  hiddenRow: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    padding: 10,
+  },
+  hiddenText: {
+    color: 'white',
   },
 });
 
@@ -78,21 +92,23 @@ export default class BookmarkList extends Component<Props> {
     this.setState({ list });
   };
 
+  removeItem = item => {
+    const { list } = this.state;
+    const prefix = 'lessons.assessment.';
+    console.log(`${prefix}${item}`, item);
+    store.delete(`${prefix}${item}`);
+    this.setState({ list: list.filter(i => i !== item) });
+  };
+
   render() {
-    const {
-      navigation: {
-        state: {
-          params: { starCount },
-        },
-      },
-    } = this.props;
     const { list } = this.state;
 
     return (
       <View style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
-          <FlatList
+          <SwipeListView
             style={styles.list}
+            useFlatList
             data={list}
             keyExtractor={(item, index) => `${index}-${item}`}
             renderItem={({ item, index }) =>
@@ -105,6 +121,20 @@ export default class BookmarkList extends Component<Props> {
                 />
               )
             }
+            renderHiddenItem={({ item }) => (
+              <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={() => this.removeItem(item)}
+              >
+                <View style={styles.hiddenRow}>
+                  <Text style={styles.hiddenText}>
+                    {I18n.t('app.bookmark.remove')}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            rightOpenValue={-75}
+            disableRightSwipe
           />
         </ScrollView>
 
