@@ -33,7 +33,8 @@
     "search": {
         "title": "Suchen",
         "cancel": "Abbrechen",
-        "description": "Hier finden Sie alle Vokabeln aus den Lektionen."
+        "description": "Hier finden Sie alle Vokabeln aus den Lektionen.",
+        "any-text": "any text"
     },
     "vocab-list": {
         "vocab": "Vocabularies",

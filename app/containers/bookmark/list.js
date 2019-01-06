@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   hiddenText: {
+    fontSize: 14,
     color: 'white',
   },
 });
@@ -133,7 +134,7 @@ export default class BookmarkList extends Component<Props> {
                 </View>
               </TouchableOpacity>
             )}
-            rightOpenValue={-75}
+            rightOpenValue={-70}
             disableRightSwipe
           />
         </ScrollView>

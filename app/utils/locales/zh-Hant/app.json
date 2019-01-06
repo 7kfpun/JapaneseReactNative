@@ -33,7 +33,8 @@
     "search": {
         "title": "\u641c\u7d22",
         "cancel": "\u53d6\u6d88",
-        "description": "\u4f60\u53ef\u4ee5\u5728\u6240\u6709\u8ab2\u7a0b\u4e2d\u5c0b\u627e\u55ae\u8a5e\u3002"
+        "description": "\u4f60\u53ef\u4ee5\u5728\u6240\u6709\u8ab2\u7a0b\u4e2d\u5c0b\u627e\u55ae\u8a5e\u3002",
+        "any-text": "any text"
     },
     "vocab-list": {
         "vocab": "\u55ae\u5b57",

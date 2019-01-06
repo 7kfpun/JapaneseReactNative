@@ -96,7 +96,7 @@ export default class SearchView extends Component<Props> {
             onCancel={this.onCancel}
             onDelete={this.onDelete}
             cancelTitle={I18n.t('app.search.cancel')}
-            placeholder={I18n.t('app.search.title')}
+            placeholder={I18n.t('app.search.any-text')}
           />
         </View>
 
