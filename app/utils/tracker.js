@@ -8,6 +8,8 @@ import firebase from 'react-native-firebase';
 import OneSignal from 'react-native-onesignal';
 import store from 'react-native-simple-store';
 
+import { getPremiumInfo } from './payment';
+
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
@@ -75,15 +77,12 @@ Object.entries(context).forEach(([key0, value0]) => {
 });
 console.log('firebaseContext', firebaseContext);
 
-const getUserType = async () => {
-  const isPremium = await store.get('isPremium');
-  return isPremium ? 'Premium' : 'Normal';
-};
-
 const tracker = {
   identify: async () => {
     if (isTracking) {
-      const userType = await getUserType();
+      const premiumInfo = await getPremiumInfo();
+      const { userType } = premiumInfo;
+
       context.userType = userType;
 
       const ip = await fetch('http://checkip.amazonaws.com/')
@@ -100,7 +99,7 @@ const tracker = {
       CleverTap.profileSet({ Identity: userId, ...context });
       firebase.analytics().setUserId(userId);
       firebase.analytics().setUserProperties(firebaseContext);
-      OneSignal.sendTags({ userType });
+      OneSignal.sendTags(premiumInfo);
     }
   },
   logEvent: (event, properties) => {

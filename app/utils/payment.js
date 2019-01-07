@@ -24,8 +24,10 @@ export const getPremiumInfo = async () => {
     adFreeUntil,
     currentPremiumSubscription
   );
+  const isPremium = premiumUntil > getTimestamp();
   return {
-    isPremium: premiumUntil > getTimestamp(),
+    userType: isPremium ? 'Premium' : 'Normal',
+    isPremium,
     isAdFree: adFreeUntil > getTimestamp(),
     premiumUntil,
     adFreeUntil,
