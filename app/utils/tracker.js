@@ -6,7 +6,6 @@ import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 import OneSignal from 'react-native-onesignal';
-import store from 'react-native-simple-store';
 
 import { getPremiumInfo } from './payment';
 

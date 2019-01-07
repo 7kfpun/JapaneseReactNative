@@ -22,6 +22,7 @@ import ExceedLimit from './components/exceed-limit';
 import { getPremiumInfo } from '../../utils/payment';
 import { vocabsMapper } from '../../utils/vocab-helpers';
 import I18n from '../../utils/i18n';
+import tracker from '../../utils/tracker';
 
 import { config } from '../../config';
 
@@ -106,11 +107,20 @@ export default class BookmarkList extends Component<Props> {
   };
 
   removeItem = item => {
+    const {
+      navigation: {
+        state: {
+          params: { starCount },
+        },
+      },
+    } = this.props;
+
     const { list } = this.state;
     const prefix = 'lessons.assessment.';
     console.log(`${prefix}${item}`, item);
     store.delete(`${prefix}${item}`);
     this.setState({ list: list.filter(i => i !== item) });
+    tracker.logEvent('user-bookmark-remove-item', { count: starCount });
   };
 
   render() {

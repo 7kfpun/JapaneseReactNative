@@ -50,8 +50,6 @@ advert.on('onAdLoaded', () => {
 
 const { width } = Dimensions.get('window');
 
-Tts.setDefaultLanguage('ja');
-
 const NO_OF_TILES = 5;
 const SHOW_AFTER_NUMBER = 8;
 

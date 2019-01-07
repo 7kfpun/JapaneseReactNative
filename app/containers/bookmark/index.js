@@ -17,6 +17,7 @@ import AdMob from '../../components/admob';
 
 import { range } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
+import tracker from '../../utils/tracker';
 
 import { config } from '../../config';
 
@@ -62,9 +63,10 @@ export default class Bookmark extends Component<Props> {
         <ScrollView>
           <TouchableOpacity
             style={styles.item}
-            onPress={() =>
-              navigation.navigate('bookmark-list', { starCount: 3 })
-            }
+            onPress={() => {
+              navigation.navigate('bookmark-list', { starCount: 3 });
+              tracker.logEvent('user-bookmark-goto-list', { count: 3 });
+            }}
           >
             <View style={styles.stars}>
               {range(1, 4).map(i => (
@@ -83,9 +85,10 @@ export default class Bookmark extends Component<Props> {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.item}
-            onPress={() =>
-              navigation.navigate('bookmark-list', { starCount: 2 })
-            }
+            onPress={() => {
+              navigation.navigate('bookmark-list', { starCount: 2 });
+              tracker.logEvent('user-bookmark-goto-list', { count: 2 });
+            }}
           >
             <View style={styles.stars}>
               {range(1, 3).map(i => (
@@ -104,9 +107,10 @@ export default class Bookmark extends Component<Props> {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.item}
-            onPress={() =>
-              navigation.navigate('bookmark-list', { starCount: 1 })
-            }
+            onPress={() => {
+              navigation.navigate('bookmark-list', { starCount: 1 });
+              tracker.logEvent('user-bookmark-goto-list', { count: 1 });
+            }}
           >
             <View style={styles.stars}>
               <Ionicons

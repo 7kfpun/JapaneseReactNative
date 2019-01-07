@@ -6,8 +6,6 @@ import { Linking, Platform, StyleSheet, ScrollView, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import OneSignal from 'react-native-onesignal';
 
-import moment from 'moment';
-
 import AdMob from '../../components/admob';
 import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';

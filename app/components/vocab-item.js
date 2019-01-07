@@ -10,8 +10,6 @@ import { ttsSpeak } from '../utils/helpers';
 import I18n from '../utils/i18n';
 import tracker from '../utils/tracker';
 
-Tts.setDefaultLanguage('ja');
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

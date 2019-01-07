@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
 import { range } from '../utils/helpers';
+import tracker from '../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,10 +56,12 @@ export default class SaveVocab extends Component {
     if (count !== i) {
       this.setState({ count: i });
       store.save(`lessons.assessment.${this.props.romaji}`, i);
+      tracker.logEvent('user-bookmark-save-item', { count: i });
     } else {
       // reset to 0 if set the same amount as previous
       this.setState({ count: 0 });
       store.delete(`lessons.assessment.${this.props.romaji}`);
+      tracker.logEvent('user-bookmark-unsave-item', { count: i }); // track the original count
     }
   }
 
