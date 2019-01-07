@@ -73,7 +73,7 @@ export default class ReadAll extends Component<Props> {
     const params = navigation.state.params || {};
 
     return {
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerTitle: I18n.t('app.common.lesson-no', { lesson_no: params.lesson }),
       headerBackTitle: null,
     };
   };

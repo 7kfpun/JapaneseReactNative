@@ -15,10 +15,10 @@
     },
     "lessons": {
         "title": "\u8bfe\u7a0b",
-        "beginning_one": "\u521d\u7ea7 I",
-        "beginning_two": "\u521d\u7ea7 II",
-        "advanced_one": "\u8fdb\u9636 I",
-        "advanced_two": "\u8fdb\u9636 II"
+        "beginning-one": "\u521d\u9636 I",
+        "beginning-two": "\u521d\u9636 II",
+        "advanced-one": "\u8fdb\u9636 I",
+        "advanced-two": "\u8fdb\u9636 II"
     },
     "read-all": {
         "premium-required-title": "\u53ea\u4f9b\u9ad8\u7ea7\u7528\u6237",
@@ -49,18 +49,18 @@
         "issueUrl": "https:\/\/airtable.com\/shroN1qoYaCZRsfEw?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "\u53cd\u9988",
         "help-translation": "\u53c2\u4e0e\u6211\u4eec\uff1f",
-        "help-translation-description": "\u6211\u4eec\u5df2\u7ecf\u5f00\u653e\u4e86\u793e\u533a\u7684\u7ffb\u8bd1\u6d41\u7a0b\uff0c\u56e0\u4e3a\u60a8\u6700\u4e86\u89e3 Mainichi no Nihongo \u5e94\u8be5\u5982\u4f55\u7ffb\u8bd1\u6210\u60a8\u7684\u8bed\u8a00\u3002 \u8bf7\u4e0e\u6211\u4eec\u4e00\u8d77\u53c2\u4e0e\u7ffb\u8bd1\uff0c\u6295\u7968\u548c\u8ba8\u8bba\u3002",
+        "help-translation-description": "\u6211\u4eec\u5df2\u7ecf\u5f00\u653e\u4e86\u793e\u533a\u7684\u7ffb\u8bd1\uff0c\u56e0\u4e3a\u4f60\u6700\u4e86\u89e3 \u672c APP \u5e94\u8be5\u5982\u4f55\u7ffb\u8bd1\u6210\u60a8\u7684\u8bed\u8a00\u3002 \u8bf7\u4e0e\u6211\u4eec\u4e00\u8d77\u53c2\u4e0e\u7ffb\u8bd1\uff0c\u6295\u7968\u548c\u8ba8\u8bba\u3002",
         "tts-instruction": "\u6ca1\u6709\u58f0\u97f3\u5417\uff1f",
         "tts-instruction-description": "\u4f60\u8981\u786e\u4fdd\u6587\u5b57\u8f6c\u8bed\u97f3\uff08text-to-speech\uff09\u529f\u80fd\u6709\u6b63\u786e\u5730\u6253\u5f00\uff0c\u5e76\u5b89\u88c5\u65e5\u8bed\u8bed\u8a00\u5305\u3002\u6700\u597d\u4f7f\u7528\u8c37\u6b4c\u7684\u5f15\u64ce\u3002",
         "tts-instruction-url": "https:\/\/airtable.com\/shr3vXSdVmOiLxUiz?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
         "title": "\u5173\u4e8e",
-        "notification_label": "\u5b66\u4e60\u901a\u77e5 (\u6bcf\u65e5)",
+        "notification-label": "\u5b66\u4e60\u901a\u77e5 (\u6bcf\u65e5)",
         "restore": "\u6062\u590d\u4f60\u7684\u5e94\u7528\u5185\u8d2d\u4e70",
-        "purchase_title": "\u60a8\u73b0\u5728\u662f\u6211\u4eec\u7684\u9ad8\u7ea7\u7528\u6237",
-        "purchase_description": "\u5f00\u5fc3\u5b66\u4e60\u65e5\u8bed\uff01",
-        "restore_failed_title": "\u4f60\u4ece\u672a\u8d2d\u4e70\u8fc7\u6211\u4eec\u7684\u8fdb\u9636\u7248",
+        "purchase-title": "\u4f60\u73b0\u5728\u662f\u6211\u4eec\u7684\u9ad8\u7ea7\u7528\u6237",
+        "purchase-description": "\u5f00\u5fc3\u5b66\u4e60\u65e5\u8bed\uff01",
+        "restore-failed-title": "\u4f60\u4ece\u672a\u8d2d\u4e70\u8fc7\u6211\u4eec\u7684\u8fdb\u9636\u7248",
         "version": "\u7248\u672c",
         "adfree": {
             "title": "\u53bb\u9664\u5e7f\u544a",
@@ -100,15 +100,15 @@
         "previous": "\u4e0a\u4e00\u4e2a",
         "next": "\u4e0b\u4e00\u4e2a",
         "random": "\u968f\u673a",
-        "lesson_no": "\u7b2c {{lesson_no}} \u8bfe",
-        "tts_required": "\u8bf7\u542f\u7528 Google \u6587\u5b57\u8f6c\u8bed\u97f3\u5f15\u64ce",
+        "lesson-no": "\u7b2c {{lesson_no}} \u8bfe",
+        "tts-required": "\u4f60\u8981\u786e\u4fdd\u6587\u5b57\u8f6c\u8bed\u97f3\uff08Text to speech\uff09\u529f\u80fd\u6709\u6b63\u786e\u5730\u6253\u5f00\uff0c\u5e76\u5b89\u88c5\u65e5\u8bed\u8bed\u8a00\u5305\u3002\u6700\u597d\u4f7f\u7528 Google \u7684\u5f15\u64ce\u3002",
         "coming-soon": "\u5373\u5c07\u63a8\u51fa",
         "coming-soon-description": "\u8bf7\u7ee7\u7eed\u5173\u6ce8\uff0c\u6211\u4eec\u5c06\u5e26\u6765\u8d8a\u6765\u8d8a\u591a\u7684\u529f\u80fd"
     },
     "rating": {
         "title": "\u559c\u6b22\u6211\u4eec APP \u5417\uff1f",
-        "title_description": "\u7ed9\u6211\u4eec 5 \u9897\u661f\u4ee5\u9f13\u52b1\u6211\u4eec\u5427",
-        "feedback_description": "\u5bf9\u54ea\u91cc\u4e0d\u6ee1\u610f\uff1f\u7d66\u6211\u4eec\u9ede\u610f\u898b\u5427\u3002",
-        "feedback_url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}"
+        "title-description": "\u7ed9\u6211\u4eec 5 \u9897\u661f\u4ee5\u9f13\u52b1\u6211\u4eec\u5427",
+        "feedback-description": "\u5bf9\u54ea\u91cc\u4e0d\u6ee1\u610f\uff1f\u7d66\u6211\u4eec\u9ede\u610f\u898b\u5427\u3002",
+        "feedback-url": "https:\/\/airtable.com\/shrsfl03pU6HnE5Ar?prefill_Platform={platform}&prefill_Version={version}"
     }
 }

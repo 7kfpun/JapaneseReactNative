@@ -47,19 +47,19 @@ const styles = StyleSheet.create({
 
 const lessonGroup = [
   {
-    text: I18n.t('app.lessons.beginning_one'),
+    text: I18n.t('app.lessons.beginning-one'),
     list: range(1, 14), // [1, 13]
   },
   {
-    text: I18n.t('app.lessons.beginning_two'),
+    text: I18n.t('app.lessons.beginning-two'),
     list: range(14, 26), // [14, 25]
   },
   {
-    text: I18n.t('app.lessons.advanced_one'),
+    text: I18n.t('app.lessons.advanced-one'),
     list: range(26, 39), // [26, 38]
   },
   {
-    text: I18n.t('app.lessons.advanced_two'),
+    text: I18n.t('app.lessons.advanced-two'),
     list: range(39, 51), // [39, 50]
   },
 ];

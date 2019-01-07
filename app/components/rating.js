@@ -110,7 +110,7 @@ export default class Rating extends Component {
   }
 
   openFeedbackUrl = () => {
-    Linking.openURL(I18n.t('app.rating.feedback_url'));
+    Linking.openURL(I18n.t('app.rating.feedback-url'));
     const that = this;
     that.openFeedbackUrlTimeout = setTimeout(() => {
       this.setState({ isRatingClose: true });
@@ -135,7 +135,7 @@ export default class Rating extends Component {
         </Animatable.View>
         <Text style={styles.ratingTitleText}>{I18n.t('app.rating.title')}</Text>
         <Text style={styles.ratingDescriptionText}>
-          {I18n.t('app.rating.title_description')}
+          {I18n.t('app.rating.title-description')}
         </Text>
         {this.state.starCount === 0 && (
           <View style={{ flexDirection: 'row' }}>
@@ -153,7 +153,7 @@ export default class Rating extends Component {
           <TouchableOpacity onPress={this.openFeedbackUrl}>
             <Animatable.View style={styles.button} animation="fadeIn">
               <Text style={styles.feedbackDescriptionText}>
-                {I18n.t('app.rating.feedback_description')}
+                {I18n.t('app.rating.feedback-description')}
               </Text>
             </Animatable.View>
           </TouchableOpacity>

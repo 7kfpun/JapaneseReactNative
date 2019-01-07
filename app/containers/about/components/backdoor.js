@@ -166,7 +166,7 @@ export default class Backdoor extends Component {
                   store.save('currentPremiumSubscription', 'backdoor');
 
                   Alert.alert(
-                    I18n.t('app.about.purchase_title'),
+                    I18n.t('app.about.purchase-title'),
                     null,
                     [{ text: 'OK', onPress: () => RNRestart.Restart() }],
                     { cancelable: false }

@@ -36,7 +36,7 @@ const LessonItem = ({ index, item, navigation }) => (
       ]}
     >
       <Text style={styles.text}>
-        {I18n.t('app.common.lesson_no', { lesson_no: item })}
+        {I18n.t('app.common.lesson-no', { lesson_no: item })}
       </Text>
     </View>
   </TouchableOpacity>

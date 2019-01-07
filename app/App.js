@@ -48,12 +48,12 @@ Tts.getInitStatus().then(
 
     if (!I18n.isJaVoiceSupport && Platform.OS === 'android') {
       setTimeout(() => {
-        ToastAndroid.show(I18n.t('app.common.tts_required'), ToastAndroid.LONG);
+        ToastAndroid.show(I18n.t('app.common.tts-required'), ToastAndroid.LONG);
       }, 5000);
     }
   },
   err => {
-    ToastAndroid.show(I18n.t('app.common.tts_required'), ToastAndroid.LONG);
+    ToastAndroid.show(I18n.t('app.common.tts-required'), ToastAndroid.LONG);
     if (err.code === 'no_engine') {
       try {
         Tts.requestInstallEngine();

@@ -161,8 +161,8 @@ export default class About extends Component<Props> {
 
   refreshForApplyingPurchase = () => {
     Alert.alert(
-      I18n.t('app.about.purchase_title'),
-      I18n.t('app.about.purchase_description'),
+      I18n.t('app.about.purchase-title'),
+      I18n.t('app.about.purchase-description'),
       [{ text: 'OK', onPress: () => RNRestart.Restart() }],
       { cancelable: false }
     );

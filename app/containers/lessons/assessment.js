@@ -174,7 +174,7 @@ export default class Assessment extends Component<Props> {
     const count = params && params.count;
     const total = params && params.total;
     return {
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerTitle: I18n.t('app.common.lesson-no', { lesson_no: params.lesson }),
       headerBackTitle: null,
       headerRight: total && (
         <Text style={styles.headerRight}>{`${count + 1} / ${total}`}</Text>

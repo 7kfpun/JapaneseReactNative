@@ -15,10 +15,10 @@
     },
     "lessons": {
         "title": "Lessons",
-        "beginning_one": "Beg. I",
-        "beginning_two": "Beg. II",
-        "advanced_one": "Adv. I",
-        "advanced_two": "Adv. II"
+        "beginning-one": "Beg. I",
+        "beginning-two": "Beg. II",
+        "advanced-one": "Adv. I",
+        "advanced-two": "Adv. II"
     },
     "read-all": {
         "premium-required-title": "Only available for Premium users",
@@ -49,18 +49,18 @@
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Feedback",
         "help-translation": "Join us?",
-        "help-translation-description": "We've opened the translation process up to the community because you know best how \"Mainichi no Nihongo\" should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
+        "help-translation-description": "We've opened the translation process up to the community because you know best how the APP should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
         "tts-instruction": "No sound?",
         "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
         "title": "About",
-        "notification_label": "Study Reminder (Daily)",
+        "notification-label": "Study Reminder (Daily)",
         "restore": "Restore your in-app purchases",
-        "purchase_title": "You are our premium user now",
-        "purchase_description": "Enjoy learning Japanese",
-        "restore_failed_title": "You have never purchased our Premium before",
+        "purchase-title": "You are our premium user now",
+        "purchase-description": "Enjoy learning Japanese",
+        "restore-failed-title": "You have never purchased our Premium before",
         "version": "Version",
         "adfree": {
             "title": "Remove Ads",
@@ -100,15 +100,15 @@
         "previous": "Previous",
         "next": "Next",
         "random": "Random",
-        "lesson_no": "Lesson {{lesson_no}}",
-        "tts_required": "Google Text-to-Speech is required for using this app",
+        "lesson-no": "Lesson {{lesson_no}}",
+        "tts-required": "Google Text-to-Speech is required for using this app",
         "coming-soon": "Coming soon",
         "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Enjoy our APP?",
-        "title_description": "Please give us 5 stars to cheer we up if you like this app.",
-        "feedback_description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
-        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
+        "title-description": "Please give us 5 stars to cheer we up if you like this app.",
+        "feedback-description": "Don't like our APP? Give us some feedbacks. We will definitely keep improving.",
+        "feedback-url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }

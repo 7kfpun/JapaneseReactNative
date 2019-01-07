@@ -118,7 +118,7 @@ export default class AssessmentMC extends Component<Props> {
     const correctNumber = (params && params.correctNumber) || 0;
     const total = (params && params.total) || 0;
     return {
-      headerTitle: I18n.t('app.common.lesson_no', { lesson_no: params.lesson }),
+      headerTitle: I18n.t('app.common.lesson-no', { lesson_no: params.lesson }),
       headerBackTitle: null,
       headerRight: (
         <Text style={styles.headerRight}>{`${correctNumber} / ${total}`}</Text>

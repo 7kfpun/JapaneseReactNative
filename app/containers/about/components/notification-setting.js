@@ -76,7 +76,7 @@ export default class NotificationSetting extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>
-          {I18n.t('app.about.notification_label')}
+          {I18n.t('app.about.notification-label')}
         </Text>
         <Switch
           onValueChange={this.setNotification}

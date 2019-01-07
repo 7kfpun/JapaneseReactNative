@@ -15,10 +15,10 @@
     },
     "lessons": {
         "title": "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e",
-        "beginning_one": "Beg. I",
-        "beginning_two": "Beg. II",
-        "advanced_one": "Adv. I",
-        "advanced_two": "Adv. II"
+        "beginning-one": "Beg. I",
+        "beginning-two": "Beg. II",
+        "advanced-one": "Adv. I",
+        "advanced-two": "Adv. II"
     },
     "read-all": {
         "premium-required-title": "Ch\u1ec9 kh\u1ea3 d\u1ee5ng cho ng\u01b0\u1eddi d\u00f9ng Premium",
@@ -49,18 +49,18 @@
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Ph\u1ea3n h\u1ed3i",
         "help-translation": "Join us?",
-        "help-translation-description": "We've opened the translation process up to the community because you know best how \"Mainichi no Nihongo\" should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
+        "help-translation-description": "We've opened the translation process up to the community because you know best how the APP should be translated into your language. Please participate as much as you like in translating, voting, and discussion.",
         "tts-instruction": "No sound?",
         "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "about": {
         "title": "V\u1ec1 ch\u00fang t\u00f4i",
-        "notification_label": "Nh\u1eafc nh\u1edf h\u1ecdc t\u1eadp (h\u00e0ng ng\u00e0y)",
+        "notification-label": "Nh\u1eafc nh\u1edf h\u1ecdc t\u1eadp (h\u00e0ng ng\u00e0y)",
         "restore": "Kh\u00f4i ph\u1ee5c mua h\u00e0ng trong \u1ee9ng d\u1ee5ng c\u1ee7a b\u1ea1n",
-        "purchase_title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
-        "purchase_description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
-        "restore_failed_title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
+        "purchase-title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
+        "purchase-description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
+        "restore-failed-title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
         "version": "Version",
         "adfree": {
             "title": "Remove Ads",
@@ -100,15 +100,15 @@
         "previous": "Tr\u01b0\u1edbc",
         "next": "K\u1ebf ti\u1ebfp",
         "random": "Ng\u1eabu nhi\u00ean",
-        "lesson_no": "B\u00e0i {{lesson_no}}",
-        "tts_required": "Vui l\u00f2ng b\u1eadt Google Text-to-Speech",
+        "lesson-no": "B\u00e0i {{lesson_no}}",
+        "tts-required": "Vui l\u00f2ng b\u1eadt Google Text-to-Speech",
         "coming-soon": "Coming soon",
         "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Th\u01b0\u1edfng th\u1ee9c?",
-        "title_description": "H\u00e3y cho ch\u00fang t\u00f4i 5 sao \u0111\u1ec3 c\u1ed5 v\u0169 ch\u00fang t\u00f4i n\u1ebfu b\u1ea1n th\u00edch \u1ee9ng d\u1ee5ng n\u00e0y.",
-        "feedback_description": "Kh\u00f4ng th\u00edch APP c\u1ee7a ch\u00fang t\u00f4i? H\u00e3y cho ch\u00fang t\u00f4i m\u1ed9t s\u1ed1 ph\u1ea3n h\u1ed3i. Ch\u00fang t\u00f4i ch\u1eafc ch\u1eafn s\u1ebd ti\u1ebfp t\u1ee5c c\u1ea3i thi\u1ec7n.",
-        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
+        "title-description": "H\u00e3y cho ch\u00fang t\u00f4i 5 sao \u0111\u1ec3 c\u1ed5 v\u0169 ch\u00fang t\u00f4i n\u1ebfu b\u1ea1n th\u00edch \u1ee9ng d\u1ee5ng n\u00e0y.",
+        "feedback-description": "Kh\u00f4ng th\u00edch APP c\u1ee7a ch\u00fang t\u00f4i? H\u00e3y cho ch\u00fang t\u00f4i m\u1ed9t s\u1ed1 ph\u1ea3n h\u1ed3i. Ch\u00fang t\u00f4i ch\u1eafc ch\u1eafn s\u1ebd ti\u1ebfp t\u1ee5c c\u1ea3i thi\u1ec7n.",
+        "feedback-url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }

@@ -124,7 +124,7 @@ export const checkPurchaseHistory = async (isNewConnection = true) => {
 
         Alert.alert(
           I18n.t('app.about.purchase_title'),
-          I18n.t('app.about.purchase_description'),
+          I18n.t('app.about.purchase-description'),
           [
             {
               text: 'OK',

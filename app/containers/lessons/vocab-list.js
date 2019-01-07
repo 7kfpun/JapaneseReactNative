@@ -50,7 +50,7 @@ export default class VocabList extends Component<Props> {
     const params = navigation.state.params || {};
 
     return {
-      title: I18n.t('app.common.lesson_no', { lesson_no: params.item }),
+      title: I18n.t('app.common.lesson-no', { lesson_no: params.item }),
       headerBackTitle: null,
     };
   };

@@ -15,10 +15,10 @@
     },
     "lessons": {
         "title": "unterricht",
-        "beginning_one": "Beg. I",
-        "beginning_two": "Beg. II",
-        "advanced_one": "Adv. I",
-        "advanced_two": "Adv. II"
+        "beginning-one": "Beg. I",
+        "beginning-two": "Beg. II",
+        "advanced-one": "Adv. I",
+        "advanced-two": "Adv. II"
     },
     "read-all": {
         "premium-required-title": "Nur f\u00fcr Premium-Mitglieder",
@@ -56,11 +56,11 @@
     },
     "about": {
         "title": "\u00dcber uns",
-        "notification_label": "Studie Erinnerung (T\u00e4glich)",
+        "notification-label": "Studie Erinnerung (T\u00e4glich)",
         "restore": "Stellen Sie Ihre In-App-K\u00e4ufe wieder her",
-        "purchase_title": "Jetzt Premium-Mitglied werden",
-        "purchase_description": "Viel Spa\u00df zum Japanisch lernen",
-        "restore_failed_title": "Sie haben die Premium noch nie gekauft",
+        "purchase-title": "Jetzt Premium-Mitglied werden",
+        "purchase-description": "Viel Spa\u00df zum Japanisch lernen",
+        "restore-failed-title": "Sie haben die Premium noch nie gekauft",
         "version": "Ausf\u00fchrung",
         "adfree": {
             "title": "Remove Ads",
@@ -100,15 +100,15 @@
         "previous": "Letzte",
         "next": "N\u00e4chste",
         "random": "Willk\u00fcrlich",
-        "lesson_no": "Lektion {{lesson_no}}",
-        "tts_required": "Google Text-to-Speech ist f\u00fcr die App erforderlich",
+        "lesson-no": "Lektion {{lesson_no}}",
+        "tts-required": "Google Text-to-Speech ist f\u00fcr die App erforderlich",
         "coming-soon": "Coming soon",
         "coming-soon-description": "Please stay tuned we will bring more and more features"
     },
     "rating": {
         "title": "Haben Sie Lust mit die App?",
-        "title_description": "Wenn Ihnen diese App gef\u00e4llt, bewerten Sie uns bitte mit 5 Sternen.",
-        "feedback_description": "Wenn Ihnen die App nicht gef\u00e4llt, geben Sie uns Feedback, damit wir uns in Zukunft noch weiter verbessern k\u00f6nnen.",
-        "feedback_url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
+        "title-description": "Wenn Ihnen diese App gef\u00e4llt, bewerten Sie uns bitte mit 5 Sternen.",
+        "feedback-description": "Wenn Ihnen die App nicht gef\u00e4llt, geben Sie uns Feedback, damit wir uns in Zukunft noch weiter verbessern k\u00f6nnen.",
+        "feedback-url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }
