@@ -53,6 +53,7 @@ const { width } = Dimensions.get('window');
 Tts.setDefaultLanguage('ja');
 
 const NO_OF_TILES = 5;
+const SHOW_AFTER_NUMBER = 8;
 
 const styles = StyleSheet.create({
   container: {
@@ -525,7 +526,7 @@ export default class Assessment extends Component<Props> {
           )}
         </View>
 
-        {answers.length > 3 && <Rating />}
+        {count > SHOW_AFTER_NUMBER && <Rating />}
 
         <AdMob unitId={config.admob[`${Platform.OS}-assessment-banner`]} />
       </View>

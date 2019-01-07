@@ -141,6 +141,7 @@ export default class Rating extends Component {
           <View style={{ flexDirection: 'row' }}>
             {range(1, 6).map(i => (
               <Icon
+                key={i}
                 name={this.state.starCount >= i ? 'star' : 'star-border'}
                 size={26}
                 color="#616161"
