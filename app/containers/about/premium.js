@@ -72,7 +72,7 @@ export default class Premium extends Component<Props> {
 
     this.getStoreSubscription();
 
-    this.getSubscriptions();
+    // this.getSubscriptions();
     this.getProducts();
   };
 

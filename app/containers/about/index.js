@@ -65,20 +65,22 @@ export default class About extends Component<Props> {
           <NotificationSetting />
 
           <View style={{ marginTop: 10 }}>
-            {isPremium && (
+            {/* {isPremium && (
               <Row
                 text={currentPremiumSubscription}
                 description={moment.unix(premiumUntil / 1000).format('LLL')}
               />
-            )}
+            )} */}
 
-            <Row
-              first={!isPremium}
-              text={I18n.t('app.about.premium.title')}
-              onPress={() => {
-                navigation.navigate('premium');
-              }}
-            />
+            {!isPremium && (
+              <Row
+                first={!isPremium}
+                text={I18n.t('app.about.premium.title')}
+                onPress={() => {
+                  navigation.navigate('premium');
+                }}
+              />
+            )}
 
             {/* {!isAdfree && <Row
               first={false}
@@ -88,21 +90,23 @@ export default class About extends Component<Props> {
               }}
             />} */}
 
-            <Row
-              first={false}
-              text={I18n.t('app.about.restore')}
-              onPress={() => {
-                const history = checkPurchaseHistory();
-                if (!history) {
-                  Alert.alert(
-                    I18n.t('app.about.restore_failed_title'),
-                    null,
-                    [{ text: 'OK' }],
-                    { cancelable: false }
-                  );
-                }
-              }}
-            />
+            {!isPremium && (
+              <Row
+                first={false}
+                text={I18n.t('app.about.restore')}
+                onPress={() => {
+                  const history = checkPurchaseHistory();
+                  if (!history) {
+                    Alert.alert(
+                      I18n.t('app.about.restore_failed_title'),
+                      null,
+                      [{ text: 'OK' }],
+                      { cancelable: false }
+                    );
+                  }
+                }}
+              />
+            )}
           </View>
 
           <View style={{ marginVertical: 15 }}>
