@@ -28,7 +28,8 @@
         "title": "Lesezeichen",
         "star": "star",
         "stars": "stars",
-        "remove": "Remove"
+        "remove": "Remove",
+        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
     },
     "search": {
         "title": "Suchen",

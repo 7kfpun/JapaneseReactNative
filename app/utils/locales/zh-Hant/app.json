@@ -28,7 +28,8 @@
         "title": "\u66f8\u7c64",
         "star": "\u9846\u661f",
         "stars": "\u9846\u661f",
-        "remove": "\u522a\u9664"
+        "remove": "\u522a\u9664",
+        "too-many": "\u6210\u70ba\u6211\u5011\u7684\u9032\u968e\u7528\u6236\uff0c\u4ee5\u64c1\u6709\u8d85\u904e {{number}} \u500b\u8a5e\u5f59"
     },
     "search": {
         "title": "\u641c\u7d22",

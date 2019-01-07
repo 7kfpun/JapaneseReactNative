@@ -28,7 +28,8 @@
         "title": "Bookmark",
         "star": "star",
         "stars": "stars",
-        "remove": "Remove"
+        "remove": "Remove",
+        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
     },
     "search": {
         "title": "\u101b\u103e\u102c\u1016\u103e\u1031",

@@ -17,10 +17,15 @@ import store from 'react-native-simple-store';
 import AdMob from '../../components/admob';
 import VocabItem from '../../components/vocab-item';
 
+import ExceedLimit from './components/exceed-limit';
+
+import { getPremiumInfo } from '../../utils/payment';
 import { vocabsMapper } from '../../utils/vocab-helpers';
 import I18n from '../../utils/i18n';
 
 import { config } from '../../config';
+
+const MAX_VOCABULARIES = 20;
 
 const styles = StyleSheet.create({
   container: {
@@ -60,12 +65,19 @@ export default class BookmarkList extends Component<Props> {
   };
 
   state = {
+    isPremium: false,
     list: [],
   };
 
   componentDidMount() {
     this.getStore();
+    this.getStoreSubscription();
   }
+
+  getStoreSubscription = async () => {
+    const premiumInfo = await getPremiumInfo();
+    this.setState(premiumInfo);
+  };
 
   getStore = async () => {
     const {
@@ -102,7 +114,7 @@ export default class BookmarkList extends Component<Props> {
   };
 
   render() {
-    const { list } = this.state;
+    const { isPremium, list } = this.state;
 
     return (
       <View style={styles.container}>
@@ -110,7 +122,7 @@ export default class BookmarkList extends Component<Props> {
           <SwipeListView
             style={styles.list}
             useFlatList
-            data={list}
+            data={isPremium ? list : list.slice(0, MAX_VOCABULARIES)}
             keyExtractor={(item, index) => `${index}-${item}`}
             renderItem={({ item, index }) =>
               vocabsMapper[item] && (
@@ -137,6 +149,10 @@ export default class BookmarkList extends Component<Props> {
             rightOpenValue={-70}
             disableRightSwipe
           />
+
+          {!isPremium && list.length > MAX_VOCABULARIES && (
+            <ExceedLimit max={MAX_VOCABULARIES} />
+          )}
         </ScrollView>
 
         <AdMob unitId={config.admob[`${Platform.OS}-bookmark-banner`]} />
