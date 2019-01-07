@@ -61,6 +61,7 @@ target 'Japanese' do
 
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
+
 end
 
 post_install do |installer|

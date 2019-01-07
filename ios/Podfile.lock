@@ -161,7 +161,7 @@ PODS:
     - React
   - RNI18n (2.0.15):
     - React
-  - RNIap (2.3.17):
+  - RNIap (2.3.19):
     - React
   - RNStoreReview (0.1.5):
     - React
@@ -284,12 +284,12 @@ SPEC CHECKSUMS:
   RNDeviceInfo: e7c5fcde13d40e161d8a27f6c5dc69c638936002
   RNFirebase: fd1ba33ba9f451fd3a424faa8f19ac9e91858926
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
-  RNIap: e96495e20957a8b225a4b03c770b02db14ecd01a
+  RNIap: d08926079b8f6e79357b88ef3c8966710c631230
   RNStoreReview: 62d6afd7c37db711a594bbffca6b0ea3a812b7a8
   RNVectorIcons: ac7bf6bfeafaf3ad34552cdc6eed6fb8c4b7c940
   TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 1f00e8421454302b8e4fb2d341f9cce1f078daa2
+PODFILE CHECKSUM: 8d49e24ff3de78ee5e9374a0080b477921c01cfb
 
 COCOAPODS: 1.6.0.beta.2
