@@ -125,7 +125,7 @@ export const checkPurchaseHistory = async (isNewConnection = true) => {
         tracker.logEvent('user-premium-restore-purchase-done');
 
         Alert.alert(
-          I18n.t('app.about.purchase_title'),
+          I18n.t('app.about.purchase-title'),
           I18n.t('app.about.purchase-description'),
           [
             {

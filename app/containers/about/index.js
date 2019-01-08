@@ -96,7 +96,7 @@ export default class About extends Component<Props> {
                   const history = checkPurchaseHistory();
                   if (!history) {
                     Alert.alert(
-                      I18n.t('app.about.restore_failed_title'),
+                      I18n.t('app.about.restore-failed-title'),
                       null,
                       [{ text: 'OK' }],
                       { cancelable: false }
