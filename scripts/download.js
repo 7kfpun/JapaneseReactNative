@@ -8,7 +8,7 @@ const { config } = require('../app/config');
 const PROJECT_ID = 316516;
 const FILE_NAME = 'app.json';
 const OUTPUT_LOCATION = './app/utils/locales/';
-const LOCALES = ['en', 'zh', 'zh-Hant', 'de', 'vi', 'my'];
+const LOCALES = ['en', 'zh', 'zh-Hant', 'de', 'vi', 'my', 'fr'];
 
 const PUBLIC_KEY = config.oneskyApiKey;
 const SECRET_KEY = config.oneskySecretKey;
@@ -28,9 +28,13 @@ async function downloadFile(locale) {
 
   const body = await fetch(url);
   const text = await body.text();
-  fs.writeFile(`${OUTPUT_LOCATION}/${locale}/app.json`, text, 'utf8', () =>
-    console.log('Download:', locale)
-  );
+  fs.writeFile(`${OUTPUT_LOCATION}/${locale}/app.json`, text, 'utf8', err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Download:', locale);
+    }
+  });
 }
 
 LOCALES.forEach(lang => downloadFile(lang));

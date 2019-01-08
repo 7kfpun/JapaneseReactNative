@@ -338,6 +338,9 @@ I18n.translations = {
       50: require('./minna/my/50'),
     },
   },
+  fr: {
+    app: require('./locales/fr/app'),
+  },
 };
 
 console.log('I18n.locale', I18n.locale);
