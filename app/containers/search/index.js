@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     color: iOSColors.gray,
-    backgroundColor: 'transparent',
     lineHeight: 40,
   },
 });

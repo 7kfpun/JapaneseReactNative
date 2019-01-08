@@ -1,4 +1,12 @@
 {
+    "bookmark": {
+        "description": "Have your own vocabularies list",
+        "title": "Bookmark",
+        "star": "star",
+        "stars": "stars",
+        "remove": "Remove",
+        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
+    },
     "today": {
         "title": "\u101a\u1014\u1031\u1037\u1010\u103d\u1004\u103a",
         "shuffle": "\u101b\u1031\u102c\u101e\u1019\u1019\u103d\u103e\u1031",
@@ -23,13 +31,6 @@
     "read-all": {
         "premium-required-title": "\u1015\u101b\u102e\u1019\u102e\u101a\u1036\u1021\u101e\u102f\u1036\u1038\u1015\u103c\u102f\u101e\u1030\u1019\u103b\u102c\u1038\u1021\u1010\u103d\u1000\u103a\u101e\u102c\u101b\u101b\u103e\u102d\u1014\u102d\u102f\u1004\u103a",
         "premium-required-description": "\u1015\u102d\u102f\u1015\u103c\u102e\u1038\u1015\u103b\u1031\u102c\u103a\u1019\u103d\u1031\u1037\u1016\u102d\u102f\u1037\u1000\u103b\u103d\u1014\u103a\u1010\u1031\u102c\u103a\u1010\u102d\u102f\u1037\u101b\u1032\u1037\u1015\u101b\u102e\u1019\u102e\u101a\u1036\u1021\u101e\u102f\u1036\u1038\u1015\u103c\u102f\u101e\u1030\u1016\u103c\u1005\u103a\u101c\u102c"
-    },
-    "bookmark": {
-        "title": "Bookmark",
-        "star": "star",
-        "stars": "stars",
-        "remove": "Remove",
-        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
     },
     "search": {
         "title": "\u101b\u103e\u102c\u1016\u103e\u1031",
@@ -85,7 +86,7 @@
             "listening": "Listening: lesson 3 - 50",
             "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
             "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
             "read-all": "Read All: lesson 3 - 50",
             "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
             "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",

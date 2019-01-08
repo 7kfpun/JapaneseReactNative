@@ -1,4 +1,12 @@
 {
+    "bookmark": {
+        "description": "Have your own vocabularies list",
+        "title": "Lesezeichen",
+        "star": "star",
+        "stars": "stars",
+        "remove": "Remove",
+        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
+    },
     "today": {
         "title": "Heute",
         "shuffle": "Mischen",
@@ -23,13 +31,6 @@
     "read-all": {
         "premium-required-title": "Nur f\u00fcr Premium-Mitglieder",
         "premium-required-description": "Mit der Premium-Mitgliedschaft stehen Ihnen alle Features"
-    },
-    "bookmark": {
-        "title": "Lesezeichen",
-        "star": "star",
-        "stars": "stars",
-        "remove": "Remove",
-        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
     },
     "search": {
         "title": "Suchen",
@@ -85,7 +86,7 @@
             "listening": "Listening: lesson 3 - 50",
             "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
             "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
             "read-all": "Read All: lesson 3 - 50",
             "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
             "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",

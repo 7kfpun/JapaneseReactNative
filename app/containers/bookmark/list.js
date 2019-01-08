@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 
+import { iOSColors } from 'react-native-typography';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import store from 'react-native-simple-store';
 
@@ -33,6 +34,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
+  empty: {
+    paddingTop: 100,
+    padding: 20,
+  },
   hiddenRow: {
     flex: 1,
     flexDirection: 'row',
@@ -44,6 +49,13 @@ const styles = StyleSheet.create({
   hiddenText: {
     fontSize: 14,
     color: 'white',
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '300',
+    color: iOSColors.gray,
+    lineHeight: 40,
   },
 });
 
@@ -128,7 +140,7 @@ export default class BookmarkList extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        <ScrollView style={{ alignSelf: 'stretch' }}>
+        <ScrollView>
           <SwipeListView
             style={styles.list}
             useFlatList
@@ -162,6 +174,14 @@ export default class BookmarkList extends Component<Props> {
 
           {!isPremium && list.length > MAX_VOCABULARIES && (
             <ExceedLimit max={MAX_VOCABULARIES} />
+          )}
+
+          {list.length === 0 && (
+            <View style={styles.empty}>
+              <Text style={styles.text}>
+                {I18n.t('app.bookmark.description')}
+              </Text>
+            </View>
           )}
         </ScrollView>
 

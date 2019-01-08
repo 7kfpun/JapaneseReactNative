@@ -1,4 +1,12 @@
 {
+    "bookmark": {
+        "description": "Have your own vocabularies list",
+        "title": "Bookmark",
+        "star": "star",
+        "stars": "stars",
+        "remove": "Remove",
+        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
+    },
     "today": {
         "title": "H\u00f4m Nay",
         "shuffle": "Tr\u1ed9n",
@@ -23,13 +31,6 @@
     "read-all": {
         "premium-required-title": "Ch\u1ec9 kh\u1ea3 d\u1ee5ng cho ng\u01b0\u1eddi d\u00f9ng Premium",
         "premium-required-description": "H\u00e3y tr\u1edf th\u00e0nh ng\u01b0\u1eddi d\u00f9ng Premium c\u1ee7a ch\u00fang t\u00f4i \u0111\u1ec3 t\u1eadn h\u01b0\u1edfng nhi\u1ec1u t\u00ednh n\u0103ng h\u01a1n"
-    },
-    "bookmark": {
-        "title": "Bookmark",
-        "star": "star",
-        "stars": "stars",
-        "remove": "Remove",
-        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
     },
     "search": {
         "title": "Ti\u0300m ki\u00ea\u0301m",
@@ -85,7 +86,7 @@
             "listening": "Listening: lesson 3 - 50",
             "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
             "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katagana, Kanji or Romaji to one and another",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
             "read-all": "Read All: lesson 3 - 50",
             "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
             "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",

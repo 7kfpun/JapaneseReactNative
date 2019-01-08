@@ -1,4 +1,12 @@
 {
+    "bookmark": {
+        "description": "\u64c1\u6709\u81ea\u5df1\u7684\u8a5e\u5f59\u8868\u5217\u8868",
+        "title": "\u66f8\u7c64",
+        "star": "\u9846\u661f",
+        "stars": "\u9846\u661f",
+        "remove": "\u522a\u9664",
+        "too-many": "\u6210\u70ba\u6211\u5011\u7684\u9032\u968e\u7528\u6236\uff0c\u4ee5\u64c1\u6709\u8d85\u904e {{number}} \u500b\u8a5e\u5f59"
+    },
     "today": {
         "title": "\u6bcf\u65e5\u65e5\u672c\u8a9e",
         "shuffle": "\u6d17\u724c",
@@ -23,13 +31,6 @@
     "read-all": {
         "premium-required-title": "\u53ea\u4f9b\u9ad8\u7d1a\u7528\u6236",
         "premium-required-description": "\u6210\u7232\u6211\u5011\u7684\u9ad8\u7d1a\u7528\u6236\uff0c\u4eab\u53d7\u66f4\u591a\u529f\u80fd"
-    },
-    "bookmark": {
-        "title": "\u66f8\u7c64",
-        "star": "\u9846\u661f",
-        "stars": "\u9846\u661f",
-        "remove": "\u522a\u9664",
-        "too-many": "\u6210\u70ba\u6211\u5011\u7684\u9032\u968e\u7528\u6236\uff0c\u4ee5\u64c1\u6709\u8d85\u904e {{number}} \u500b\u8a5e\u5f59"
     },
     "search": {
         "title": "\u641c\u7d22",
