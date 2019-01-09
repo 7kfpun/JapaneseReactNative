@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'red',
     padding: 10,
+    marginHorizontal: 15,
+    marginVertical: 10,
+    borderRadius: 5,
   },
   hiddenText: {
     fontSize: 14,

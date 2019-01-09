@@ -25,7 +25,6 @@ import KanaAssessment from './containers/kana/assessment';
 import Lessons from './containers/lessons';
 import Premium from './containers/about/premium';
 import ReadAll from './containers/lessons/read-all';
-import Search from './containers/search';
 import SelectMode from './containers/lessons/select-mode';
 import Today from './containers/today';
 import VocabList from './containers/lessons/vocab-list';
@@ -111,15 +110,6 @@ const lessonNavigator = createStackNavigator(
   }
 );
 
-const searchNavigator = createStackNavigator(
-  {
-    search: Search,
-  },
-  {
-    navigationOptions,
-  }
-);
-
 const bookmarkNavigator = createStackNavigator(
   {
     bookmark: Bookmark,
@@ -148,7 +138,6 @@ const AppTab = createBottomTabNavigator(
     kana: kanaNavigator,
     lessons: lessonNavigator,
     bookmark: bookmarkNavigator,
-    search: searchNavigator,
     about: aboutNavigator,
   },
   {
@@ -179,8 +168,6 @@ const AppTab = createBottomTabNavigator(
           } else if (routeName === 'bookmark') {
             iconName = 'ios-bookmark';
             size = 17;
-          } else if (routeName === 'search') {
-            iconName = 'ios-search';
           } else if (routeName === 'about') {
             iconName = 'ios-chatboxes';
           }

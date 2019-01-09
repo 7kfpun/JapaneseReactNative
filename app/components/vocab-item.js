@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bool, number, oneOfType, shape, string } from 'prop-types';
 
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
@@ -60,7 +60,8 @@ export default class VocabItem extends Component {
     } = this.props;
 
     return (
-      <TouchableOpacity
+      <TouchableHighlight
+        underlayColor="#F7F7F7"
         onPress={() => {
           ttsSpeak(item);
           tracker.logEvent('user-vocab-item-press-read', item);
@@ -79,7 +80,7 @@ export default class VocabItem extends Component {
             {!isShowLesson && <Text style={styles.grayText}>{index + 1}</Text>}
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   }
 }
