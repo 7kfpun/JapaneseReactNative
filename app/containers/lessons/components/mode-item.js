@@ -13,14 +13,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 15,
     marginVertical: 25,
-    padding: 10,
+    padding: 20,
     borderRadius: 5,
     backgroundColor: 'white',
   },
   text: {
     fontSize: 16,
     fontWeight: '300',
-    lineHeight: 35,
     color: iOSColors.black,
   },
   descriptionText: {

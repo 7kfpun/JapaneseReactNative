@@ -10,8 +10,14 @@ import tracker from '../../../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    paddingVertical: 20,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 15,
+    marginVertical: 10,
+    padding: 20,
+    borderRadius: 5,
+    backgroundColor: 'white',
   },
   text: {
     fontSize: 16,
@@ -20,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LessonItem = ({ index, item, navigation }) => (
+const LessonItem = ({ item, navigation }) => (
   <TouchableOpacity
     onPress={() => {
       navigation.navigate('select-mode', { item, navigation });
@@ -29,12 +35,7 @@ const LessonItem = ({ index, item, navigation }) => (
       });
     }}
   >
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: index % 2 ? '#F7F7F7' : 'white' },
-      ]}
-    >
+    <View style={styles.container}>
       <Text style={styles.text}>
         {I18n.t('app.common.lesson-no', { lesson_no: item })}
       </Text>
@@ -43,7 +44,6 @@ const LessonItem = ({ index, item, navigation }) => (
 );
 
 LessonItem.propTypes = {
-  index: PropTypes.number.isRequired,
   item: PropTypes.number.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,

@@ -68,6 +68,10 @@ type Props = {};
 export default class Lessons extends Component<Props> {
   static navigationOptions = {
     headerTitle: I18n.t('app.lessons.title'),
+    headerStyle: {
+      backgroundColor: '#F7F7F7',
+      borderBottomWidth: 0,
+    },
   };
 
   static propTypes = {
@@ -95,12 +99,8 @@ export default class Lessons extends Component<Props> {
                 style={styles.list}
                 data={group.list}
                 keyExtractor={(item, index) => `${index}-${item}`}
-                renderItem={({ item, index }) => (
-                  <LessonItem
-                    index={index}
-                    item={item}
-                    navigation={this.props.navigation}
-                  />
+                renderItem={({ item }) => (
+                  <LessonItem item={item} navigation={this.props.navigation} />
                 )}
               />
             </View>

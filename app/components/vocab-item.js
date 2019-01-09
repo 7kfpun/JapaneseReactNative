@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { bool, number, oneOfType, shape, string } from 'prop-types';
 
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 import Tts from 'react-native-tts';
@@ -14,8 +14,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    paddingHorizontal: 15,
-    paddingVertical: 8,
+    alignItems: 'center',
+    marginHorizontal: 15,
+    marginVertical: 10,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: 'white',
   },
   bodyLeft: {
     flex: 1,
@@ -30,27 +34,18 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: '300',
+    lineHeight: 24,
     color: iOSColors.black,
+  },
+  grayText: {
+    fontSize: 16,
+    fontWeight: '300',
+    lineHeight: 24,
+    color: iOSColors.gray,
   },
 });
 
 export default class VocabItem extends Component {
-  static propTypes = {
-    index: PropTypes.number.isRequired,
-    item: PropTypes.shape({
-      kanji: PropTypes.string.isRequired,
-      kana: PropTypes.string.isRequired,
-      romaji: PropTypes.string.isRequired,
-    }).isRequired,
-    lesson: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
-    isShowLesson: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    isShowLesson: false,
-  };
-
   componentWillUnmount() {
     Tts.stop();
   }
@@ -65,45 +60,41 @@ export default class VocabItem extends Component {
     } = this.props;
 
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => {
           ttsSpeak(item);
           tracker.logEvent('user-vocab-item-press-read', item);
         }}
       >
-        <View
-          style={[
-            styles.container,
-            { backgroundColor: index % 2 ? '#F7F7F7' : 'white' },
-          ]}
-        >
+        <View style={styles.container}>
           <View style={styles.bodyLeft}>
             <Text style={styles.text}>{kana}</Text>
-            <Text style={[styles.text, { paddingTop: 12 }]}>
-              {kanji !== kana ? kanji : ''}
-            </Text>
+            <Text style={styles.grayText}>{kanji !== kana ? kanji : ''}</Text>
           </View>
           <View style={styles.bodyRight}>
             <Text style={styles.text}>
               {I18n.t(`minna.${lesson}.${romaji}`)}
             </Text>
-            {isShowLesson && (
-              <Text
-                style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}
-              >
-                {lesson}
-              </Text>
-            )}
-            {!isShowLesson && (
-              <Text
-                style={[styles.text, { paddingTop: 12, color: iOSColors.gray }]}
-              >
-                {index + 1}
-              </Text>
-            )}
+            {isShowLesson && <Text style={styles.grayText}>{lesson}</Text>}
+            {!isShowLesson && <Text style={styles.grayText}>{index + 1}</Text>}
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
+
+VocabItem.propTypes = {
+  index: number.isRequired,
+  item: shape({
+    kanji: string.isRequired,
+    kana: string.isRequired,
+    romaji: string.isRequired,
+  }).isRequired,
+  lesson: oneOfType([string, number]).isRequired,
+  isShowLesson: bool,
+};
+
+VocabItem.defaultProps = {
+  isShowLesson: false,
+};

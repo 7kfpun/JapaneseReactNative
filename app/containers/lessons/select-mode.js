@@ -55,6 +55,10 @@ export default class SelectMode extends Component<Props> {
     return {
       title: I18n.t('app.common.lesson-no', { lesson_no: params.item }),
       headerBackTitle: null,
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 

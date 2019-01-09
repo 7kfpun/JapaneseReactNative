@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 15,
-    marginVertical: 25,
-    padding: 10,
+    marginTop: 10,
+    marginBottom: 40,
+    padding: 20,
     borderRadius: 5,
     backgroundColor: 'white',
   },
@@ -49,6 +50,10 @@ type Props = {};
 export default class Bookmark extends Component<Props> {
   static navigationOptions = {
     headerTitle: I18n.t('app.bookmark.title'),
+    headerStyle: {
+      backgroundColor: '#F7F7F7',
+      borderBottomWidth: 0,
+    },
   };
 
   static propTypes = {

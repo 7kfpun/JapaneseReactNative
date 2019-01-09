@@ -11,8 +11,8 @@ import Backdoor from './components/backdoor';
 import NotificationSetting from './components/notification-setting';
 import Row from '../../components/row';
 
-import { openURL, prepareURL } from '../../utils/helpers';
 import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
+import { openURL, prepareURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
