@@ -30,6 +30,7 @@ target 'Japanese' do
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
   pod 'Firebase/Performance'
   pod 'Firebase/Messaging'
   pod 'Firebase/RemoteConfig'
@@ -61,6 +62,7 @@ target 'Japanese' do
 
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
 
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
 end
 

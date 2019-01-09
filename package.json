@@ -41,6 +41,7 @@
     "react-native-device-info": "^0.24.3",
     "react-native-fabric": "corymsmith/react-native-fabric",
     "react-native-firebase": "^5.1.1",
+    "react-native-google-signin": "^1.0.2",
     "react-native-i18n": "^2.0.12",
     "react-native-iap": "^2.3.19",
     "react-native-onesignal": "3.2.7",
