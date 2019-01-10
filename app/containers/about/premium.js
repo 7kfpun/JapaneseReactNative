@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {
+  ActivityIndicator,
   Alert,
   FlatList,
   Platform,
@@ -319,7 +320,11 @@ export default class Premium extends Component<Props> {
             showsHorizontalScrollIndicator={false}
           />
 
-          <View style={styles.purchaseBlock}>
+          <View key={productList.length} style={styles.purchaseBlock}>
+            {productList.length === 0 && subscriptionList.length === 0 && (
+              <ActivityIndicator size="small" color="gray" />
+            )}
+
             {productList.length > 0 &&
               productList.map(product => (
                 <LifetimeButton
