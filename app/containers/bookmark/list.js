@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 15,
     marginVertical: 10,
-    borderRadius: 5,
+    borderRadius: 6,
   },
   hiddenText: {
     fontSize: 14,
@@ -73,6 +73,10 @@ export default class BookmarkList extends Component<Props> {
 
     return {
       headerTitle: '⭐'.repeat(starCount),
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 

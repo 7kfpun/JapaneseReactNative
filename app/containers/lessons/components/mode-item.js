@@ -28,11 +28,7 @@ const styles = StyleSheet.create({
     lineHeight: 35,
     color: iOSColors.black,
   },
-  lock: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-  },
+  lock: {},
 });
 
 const ModeItem = ({
@@ -43,7 +39,14 @@ const ModeItem = ({
   onPress,
 }) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
-    <View>
+    <View style={{ alignItems: 'center', flexDirection: 'row' }}>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.text}>{title}</Text>
+        {description !== '' && (
+          <Text style={styles.descriptionText}>{description}</Text>
+        )}
+      </View>
+
       {isRequirePremium && (
         <Ionicons
           style={styles.lock}
@@ -51,11 +54,6 @@ const ModeItem = ({
           size={20}
           color={iOSColors.yellow}
         />
-      )}
-
-      <Text style={styles.text}>{title}</Text>
-      {description !== '' && (
-        <Text style={styles.descriptionText}>{description}</Text>
       )}
     </View>
   </TouchableOpacity>
