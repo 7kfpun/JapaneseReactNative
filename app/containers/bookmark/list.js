@@ -13,6 +13,7 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SwipeListView } from 'react-native-swipe-list-view';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
@@ -21,6 +22,7 @@ import VocabItem from '../../components/vocab-item';
 import ExceedLimit from './components/exceed-limit';
 
 import { getPremiumInfo } from '../../utils/payment';
+import { range } from '../../utils/helpers';
 import { vocabsMapper } from '../../utils/vocab-helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -60,6 +62,9 @@ const styles = StyleSheet.create({
     color: iOSColors.gray,
     lineHeight: 40,
   },
+  headerTitle: {
+    flexDirection: 'row',
+  },
 });
 
 type Props = {};
@@ -71,8 +76,22 @@ export default class BookmarkList extends Component<Props> {
       },
     } = navigation;
 
+    const headerTitle = (
+      <View style={styles.headerTitle}>
+        {range(0, starCount).map(i => (
+          <Ionicons
+            key={i}
+            style={styles.lock}
+            name="ios-star"
+            size={20}
+            color={iOSColors.yellow}
+          />
+        ))}
+      </View>
+    );
+
     return {
-      headerTitle: '⭐'.repeat(starCount),
+      headerTitle,
       headerStyle: {
         backgroundColor: '#F7F7F7',
         borderBottomWidth: 0,
@@ -143,6 +162,7 @@ export default class BookmarkList extends Component<Props> {
   };
 
   render() {
+    const { navigation } = this.props;
     const { isPremium, list } = this.state;
 
     return (
@@ -180,7 +200,13 @@ export default class BookmarkList extends Component<Props> {
           />
 
           {!isPremium && list.length > MAX_VOCABULARIES && (
-            <ExceedLimit max={MAX_VOCABULARIES} />
+            <ExceedLimit
+              max={MAX_VOCABULARIES}
+              onPress={() => {
+                navigation.navigate('about');
+                tracker.logEvent('user-bookmark-interest-premium');
+              }}
+            />
           )}
 
           {list.length === 0 && (

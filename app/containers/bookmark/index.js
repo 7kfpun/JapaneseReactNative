@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 3,
+    fontSize: 16,
+    fontWeight: '300',
+    color: iOSColors.black,
   },
 });
 

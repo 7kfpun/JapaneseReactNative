@@ -103,6 +103,10 @@ export default class Kana extends Component<Props> {
           </TouchableOpacity>
         </View>
       ),
+      headerStyle: {
+        backgroundColor: '#F7F7F7',
+        borderBottomWidth: 0,
+      },
     };
   };
 

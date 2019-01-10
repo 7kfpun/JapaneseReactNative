@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
     marginHorizontal: 15,
     marginVertical: 10,
     padding: 10,
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     lineHeight: 24,
     color: iOSColors.gray,
+    marginTop: 6,
   },
 });
 
@@ -70,14 +70,15 @@ export default class VocabItem extends Component {
         <View style={styles.container}>
           <View style={styles.bodyLeft}>
             <Text style={styles.text}>{kana}</Text>
-            <Text style={styles.grayText}>{kanji !== kana ? kanji : ''}</Text>
+            {kanji !== kana && <Text style={styles.grayText}>{kanji}</Text>}
           </View>
           <View style={styles.bodyRight}>
             <Text style={styles.text}>
               {I18n.t(`minna.${lesson}.${romaji}`)}
             </Text>
-            {isShowLesson && <Text style={styles.grayText}>{lesson}</Text>}
-            {!isShowLesson && <Text style={styles.grayText}>{index + 1}</Text>}
+            <Text style={styles.grayText}>
+              {isShowLesson ? lesson : index + 1}
+            </Text>
           </View>
         </View>
       </TouchableHighlight>

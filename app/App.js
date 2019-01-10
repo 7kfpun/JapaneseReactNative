@@ -181,7 +181,7 @@ const AppTab = createBottomTabNavigator(
       inactiveTintColor: iOSColors.black,
       labelStyle: {
         fontSize: 9,
-        paddingBottom: 2,
+        paddingBottom: 4,
         paddingTop: 0,
       },
       // showIcon, pressColor, style and indicatorStyle are for Android

@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F7F7F7',
   },
+  searchContainer: {
+    marginBottom: 5,
+    marginHorizontal: 10,
+  },
   tabIndicatorText: {
     ...Platform.select({
       ios: {
@@ -132,7 +136,7 @@ export default class Lessons extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ padding: 10 }}>
+        <View style={styles.searchContainer}>
           <Search
             backgroundColor="#F7F7F7"
             inputStyle={{ backgroundColor: 'white' }}
@@ -142,7 +146,7 @@ export default class Lessons extends Component<Props> {
             onCancel={this.onCancel}
             onDelete={this.onDelete}
             cancelTitle={I18n.t('app.search.cancel')}
-            placeholder={I18n.t('app.search.any-text')}
+            placeholder={I18n.t('app.search.title')}
           />
         </View>
 

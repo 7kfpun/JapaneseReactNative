@@ -1,6 +1,6 @@
 import React from 'react';
 import { number } from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 import I18n from '../../../utils/i18n';
 
@@ -10,11 +10,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 5,
-    margin: 20,
-    padding: 25,
+    marginTop: 15,
+    marginBottom: 40,
+    marginHorizontal: 15,
+    padding: 20,
   },
   text: {
     fontSize: 16,
+    lineHeight: 28,
     textAlign: 'center',
   },
   descriptionText: {
@@ -26,11 +29,13 @@ const styles = StyleSheet.create({
 });
 
 const ExceedLimit = ({ max }) => (
-  <View style={styles.container}>
-    <Text style={styles.text}>
-      {I18n.t('app.bookmark.too-many', { number: max })}
-    </Text>
-  </View>
+  <TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={styles.text}>
+        {I18n.t('app.bookmark.too-many', { number: max })}
+      </Text>
+    </View>
+  </TouchableOpacity>
 );
 
 ExceedLimit.propTypes = {

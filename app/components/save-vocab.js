@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     lineHeight: 35,
     color: iOSColors.black,
   },
-  lock: {
-    paddingVertical: 10,
-    paddingHorizontal: 3,
+  icon: {
+    paddingVertical: 12,
+    paddingHorizontal: 4,
   },
 });
 
@@ -73,7 +73,7 @@ export default class SaveVocab extends Component {
         {range(1, 4).map(i => (
           <TouchableOpacity key={i} onPress={() => this.save(i, count)}>
             <Ionicons
-              style={styles.lock}
+              style={styles.icon}
               name="ios-star"
               size={20}
               color={count >= i ? iOSColors.yellow : iOSColors.lightGray}
