@@ -64,6 +64,9 @@ target 'Japanese' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
+  pod 'react-native-branch', :path => '../node_modules/react-native-branch'
+  pod 'Branch-SDK', :path => '../node_modules/react-native-branch/ios'
+
 end
 
 post_install do |installer|

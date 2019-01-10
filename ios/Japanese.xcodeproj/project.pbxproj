@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -46,6 +45,7 @@
 		E4D98942CF174F8A8A9D38EE /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A08900C857241DA93361D00 /* FontAwesome5_Brands.ttf */; };
 		E910FB60AC7D4CECA75F2E7F /* libRCTRestart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 578FAF4B47104424897E23B1 /* libRCTRestart.a */; };
 		FEAB6F5FA06D48B288A7C564 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1887483A3D8945788C637861 /* Foundation.ttf */; };
+		294B02FE633A4F3898E923DC /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = F015C3B6E1CE49E09236867F /* branch.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,6 +397,7 @@
 		CF0513775D6944BE99E7F7D3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		E1AD03FC1A9B6113298D72FC /* Pods-Japanese.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Japanese.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Japanese/Pods-Japanese.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CCFA3F2D9E4FBBB2EAA077 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		F015C3B6E1CE49E09236867F /* branch.json */ = {isa = PBXFileReference; name = "branch.json"; path = "../branch.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -527,6 +528,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				9E5D674421D227810059351F /* GoogleService-Info.plist */,
+				F015C3B6E1CE49E09236867F /* branch.json */,
 			);
 			name = Japanese;
 			sourceTree = "<group>";
@@ -786,6 +788,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -1196,6 +1201,7 @@
 				B52CE05C5A1F4785895AB114 /* Octicons.ttf in Resources */,
 				E130F9AF1B054919A135078F /* SimpleLineIcons.ttf in Resources */,
 				91F651AAA00E41E888DCDD12 /* Zocial.ttf in Resources */,
+				294B02FE633A4F3898E923DC /* branch.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

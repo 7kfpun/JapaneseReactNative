@@ -1,4 +1,7 @@
 PODS:
+  - Branch-SDK (0.25.1):
+    - Branch-SDK/Core (= 0.25.1)
+  - Branch-SDK/Core (0.25.1)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - Fabric (1.7.13)
@@ -137,6 +140,9 @@ PODS:
   - Protobuf (3.6.1)
   - React (0.57.8):
     - React/Core (= 0.57.8)
+  - react-native-branch (2.3.3):
+    - Branch-SDK
+    - React
   - react-native-onesignal (3.2.7):
     - OneSignal (= 2.8.8)
     - React
@@ -195,6 +201,7 @@ PODS:
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
+  - Branch-SDK (from `../node_modules/react-native-branch/ios`)
   - Crashlytics (~> 3.10.7)
   - Fabric (~> 1.7.11)
   - Firebase/AdMob
@@ -206,6 +213,7 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/RemoteConfig
   - OneSignal (< 3.0, >= 2.8.5)
+  - react-native-branch (from `../node_modules/react-native-branch`)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-safari-view (from `../node_modules/react-native-safari-view`)
   - React/Core (from `../node_modules/react-native`)
@@ -258,8 +266,12 @@ SPEC REPOS:
     - Protobuf
 
 EXTERNAL SOURCES:
+  Branch-SDK:
+    :path: "../node_modules/react-native-branch/ios"
   React:
     :path: "../node_modules/react-native"
+  react-native-branch:
+    :path: "../node_modules/react-native-branch"
   react-native-onesignal:
     :path: "../node_modules/react-native-onesignal"
   react-native-safari-view:
@@ -286,6 +298,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Branch-SDK: 7494230721d7a3083d22e2cb3d9ab9dc1340b1ea
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
@@ -311,6 +324,7 @@ SPEC CHECKSUMS:
   OneSignal: 7d2571e9fce1d961b882e1bd9f1f242802e9c8b1
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   React: adbac0757ce35e92fbd447ab98c810209d27d9b0
+  react-native-branch: fe98f2cae66d9e77d81a170040512ddb97cccbaf
   react-native-onesignal: d25220defd008b1afce7b8e1f648bb3315ae87a1
   react-native-safari-view: 955d7160d159241b8e9395d12d10ea0ef863dcdd
   ReactNativeFabric: d05320ff347d5c72567c115b97edeead111ac4d2
@@ -324,6 +338,6 @@ SPEC CHECKSUMS:
   TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 0d10ad4830658ae5fdead8635b448d60a13506ba
+PODFILE CHECKSUM: 9afc3ca043fc720ebecce5884c9aaa088bacdbc7
 
 COCOAPODS: 1.6.0.beta.2
