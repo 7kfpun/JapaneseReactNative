@@ -34,28 +34,29 @@ const styles = StyleSheet.create({
 export default class LoginModal extends Component<Props> {
   state = {
     isSigninInProgress: false,
+    isClose: false,
   };
 
   facebookLogin = async () => {
     this.setState({ isSigninInProgress: true });
-    await facebookLogin();
-    this.setState({ isSigninInProgress: false });
+    const currentUser = await facebookLogin();
+    this.setState({ isSigninInProgress: false, isClose: !!currentUser });
   };
 
   googleLogin = async () => {
     this.setState({ isSigninInProgress: true });
-    await googleLogin();
-    this.setState({ isSigninInProgress: false });
+    const currentUser = await googleLogin();
+    this.setState({ isSigninInProgress: false, isClose: !!currentUser });
   };
 
   render() {
     const { handleClose, isVisible } = this.props;
-    const { isSigninInProgress } = this.state;
+    const { isClose, isSigninInProgress } = this.state;
 
     return (
       <Modal
         style={styles.container}
-        isVisible={isVisible}
+        isVisible={isVisible && !isClose}
         onSwipe={handleClose}
         onBackButtonPress={handleClose}
         onBackdropPress={handleClose}

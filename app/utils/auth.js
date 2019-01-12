@@ -35,8 +35,11 @@ export const facebookLogin = async () => {
 
     console.info('facebookLogin', currentUser.user.toJSON());
     return currentUser;
-  } catch (e) {
-    console.warn(e);
+  } catch (err) {
+    console.warn(err);
+    if (err.code) {
+      alert(err.code);
+    }
   }
 };
 
@@ -60,5 +63,8 @@ export const googleLogin = async () => {
     return currentUser;
   } catch (err) {
     console.warn(err);
+    if (err.code) {
+      alert(err.code);
+    }
   }
 };

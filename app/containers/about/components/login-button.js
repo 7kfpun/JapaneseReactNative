@@ -33,7 +33,7 @@ export default class LoginButton extends Component<Props> {
   }
 
   render() {
-    const { isVisible, user } = this.state;
+    const { isVisible, key, user } = this.state;
 
     return (
       <View style={styles.container}>
@@ -45,12 +45,15 @@ export default class LoginButton extends Component<Props> {
           }
           onPress={() => {
             if (!user) {
-              this.setState({ isVisible: true });
+              this.setState({ isVisible: true, key: Math.random() });
+              // } else {
+              // firebase.auth().signOut();
             }
           }}
         />
 
         <LoginModal
+          key={key}
           isVisible={isVisible}
           handleClose={() => this.setState({ isVisible: false })}
         />
