@@ -11,11 +11,10 @@ import {
 } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import AdMob from '../../components/admob';
+import Rating from '../../components/rating';
 
-import { range } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -39,7 +38,6 @@ const styles = StyleSheet.create({
   },
   stars: {
     flex: 1,
-    flexDirection: 'row',
   },
   text: {
     flex: 3,
@@ -77,15 +75,7 @@ export default class Bookmark extends Component<Props> {
             }}
           >
             <View style={styles.stars}>
-              {range(1, 4).map(i => (
-                <Ionicons
-                  key={i}
-                  style={styles.lock}
-                  name="ios-star"
-                  size={20}
-                  color={iOSColors.yellow}
-                />
-              ))}
+              <Rating total={3} />
             </View>
             <Text style={styles.text}>
               {`3 ${I18n.t('app.bookmark.stars')}`}
@@ -99,15 +89,7 @@ export default class Bookmark extends Component<Props> {
             }}
           >
             <View style={styles.stars}>
-              {range(1, 3).map(i => (
-                <Ionicons
-                  key={i}
-                  style={styles.lock}
-                  name="ios-star"
-                  size={20}
-                  color={iOSColors.yellow}
-                />
-              ))}
+              <Rating total={2} />
             </View>
             <Text style={styles.text}>
               {`2 ${I18n.t('app.bookmark.stars')}`}
@@ -121,12 +103,7 @@ export default class Bookmark extends Component<Props> {
             }}
           >
             <View style={styles.stars}>
-              <Ionicons
-                style={styles.lock}
-                name="ios-star"
-                size={20}
-                color={iOSColors.yellow}
-              />
+              <Rating total={1} />
             </View>
             <Text style={styles.text}>
               {`1 ${I18n.t('app.bookmark.star')}`}

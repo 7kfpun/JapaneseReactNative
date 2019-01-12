@@ -13,16 +13,15 @@ import {
 
 import { iOSColors } from 'react-native-typography';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
 import AdMob from '../../components/admob';
+import Rating from '../../components/rating';
 import VocabItem from '../../components/vocab-item';
 
 import ExceedLimit from './components/exceed-limit';
 
 import { getPremiumInfo } from '../../utils/payment';
-import { range } from '../../utils/helpers';
 import { vocabsMapper } from '../../utils/vocab-helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -76,22 +75,8 @@ export default class BookmarkList extends Component<Props> {
       },
     } = navigation;
 
-    const headerTitle = (
-      <View style={styles.headerTitle}>
-        {range(0, starCount).map(i => (
-          <Ionicons
-            key={i}
-            style={styles.lock}
-            name="ios-star"
-            size={20}
-            color={iOSColors.yellow}
-          />
-        ))}
-      </View>
-    );
-
     return {
-      headerTitle,
+      headerTitle: <Rating total={starCount} />,
       headerStyle: {
         backgroundColor: '#F7F7F7',
         borderBottomWidth: 0,

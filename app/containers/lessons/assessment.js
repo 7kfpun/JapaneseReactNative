@@ -26,7 +26,7 @@ import AdMob from '../../components/admob';
 import Card from '../../components/card';
 import CardOptionSelector from '../../components/card-option-selector';
 import CustomButton from '../../components/button';
-import Rating from '../../components/rating';
+import RatingModal from '../../components/rating-modal';
 import SoundButton from '../../components/sound-button';
 
 import { config } from '../../config';
@@ -524,7 +524,7 @@ export default class Assessment extends Component<Props> {
           )}
         </View>
 
-        {count > SHOW_AFTER_NUMBER && <Rating />}
+        {count > SHOW_AFTER_NUMBER && <RatingModal />}
 
         <AdMob unitId={config.admob[`${Platform.OS}-assessment-banner`]} />
       </View>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { string } from 'prop-types';
 
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import store from 'react-native-simple-store';
 
-import { range } from '../utils/helpers';
+import Rating from './rating';
+
 import tracker from '../utils/tracker';
 
 const styles = StyleSheet.create({
@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
     color: iOSColors.black,
   },
   icon: {
-    paddingVertical: 12,
-    paddingHorizontal: 4,
+    paddingVertical: 16,
+    paddingHorizontal: 3,
   },
 });
 
 export default class SaveVocab extends Component {
   state = {
-    count: 0,
+    initialRating: 0,
   };
 
   componentDidMount() {
@@ -48,38 +48,37 @@ export default class SaveVocab extends Component {
   }
 
   checkStore = async () => {
-    const count = await store.get(`lessons.assessment.${this.props.romaji}`);
-    this.setState({ count });
+    const initialRating = await store.get(
+      `lessons.assessment.${this.props.romaji}`
+    );
+    this.setState({ initialRating, key: Math.random() });
   };
 
-  save(i, count) {
-    if (count !== i) {
-      this.setState({ count: i });
-      store.save(`lessons.assessment.${this.props.romaji}`, i);
-      tracker.logEvent('user-bookmark-save-item', { count: i });
+  save(newRating) {
+    const { initialRating } = this.state;
+
+    if (initialRating !== newRating) {
+      store.save(`lessons.assessment.${this.props.romaji}`, newRating);
+      tracker.logEvent('user-bookmark-save-item', { value: newRating });
     } else {
       // reset to 0 if set the same amount as previous
-      this.setState({ count: 0 });
       store.delete(`lessons.assessment.${this.props.romaji}`);
-      tracker.logEvent('user-bookmark-unsave-item', { count: i }); // track the original count
+      tracker.logEvent('user-bookmark-unsave-item', { value: newRating }); // track the original initialRating
     }
   }
 
   render() {
-    const { count } = this.state;
+    const { initialRating, key } = this.state;
 
     return (
       <View style={styles.container}>
-        {range(1, 4).map(i => (
-          <TouchableOpacity key={i} onPress={() => this.save(i, count)}>
-            <Ionicons
-              style={styles.icon}
-              name="ios-star"
-              size={20}
-              color={count >= i ? iOSColors.yellow : iOSColors.lightGray}
-            />
-          </TouchableOpacity>
-        ))}
+        <Rating
+          key={key}
+          total={3}
+          initialRating={initialRating}
+          starStyle={styles.icon}
+          onPress={newRating => this.save(newRating)}
+        />
       </View>
     );
   }
