@@ -1,10 +1,22 @@
 PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Branch-SDK (0.25.1):
     - Branch-SDK/Core (= 0.25.1)
   - Branch-SDK/Core (0.25.1)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - Fabric (1.7.13)
+  - FBSDKCoreKit (4.38.1):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.38.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.38.1):
+    - FBSDKCoreKit
   - Firebase/AdMob (5.15.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (~> 7.37)
@@ -143,6 +155,20 @@ PODS:
   - react-native-branch (2.3.3):
     - Branch-SDK
     - React
+  - react-native-fbsdk (0.8.0):
+    - React
+    - react-native-fbsdk/Core (= 0.8.0)
+    - react-native-fbsdk/Login (= 0.8.0)
+    - react-native-fbsdk/Share (= 0.8.0)
+  - react-native-fbsdk/Core (0.8.0):
+    - FBSDKCoreKit
+    - React
+  - react-native-fbsdk/Login (0.8.0):
+    - FBSDKLoginKit
+    - React
+  - react-native-fbsdk/Share (0.8.0):
+    - FBSDKShareKit
+    - React
   - react-native-onesignal (3.2.7):
     - OneSignal (= 2.8.8)
     - React
@@ -204,6 +230,9 @@ DEPENDENCIES:
   - Branch-SDK (from `../node_modules/react-native-branch/ios`)
   - Crashlytics (~> 3.10.7)
   - Fabric (~> 1.7.11)
+  - FBSDKCoreKit (~> 4.38.1)
+  - FBSDKLoginKit (~> 4.38.1)
+  - FBSDKShareKit (~> 4.38.1)
   - Firebase/AdMob
   - Firebase/Analytics
   - Firebase/Auth
@@ -214,6 +243,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - OneSignal (< 3.0, >= 2.8.5)
   - react-native-branch (from `../node_modules/react-native-branch`)
+  - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-safari-view (from `../node_modules/react-native-safari-view`)
   - React/Core (from `../node_modules/react-native`)
@@ -240,8 +270,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Bolts
     - Crashlytics
     - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -272,6 +306,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-branch:
     :path: "../node_modules/react-native-branch"
+  react-native-fbsdk:
+    :path: "../node_modules/react-native-fbsdk"
   react-native-onesignal:
     :path: "../node_modules/react-native-onesignal"
   react-native-safari-view:
@@ -298,9 +334,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Branch-SDK: 7494230721d7a3083d22e2cb3d9ab9dc1340b1ea
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
+  FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
+  FBSDKShareKit: 6ffe22f0a0618eb7424d4104ab0ef3ce9643d42a
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
@@ -325,6 +365,7 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   React: adbac0757ce35e92fbd447ab98c810209d27d9b0
   react-native-branch: fe98f2cae66d9e77d81a170040512ddb97cccbaf
+  react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-onesignal: d25220defd008b1afce7b8e1f648bb3315ae87a1
   react-native-safari-view: 955d7160d159241b8e9395d12d10ea0ef863dcdd
   ReactNativeFabric: d05320ff347d5c72567c115b97edeead111ac4d2
@@ -338,6 +379,6 @@ SPEC CHECKSUMS:
   TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 9afc3ca043fc720ebecce5884c9aaa088bacdbc7
+PODFILE CHECKSUM: 40a186551830ba28b98c6f066404942859eb618d
 
 COCOAPODS: 1.6.0.beta.2

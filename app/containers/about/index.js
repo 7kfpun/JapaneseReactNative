@@ -8,6 +8,8 @@ import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../../components/admob';
 import Backdoor from './components/backdoor';
+import LoginButton from './components/login-button';
+
 import NotificationSetting from './components/notification-setting';
 import Row from '../../components/row';
 
@@ -61,6 +63,8 @@ export default class About extends Component<Props> {
           <Backdoor />
 
           <NotificationSetting />
+
+          <LoginButton />
 
           <View style={{ marginTop: 10 }}>
             {/* {isPremium && (

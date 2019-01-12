@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -28,6 +29,7 @@
 		15CFC21B29BC408F9D325F66 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DC774166BDE40DEAF28355F /* FontAwesome5_Regular.ttf */; };
 		18C2270CFFD2453EAB7C312A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DC69220CACF48EFAC59A8E8 /* Entypo.ttf */; };
 		18DBDE9A54044D719364FFC3 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 540A0A23A7DD4CDF83C8DA40 /* MaterialCommunityIcons.ttf */; };
+		294B02FE633A4F3898E923DC /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = F015C3B6E1CE49E09236867F /* branch.json */; };
 		2CFC78A0F8B3461BBCB25DF2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5369998CC09D4FD4B7982E91 /* EvilIcons.ttf */; };
 		430D446DAF19488A86BB101E /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FDB3086E6D347DFB1DDDF3E /* Feather.ttf */; };
 		5DE90ACDBA6447D18F3C3F42 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 438B4896BC5B4418B97D9571 /* libRNFirebase.a */; };
@@ -45,7 +47,6 @@
 		E4D98942CF174F8A8A9D38EE /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A08900C857241DA93361D00 /* FontAwesome5_Brands.ttf */; };
 		E910FB60AC7D4CECA75F2E7F /* libRCTRestart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 578FAF4B47104424897E23B1 /* libRCTRestart.a */; };
 		FEAB6F5FA06D48B288A7C564 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1887483A3D8945788C637861 /* Foundation.ttf */; };
-		294B02FE633A4F3898E923DC /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = F015C3B6E1CE49E09236867F /* branch.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,7 +398,7 @@
 		CF0513775D6944BE99E7F7D3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		E1AD03FC1A9B6113298D72FC /* Pods-Japanese.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Japanese.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Japanese/Pods-Japanese.debug.xcconfig"; sourceTree = "<group>"; };
 		E5CCFA3F2D9E4FBBB2EAA077 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		F015C3B6E1CE49E09236867F /* branch.json */ = {isa = PBXFileReference; name = "branch.json"; path = "../branch.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F015C3B6E1CE49E09236867F /* branch.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = branch.json; path = ../branch.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1229,6 +1230,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Japanese/Pods-Japanese-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInAppMessagingDisplay/InAppMessagingDisplayResources.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
@@ -1249,6 +1251,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppMessagingDisplayResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",

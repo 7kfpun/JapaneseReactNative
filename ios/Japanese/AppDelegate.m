@@ -16,6 +16,7 @@
 #import <CleverTapSDK/CleverTap.h>
 #import <CleverTapReact/CleverTapReactManager.h>
 #import <react-native-branch/RNBranch.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation AppDelegate
 
@@ -23,9 +24,15 @@
 {
   [FIRApp configure];
 
-  // Uncomment this line to use the test key instead of the live one.
-  // [RNBranch useTestInstance];
-  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
+  #ifdef DEBUG
+    [RNBranch useTestInstance];
+    [RNBranch setDebug];
+  #endif
+
+  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
+
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
 
   NSURL *jsCodeLocation;
 
@@ -58,6 +65,20 @@
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
   return [RNBranch continueUserActivity:userActivity];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation];
 }
 
 @end

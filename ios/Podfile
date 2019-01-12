@@ -67,6 +67,11 @@ target 'Japanese' do
   pod 'react-native-branch', :path => '../node_modules/react-native-branch'
   pod 'Branch-SDK', :path => '../node_modules/react-native-branch/ios'
 
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+  pod 'FBSDKCoreKit', '~> 4.38.1'
+  pod 'FBSDKLoginKit', '~> 4.38.1'
+  pod 'FBSDKShareKit', '~> 4.38.1'
+
 end
 
 post_install do |installer|
