@@ -93,6 +93,10 @@
             "read-all-description-android": "\u5c07\u8ab2\u5802\u88e1\u9010\u500b\u8a5e\u5f59\u6717\u8b80\u53ca\u5176\u610f\u601d\u4e00\u904d\uff08\u524d\u8acb\u78ba\u4fddTTS\u9069\u7528\u65bc\u60a8\u7684\u8a2d\u5099\uff09",
             "bookmark": "\u7121\u9650\u4fdd\u5b58\u8a5e\u5f59",
             "bookmark-description": "\u64c1\u6709\u81ea\u5df1\u7684\u8a5e\u5f59\u8868\u5217\u8868"
+        },
+        "account": {
+            "not-yet-login": "\u5c1a\u672a\u767b\u9678",
+            "login-or-signup": "\u767b\u9678\/\u8a3b\u518a"
         }
     },
     "common": {

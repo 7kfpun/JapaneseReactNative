@@ -93,6 +93,10 @@
             "read-all-description-android": "Prononcez chaque mot de la le\u00e7on et sa signification (assurez-vous que TTS fonctionne sur votre appareil avant de l'acheter)",
             "bookmark": "Signet illimit\u00e9",
             "bookmark-description": "Ayez votre propre liste de vocabulaire"
+        },
+        "account": {
+            "not-yet-login": "Not yet login",
+            "login-or-signup": "Login or signup"
         }
     },
     "common": {

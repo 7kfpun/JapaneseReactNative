@@ -93,6 +93,10 @@
             "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
             "bookmark": "Unlimited bookmark",
             "bookmark-description": "Have your own vocabularies list"
+        },
+        "account": {
+            "not-yet-login": "Not yet login",
+            "login-or-signup": "Login or signup"
         }
     },
     "common": {
