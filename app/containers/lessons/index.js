@@ -40,6 +40,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginHorizontal: 10,
   },
+  tabIndicator: {
+    paddingHorizontal: 15,
+    paddingTop: 6,
+    paddingBottom: 6,
+  },
   tabIndicatorText: {
     ...Platform.select({
       ios: {
@@ -61,8 +66,18 @@ const styles = StyleSheet.create({
         fontSize: 12,
       },
     }),
-    paddingBottom: 6,
     color: iOSColors.tealBlue,
+  },
+  tabIndicatorItem: {
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: '#F7F7F7',
+  },
+  tabIndicatorselectedItem: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: iOSColors.customGray,
   },
 });
 
@@ -127,9 +142,12 @@ export default class Lessons extends Component<Props> {
 
   renderTabIndicator = () => (
     <PagerTabIndicator
+      style={styles.tabIndicator}
       tabs={lessonGroup}
       textStyle={styles.tabIndicatorText}
+      itemStyle={styles.tabIndicatorItem}
       selectedTextStyle={styles.tabIndicatorSelectedText}
+      selectedItemStyle={styles.tabIndicatorselectedItem}
     />
   );
 
@@ -139,7 +157,7 @@ export default class Lessons extends Component<Props> {
         <View style={styles.searchContainer}>
           <Search
             backgroundColor="#F7F7F7"
-            inputStyle={{ backgroundColor: 'white' }}
+            inputStyle={{ backgroundColor: iOSColors.customGray }}
             titleCancelColor={iOSColors.blue}
             onChangeText={this.onChangeText}
             onFocus={this.onFocus}
@@ -152,7 +170,6 @@ export default class Lessons extends Component<Props> {
 
         {!!this.state.searchText && (
           <FlatList
-            style={styles.list}
             data={this.state.searchResult}
             keyExtractor={(item, index) => `${index}-${item}`}
             renderItem={({ item, index }) => (
@@ -174,7 +191,6 @@ export default class Lessons extends Component<Props> {
             {lessonGroup.map(group => (
               <View key={group.text}>
                 <FlatList
-                  style={styles.list}
                   data={group.list}
                   keyExtractor={(item, index) => `${index}-${item}`}
                   renderItem={({ item }) => (

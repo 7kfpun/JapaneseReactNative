@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     fontSize: 15,
   },
+  tabIndicator: {
+    paddingHorizontal: 15,
+    paddingTop: 6,
+    paddingBottom: 6,
+  },
   tabIndicatorText: {
     ...Platform.select({
       ios: {
@@ -53,8 +58,18 @@ const styles = StyleSheet.create({
         fontSize: 12,
       },
     }),
-    paddingBottom: 6,
     color: iOSColors.tealBlue,
+  },
+  tabIndicatorItem: {
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: '#F7F7F7',
+  },
+  tabIndicatorselectedItem: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: iOSColors.customGray,
   },
   row: {
     flexDirection: 'row',
@@ -135,8 +150,11 @@ export default class Kana extends Component<Props> {
           text: I18n.t('app.kana.youon'),
         },
       ]}
+      style={styles.tabIndicator}
       textStyle={styles.tabIndicatorText}
+      itemStyle={styles.tabIndicatorItem}
       selectedTextStyle={styles.tabIndicatorSelectedText}
+      selectedItemStyle={styles.tabIndicatorselectedItem}
     />
   );
 
