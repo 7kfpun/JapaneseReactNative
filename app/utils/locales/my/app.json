@@ -47,6 +47,7 @@
     },
     "feedback": {
         "title": "\u1010\u102f\u1036\u1037\u1015\u103c\u1014\u103a\u1001\u103b\u1000\u103a",
+        "follow-us-on-facebook": "Follow us on Facebook",
         "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}&prefill_Version={version}",
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "\u1010\u102f\u1036\u1037\u1015\u103c\u1014\u103a\u1001\u103b\u1000\u103a",

@@ -149,6 +149,14 @@ export default class About extends Component<Props> {
                 tracker.logEvent('user-about-goto-help-translation');
               }}
             />
+            <Row
+              first={false}
+              text={I18n.t('app.feedback.follow-us-on-facebook')}
+              onPress={() => {
+                openURL('https://www.facebook.com/minnaanihongo');
+                tracker.logEvent('user-about-openurl-facebook');
+              }}
+            />
           </View>
         </ScrollView>
 
