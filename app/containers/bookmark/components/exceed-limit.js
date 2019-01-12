@@ -1,7 +1,8 @@
 import React from 'react';
-import { number } from 'prop-types';
+import { func, number } from 'prop-types';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
+import { noop } from '../../../utils/helpers';
 import I18n from '../../../utils/i18n';
 
 const styles = StyleSheet.create({
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const ExceedLimit = ({ max }) => (
-  <TouchableOpacity>
+const ExceedLimit = ({ max, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
       <Text style={styles.text}>
         {I18n.t('app.bookmark.too-many', { number: max })}
@@ -40,10 +41,12 @@ const ExceedLimit = ({ max }) => (
 
 ExceedLimit.propTypes = {
   max: number,
+  onPress: func,
 };
 
 ExceedLimit.defaultProps = {
   max: 20,
+  onPress: noop,
 };
 
 export default ExceedLimit;
