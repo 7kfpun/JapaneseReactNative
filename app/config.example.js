@@ -32,8 +32,16 @@ exports.config = {
     'android-vocab-list-banner': '',
   },
   onesignal: '',
-  segment: '',
-  inAppProducts: ['android.test.purchased', 'android.test.item_unavailable'],
+  segment: {
+    ios: '',
+    android: '',
+  },
+  inApp: {
+    adfree: [],
+    premium: [],
+    premiumGroup: '',
+    premiumLifetime: [''],
+  },
   oneskyApiKey: '',
   oneskySecretKey: '',
 };

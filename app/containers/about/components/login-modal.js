@@ -39,14 +39,14 @@ export default class LoginModal extends Component<Props> {
 
   facebookLogin = async () => {
     this.setState({ isSigninInProgress: true });
-    const currentUser = await facebookLogin();
-    this.setState({ isSigninInProgress: false, isClose: !!currentUser });
+    await facebookLogin();
+    this.setState({ isClose: true });
   };
 
   googleLogin = async () => {
     this.setState({ isSigninInProgress: true });
-    const currentUser = await googleLogin();
-    this.setState({ isSigninInProgress: false, isClose: !!currentUser });
+    await googleLogin();
+    this.setState({ isClose: true });
   };
 
   render() {

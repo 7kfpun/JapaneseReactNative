@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
 
 import { Answers } from 'react-native-fabric';
 import Analytics from 'analytics-react-native';
@@ -12,7 +12,7 @@ import { getPremiumInfo } from './payment';
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
-const analytics = new Analytics(config.segment);
+const analytics = new Analytics(config.segment[Platform.OS]);
 
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 

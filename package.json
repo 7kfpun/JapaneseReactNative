@@ -10,7 +10,7 @@
     "bundle-android": "$NVM_BIN/react-native bundle --platform android --dev false --entry-file ./index.js --bundle-output android/app/src/main/assets/index.android.bundle",
     "release-android": "cd android && ./gradlew assembleRelease && cd ..",
     "install-android": "adb install android/app/build/outputs/apk/release/app-release.apk",
-    "uninstall-android": "adb uninstall com.kfpun.japanese",
+    "uninstall-android": "adb uninstall com.kfpun.nihongo",
     "capture-android": "adb shell screencap /sdcard/temp.png && adb pull /sdcard/temp.png screenshot.png",
     "clean": "cd android && ./gradlew clean && cd ..",
     "precommit": "lint-staged",
