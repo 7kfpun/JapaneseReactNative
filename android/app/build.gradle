@@ -153,6 +153,12 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-branch')
+    implementation (project(':react-native-google-signin')) {
+        exclude group: "com.google.android.gms"
+    }
+
     implementation project(':react-native-restart')
     implementation project(':react-native-fabric')
     implementation project(':react-native-i18n')
@@ -167,9 +173,13 @@ dependencies {
         exclude group: 'com.google.android.gms', module: 'play-services-gcm'
     }
 
+    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
     // Firebase dependencies
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-ads:17.1.2'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.firebase:firebase-perf:16.2.3'  // need multidex
     implementation 'com.google.firebase:firebase-config:16.1.2'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'  // need multidex
