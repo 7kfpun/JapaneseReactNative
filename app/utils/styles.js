@@ -1,5 +1,5 @@
 const shadow = {
-  shadowColor: '#EEEEEE',
+  shadowColor: '#E0E0E0',
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.8,
   shadowRadius: 2,

@@ -20,11 +20,11 @@ import tracker from '../../../utils/tracker';
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20,
+    marginTop: 10,
   },
   row: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

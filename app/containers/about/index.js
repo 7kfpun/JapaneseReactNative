@@ -63,8 +63,6 @@ export default class About extends Component<Props> {
         <ScrollView style={{ alignSelf: 'stretch' }}>
           {!isPremium && <PremiumButton navigation={navigation} />}
 
-          <Backdoor />
-
           <NotificationSetting />
 
           {/* <LoginButton /> */}
@@ -105,7 +103,10 @@ export default class About extends Component<Props> {
           </View>
 
           <View style={{ marginVertical: 15 }}>
+            <Backdoor />
+
             <Row
+              first={false}
               text={I18n.t('app.feedback.feedback')}
               onPress={() => {
                 navigation.navigate('feedback');

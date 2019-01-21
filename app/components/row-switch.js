@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   descriptionText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '300',
     marginTop: 8,
-    color: 'black',
+    color: iOSColors.gray,
   },
 });
 

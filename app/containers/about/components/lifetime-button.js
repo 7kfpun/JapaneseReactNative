@@ -3,6 +3,7 @@ import { func, string } from 'prop-types';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import I18n from '../../../utils/i18n';
+import { shadow } from '../../../utils/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,6 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     justifyContent: 'space-between',
+    ...shadow,
   },
   leftBlock: {},
   rightBlock: {
