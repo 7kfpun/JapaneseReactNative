@@ -1,4 +1,51 @@
 {
+    "about": {
+        "notification": {
+            "description": "Remind you to study everyday",
+            "title": "Study Reminder (Daily)"
+        },
+        "premium": {
+            "button-description": "Unlock our most exclusive features",
+            "title": "Devenez Premium",
+            "month": "mois",
+            "months": "mois",
+            "year": "ann\u00e9e",
+            "years": "ann\u00e9es",
+            "note": "Facturation r\u00e9currente, annulable \u00e0 tout moment.",
+            "note-description": "En appuyant sur \u00abContinuer\u00bb, le montant sera d\u00e9bit\u00e9 de votre compte iTunes et votre abonnement sera automatiquement renouvel\u00e9 pour la m\u00eame dur\u00e9e de forfait au m\u00eame prix jusqu'\u00e0 ce que vous l'annuliez dans les param\u00e8tres du magasin iTunes au moins 24 heures avant la fin de la p\u00e9riode en cours. En appuyant sur \"Continuer\", vous acceptez notre politique de confidentialit\u00e9 et nos conditions d'utilisation.",
+            "continue": "Continuer",
+            "lifetime": "A VIE",
+            "lifetime-description": "PAIEMENT UNIQUE"
+        },
+        "title": "\u00c0 propos",
+        "notification-label": "Rappel quotidien",
+        "restore": "Restaurer vos Achats int\u00e9gr\u00e9s ",
+        "purchase-title": "Vous \u00eates maintenant utilisateur Premium",
+        "purchase-description": "Prenez plaisir \u00e0 apprendre le japonais",
+        "restore-failed-title": "Vous n'avez jamais achet\u00e9 notre offre Premium auparavant",
+        "version": "Version",
+        "adfree": {
+            "title": "Retirer la publicit\u00e9",
+            "description": "- Supprimer toutes les annonces popup et banni\u00e8res"
+        },
+        "premium-banner": {
+            "adfree": "Supprimer les annonces",
+            "adfree-description": "Fini les annonces publicitaires",
+            "listening": "Ecouter : le\u00e7ons 3 - 50",
+            "listening-description": "\u00c9coutez la prononciation et choisissez la bonne r\u00e9ponse, les r\u00e9ponses peuvent \u00eatre affich\u00e9es en kanji, romaji ou dans votre langue",
+            "quiz": "Quiz : le\u00e7ons 3 - 50",
+            "quiz-description": "Testez votre fluidit\u00e9 en traduisant Hiragana, Katakana, Kanji ou Romaji vers l'un et l'autre",
+            "read-all": "Tout lire : le\u00e7ons 3 - 50",
+            "read-all-description": "Prononcez chaque mot de la le\u00e7on et suivi de sa signification",
+            "read-all-description-android": "Prononcez chaque mot de la le\u00e7on et sa signification (assurez-vous que TTS fonctionne sur votre appareil avant de l'acheter)",
+            "bookmark": "Signet illimit\u00e9",
+            "bookmark-description": "Ayez votre propre liste de vocabulaire"
+        },
+        "account": {
+            "not-yet-login": "Not yet login",
+            "login-or-signup": "Login or signup"
+        }
+    },
     "bookmark": {
         "description": "Ayez votre propre liste de vocabulaire",
         "title": "Signets",
@@ -56,48 +103,6 @@
         "tts-instruction": "Pas de son ?",
         "tts-instruction-description": "Assurez-vous que vous avez activ\u00e9 la fonctionnalit\u00e9 \"Lecture du texte\" et install\u00e9 un pack de langue japonaise. Nous vous recommandons d'utiliser le moteur de synth\u00e8se vocale Google.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
-    },
-    "about": {
-        "title": "\u00c0 propos",
-        "notification-label": "Rappel quotidien",
-        "restore": "Restaurer vos Achats int\u00e9gr\u00e9s ",
-        "purchase-title": "Vous \u00eates maintenant utilisateur Premium",
-        "purchase-description": "Prenez plaisir \u00e0 apprendre le japonais",
-        "restore-failed-title": "Vous n'avez jamais achet\u00e9 notre offre Premium auparavant",
-        "version": "Version",
-        "adfree": {
-            "title": "Retirer la publicit\u00e9",
-            "description": "- Supprimer toutes les annonces popup et banni\u00e8res"
-        },
-        "premium": {
-            "title": "Devenez Premium",
-            "month": "mois",
-            "months": "mois",
-            "year": "ann\u00e9e",
-            "years": "ann\u00e9es",
-            "note": "Facturation r\u00e9currente, annulable \u00e0 tout moment.",
-            "note-description": "En appuyant sur \u00abContinuer\u00bb, le montant sera d\u00e9bit\u00e9 de votre compte iTunes et votre abonnement sera automatiquement renouvel\u00e9 pour la m\u00eame dur\u00e9e de forfait au m\u00eame prix jusqu'\u00e0 ce que vous l'annuliez dans les param\u00e8tres du magasin iTunes au moins 24 heures avant la fin de la p\u00e9riode en cours. En appuyant sur \"Continuer\", vous acceptez notre politique de confidentialit\u00e9 et nos conditions d'utilisation.",
-            "continue": "Continuer",
-            "lifetime": "A VIE",
-            "lifetime-description": "PAIEMENT UNIQUE"
-        },
-        "premium-banner": {
-            "adfree": "Supprimer les annonces",
-            "adfree-description": "Fini les annonces publicitaires",
-            "listening": "Ecouter : le\u00e7ons 3 - 50",
-            "listening-description": "\u00c9coutez la prononciation et choisissez la bonne r\u00e9ponse, les r\u00e9ponses peuvent \u00eatre affich\u00e9es en kanji, romaji ou dans votre langue",
-            "quiz": "Quiz : le\u00e7ons 3 - 50",
-            "quiz-description": "Testez votre fluidit\u00e9 en traduisant Hiragana, Katakana, Kanji ou Romaji vers l'un et l'autre",
-            "read-all": "Tout lire : le\u00e7ons 3 - 50",
-            "read-all-description": "Prononcez chaque mot de la le\u00e7on et suivi de sa signification",
-            "read-all-description-android": "Prononcez chaque mot de la le\u00e7on et sa signification (assurez-vous que TTS fonctionne sur votre appareil avant de l'acheter)",
-            "bookmark": "Signet illimit\u00e9",
-            "bookmark-description": "Ayez votre propre liste de vocabulaire"
-        },
-        "account": {
-            "not-yet-login": "Not yet login",
-            "login-or-signup": "Login or signup"
-        }
     },
     "common": {
         "kana": "Kana",

@@ -1,4 +1,51 @@
 {
+    "about": {
+        "notification": {
+            "description": "Remind you to study everyday",
+            "title": "Study Reminder (Daily)"
+        },
+        "premium": {
+            "button-description": "Unlock our most exclusive features",
+            "title": "Get Premium",
+            "month": "month",
+            "months": "months",
+            "year": "year",
+            "years": "years",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue",
+            "lifetime": "LIFETIME",
+            "lifetime-description": "ONE-TIME PAYMENT"
+        },
+        "title": "V\u1ec1 ch\u00fang t\u00f4i",
+        "notification-label": "Nh\u1eafc nh\u1edf h\u1ecdc t\u1eadp (h\u00e0ng ng\u00e0y)",
+        "restore": "Kh\u00f4i ph\u1ee5c mua h\u00e0ng trong \u1ee9ng d\u1ee5ng c\u1ee7a b\u1ea1n",
+        "purchase-title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
+        "purchase-description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
+        "restore-failed-title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
+        "version": "Version",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium-banner": {
+            "adfree": "Remove Ads",
+            "adfree-description": "No more ad banners and topup ads",
+            "listening": "Listening: lesson 3 - 50",
+            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
+            "quiz": "Quiz: lesson 3 - 50",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
+            "read-all": "Read All: lesson 3 - 50",
+            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
+            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "bookmark": "Unlimited bookmark",
+            "bookmark-description": "Have your own vocabularies list"
+        },
+        "account": {
+            "not-yet-login": "Not yet login",
+            "login-or-signup": "Login or signup"
+        }
+    },
     "bookmark": {
         "description": "Have your own vocabularies list",
         "title": "Bookmark",
@@ -56,48 +103,6 @@
         "tts-instruction": "No sound?",
         "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
-    },
-    "about": {
-        "title": "V\u1ec1 ch\u00fang t\u00f4i",
-        "notification-label": "Nh\u1eafc nh\u1edf h\u1ecdc t\u1eadp (h\u00e0ng ng\u00e0y)",
-        "restore": "Kh\u00f4i ph\u1ee5c mua h\u00e0ng trong \u1ee9ng d\u1ee5ng c\u1ee7a b\u1ea1n",
-        "purchase-title": "B\u1ea1n hi\u1ec7n l\u00e0 ng\u01b0\u1eddi d\u00f9ng cao c\u1ea5p c\u1ee7a ch\u00fang t\u00f4i",
-        "purchase-description": "Th\u00edch h\u1ecdc ti\u1ebfng Nh\u1eadt",
-        "restore-failed-title": "B\u1ea1n ch\u01b0a bao gi\u1edd mua Premium c\u1ee7a ch\u00fang t\u00f4i tr\u01b0\u1edbc \u0111\u00e2y",
-        "version": "Version",
-        "adfree": {
-            "title": "Remove Ads",
-            "description": "- Remove all popup and banner ads"
-        },
-        "premium": {
-            "title": "Get Premium",
-            "month": "month",
-            "months": "months",
-            "year": "year",
-            "years": "years",
-            "note": "Recurring billing, cancel anytime.",
-            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
-            "continue": "Continue",
-            "lifetime": "LIFETIME",
-            "lifetime-description": "ONE-TIME PAYMENT"
-        },
-        "premium-banner": {
-            "adfree": "Remove Ads",
-            "adfree-description": "No more ad banners and topup ads",
-            "listening": "Listening: lesson 3 - 50",
-            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
-            "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
-            "read-all": "Read All: lesson 3 - 50",
-            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
-            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
-            "bookmark": "Unlimited bookmark",
-            "bookmark-description": "Have your own vocabularies list"
-        },
-        "account": {
-            "not-yet-login": "Not yet login",
-            "login-or-signup": "Login or signup"
-        }
     },
     "common": {
         "kana": "Kana",

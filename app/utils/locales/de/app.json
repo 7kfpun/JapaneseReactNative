@@ -1,4 +1,51 @@
 {
+    "about": {
+        "notification": {
+            "description": "Remind you to study everyday",
+            "title": "Study Reminder (Daily)"
+        },
+        "premium": {
+            "button-description": "Unlock our most exclusive features",
+            "title": "Get Premium",
+            "month": "month",
+            "months": "months",
+            "year": "year",
+            "years": "years",
+            "note": "Recurring billing, cancel anytime.",
+            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
+            "continue": "Continue",
+            "lifetime": "LIFETIME",
+            "lifetime-description": "ONE-TIME PAYMENT"
+        },
+        "title": "\u00dcber uns",
+        "notification-label": "Studie Erinnerung (T\u00e4glich)",
+        "restore": "Stellen Sie Ihre In-App-K\u00e4ufe wieder her",
+        "purchase-title": "Jetzt Premium-Mitglied werden",
+        "purchase-description": "Viel Spa\u00df zum Japanisch lernen",
+        "restore-failed-title": "Sie haben die Premium noch nie gekauft",
+        "version": "Ausf\u00fchrung",
+        "adfree": {
+            "title": "Remove Ads",
+            "description": "- Remove all popup and banner ads"
+        },
+        "premium-banner": {
+            "adfree": "Remove Ads",
+            "adfree-description": "No more ad banners and topup ads",
+            "listening": "Listening: lesson 3 - 50",
+            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
+            "quiz": "Quiz: lesson 3 - 50",
+            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
+            "read-all": "Read All: lesson 3 - 50",
+            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
+            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
+            "bookmark": "Unlimited bookmark",
+            "bookmark-description": "Have your own vocabularies list"
+        },
+        "account": {
+            "not-yet-login": "Not yet login",
+            "login-or-signup": "Login or signup"
+        }
+    },
     "bookmark": {
         "description": "Have your own vocabularies list",
         "title": "Lesezeichen",
@@ -56,48 +103,6 @@
         "tts-instruction": "Keinen Ton?",
         "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
-    },
-    "about": {
-        "title": "\u00dcber uns",
-        "notification-label": "Studie Erinnerung (T\u00e4glich)",
-        "restore": "Stellen Sie Ihre In-App-K\u00e4ufe wieder her",
-        "purchase-title": "Jetzt Premium-Mitglied werden",
-        "purchase-description": "Viel Spa\u00df zum Japanisch lernen",
-        "restore-failed-title": "Sie haben die Premium noch nie gekauft",
-        "version": "Ausf\u00fchrung",
-        "adfree": {
-            "title": "Remove Ads",
-            "description": "- Remove all popup and banner ads"
-        },
-        "premium": {
-            "title": "Get Premium",
-            "month": "month",
-            "months": "months",
-            "year": "year",
-            "years": "years",
-            "note": "Recurring billing, cancel anytime.",
-            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
-            "continue": "Continue",
-            "lifetime": "LIFETIME",
-            "lifetime-description": "ONE-TIME PAYMENT"
-        },
-        "premium-banner": {
-            "adfree": "Remove Ads",
-            "adfree-description": "No more ad banners and topup ads",
-            "listening": "Listening: lesson 3 - 50",
-            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
-            "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
-            "read-all": "Read All: lesson 3 - 50",
-            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
-            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
-            "bookmark": "Unlimited bookmark",
-            "bookmark-description": "Have your own vocabularies list"
-        },
-        "account": {
-            "not-yet-login": "Not yet login",
-            "login-or-signup": "Login or signup"
-        }
     },
     "common": {
         "kana": "Kana",

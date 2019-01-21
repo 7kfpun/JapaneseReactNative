@@ -1,33 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Switch, Text, View } from 'react-native';
+import { Platform } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import OneSignal from 'react-native-onesignal';
+
+import RowSwitch from '../../../components/row-switch';
 
 import { OneSignalGetTags } from '../../../utils/onesignal';
 import I18n from '../../../utils/i18n';
 import tracker from '../../../utils/tracker';
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    marginVertical: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingLeft: 15,
-    backgroundColor: 'white',
-    borderTopColor: iOSColors.midGray,
-    borderTopWidth: 0.5,
-    borderBottomColor: iOSColors.midGray,
-    borderBottomWidth: 0.5,
-  },
-  text: {
-    fontSize: 16,
-    color: 'black',
-  },
-});
 
 export default class NotificationSetting extends Component {
   static sendTags(value) {
@@ -74,16 +54,12 @@ export default class NotificationSetting extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>
-          {I18n.t('app.about.notification-label')}
-        </Text>
-        <Switch
-          onValueChange={this.setNotification}
-          value={this.state.isEnabled}
-          trackColor="#E0E0E0"
-        />
-      </View>
+      <RowSwitch
+        text={I18n.t('app.about.notification.title')}
+        description={I18n.t('app.about.notification.description')}
+        onValueChange={this.setNotification}
+        value={this.state.isEnabled}
+      />
     );
   }
 }

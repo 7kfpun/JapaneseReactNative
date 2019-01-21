@@ -8,10 +8,11 @@ import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../../components/admob';
 import Backdoor from './components/backdoor';
-import LoginButton from './components/login-button';
+// import LoginButton from './components/login-button';
+import Row from '../../components/row';
 
 import NotificationSetting from './components/notification-setting';
-import Row from '../../components/row';
+import PremiumButton from './components/premium-button';
 
 import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
 import { openURL, prepareURL } from '../../utils/helpers';
@@ -60,11 +61,13 @@ export default class About extends Component<Props> {
     return (
       <View style={styles.container}>
         <ScrollView style={{ alignSelf: 'stretch' }}>
+          {!isPremium && <PremiumButton navigation={navigation} />}
+
           <Backdoor />
 
           <NotificationSetting />
 
-          <LoginButton />
+          {/* <LoginButton /> */}
 
           <View style={{ marginTop: 10 }}>
             {/* {isPremium && (
@@ -73,16 +76,6 @@ export default class About extends Component<Props> {
                 description={moment.unix(premiumUntil / 1000).format('LLL')}
               />
             )} */}
-
-            {!isPremium && (
-              <Row
-                first={!isPremium}
-                text={I18n.t('app.about.premium.title')}
-                onPress={() => {
-                  navigation.navigate('premium');
-                }}
-              />
-            )}
 
             {/* {!isAdfree && <Row
               first={false}
@@ -94,7 +87,7 @@ export default class About extends Component<Props> {
 
             {!isPremium && (
               <Row
-                first={false}
+                first
                 text={I18n.t('app.about.restore')}
                 onPress={() => {
                   const history = checkPurchaseHistory();
