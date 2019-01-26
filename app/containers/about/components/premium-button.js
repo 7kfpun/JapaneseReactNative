@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     textAlign: 'center',
+    color: 'black',
   },
   descriptionText: {
     fontSize: 14,

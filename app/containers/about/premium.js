@@ -8,6 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -53,6 +54,9 @@ const styles = StyleSheet.create({
   noteDescriptionText: {
     fontSize: 12,
     fontWeight: '300',
+  },
+  restoreBlock: {
+    paddingVertical: 10,
   },
 });
 
@@ -360,6 +364,23 @@ export default class Premium extends Component<Props> {
                 )}
               </View>
             )}
+
+            <TouchableOpacity
+              style={styles.restoreBlock}
+              onPress={() => {
+                const history = checkPurchaseHistory();
+                if (!history) {
+                  Alert.alert(
+                    I18n.t('app.about.restore-failed-title'),
+                    null,
+                    [{ text: 'OK' }],
+                    { cancelable: false }
+                  );
+                }
+              }}
+            >
+              <Text>{I18n.t('app.about.restore')}</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
 

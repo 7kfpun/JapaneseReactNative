@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Linking, Platform, StyleSheet, ScrollView, View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
-import OneSignal from 'react-native-onesignal';
 
 import AdMob from '../../components/admob';
 import Backdoor from './components/backdoor';
@@ -14,7 +13,7 @@ import Row from '../../components/row';
 import NotificationSetting from './components/notification-setting';
 import PremiumButton from './components/premium-button';
 
-import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
+import { getPremiumInfo } from '../../utils/payment';
 import { openURL, prepareURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -45,7 +44,6 @@ export default class About extends Component<Props> {
   };
 
   componentDidMount() {
-    OneSignal.init(config.onesignal, { kOSSettingsKeyAutoPrompt: true });
     this.getStoreSubscription();
   }
 
@@ -56,7 +54,11 @@ export default class About extends Component<Props> {
 
   render() {
     const { navigation } = this.props;
-    const { isPremium, currentPremiumSubscription, premiumUntil } = this.state;
+    const {
+      isPremium,
+      // currentPremiumSubscription,
+      // premiumUntil,
+    } = this.state;
 
     return (
       <View style={styles.container}>
@@ -67,40 +69,22 @@ export default class About extends Component<Props> {
 
           {/* <LoginButton /> */}
 
-          <View style={{ marginTop: 10 }}>
-            {/* {isPremium && (
+          {/* <View style={{ marginTop: 10 }}>
+            {isPremium && (
               <Row
                 text={currentPremiumSubscription}
                 description={moment.unix(premiumUntil / 1000).format('LLL')}
               />
-            )} */}
+            )}
 
-            {/* {!isAdfree && <Row
+            {!isAdfree && <Row
               first={false}
               text={I18n.t('app.about.adfree.title')}
               onPress={() => {
                 navigation.navigate('adfree');
               }}
-            />} */}
-
-            {!isPremium && (
-              <Row
-                first
-                text={I18n.t('app.about.restore')}
-                onPress={() => {
-                  const history = checkPurchaseHistory();
-                  if (!history) {
-                    Alert.alert(
-                      I18n.t('app.about.restore-failed-title'),
-                      null,
-                      [{ text: 'OK' }],
-                      { cancelable: false }
-                    );
-                  }
-                }}
-              />
-            )}
-          </View>
+            />}
+          </View> */}
 
           <View style={{ marginVertical: 15 }}>
             <Backdoor />
