@@ -16,6 +16,8 @@ const analytics = new Analytics(config.segment[Platform.OS]);
 
 firebase.analytics().setAnalyticsCollectionEnabled(true);
 
+OneSignal.init(config.onesignal);
+
 const userId = DeviceInfo.getUniqueID();
 
 const isTracking = !(
