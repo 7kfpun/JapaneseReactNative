@@ -91,10 +91,29 @@ export default class About extends Component<Props> {
 
             <Row
               first={false}
+              text={I18n.t('app.feedback.follow-us-on-facebook')}
+              onPress={() => {
+                openURL('https://www.facebook.com/minnaanihongo');
+                tracker.logEvent('user-about-openurl-facebook');
+              }}
+            />
+            <Row
+              first={false}
               text={I18n.t('app.feedback.feedback')}
               onPress={() => {
                 navigation.navigate('feedback');
                 tracker.logEvent('user-about-goto-feedback');
+              }}
+            />
+            <Row
+              first={false}
+              text={I18n.t('app.feedback.help-translation')}
+              description={I18n.t('app.feedback.help-translation-description')}
+              onPress={() => {
+                Linking.openURL(
+                  'https://minna-app.oneskyapp.com/collaboration'
+                );
+                tracker.logEvent('user-about-goto-help-translation');
               }}
             />
             {Platform.OS === 'android' && (
@@ -120,25 +139,6 @@ export default class About extends Component<Props> {
                 }}
               />
             )}
-            <Row
-              first={false}
-              text={I18n.t('app.feedback.help-translation')}
-              description={I18n.t('app.feedback.help-translation-description')}
-              onPress={() => {
-                Linking.openURL(
-                  'https://minna-app.oneskyapp.com/collaboration'
-                );
-                tracker.logEvent('user-about-goto-help-translation');
-              }}
-            />
-            <Row
-              first={false}
-              text={I18n.t('app.feedback.follow-us-on-facebook')}
-              onPress={() => {
-                openURL('https://www.facebook.com/minnaanihongo');
-                tracker.logEvent('user-about-openurl-facebook');
-              }}
-            />
           </View>
         </ScrollView>
 

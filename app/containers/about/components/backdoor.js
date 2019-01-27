@@ -157,11 +157,11 @@ export default class Backdoor extends Component {
                   Backdoor.sendTags(lowerText);
                   store.save(
                     'adFreeUntil',
-                    parseInt(invitationCodes[`${lowerText}_timestamp`], 10)
+                    parseInt(invitationCodes[`${lowerText}`], 10)
                   );
                   store.save(
                     'premiumUntil',
-                    parseInt(invitationCodes[`${lowerText}_timestamp`], 10)
+                    parseInt(invitationCodes[`${lowerText}`], 10)
                   );
                   store.save('currentPremiumSubscription', 'backdoor');
 
