@@ -6,9 +6,9 @@ import CleverTap from 'clevertap-react-native';
 import DeviceInfo from 'react-native-device-info';
 import firebase from 'react-native-firebase';
 import OneSignal from 'react-native-onesignal';
+import store from 'react-native-simple-store';
 
-import { getPremiumInfo } from './payment';
-
+import { getTimestamp } from './helpers';
 import { config } from '../config';
 
 const { width, height } = Dimensions.get('window');
@@ -19,6 +19,30 @@ firebase.analytics().setAnalyticsCollectionEnabled(true);
 OneSignal.init(config.onesignal);
 
 const userId = DeviceInfo.getUniqueID();
+
+const getPremiumInfo = async () => {
+  const premiumUntil = await store.get('premiumUntil');
+  const adFreeUntil = await store.get('adFreeUntil');
+  const currentPremiumSubscription = await store.get(
+    'currentPremiumSubscription'
+  );
+
+  console.log(
+    'getPremiumInfo',
+    premiumUntil,
+    adFreeUntil,
+    currentPremiumSubscription
+  );
+  const isPremium = premiumUntil > getTimestamp();
+  return {
+    userType: isPremium ? 'Premium' : 'Normal',
+    isPremium,
+    isAdFree: adFreeUntil > getTimestamp(),
+    premiumUntil,
+    adFreeUntil,
+    currentPremiumSubscription,
+  };
+};
 
 const isTracking = !(
   __DEV__ ||
