@@ -39,7 +39,9 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+import android.support.multidex.MultiDexApplication;
+
+public class MainApplication extends MultiDexApplication implements ReactApplication {
 
   // Facebook SDK
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();

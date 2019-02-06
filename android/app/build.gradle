@@ -107,8 +107,8 @@ android {
         applicationId "com.kfpun.nihongo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "2.0.0"
+        versionCode 4
+        versionName "2.0.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
