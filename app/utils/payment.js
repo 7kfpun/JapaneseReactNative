@@ -138,9 +138,9 @@ export const checkPurchaseHistory = async (isNewConnection = true) => {
           ],
           { cancelable: false }
         );
-      }
 
-      return true;
+        return true;
+      }
     }
   } catch (err) {
     tracker.logEvent('user-premium-restore-purchase-error', err);

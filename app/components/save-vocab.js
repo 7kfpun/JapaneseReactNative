@@ -56,14 +56,21 @@ export default class SaveVocab extends Component {
 
   save(newRating) {
     const { initialRating } = this.state;
+    const { romaji } = this.props;
 
     if (initialRating !== newRating) {
-      store.save(`lessons.assessment.${this.props.romaji}`, newRating);
-      tracker.logEvent('user-bookmark-save-item', { value: newRating });
+      store.save(`lessons.assessment.${romaji}`, newRating);
+      tracker.logEvent('user-bookmark-save-item', {
+        value: newRating.toString(),
+        label: romaji,
+      });
     } else {
       // reset to 0 if set the same amount as previous
-      store.delete(`lessons.assessment.${this.props.romaji}`);
-      tracker.logEvent('user-bookmark-unsave-item', { value: newRating }); // track the original initialRating
+      store.delete(`lessons.assessment.${romaji}`);
+      tracker.logEvent('user-bookmark-unsave-item', {
+        value: newRating.toString(),
+        label: romaji,
+      }); // track the original initialRating
     }
   }
 

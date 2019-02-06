@@ -287,6 +287,18 @@ export default class Premium extends Component<Props> {
     );
   };
 
+  restorePurchase = async () => {
+    const history = await checkPurchaseHistory(false);
+    if (!history) {
+      Alert.alert(
+        I18n.t('app.about.restore-failed-title'),
+        null,
+        [{ text: 'OK' }],
+        { cancelable: false }
+      );
+    }
+  };
+
   render() {
     const { subscriptionList, productList, selectedProductIndex } = this.state;
 
@@ -367,17 +379,7 @@ export default class Premium extends Component<Props> {
 
             <TouchableOpacity
               style={styles.restoreBlock}
-              onPress={() => {
-                const history = checkPurchaseHistory();
-                if (!history) {
-                  Alert.alert(
-                    I18n.t('app.about.restore-failed-title'),
-                    null,
-                    [{ text: 'OK' }],
-                    { cancelable: false }
-                  );
-                }
-              }}
+              onPress={this.restorePurchase}
             >
               <Text>{I18n.t('app.about.restore')}</Text>
             </TouchableOpacity>
