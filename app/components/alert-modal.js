@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { func, string } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 
-import { iOSColors } from 'react-native-typography';
 import {
   Dimensions,
   StyleSheet,
@@ -9,11 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { iOSColors } from 'react-native-typography';
 import Modal from 'react-native-modal';
 
 import { noop } from '../utils/helpers';
-import I18n from '../utils/i18n';
 
 const { height } = Dimensions.get('window');
 
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
   },
   description: {
     alignItems: 'center',
+    paddingTop: 25,
   },
   descriptionText: {
     fontWeight: '300',
@@ -73,77 +73,69 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class AlertModal extends Component<Props> {
-  state = {
-    isClose: false,
-  };
+const AlertModal = ({
+  handleClose,
+  handleCancel,
+  handleOK,
+  isVisible,
+  title,
+  description,
+  okText,
+  cancelText,
+}) => (
+  <Modal
+    style={styles.container}
+    isVisible={isVisible}
+    onSwipe={handleClose}
+    onBackButtonPress={handleClose}
+    onBackdropPress={handleClose}
+    scrollOffsetMax={300}
+  >
+    <View style={styles.body}>
+      <View style={styles.title}>
+        <Text style={styles.titleText}>{title}</Text>
+      </View>
 
-  render() {
-    const {
-      handleClose,
-      handleCancel,
-      handleOK,
-      isVisible,
-      title,
-      description,
-      okText,
-      cancelText,
-    } = this.props;
-    const { isClose } = this.state;
+      <View style={styles.description}>
+        <Text style={styles.descriptionText}>{description}</Text>
+      </View>
 
-    return (
-      <Modal
-        style={styles.container}
-        isVisible={isVisible && !isClose}
-        onSwipe={handleClose}
-        onBackButtonPress={handleClose}
-        onBackdropPress={handleClose}
-        scrollOffsetMax={300}
-      >
-        <View style={styles.body}>
-          <View style={styles.title}>
-            <Text style={styles.titleText}>{title}</Text>
+      <View style={styles.footer}>
+        <TouchableOpacity style={{ flex: 1 }} onPress={handleCancel}>
+          <View style={styles.button}>
+            <Text style={styles.cancelText}>{cancelText}</Text>
           </View>
-
-          <View style={styles.description}>
-            <Text style={styles.descriptionText}>{description}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ flex: 1 }} onPress={handleOK}>
+          <View style={styles.button}>
+            <Text style={styles.okText}>{okText}</Text>
           </View>
-
-          <View style={styles.footer}>
-            <TouchableOpacity style={{ flex: 1 }} onPress={handleCancel}>
-              <View style={styles.button}>
-                <Text style={styles.cancelText}>{cancelText}</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1 }} onPress={handleOK}>
-              <View style={styles.button}>
-                <Text style={styles.okText}>{okText}</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-    );
-  }
-}
+        </TouchableOpacity>
+      </View>
+    </View>
+  </Modal>
+);
 
 AlertModal.propTypes = {
   handleClose: func,
   handleCancel: func,
   handleOK: func,
-  isVisible: string,
+  isVisible: bool,
   title: string,
   description: string,
   okText: string,
   cancelText: string,
 };
+
 AlertModal.defaultProps = {
   handleClose: noop,
   handleCancel: noop,
   handleOK: noop,
-  isVisible: null,
+  isVisible: false,
   title: null,
   description: null,
   okText: 'OK',
   cancelText: 'Cancel',
 };
+
+export default AlertModal;

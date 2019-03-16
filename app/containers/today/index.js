@@ -12,6 +12,7 @@ import { ttsSpeak, shuffle } from '../../utils/helpers';
 import OutOfConnection from './components/out-of-connection';
 
 import AdMob from '../../components/admob';
+import AlertModal from '../../components/alert-modal';
 import Card from '../../components/card';
 import CardOptionSelector from '../../components/card-option-selector';
 import CustomButton from '../../components/button';
@@ -93,6 +94,7 @@ export default class Today extends Component<Props> {
     this.loadSettings();
     this.requestTodayItems();
     this.checkPurchaseHistory();
+    this.checkAskNotification();
   }
 
   componentWillUnmount() {
@@ -108,6 +110,13 @@ export default class Today extends Component<Props> {
       (!premiumInfo.isPremium || !premiumInfo.isAdFree)
     ) {
       checkPurchaseHistory();
+    }
+  };
+
+  checkAskNotification = async () => {
+    const isAskedNotification = await store.get('isAskedNotification');
+    if (!isAskedNotification) {
+      this.setState({ isAskNotificationVisible: true });
     }
   };
 
@@ -203,6 +212,7 @@ export default class Today extends Component<Props> {
     const { navigation } = this.props;
 
     const {
+      isAskNotificationVisible,
       todayItems,
       cardIndex,
       isKanjiShown,
@@ -295,6 +305,22 @@ export default class Today extends Component<Props> {
           />
         </View>
 
+        <AlertModal
+          isVisible={isAskNotificationVisible}
+          title={I18n.t('app.about.notification.title')}
+          description={I18n.t('app.about.notification.description')}
+          handleCancel={() => {
+            store.save('isAskedNotification', true);
+            this.setState({ isAskNotificationVisible: false });
+            tracker.logEvent(`user-ask-notification`, { value: 'false' });
+          }}
+          handleOK={() => {
+            store.save('isAskedNotification', true);
+            this.setState({ isAskNotificationVisible: false });
+            navigation.navigate('about');
+            tracker.logEvent(`user-ask-notification`, { value: 'true' });
+          }}
+        />
         <AdMob unitId={config.admob[`${Platform.OS}-today-banner`]} />
       </View>
     );
