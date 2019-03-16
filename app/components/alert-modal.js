@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bool, func, string } from 'prop-types';
 
 import {
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     height: height - 400,
     backgroundColor: 'white',
     borderRadius: 10,
+    paddingHorizontal: 15,
     justifyContent: 'space-between',
   },
   title: {
