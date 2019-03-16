@@ -1,5 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf,
+  bool,
+  func,
+  number,
+  oneOfType,
+  shape,
+  string,
+} from 'prop-types';
 
 import {
   Dimensions,
@@ -51,20 +59,21 @@ const styles = StyleSheet.create({
 
 export default class Card extends Component {
   static propTypes = {
-    lesson: PropTypes.number,
-    kanji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    kana: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    romaji: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    translation: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    lesson: number,
+    kanji: oneOfType([string, bool]),
+    kana: oneOfType([string, bool]),
+    romaji: oneOfType([string, bool]),
+    translation: oneOfType([string, bool]),
 
-    isKanjiShown: PropTypes.bool,
-    isKanaShown: PropTypes.bool,
-    isRomajiShown: PropTypes.bool,
-    isTranslationShown: PropTypes.bool,
+    isKanjiShown: bool,
+    isKanaShown: bool,
+    isRomajiShown: bool,
+    isTranslationShown: bool,
+    isAllShown: bool,
 
-    answers: PropTypes.oneOfType([null, PropTypes.arrayOf([PropTypes.string])]),
-    removeAnswer: PropTypes.func,
-    navigation: PropTypes.shape({}).isRequired,
+    answers: oneOfType([null, arrayOf([string])]),
+    removeAnswer: func,
+    navigation: shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -80,6 +89,7 @@ export default class Card extends Component {
     isKanaShown: true,
     isRomajiShown: true,
     isTranslationShown: true,
+    isAllShown: false,
   };
 
   componentWillUnmount() {
@@ -100,6 +110,7 @@ export default class Card extends Component {
       isKanaShown,
       isRomajiShown,
       isTranslationShown,
+      isAllShown,
 
       navigation,
     } = this.props;
@@ -173,7 +184,7 @@ export default class Card extends Component {
                   style={[
                     styles.text,
                     {
-                      color: !isKanaShown
+                      color: !(isAllShown || isKanaShown)
                         ? iOSColors.white
                         : answers.length > 0
                         ? iOSColors.customGray
@@ -223,17 +234,20 @@ export default class Card extends Component {
                 paddingHorizontal: 30,
               }}
             >
-              {isKanjiShown && kana !== kanji && (
+              {(isAllShown || isKanjiShown) && kana !== kanji && (
                 <Text
                   style={[
                     styles.text,
-                    { marginTop: 20, fontSize: isTooLong ? 14 : 24 },
+                    {
+                      marginTop: 20,
+                      fontSize: isTooLong ? 14 : 24,
+                    },
                   ]}
                 >
                   {kanji}
                 </Text>
               )}
-              {isRomajiShown && (
+              {(isAllShown || isRomajiShown) && (
                 <Text
                   style={[
                     styles.thinText,
@@ -243,7 +257,7 @@ export default class Card extends Component {
                   {romaji}
                 </Text>
               )}
-              {isTranslationShown && (
+              {(isAllShown || isTranslationShown) && (
                 <Text
                   style={[
                     styles.thinText,

@@ -25,9 +25,9 @@ import tracker from '../../utils/tracker';
 import AdMob from '../../components/admob';
 import Card from '../../components/card';
 import CardOptionSelector from '../../components/card-option-selector';
+import CircleButton from '../../components/circle-button';
 import CustomButton from '../../components/button';
 import RatingModal from '../../components/rating-modal';
-import SoundButton from '../../components/sound-button';
 
 import { config } from '../../config';
 
@@ -384,6 +384,7 @@ export default class Assessment extends Component<Props> {
       isKanaShown,
       isRomajiShown,
       isTranslationShown,
+      isAllShown,
 
       isOrdered,
       count,
@@ -418,6 +419,7 @@ export default class Assessment extends Component<Props> {
               isKanaShown={isKanaShown}
               isRomajiShown={isRomajiShown}
               isTranslationShown={isTranslationShown}
+              isAllShown={isAllShown}
               answers={answers}
               removeAnswer={() => {
                 const tempAnswers = [...answers];
@@ -478,11 +480,13 @@ export default class Assessment extends Component<Props> {
                 titleStyles={{ fontSize: 20 }}
               />
 
-              <SoundButton
+              <CircleButton
                 containerStyles={{ marginHorizontal: 15 }}
+                onPressIn={() => this.setState({ isAllShown: true })}
+                onPressOut={() => this.setState({ isAllShown: false })}
                 onPress={() => {
                   ttsSpeak(vocabulary);
-                  tracker.logEvent('user-assessment-press-read');
+                  tracker.logEvent('user-assessment-press-show-all');
                 }}
               />
 
@@ -513,7 +517,7 @@ export default class Assessment extends Component<Props> {
                 titleStyles={{ fontSize: 20 }}
               />
 
-              <SoundButton
+              <CircleButton
                 containerStyles={{ marginLeft: 10 }}
                 onPress={() => {
                   ttsSpeak(vocabulary);

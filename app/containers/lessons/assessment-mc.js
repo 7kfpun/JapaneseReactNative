@@ -19,8 +19,8 @@ import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
 import AdMob from '../../components/admob';
+import CircleButton from '../../components/circle-button';
 import CustomButton from '../../components/button';
-import SoundButton from '../../components/sound-button';
 
 import { config } from '../../config';
 
@@ -405,7 +405,7 @@ export default class AssessmentMC extends Component<Props> {
             titleStyles={{ fontSize: 20 }}
           />
 
-          <SoundButton
+          <CircleButton
             containerStyles={{ marginLeft: 10 }}
             onPress={() => {
               ttsSpeak(question);

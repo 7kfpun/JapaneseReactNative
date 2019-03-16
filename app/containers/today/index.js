@@ -15,8 +15,8 @@ import AdMob from '../../components/admob';
 import AlertModal from '../../components/alert-modal';
 import Card from '../../components/card';
 import CardOptionSelector from '../../components/card-option-selector';
+import CircleButton from '../../components/circle-button';
 import CustomButton from '../../components/button';
-import SoundButton from '../../components/sound-button';
 
 import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
 import I18n from '../../utils/i18n';
@@ -83,6 +83,7 @@ export default class Today extends Component<Props> {
     isRomajiShown: false,
     isTranslationShown: false,
     isSoundOn: false,
+    isAllShown: false,
 
     todayItems: [],
     outOfConnection: false,
@@ -219,6 +220,7 @@ export default class Today extends Component<Props> {
       isKanaShown,
       isRomajiShown,
       isTranslationShown,
+      isAllShown,
       isSoundOn,
       outOfConnection,
     } = this.state;
@@ -253,6 +255,7 @@ export default class Today extends Component<Props> {
               isKanaShown={isKanaShown}
               isRomajiShown={isRomajiShown}
               isTranslationShown={isTranslationShown}
+              isAllShown={isAllShown}
             />
           )}
         </View>
@@ -275,12 +278,14 @@ export default class Today extends Component<Props> {
             titleStyles={{ fontSize: 20 }}
           />
 
-          <SoundButton
+          <CircleButton
             containerStyles={{ marginHorizontal: 15 }}
+            onPressIn={() => this.setState({ isAllShown: true })}
+            onPressOut={() => this.setState({ isAllShown: false })}
             onPress={() => {
               if (todayItems && todayItems.length > 0) {
                 ttsSpeak(todayItems[cardIndex], { useKana: true });
-                tracker.logEvent('user-today-press-read');
+                tracker.logEvent('user-today-press-show-all');
               }
             }}
           />
