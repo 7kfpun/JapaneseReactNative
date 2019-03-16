@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Alert, ScrollView, Platform, StyleSheet, View } from 'react-native';
+import { ScrollView, Platform, StyleSheet, View } from 'react-native';
 
 import { iOSColors } from 'react-native-typography';
 
 import AdMob from '../../components/admob';
+import AlertModal from '../../components/alert-modal';
 import ModeItem from './components/mode-item';
 
 import { getPremiumInfo } from '../../utils/payment';
@@ -68,6 +69,7 @@ export default class SelectMode extends Component<Props> {
 
   state = {
     isPremium: false,
+    isVisible: false,
   };
 
   componentDidMount() {
@@ -81,16 +83,7 @@ export default class SelectMode extends Component<Props> {
 
   gotoLockFeature = (lockFeature, item) => {
     // lockFeature: assessment-listening, assessment-mc, read-all
-    if (
-      ['assessment-listening', 'assessment-mc', 'read-all'].indexOf(
-        lockFeature
-      ) === -1
-    ) {
-      return false;
-    }
-
     const { navigation } = this.props;
-
     const { isPremium } = this.state;
 
     if (isPremium || item <= FIRST_FREE_LESSONS) {
@@ -99,6 +92,8 @@ export default class SelectMode extends Component<Props> {
         lesson: `${item}`,
       });
     } else {
+      this.setState({ isVisible: true, modalKey: Math.random(), lockFeature });
+
       tracker.logEvent(`app-select-mode-${lockFeature}-coming-soon`, {
         lesson: `${item}`,
       });
@@ -106,39 +101,6 @@ export default class SelectMode extends Component<Props> {
       tracker.logEvent(`app-select-mode-${lockFeature}-premium-required`, {
         lesson: `${item}`,
       });
-
-      Alert.alert(
-        I18n.t('app.read-all.premium-required-title'),
-        I18n.t('app.read-all.premium-required-description'),
-        [
-          {
-            text: 'Cancel',
-            onPress: () => {
-              console.log('Cancel Pressed');
-              tracker.logEvent(
-                `user-select-mode-${lockFeature}-cancel-premium`,
-                {
-                  lesson: `${item}`,
-                }
-              );
-            },
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => {
-              navigation.navigate('about');
-              tracker.logEvent(
-                `user-select-mode-${lockFeature}-interest-premium`,
-                {
-                  lesson: `${item}`,
-                }
-              );
-            },
-          },
-        ],
-        { cancelable: false }
-      );
     }
   };
 
@@ -160,7 +122,7 @@ export default class SelectMode extends Component<Props> {
       },
     } = this.props;
 
-    const { isPremium } = this.state;
+    const { isPremium, isVisible, modalKey, lockFeature } = this.state;
 
     return (
       <View style={styles.container}>
@@ -183,23 +145,46 @@ export default class SelectMode extends Component<Props> {
             onPress={() => this.gotoLockFeature('assessment-mc', item)}
             isRequirePremium={item > FIRST_FREE_LESSONS}
             isUnlocked={isPremium}
-            navigation={this.props.navigation}
+            navigation={navigation}
           />
           <ModeItem
             title={I18n.t('app.vocab-list.listening')}
             onPress={() => this.gotoLockFeature('assessment-listening', item)}
             isRequirePremium={item > FIRST_FREE_LESSONS}
             isUnlocked={isPremium}
-            navigation={this.props.navigation}
+            navigation={navigation}
           />
           <ModeItem
             title={I18n.t('app.vocab-list.read-all')}
             onPress={() => this.gotoLockFeature('read-all', item)}
             isRequirePremium={item > FIRST_FREE_LESSONS}
             isUnlocked={isPremium}
-            navigation={this.props.navigation}
+            navigation={navigation}
           />
         </ScrollView>
+
+        <AlertModal
+          key={modalKey}
+          title={I18n.t('app.read-all.premium-required-title')}
+          description={I18n.t('app.read-all.premium-required-description')}
+          isVisible={isVisible}
+          handleCancel={() => {
+            this.setState({ isVisible: false });
+            tracker.logEvent(`user-select-mode-${lockFeature}-cancel-premium`, {
+              lesson: `${item}`,
+            });
+          }}
+          handleOK={() => {
+            this.setState({ isVisible: false });
+            navigation.navigate('about');
+            tracker.logEvent(
+              `user-select-mode-${lockFeature}-interest-premium`,
+              {
+                lesson: `${item}`,
+              }
+            );
+          }}
+        />
 
         <AdMob unitId={config.admob[`${Platform.OS}-lessons-banner`]} />
       </View>
