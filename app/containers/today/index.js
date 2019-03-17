@@ -7,8 +7,6 @@ import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
-import { ttsSpeak, shuffle } from '../../utils/helpers';
-
 import OutOfConnection from './components/out-of-connection';
 
 import AdMob from '../../components/admob';
@@ -19,6 +17,7 @@ import CircleButton from '../../components/circle-button';
 import CustomButton from '../../components/button';
 
 import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
+import { ttsSpeak, shuffle, openURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
 
@@ -95,7 +94,7 @@ export default class Today extends Component<Props> {
     this.loadSettings();
     this.requestTodayItems();
     this.checkPurchaseHistory();
-    this.checkAskNotification();
+    this.checkAskPopup();
   }
 
   componentWillUnmount() {
@@ -114,11 +113,9 @@ export default class Today extends Component<Props> {
     }
   };
 
-  checkAskNotification = async () => {
-    const isAskedNotification = await store.get('isAskedNotification');
-    if (!isAskedNotification) {
-      this.setState({ isAskNotificationVisible: true });
-    }
+  checkAskPopup = async () => {
+    const isAskPopupVisible = !(await store.get('isAskedHelpTranslation'));
+    this.setState({ isAskPopupVisible });
   };
 
   loadSettings = async () => {
@@ -213,7 +210,7 @@ export default class Today extends Component<Props> {
     const { navigation } = this.props;
 
     const {
-      isAskNotificationVisible,
+      isAskPopupVisible,
       todayItems,
       cardIndex,
       isKanjiShown,
@@ -311,19 +308,23 @@ export default class Today extends Component<Props> {
         </View>
 
         <AlertModal
-          isVisible={isAskNotificationVisible}
-          title={I18n.t('app.about.notification.title')}
-          description={I18n.t('app.about.notification.description')}
+          isVisible={isAskPopupVisible}
+          title={I18n.t('app.feedback.help-translation')}
+          description={I18n.t('app.feedback.help-translation-description')}
           handleCancel={() => {
-            store.save('isAskedNotification', true);
-            this.setState({ isAskNotificationVisible: false });
-            tracker.logEvent(`user-ask-notification`, { value: 'false' });
+            store.save('isAskedHelpTranslation', true);
+            this.setState({ isAskPopupVisible: false });
+            tracker.logEvent(`user-ask-goto-help-translation`, {
+              value: 'false',
+            });
           }}
           handleOK={() => {
-            store.save('isAskedNotification', true);
-            this.setState({ isAskNotificationVisible: false });
-            navigation.navigate('about');
-            tracker.logEvent(`user-ask-notification`, { value: 'true' });
+            store.save('isAskedHelpTranslation', true);
+            this.setState({ isAskPopupVisible: false });
+            openURL('https://minna-app.oneskyapp.com/collaboration', false);
+            tracker.logEvent(`user-ask-goto-help-translation`, {
+              value: 'true',
+            });
           }}
         />
         <AdMob unitId={config.admob[`${Platform.OS}-today-banner`]} />

@@ -4,9 +4,9 @@ import SafariView from 'react-native-safari-view';
 import Tts from 'react-native-tts';
 
 // Open Safari browser on iOS, a new app browser on Android
-export const openURL = url => {
+export const openURL = (url, isInApp = true) => {
   tempUrl = encodeURI(url);
-  if (Platform.OS === 'ios') {
+  if (Platform.OS === 'ios' && isInApp) {
     SafariView.isAvailable()
       .then(
         SafariView.show({

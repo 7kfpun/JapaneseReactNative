@@ -110,9 +110,7 @@ export default class About extends Component<Props> {
               text={I18n.t('app.feedback.help-translation')}
               description={I18n.t('app.feedback.help-translation-description')}
               onPress={() => {
-                Linking.openURL(
-                  'https://minna-app.oneskyapp.com/collaboration'
-                );
+                openURL('https://minna-app.oneskyapp.com/collaboration', false);
                 tracker.logEvent('user-about-goto-help-translation');
               }}
             />

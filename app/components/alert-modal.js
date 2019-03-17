@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   descriptionText: {
     fontWeight: '300',
     fontSize: 16,
+    lineHeight: 24,
     color: 'black',
   },
   button: {
