@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { colors } from '../utils/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   disabled: {
-    backgroundColor: iOSColors.lightGray,
+    backgroundColor: colors.lightGray,
   },
   body: {
     paddingVertical: 15,
@@ -20,11 +21,11 @@ const styles = StyleSheet.create({
   },
   borderTop: {
     borderTopWidth: 0.5,
-    borderTopColor: iOSColors.midGray,
+    borderTopColor: colors.lightGray,
   },
   borderBottom: {
     borderBottomWidth: 0.5,
-    borderBottomColor: iOSColors.midGray,
+    borderBottomColor: colors.lightGray,
   },
   text: {
     fontSize: 16,
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '300',
     marginTop: 8,
-    color: iOSColors.gray,
+    color: colors.gray,
   },
 });
 
@@ -78,7 +79,7 @@ const Row = ({
           <Ionicons
             name={selectedIcon}
             size={20}
-            color={selected ? iOSColors.black : iOSColors.white}
+            color={selected ? colors.black : colors.white}
           />
         </View>
       )}

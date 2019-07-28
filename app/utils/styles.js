@@ -1,3 +1,5 @@
+import { iOSColors } from 'react-native-typography';
+
 const shadow = {
   shadowColor: '#E0E0E0',
   shadowOffset: { width: 0, height: 2 },
@@ -6,4 +8,14 @@ const shadow = {
   elevation: 1,
 };
 
+const colors = {
+  theme: '#F7F7F7',
+  black: '#000000',
+  gray: '#212121',
+  midGray: '#484848',
+  lightGray: iOSColors.midGray,
+  white: '#FFFFFF',
+};
+
 exports.shadow = shadow;
+exports.colors = colors;

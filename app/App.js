@@ -29,6 +29,7 @@ import SelectMode from './containers/lessons/select-mode';
 import Today from './containers/today';
 import VocabList from './containers/lessons/vocab-list';
 
+import { colors } from './utils/styles';
 import tracker from './utils/tracker';
 import I18n from './utils/i18n';
 
@@ -65,10 +66,10 @@ Tts.getInitStatus().then(
 
 const navigationOptions = {
   headerStyle: {
-    backgroundColor: '#F7F7F7',
+    backgroundColor: colors.theme,
     // borderBottomWidth: 0,
   },
-  headerTintColor: iOSColors.gray,
+  headerTintColor: colors.midGray,
   headerTitleStyle: {
     fontWeight: '500',
   },
@@ -180,7 +181,7 @@ const AppTab = createBottomTabNavigator(
       activeTintColor: iOSColors.tealBlue,
       inactiveTintColor: iOSColors.black,
       labelStyle: {
-        fontSize: 9,
+        fontSize: 10,
         paddingBottom: 4,
         paddingTop: 0,
       },

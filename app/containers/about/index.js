@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Linking, Platform, StyleSheet, ScrollView, View } from 'react-native';
+import { Platform, StyleSheet, ScrollView, View } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
 
