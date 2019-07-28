@@ -25,6 +25,7 @@ import Tts from 'react-native-tts';
 
 import SaveVocab from './save-vocab';
 
+import { colors } from '../utils/styles';
 import { cleanWord, noop } from '../utils/helpers';
 import tracker from '../utils/tracker';
 
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderRadius: 16,
-    backgroundColor: iOSColors.white,
+    backgroundColor: colors.white,
   },
   containerInner: {
     flex: 1,
@@ -48,12 +49,12 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontWeight: '800',
-    color: iOSColors.black,
+    color: colors.black,
   },
   thinText: {
     textAlign: 'center',
     fontWeight: '300',
-    color: iOSColors.black,
+    color: colors.black,
   },
 });
 
@@ -189,7 +190,7 @@ export default class Card extends Component {
                         : answers.length > 0
                         ? iOSColors.customGray
                         : iOSColors.black,
-                      fontSize: isTooLong ? 20 : 28,
+                      fontSize: isTooLong ? 24 : 36,
                     },
                   ]}
                 >

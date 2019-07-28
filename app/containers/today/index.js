@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Platform, StyleSheet, View } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
@@ -17,6 +16,7 @@ import CircleButton from '../../components/circle-button';
 import CustomButton from '../../components/button';
 
 import { checkPurchaseHistory, getPremiumInfo } from '../../utils/payment';
+import { colors } from '../../utils/styles';
 import { ttsSpeak, shuffle, openURL } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
 import tracker from '../../utils/tracker';
@@ -26,13 +26,11 @@ import { config } from '../../config';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: colors.theme,
   },
   card: {
     flex: 1,
     borderRadius: 10,
-    borderColor: iOSColors.lightGray,
-    borderWidth: 1,
     justifyContent: 'space-between',
     backgroundColor: 'white',
     padding: 10,
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     fontWeight: '600',
-    color: iOSColors.black,
+    color: colors.black,
     backgroundColor: 'transparent',
     lineHeight: 40,
   },
@@ -50,7 +48,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '300',
-    color: iOSColors.black,
+    color: colors.black,
     backgroundColor: 'transparent',
     lineHeight: 40,
   },
@@ -67,7 +65,7 @@ export default class Today extends Component<Props> {
   static navigationOptions = {
     title: I18n.t('app.today.title'),
     headerStyle: {
-      backgroundColor: '#F7F7F7',
+      backgroundColor: colors.theme,
       borderBottomWidth: 0,
     },
   };

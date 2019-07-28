@@ -9,41 +9,33 @@ import {
   View,
 } from 'react-native';
 
-import { iOSColors } from 'react-native-typography';
 import store from 'react-native-simple-store';
 import Tts from 'react-native-tts';
 
+import { colors } from '../../../utils/styles';
 import tracker from '../../../utils/tracker';
 
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    height: width / 5,
-    borderRightColor: iOSColors.lightGray,
-    borderRightWidth: 0.5,
-    borderBottomColor: iOSColors.lightGray,
-    borderBottomWidth: 0.5,
+    height: (width - 20) / 5,
+    borderColor: colors.lightGray,
+    borderWidth: 0.5,
     backgroundColor: 'white',
+    margin: 5,
+    borderRadius: 20,
   },
   body: {
     flex: 1,
-    padding: 4,
-    paddingTop: 10,
-  },
-  upperDot: {
-    position: 'absolute',
-    top: 0,
-    right: 3,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    padding: 10,
   },
   upperRow: {
     flex: 1,
     alignItems: 'center',
   },
   upperText: {
-    color: iOSColors.black,
+    color: colors.black,
     fontSize: 26,
     fontWeight: '300',
   },
@@ -56,7 +48,7 @@ const styles = StyleSheet.create({
   lowerText: {
     fontSize: 16,
     fontWeight: '300',
-    color: iOSColors.gray,
+    color: colors.midGray,
   },
 });
 
@@ -94,7 +86,17 @@ export default class Tile extends Component<Props> {
 
     return (
       <TouchableOpacity
-        style={[styles.container, { width: width / itemsPerRow }]}
+        style={[
+          styles.container,
+          {
+            width: width / itemsPerRow - 10,
+          },
+          isCorrect !== null
+            ? {
+                borderColor: isCorrect ? 'green' : 'red',
+              }
+            : {},
+        ]}
         onPress={() => {
           Tts.setDefaultRate(0.1);
           Tts.setDefaultLanguage('ja');
@@ -109,15 +111,6 @@ export default class Tile extends Component<Props> {
           <View style={styles.lowerRow}>
             <Text style={styles.lowerText}>{katakana}</Text>
             <Text style={styles.lowerText}>{romaji}</Text>
-          </View>
-          <View style={styles.upperDot}>
-            {isCorrect !== null && (
-              <Text
-                style={{ color: isCorrect ? 'green' : 'red', fontSize: 12 }}
-              >
-                •
-              </Text>
-            )}
           </View>
         </View>
       </TouchableOpacity>

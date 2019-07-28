@@ -13,6 +13,7 @@ import AdMob from '../../components/admob';
 import VocabItem from '../../components/vocab-item';
 import LessonItem from './components/lesson-item';
 
+import { colors } from '../../utils/styles';
 import { vocabs } from '../../utils/vocab-helpers';
 import { range } from '../../utils/helpers';
 import I18n from '../../utils/i18n';
@@ -34,7 +35,7 @@ const fuse = new Fuse(vocabs, options);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: colors.theme,
   },
   searchContainer: {
     marginBottom: 5,
@@ -156,7 +157,7 @@ export default class Lessons extends Component<Props> {
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <Search
-            backgroundColor="#F7F7F7"
+            backgroundColor={colors.theme}
             inputStyle={{ backgroundColor: iOSColors.customGray }}
             titleCancelColor={iOSColors.blue}
             onChangeText={this.onChangeText}

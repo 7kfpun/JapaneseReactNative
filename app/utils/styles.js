@@ -13,7 +13,8 @@ const colors = {
   black: '#000000',
   gray: '#212121',
   midGray: '#484848',
-  lightGray: iOSColors.midGray,
+  silverGray: iOSColors.midGray,
+  lightGray: iOSColors.lightGray,
   white: '#FFFFFF',
 };
 
