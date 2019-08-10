@@ -112,7 +112,8 @@ export default class Today extends Component<Props> {
   };
 
   checkAskPopup = async () => {
-    const isAskPopupVisible = !(await store.get('isAskedHelpTranslation'));
+    const isAskPopupVisible =
+      !(await store.get('isAskedHelpTranslation')) && Math.random() < 0.3;
     this.setState({ isAskPopupVisible });
   };
 

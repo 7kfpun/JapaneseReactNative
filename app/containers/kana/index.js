@@ -5,13 +5,13 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 
 import { IndicatorViewPager, PagerTabIndicator } from 'rn-viewpager';
 import { iOSColors } from 'react-native-typography';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Tile from './components/tile';
 
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
   tabText: {
     fontWeight: '100',
     fontSize: 15,
+  },
+  headerRight: {
+    fontSize: 16,
   },
   tabIndicator: {
     paddingHorizontal: 15,
@@ -104,7 +107,7 @@ export default class Kana extends Component<Props> {
       headerRight: (
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity
-            style={{ padding: 12, paddingRight: 15 }}
+            style={{ padding: 10 }}
             onPress={() => {
               navigation.navigate('kana-assessment', {
                 ...assessmentMode,
@@ -117,7 +120,7 @@ export default class Kana extends Component<Props> {
               });
             }}
           >
-            <Ionicons name="ios-list-box" size={22} color={iOSColors.gray} />
+            <Text style={styles.headerRight}>{I18n.t('app.kana.quiz')}</Text>
           </TouchableOpacity>
         </View>
       ),
