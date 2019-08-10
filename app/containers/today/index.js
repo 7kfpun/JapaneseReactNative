@@ -112,8 +112,11 @@ export default class Today extends Component<Props> {
   };
 
   checkAskPopup = async () => {
+    const premiumInfo = await getPremiumInfo();
     const isAskPopupVisible =
-      !(await store.get('isAskedHelpTranslation')) && Math.random() < 0.3;
+      !premiumInfo.isPremium &&
+      !(await store.get('isAskedJoinPremium')) &&
+      Math.random() < 0.4;
     this.setState({ isAskPopupVisible });
   };
 
@@ -308,19 +311,23 @@ export default class Today extends Component<Props> {
 
         <AlertModal
           isVisible={isAskPopupVisible}
-          title={I18n.t('app.feedback.help-translation')}
-          description={I18n.t('app.feedback.help-translation-description')}
+          title={I18n.t('app.about.premium.title')}
+          description={I18n.t('app.about.premium.button-description')}
           handleCancel={() => {
-            store.save('isAskedHelpTranslation', true);
+            if (Math.random() < 0.1) {
+              store.save('isAskedJoinPremium', true);
+            }
             this.setState({ isAskPopupVisible: false });
             tracker.logEvent(`user-ask-goto-help-translation`, {
               value: 'false',
             });
           }}
           handleOK={() => {
-            store.save('isAskedHelpTranslation', true);
+            if (Math.random() < 0.3) {
+              store.save('isAskedJoinPremium', true);
+            }
             this.setState({ isAskPopupVisible: false });
-            openURL('https://minna-app.oneskyapp.com/collaboration', false);
+            navigation.navigate('about');
             tracker.logEvent(`user-ask-goto-help-translation`, {
               value: 'true',
             });
