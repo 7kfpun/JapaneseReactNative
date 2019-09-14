@@ -1,80 +1,80 @@
 {
     "about": {
         "notification": {
-            "description": "Remind you to study everyday",
-            "title": "Study Reminder (Daily)"
+            "description": "Rappelez-vous de l'étude tous les jours",
+            "title": "Rappel d'étude (Quotidien)"
         },
         "premium": {
-            "button-description": "Unlock our most exclusive features",
+            "button-description": "Débloquez nos fonctionnalités les plus exclusives",
             "title": "Devenez Premium",
             "month": "mois",
             "months": "mois",
-            "year": "ann\u00e9e",
-            "years": "ann\u00e9es",
-            "note": "Facturation r\u00e9currente, annulable \u00e0 tout moment.",
-            "note-description": "En appuyant sur \u00abContinuer\u00bb, le montant sera d\u00e9bit\u00e9 de votre compte iTunes et votre abonnement sera automatiquement renouvel\u00e9 pour la m\u00eame dur\u00e9e de forfait au m\u00eame prix jusqu'\u00e0 ce que vous l'annuliez dans les param\u00e8tres du magasin iTunes au moins 24 heures avant la fin de la p\u00e9riode en cours. En appuyant sur \"Continuer\", vous acceptez notre politique de confidentialit\u00e9 et nos conditions d'utilisation.",
+            "year": "année",
+            "years": "années",
+            "note": "Facturation récurrente, annulable à tout moment.",
+            "note-description": "En appuyant sur «Continuer», le montant sera débité de votre compte iTunes et votre abonnement sera automatiquement renouvelé pour la même durée de forfait au même prix jusqu'à ce que vous l'annuliez dans les paramètres du magasin iTunes au moins 24 heures avant la fin de la période en cours. En appuyant sur \"Continuer\", vous acceptez notre politique de confidentialité et nos conditions d'utilisation.",
             "continue": "Continuer",
             "lifetime": "A VIE",
             "lifetime-description": "PAIEMENT UNIQUE"
         },
-        "title": "\u00c0 propos",
+        "title": "À propos",
         "notification-label": "Rappel quotidien",
-        "restore": "Restaurer vos Achats int\u00e9gr\u00e9s ",
-        "purchase-title": "Vous \u00eates maintenant utilisateur Premium",
-        "purchase-description": "Prenez plaisir \u00e0 apprendre le japonais",
-        "restore-failed-title": "Vous n'avez jamais achet\u00e9 notre offre Premium auparavant",
+        "restore": "Restaurer vos Achats intégrés ",
+        "purchase-title": "Vous êtes maintenant utilisateur Premium",
+        "purchase-description": "Prenez plaisir à apprendre le japonais",
+        "restore-failed-title": "Vous n'avez jamais acheté notre offre Premium auparavant",
         "version": "Version",
         "adfree": {
-            "title": "Retirer la publicit\u00e9",
-            "description": "- Supprimer toutes les annonces popup et banni\u00e8res"
+            "title": "Retirer la publicité",
+            "description": "- Supprimer toutes les annonces popup et bannières"
         },
         "premium-banner": {
             "adfree": "Supprimer les annonces",
             "adfree-description": "Fini les annonces publicitaires",
-            "listening": "Ecouter : le\u00e7ons 3 - 50",
-            "listening-description": "\u00c9coutez la prononciation et choisissez la bonne r\u00e9ponse, les r\u00e9ponses peuvent \u00eatre affich\u00e9es en kanji, romaji ou dans votre langue",
-            "quiz": "Quiz : le\u00e7ons 3 - 50",
-            "quiz-description": "Testez votre fluidit\u00e9 en traduisant Hiragana, Katakana, Kanji ou Romaji vers l'un et l'autre",
-            "read-all": "Tout lire : le\u00e7ons 3 - 50",
-            "read-all-description": "Prononcez chaque mot de la le\u00e7on et suivi de sa signification",
-            "read-all-description-android": "Prononcez chaque mot de la le\u00e7on et sa signification (assurez-vous que TTS fonctionne sur votre appareil avant de l'acheter)",
-            "bookmark": "Signet illimit\u00e9",
+            "listening": "Ecouter : leçons 3 - 50",
+            "listening-description": "Écoutez la prononciation et choisissez la bonne réponse, les réponses peuvent être affichées en kanji, romaji ou dans votre langue",
+            "quiz": "Quiz : leçons 3 - 50",
+            "quiz-description": "Testez votre fluidité en traduisant Hiragana, Katakana, Kanji ou Romaji vers l'un et l'autre",
+            "read-all": "Tout lire : leçons 3 - 50",
+            "read-all-description": "Prononcez chaque mot de la leçon et suivi de sa signification",
+            "read-all-description-android": "Prononcez chaque mot de la leçon et sa signification (assurez-vous que TTS fonctionne sur votre appareil avant de l'acheter)",
+            "bookmark": "Signet illimité",
             "bookmark-description": "Ayez votre propre liste de vocabulaire"
         },
         "account": {
-            "not-yet-login": "Not yet login",
-            "login-or-signup": "Login or signup"
+            "not-yet-login": "Pas encore de connexion",
+            "login-or-signup": "Connexion ou inscription"
         }
     },
     "bookmark": {
         "description": "Ayez votre propre liste de vocabulaire",
         "title": "Signets",
-        "star": "\u00e9toile",
-        "stars": "\u00e9toiles",
+        "star": "étoile",
+        "stars": "étoiles",
         "remove": "Retirer",
         "too-many": "Devenez utilisateur Premium pour avoir plus de {{number}} mots de vocabulaire dans la liste"
     },
     "today": {
-        "title": "Aujourd\u2019hui ",
-        "shuffle": "Al\u00e9atoire ",
+        "title": "Aujourd’hui ",
+        "shuffle": "Aléatoire ",
         "out-of-connection": "Hors connection"
     },
     "kana": {
         "title": "Kana",
         "seion": "Sion",
         "dakuon": "Dakuon",
-        "youon": "Youon",
+        "youon": "Vous",
         "hiragana": "Hiragana",
         "katakana": "Katakana",
-        "romaji": "Romaji",
+        "romaji": "Romains",
         "quiz": "Quiz"
     },
     "lessons": {
-        "title": "Le\u00e7ons",
-        "beginning-one": "D\u00e9butant 1",
-        "beginning-two": "D\u00e9butant 2",
-        "advanced-one": "Avanc\u00e9 1",
-        "advanced-two": "Avanc\u00e9 2"
+        "title": "Leçons",
+        "beginning-one": "Débutant 1",
+        "beginning-two": "Débutant 2",
+        "advanced-one": "Avancé 1",
+        "advanced-two": "Avancé 2"
     },
     "read-all": {
         "premium-required-title": "Disponible pour les utilisateurs Premium",
@@ -83,7 +83,7 @@
     "search": {
         "title": "Rechercher",
         "cancel": "Annuler ",
-        "description": "Vous pouvez trouver tous les mots en parcourant les le\u00e7ons ",
+        "description": "Vous pouvez trouver tous les mots en parcourant les leçons ",
         "any-text": "n'importe quel texte"
     },
     "vocab-list": {
@@ -91,37 +91,37 @@
         "learn": "Apprendre ",
         "quiz": "Quiz ",
         "read-all": "Lire tout",
-        "listening": "\u00c9couter "
+        "listening": "Écouter "
     },
     "feedback": {
         "title": "Commentaire (feed-back)",
-        "follow-us-on-facebook": "Follow us on Facebook",
+        "follow-us-on-facebook": "Suivez-nous sur Facebook",
         "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}&prefill_Version={version}",
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Commentaire (feed-back)",
         "help-translation": "Rejoignez-nous !",
-        "help-translation-description": "Nous avons ouvert un \u201cprocessus de traduction communautaire\u201d car nous aimerions que Minna no Nihongo soit traduit dans votre propre langue.\nMerci de venir participer autant que vous le pouvez aux traductions, votes et discussions.",
+        "help-translation-description": "Nous avons ouvert un “processus de traduction communautaire” car nous aimerions que Minna no Nihongo soit traduit dans votre propre langue.\nMerci de venir participer autant que vous le pouvez aux traductions, votes et discussions.",
         "tts-instruction": "Pas de son ?",
-        "tts-instruction-description": "Assurez-vous que vous avez activ\u00e9 la fonctionnalit\u00e9 \"Lecture du texte\" et install\u00e9 un pack de langue japonaise. Nous vous recommandons d'utiliser le moteur de synth\u00e8se vocale Google.",
+        "tts-instruction-description": "Assurez-vous que vous avez activé la fonctionnalité \"Lecture du texte\" et installé un pack de langue japonaise. Nous vous recommandons d'utiliser le moteur de synthèse vocale Google.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "common": {
         "kana": "Kana",
         "kanji": "Kanji",
-        "romaji": "Romaji",
+        "romaji": "Romains",
         "translation": "Traduction",
-        "previous": "Pr\u00e9c\u00e9dent",
+        "previous": "Précédent",
         "next": "Suivant",
-        "random": "Al\u00e9atoire",
-        "lesson-no": "Le\u00e7on {{lesson_no}}",
+        "random": "Aléatoire",
+        "lesson-no": "Leçon {{lesson_no}}",
         "tts-required": "Google Text-to-Speech est requis pour utiliser cette application.",
         "coming-soon": "Prochainement",
-        "coming-soon-description": "Restez \u00e0 l'\u00e9coute ! Nous apporterons des nouvelles fonctionnalit\u00e9s !"
+        "coming-soon-description": "Restez à l'écoute ! Nous apporterons des nouvelles fonctionnalités !"
     },
     "rating": {
         "title": "Vous aimez notre application ?",
-        "title-description": "Faites nous plaisir en nous donnant 5 \u00e9toiles si vous aim\u00e9 cette application.",
-        "feedback-description": "Vous n'aimez pas notre application ? Donnez-nous vos commentaires. Nous allons continuer \u00e0 l'am\u00e9liorer.",
+        "title-description": "Faites nous plaisir en nous donnant 5 étoiles si vous aimé cette application.",
+        "feedback-description": "Vous n'aimez pas notre application ? Donnez-nous vos commentaires. Nous allons continuer à l'améliorer.",
         "feedback-url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }
