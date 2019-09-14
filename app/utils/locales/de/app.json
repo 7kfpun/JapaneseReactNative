@@ -1,58 +1,58 @@
 {
     "about": {
         "notification": {
-            "description": "Remind you to study everyday",
-            "title": "Study Reminder (Daily)"
+            "description": "Erinnern Sie sich an jeden Tag",
+            "title": "Lernerinnerung (Täglich)"
         },
         "premium": {
-            "button-description": "Unlock our most exclusive features",
-            "title": "Get Premium",
-            "month": "month",
-            "months": "months",
-            "year": "year",
-            "years": "years",
-            "note": "Recurring billing, cancel anytime.",
-            "note-description": "By tapping \"Continue\", your payment will be charged to your iTunes account, and your subscription will automatically renew for the same package length at the same price until you cancel it in the settings in the iTumes store at least 24 hours prior to the end of the current period. By tapping \"Continue\", you agree to our Privacy Policy and Terms.",
-            "continue": "Continue",
+            "button-description": "Schalte unsere exklusivsten Funktionen frei",
+            "title": "Premium erhalten",
+            "month": "Monat",
+            "months": "monate",
+            "year": "Jahr",
+            "years": "Jahre",
+            "note": "Wiederkehrende Abrechnung, jederzeit stornieren.",
+            "note-description": "Durch Tippen auf \"Weiter\" wird Ihre Zahlung auf Ihr iTunes-Konto belastet und Ihr Abonnement wird automatisch für die gleiche Paketlänge zum gleichen Preis erneuert, bis Sie es in den Einstellungen im iTumes Store mindestens 24 Stunden vor Ablauf der aktuellen Periode kündigen. Indem Sie auf \"Weiter\" klicken, stimmen Sie unseren Datenschutzrichtlinien und AGB zu.",
+            "continue": "Weiter",
             "lifetime": "LIFETIME",
-            "lifetime-description": "ONE-TIME PAYMENT"
+            "lifetime-description": "EINE-TIME-PAYMENT"
         },
-        "title": "\u00dcber uns",
-        "notification-label": "Studie Erinnerung (T\u00e4glich)",
-        "restore": "Stellen Sie Ihre In-App-K\u00e4ufe wieder her",
+        "title": "Über uns",
+        "notification-label": "Studie Erinnerung (Täglich)",
+        "restore": "Stellen Sie Ihre In-App-Käufe wieder her",
         "purchase-title": "Jetzt Premium-Mitglied werden",
-        "purchase-description": "Viel Spa\u00df zum Japanisch lernen",
+        "purchase-description": "Viel Spaß zum Japanisch lernen",
         "restore-failed-title": "Sie haben die Premium noch nie gekauft",
-        "version": "Ausf\u00fchrung",
+        "version": "Ausführung",
         "adfree": {
-            "title": "Remove Ads",
-            "description": "- Remove all popup and banner ads"
+            "title": "Werbung entfernen",
+            "description": "- Alle Popup- und Banner-Anzeigen entfernen"
         },
         "premium-banner": {
-            "adfree": "Remove Ads",
-            "adfree-description": "No more ad banners and topup ads",
-            "listening": "Listening: lesson 3 - 50",
-            "listening-description": "Listen to the pronunciation and choose the correct answer, answers can be shown in Kanji, Romaji or your language",
-            "quiz": "Quiz: lesson 3 - 50",
-            "quiz-description": "Test your fluidity in translating Hiragana, Katakana, Kanji or Romaji to one and another",
-            "read-all": "Read All: lesson 3 - 50",
-            "read-all-description": "Pronounce every word in the lesson and followed by its meaning",
-            "read-all-description-android": "Pronounce every word in the lesson and followed by its meaning (please make sure TTS works on your device before purchasing)",
-            "bookmark": "Unlimited bookmark",
-            "bookmark-description": "Have your own vocabularies list"
+            "adfree": "Werbung entfernen",
+            "adfree-description": "Keine Werbebanner mehr und topup Werbung",
+            "listening": "Hören: Lektion 3 - 50",
+            "listening-description": "Hören Sie auf die Aussprache und wählen Sie die richtige Antwort, Antworten können in Kanji, Romaji oder Ihrer Sprache angezeigt werden",
+            "quiz": "Quiz: Lektion 3 - 50",
+            "quiz-description": "Testen Sie Ihre Flüssigkeit in der Übersetzung von Hiragana, Katakana, Kanji oder Romaji in ein und andere",
+            "read-all": "Alles lesen: Lektion 3 - 50",
+            "read-all-description": "Pronounce jedes Wort in der Lektion und gefolgt von seiner Bedeutung",
+            "read-all-description-android": "Probieren Sie jedes Wort in der Lektion und folgen Sie der Bedeutung (bitte stellen Sie sicher, dass TTS vor dem Kauf auf Ihrem Gerät funktioniert)",
+            "bookmark": "Unbegrenztes Lesezeichen",
+            "bookmark-description": "Haben Sie Ihre eigene Vokabular-Liste"
         },
         "account": {
-            "not-yet-login": "Not yet login",
-            "login-or-signup": "Login or signup"
+            "not-yet-login": "Noch nicht anmelden",
+            "login-or-signup": "Anmelden oder anmelden"
         }
     },
     "bookmark": {
-        "description": "Have your own vocabularies list",
+        "description": "Haben Sie Ihre eigene Vokabular-Liste",
         "title": "Lesezeichen",
         "star": "star",
-        "stars": "stars",
-        "remove": "Remove",
-        "too-many": "Be our Premium user to have more than {{number}} vocabularies in the list"
+        "stars": "Sterne",
+        "remove": "Entfernen",
+        "too-many": "Sei unser Premium-Benutzer, um mehr als {{number}} Vokabular in der Liste zu haben"
     },
     "today": {
         "title": "Heute",
@@ -60,10 +60,10 @@
         "out-of-connection": "Ohne Internetverbindung"
     },
     "kana": {
-        "title": "Kana",
-        "seion": "Seion",
-        "dakuon": "Dakuon",
-        "youon": "Youon",
+        "title": "Maro",
+        "seion": "Kevin",
+        "dakuon": "Joh",
+        "youon": "Ihn",
         "hiragana": "Hiragana",
         "katakana": "Katakana",
         "romaji": "Romaji",
@@ -71,57 +71,57 @@
     },
     "lessons": {
         "title": "unterricht",
-        "beginning-one": "Beg. I",
-        "beginning-two": "Beg. II",
+        "beginning-one": "Anfang I",
+        "beginning-two": "Anfang II",
         "advanced-one": "Adv. I",
         "advanced-two": "Adv. II"
     },
     "read-all": {
-        "premium-required-title": "Nur f\u00fcr Premium-Mitglieder",
+        "premium-required-title": "Nur für Premium-Mitglieder",
         "premium-required-description": "Mit der Premium-Mitgliedschaft stehen Ihnen alle Features"
     },
     "search": {
         "title": "Suchen",
         "cancel": "Abbrechen",
         "description": "Hier finden Sie alle Vokabeln aus den Lektionen.",
-        "any-text": "any text"
+        "any-text": "jeder Text"
     },
     "vocab-list": {
-        "vocab": "Vocabularies",
+        "vocab": "Vokabulare",
         "learn": "Lernen",
         "quiz": "Test",
-        "read-all": "Vollst\u00e4ndige Lekt\u00fcre",
-        "listening": "H\u00f6ren"
+        "read-all": "Vollständige Lektüre",
+        "listening": "Hören"
     },
     "feedback": {
         "title": "Feedback",
-        "follow-us-on-facebook": "Follow us on Facebook",
+        "follow-us-on-facebook": "Folgen Sie uns auf Facebook",
         "url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}&prefill_Version={version}",
         "issueUrl": "https:\/\/airtable.com\/shrYPMku3tmLPiPLp?prefill_Platform={platform}&prefill_Lesson={lesson}&prefill_Kana={kana}&prefill_Kanji={kanji}&prefill_Romaji={romaji}&prefill_Translation={translation}&prefill_Version={version}",
         "feedback": "Feedback",
         "help-translation": "Treten Sie uns bei.",
-        "help-translation-description": "Wir haben den \u00dcbersetzungsprozess f\u00fcr alle ge\u00f6ffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch \u00fcbersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie m\u00f6chten an der  \u00dcbersetzung, Wahl und mit Ihren Kollegen.",
+        "help-translation-description": "Wir haben den Übersetzungsprozess für alle geöffnet. Wir glauben dass Sie wissen am besten, wie Unser Japanisch ins Deutsch übersetzt werden sollte. Bitte beteiligen Sie sich so viel Sie möchten an der  Übersetzung, Wahl und mit Ihren Kollegen.",
         "tts-instruction": "Keinen Ton?",
-        "tts-instruction-description": "Please make sure you have enable \"Text to speech\" feature and install a Japanese language pack. We recommend using Google text to speech engine.",
+        "tts-instruction-description": "Bitte stellen Sie sicher, dass Sie die Funktion \"Text zu sprechen\" aktivieren und ein japanisches Sprachpaket installieren. Wir empfehlen Ihnen, Google-Text in die Sprach-Engine zu verwenden.",
         "tts-instruction-url": "https:\/\/airtable.com\/shreKSVDYm5OhWbFP?prefill_Manufacturer={manufacturer}&prefill_Model={model}&prefill_DeviceName={name}&prefill_Type={type}&prefill_Version={version}&prefill_Brand={brand}"
     },
     "common": {
-        "kana": "Kana",
+        "kana": "Maro",
         "kanji": "Kanji",
         "romaji": "Romaji",
-        "translation": "\u00dcbersetzung",
+        "translation": "Übersetzung",
         "previous": "Letzte",
-        "next": "N\u00e4chste",
-        "random": "Willk\u00fcrlich",
+        "next": "Nächste",
+        "random": "Willkürlich",
         "lesson-no": "Lektion {{lesson_no}}",
-        "tts-required": "Google Text-to-Speech ist f\u00fcr die App erforderlich",
-        "coming-soon": "Coming soon",
-        "coming-soon-description": "Please stay tuned we will bring more and more features"
+        "tts-required": "Google Text-to-Speech ist für die App erforderlich",
+        "coming-soon": "Bald",
+        "coming-soon-description": "Bitte bleiben Sie auf dem Laufenden, wir bringen immer mehr Funktionen"
     },
     "rating": {
         "title": "Haben Sie Lust mit die App?",
-        "title-description": "Wenn Ihnen diese App gef\u00e4llt, bewerten Sie uns bitte mit 5 Sternen.",
-        "feedback-description": "Wenn Ihnen die App nicht gef\u00e4llt, geben Sie uns Feedback, damit wir uns in Zukunft noch weiter verbessern k\u00f6nnen.",
+        "title-description": "Wenn Ihnen diese App gefällt, bewerten Sie uns bitte mit 5 Sternen.",
+        "feedback-description": "Wenn Ihnen die App nicht gefällt, geben Sie uns Feedback, damit wir uns in Zukunft noch weiter verbessern können.",
         "feedback-url": "https:\/\/airtable.com\/shr7xvYAyInUbJNif?prefill_Platform={platform}"
     }
 }
