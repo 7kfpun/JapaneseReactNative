@@ -33,7 +33,7 @@
     "analytics-react-native": "^1.2.0",
     "clevertap-react-native": "^0.2.6",
     "fuse.js": "^3.4.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react": "16.6.3",
     "react-native": "0.57.8",
